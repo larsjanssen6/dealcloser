@@ -29,8 +29,8 @@
 
                                     @if ($errors->has('name'))
                                         <span class="icon is-small is-right">
-									        <i class="fa fa-warning"></i>
-									    </span>
+                                            <i class="fa fa-warning"></i>
+                                        </span>
                                     @endif
                                 </p>
 
@@ -52,8 +52,8 @@
 
                                     @if ($errors->has('last_name'))
                                         <span class="icon is-small is-right">
-									        <i class="fa fa-warning"></i>
-									    </span>
+                                            <i class="fa fa-warning"></i>
+                                        </span>
                                     @endif
                                 </p>
 
@@ -75,8 +75,8 @@
 
                                     @if ($errors->has('email'))
                                         <span class="icon is-small is-right">
-									        <i class="fa fa-warning"></i>
-									    </span>
+                                            <i class="fa fa-warning"></i>
+                                        </span>
                                     @endif
                                 </p>
 
@@ -97,8 +97,8 @@
 
                                     @if ($errors->has('function'))
                                         <span class="icon is-small is-right">
-									        <i class="fa fa-warning"></i>
-									    </span>
+                                            <i class="fa fa-warning"></i>
+                                        </span>
                                     @endif
                                 </p>
 
