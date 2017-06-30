@@ -24,6 +24,9 @@ class CheckIfApplicationIsActive
         auth()->logout();
 
         return redirect('/')
-            ->with(['status' => 'Applicatie is niet actief, contacteer de beheerder', 'class' => 'is-danger']);
+            ->with([
+                'status' => 'Applicatie is niet actief, contacteer de beheerder',
+                'class' => 'is-danger'
+            ]);
     }
 }
