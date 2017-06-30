@@ -16,7 +16,6 @@
                     <div class="column is-faded is-9">
                         <h2 class="title is-3">
                             Update bedrijfsprofiel
-                            <span class="tag is-success">Super admin</span>
                         </h2>
 
                         <form method="POST">
@@ -27,7 +26,8 @@
                             <div class="control">
                                 <label for="name" class="label">Naam:</label>
 
-                                <input name="name"
+                                <input id="name"
+                                       name="name"
                                        type="text"
                                        value="{{ settings()->name }}"
                                        class="input {{ $errors->has('name') ? ' is-danger' : '' }}"
@@ -41,7 +41,8 @@
                             <div class="control">
                                 <label for="email" class="label">Email:</label>
 
-                                <input name="email"
+                                <input id="email"
+                                       name="email"
                                        type="email"
                                        value="{{ settings()->email }}"
                                        class="input">
@@ -54,7 +55,8 @@
                             <div class="control">
                                 <label for="phone" class="label">Telefoon:</label>
 
-                                <input name="phone"
+                                <input id="phone"
+                                       name="phone"
                                        type="text"
                                        value="{{ settings()->phone }}"
                                        class="input">
@@ -67,7 +69,8 @@
                             <div class="control">
                                 <label for="website" class="label">Website:</label>
 
-                                <input name="website"
+                                <input id="website"
+                                       name="website"
                                        type="text"
                                        value="{{ settings()->website }}"
                                        class="input">
@@ -77,10 +80,11 @@
                                 @endif
                             </div>
 
-                            <label for="phone" class="label">Omschrijving:</label>
+                            <label for="description" class="label">Omschrijving:</label>
 
                             <div class="control">
-								<textarea name="description"
+								<textarea id="description"
+                                          name="description"
                                           type="text"
                                           class="input">{{ settings()->description }}
 								</textarea>

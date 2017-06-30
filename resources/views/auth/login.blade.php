@@ -14,16 +14,14 @@
                             {{ csrf_field() }}
 
                             <div class="field">
-                                <label for="email" class="label">
-                                    Email
-                                </label>
+                                <label for="email" class="label">Email</label>
 
                                 <p class="control has-icons-left {{ $errors->has('email') ? ' has-icons-right' : '' }}">
-                                    <input type="email"
-                                           class="input {{ $errors->has('email') ? ' is-danger' : '' }}"
-                                           id="email"
+                                    <input id="email"
                                            name="email"
+                                           type="email"
                                            value="{{ old('email') }}"
+                                           class="input {{ $errors->has('email') ? ' is-danger' : '' }}"
                                            required
                                            autofocus>
 
@@ -44,15 +42,13 @@
                             </div>
 
                             <div class="field">
-                                <label for="password" class="label">
-                                    Wachtwoord
-                                </label>
+                                <label for="password" class="label">Wachtwoord</label>
 
                                 <p class="control has-icons-left {{ $errors->has('password') ? ' has-icons-right' : '' }}">
-                                    <input type="password"
-                                           class="input {{ $errors->has('password') ? ' is-danger' : '' }}"
-                                           id="password"
+                                    <input id="password"
                                            name="password"
+                                           type="password"
+                                           class="input {{ $errors->has('password') ? ' is-danger' : '' }}"
                                            required>
 
                                     <span class="icon is-small is-left">

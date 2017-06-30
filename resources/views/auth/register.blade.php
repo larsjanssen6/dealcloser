@@ -16,16 +16,14 @@
                             {{ csrf_field() }}
 
                             <div class="field">
-                                <label for="name" class="label">
-                                    Voornaam
-                                </label>
+                                <label for="name" class="label">Voornaam</label>
 
                                 <p class="control {{ $errors->has('name') ? ' has-icons-right' : '' }}">
-                                    <input type="text"
-                                           class="input {{ $errors->has('name') ? ' is-danger' : '' }}"
-                                           id="name"
+                                    <input id="name"
                                            name="name"
+                                           type="text"
                                            value="{{ old('name') }}"
+                                           class="input {{ $errors->has('name') ? ' is-danger' : '' }}"
                                            required
                                            autofocus>
 
@@ -42,16 +40,14 @@
                             </div>
 
                             <div class="field">
-                                <label for="name" class="label">
-                                    Achternaam
-                                </label>
+                                <label for="last_name" class="label">Achternaam</label>
 
                                 <p class="control {{ $errors->has('last_name') ? ' has-icons-right' : '' }}">
-                                    <input type="text"
-                                           class="input {{ $errors->has('last_name') ? ' is-danger' : '' }}"
-                                           id="last_name"
+                                    <input id="last_name"
                                            name="last_name"
+                                           type="text"
                                            value="{{ old('last_name') }}"
+                                           class="input {{ $errors->has('last_name') ? ' is-danger' : '' }}"
                                            required>
 
                                     @if ($errors->has('last_name'))
@@ -67,16 +63,14 @@
                             </div>
 
                             <div class="field">
-                                <label for="email" class="label">
-                                    Email
-                                </label>
+                                <label for="email" class="label">Email</label>
 
                                 <p class="control {{ $errors->has('email') ? ' has-icons-right' : '' }}">
-                                    <input type="email"
-                                           class="input {{ $errors->has('email') ? ' is-danger' : '' }}"
-                                           id="email"
+                                    <input id="email"
                                            name="email"
+                                           type="email"
                                            value="{{ old('email') }}"
+                                           class="input {{ $errors->has('email') ? ' is-danger' : '' }}"
                                            required>
 
                                     @if ($errors->has('email'))
@@ -92,15 +86,13 @@
                             </div>
 
                             <div class="field">
-                                <label for="name" class="label">
-                                    Functie
-                                </label>
+                                <label for="function" class="label">Functie</label>
 
                                 <p class="control {{ $errors->has('function') ? ' has-icons-right' : '' }}">
-                                    <input type="text"
-                                           class="input {{ $errors->has('function') ? ' is-danger' : '' }}"
-                                           id="function"
+                                    <input id="function"
                                            name="function"
+                                           type="text"
+                                           class="input {{ $errors->has('function') ? ' is-danger' : '' }}"
                                            value="{{ old('function') }}">
 
                                     @if ($errors->has('function'))
@@ -116,11 +108,9 @@
                             </div>
 
                             <div class="field">
-                                <label for="name" class="label">
-                                    Role
-                                </label>
+                                <label for="role" class="label">Role</label>
 
-                                <select name="role" class="input">
+                                <select id="role" name="role" class="input">
                                     <option selected disabled>Selecteer een rol</option>
 
                                     @foreach($roles as $role)

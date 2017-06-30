@@ -16,7 +16,6 @@
                     <div class="column is-faded is-9">
                         <h2 class="title is-3">
                             Update bedrijfsgebruik
-                            <span class="tag is-success">Super admin</span>
                         </h2>
 
                         <form method="POST">
@@ -25,9 +24,10 @@
                             <input name="_method" type="hidden" value="PATCH">
 
                             <div class="control">
-                                <label for="name" class="label">Max aantal gebruikers:</label>
+                                <label for="users" class="label">Max aantal gebruikers:</label>
 
-                                <input name="users"
+                                <input id="users"
+                                       name="users"
                                        type="number"
                                        value="{{ settings()->users }}"
                                        class="input {{ $errors->has('users') ? ' is-danger' : '' }}"
@@ -51,7 +51,8 @@
                             <div class="control">
                                 <label for="license" class="label">Licentie code:</label>
 
-                                <input name="license"
+                                <input id="license"
+                                       name="license"
                                        type="text"
                                        value="{{ settings()->license }}"
                                        class="input">

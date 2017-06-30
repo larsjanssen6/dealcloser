@@ -14,20 +14,16 @@
                   role="form">
 
                 <div class="field">
-                    <label for="email" class="label">
-                        Email
-                    </label>
+                    <label for="email" class="label">Email</label>
 
-                    <p class="control has-icons-left"
-                       :class="{ 'has-icons-right': error }">
-
-                        <input type="email"
-                               v-model="data.email"
+                    <p class="control has-icons-left" :class="{ 'has-icons-right': error }">
+                        <input id="email"
+                               name="email"
+                               type="email"
                                :class="{ 'is-danger': error }"
                                class="input"
+                               v-model="data.email"
                                placeholder="Typ hier uw email"
-                               id="email"
-                               name="email"
                                required
                                autofocus
                                v-focus>

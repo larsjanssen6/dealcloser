@@ -1826,10 +1826,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -43717,7 +43713,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "email"
     }
-  }, [_vm._v("\n                    Email\n                ")]), _vm._v(" "), _c('p', {
+  }, [_vm._v("Email")]), _vm._v(" "), _c('p', {
     staticClass: "control has-icons-left",
     class: {
       'has-icons-right': _vm.error
@@ -43737,10 +43733,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'is-danger': _vm.error
     },
     attrs: {
-      "type": "email",
-      "placeholder": "Typ hier uw email",
       "id": "email",
       "name": "email",
+      "type": "email",
+      "placeholder": "Typ hier uw email",
       "required": "",
       "autofocus": ""
     },

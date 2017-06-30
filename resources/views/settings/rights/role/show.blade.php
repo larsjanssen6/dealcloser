@@ -16,7 +16,6 @@
                     <div class="column is-faded is-9">
                         <h2 class="title is-3">
                             Rollen
-                            <span class="tag is-success">Super admin</span>
                         </h2>
 
                         <roles :prp-roles="{{ json_encode($roles) }}"></roles>
@@ -28,10 +27,10 @@
 
                                 <div class="field">
                                     <p class="control {{ $errors->has('name') ? ' has-icons-right' : '' }}">
-                                        <input type="text"
-                                               class="input {{ $errors->has('name') ? ' is-danger' : '' }}"
-                                               id="name"
+                                        <input id="name"
                                                name="name"
+                                               type="text"
+                                               class="input {{ $errors->has('name') ? ' is-danger' : '' }}"
                                                value="{{ old('name') }}"
                                                placeholder="Typ hier de rol naam die u wilt toevoegen"
                                                required

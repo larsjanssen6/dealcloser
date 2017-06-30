@@ -16,7 +16,6 @@
                     <div class="column is-faded is-9">
                         <h2 class="title is-3">
                             Update bedrijfslocatie
-                            <span class="tag is-success">Super admin</span>
                         </h2>
 
                         <form method="POST">
@@ -25,9 +24,10 @@
                             <input name="_method" type="hidden" value="PATCH">
 
                             <div class="control">
-                                <label for="name" class="label">Adres:</label>
+                                <label for="address" class="label">Adres:</label>
 
-                                <input name="address"
+                                <input id="address"
+                                       name="address"
                                        type="text"
                                        value="{{ settings()->address }}"
                                        class="input {{ $errors->has('address') ? ' is-danger' : '' }}"
@@ -41,7 +41,8 @@
                             <div class="control">
                                 <label for="zip" class="label">Postcode:</label>
 
-                                <input name="zip"
+                                <input id="zip"
+                                       name="zip"
                                        type="text"
                                        value="{{ settings()->zip }}"
                                        class="input {{ $errors->has('zip') ? ' is-danger' : '' }}">
@@ -54,7 +55,8 @@
                             <div class="control">
                                 <label for="city" class="label">Woonplaats:</label>
 
-                                <input name="city"
+                                <input id="city"
+                                       name="city"
                                        type="text"
                                        value="{{ settings()->city }}"
                                        class="input {{ $errors->has('city') ? ' is-danger' : '' }}">

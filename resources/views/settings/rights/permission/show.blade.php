@@ -16,7 +16,6 @@
                     <div class="column is-faded is-9">
                         <h2 class="title is-3">
                             Permissies
-                            <span class="tag is-success">Super admin</span>
                         </h2>
 
 
@@ -47,7 +46,9 @@
 
                                             @foreach($roles as $role)
                                                 <td>
-                                                    <input type="checkbox"
+                                                    <input id="{{ $role->name }}"
+                                                           name="{{ $role->name }}"
+                                                           type="checkbox"
                                                            {{ $role->hasPermissionTo($permission) ? 'checked="checked"' : '' }}
                                                            onclick='window.location.assign("/instellingen/bedrijf/permissie/update?role={{ $role->id }}&permission={{ $permission->name }}")'>
                                                 </td>

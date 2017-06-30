@@ -16,7 +16,6 @@
                     <div class="column is-faded is-9">
                         <h2 class="title is-3">
                             Update bedrijfsadministratie
-                            <span class="tag is-success">Super admin</span>
                         </h2>
 
                         <form method="POST">
@@ -27,7 +26,8 @@
                             <div class="control">
                                 <label for="kvk" class="label">Kvk:</label>
 
-                                <input name="kvk"
+                                <input id="kvk"
+                                       name="kvk"
                                        type="text"
                                        value="{{ settings()->kvk }}"
                                        class="input {{ $errors->has('kvk') ? ' is-danger' : '' }}"
@@ -41,7 +41,8 @@
                             <div class="control">
                                 <label for="btw" class="label">Btw:</label>
 
-                                <input name="btw"
+                                <input id="btw"
+                                       name="btw"
                                        type="text"
                                        value="{{ settings()->btw }}"
                                        class="input {{ $errors->has('btw') ? ' is-danger' : '' }}">
