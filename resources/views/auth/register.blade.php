@@ -110,12 +110,12 @@
                             <div class="field">
                                 <label for="role" class="label">Role</label>
 
-                                <select id="role" name="role" class="input">
+                                <select id="role" name="role" class="input {{ $errors->has('role') ? ' is-danger' : '' }}">
                                     <option selected disabled>Selecteer een rol</option>
 
                                     @foreach($roles as $role)
                                         <option
-                                            value="{{ $role->id }}" {{ old('role') == $role->id ? 'selected' : '' }}>
+                                            value="{{ $role->name }}" {{ old('role') == $role->name ? 'selected' : '' }}>
                                             {{ $role->name }}
                                         </option>
                                     @endforeach
