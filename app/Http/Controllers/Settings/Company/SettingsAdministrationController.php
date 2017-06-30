@@ -10,7 +10,7 @@ class SettingsAdministrationController extends Controller
 {
     /**
      * Create a new controller instance. Only users with permission
-     * edit-corporation-settings have access to this controller.
+     * edit-company-settings have access to this controller.
      */
     public function __construct()
     {

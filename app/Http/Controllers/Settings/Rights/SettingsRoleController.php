@@ -11,7 +11,7 @@ class SettingsRoleController extends Controller
 {
     /**
      * Create a new controller instance. Only users with permission
-     * bewerk-rol-instellingen have access to this controller.
+     * edit-role-settings have access to this controller.
      */
     public function __construct()
     {
@@ -32,7 +32,7 @@ class SettingsRoleController extends Controller
     }
 
     /**
-     * Destroy a role
+     * Store role.
      *
      * @param SettingsRoleRequest $request
      * @return \Illuminate\Http\RedirectResponse
@@ -49,7 +49,7 @@ class SettingsRoleController extends Controller
     }
 
     /**
-     * Update a role
+     * Update role
      *
      * @param SettingsRoleRequest $request
      * @param Role $role
@@ -64,7 +64,7 @@ class SettingsRoleController extends Controller
     }
 
     /**
-     * Destroy a role
+     * Destroy role
      *
      * @param Role $role
      * @return \Illuminate\Http\JsonResponse

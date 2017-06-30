@@ -11,7 +11,7 @@ class SettingsPermissionController extends Controller
 {
     /**
      * Create a new controller instance. Only users with permission
-     * edit-rights-settings have access to this controller.
+     * edit-permission-settings have access to this controller.
      */
     public function __construct()
     {
@@ -32,6 +32,12 @@ class SettingsPermissionController extends Controller
         );
     }
 
+    /**
+     * Add or remove permissions to a role.
+     *
+     * @param SettingsPermissionRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(SettingsPermissionRequest $request)
     {
         $role = Role::findOrFail($request->role);

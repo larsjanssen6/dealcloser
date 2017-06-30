@@ -28,7 +28,7 @@ class SettingsUsageController extends Controller
     }
 
     /**
-     * Update corporation profile settings.
+     * Update corporation usage settings.
      *
      * @param SettingsUsageRequest $request
      *

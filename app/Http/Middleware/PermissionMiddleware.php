@@ -8,7 +8,8 @@ use Closure;
 class PermissionMiddleware
 {
     /**
-     * Handle an incoming request.
+     * Check if incoming request has the
+     * right permission.
      *
      * @param \Illuminate\Http\Request $request
      * @param \Closure                 $next

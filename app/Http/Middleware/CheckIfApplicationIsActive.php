@@ -7,7 +7,8 @@ use Closure;
 class CheckIfApplicationIsActive
 {
     /**
-     * Handle an incoming request.
+     * Check if application is active for
+     * incoming request.
      *
      * @param \Illuminate\Http\Request $request
      * @param \Closure                 $next

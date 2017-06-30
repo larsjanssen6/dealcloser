@@ -7,6 +7,11 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+    /**
+     * Show all users.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         return view('user.users')->with([
