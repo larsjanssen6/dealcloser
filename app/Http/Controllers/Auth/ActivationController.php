@@ -53,10 +53,10 @@ class ActivationController extends Controller
     public function activate(ActivationRequest $request, $token)
     {
         if($this->exists($token)) {
-            Auth::login($this->userRepo->activate('confirmation_code', $token, $request->password));
+            Auth::login($this->userRepo->activate($token, $request->password));
 
             return redirect('/dashboard')
-                ->with('status', sprintf('Welkom uw account is geactiveerd'));
+                ->with('status', 'Welkom uw account is geactiveerd');
         }
 
         return $this->unAuthorized();

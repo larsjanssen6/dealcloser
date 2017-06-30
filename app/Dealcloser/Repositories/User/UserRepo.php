@@ -33,17 +33,16 @@ class UserRepo implements IUserRepo
     /**
      * Activate user
      *
-     * @param $column
      * @param $token
      * @param $password
      * @return User $user
      */
-    public function activate($column, $token, $password)
+    public function activate($token, $password)
     {
-        return tap(User::where($column, $token)->first(), function ($user) use ($column, $password) {
+        return tap(User::where('confirmation_code', $token)->first(), function ($user) use ($password) {
             $user->update([
                 'active' => true,
-                $column => null,
+                'confirmation_code' => null,
                 'password' => bcrypt($password)
             ]);
         });
