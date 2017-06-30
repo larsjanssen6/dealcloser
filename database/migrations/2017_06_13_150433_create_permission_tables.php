@@ -108,7 +108,7 @@ class CreatePermissionTables extends Migration
         ]);
 
         Permission::create([
-            'name'                      => 'bewerk-permissie-instellingen',
+            'name'                      => 'edit-permission-settings',
             'description'               => 'Bewerk permissies',
             'category_permissions_id'   => 1
         ]);
