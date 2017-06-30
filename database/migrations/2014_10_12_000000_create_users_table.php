@@ -20,10 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('name', 50);
             $table->string('last_name', 50);
             $table->string('email', 50)->unique();
-            $table->string('password')->default(bcrypt(str_random(30)));
+            $table->string('password')->nullable();
             $table->string('function', 50)->nullable();
             $table->integer('active')->default(0);
-            $table->string('confirmation_code', 200)->nullable();
+            $table->string('confirmation_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
