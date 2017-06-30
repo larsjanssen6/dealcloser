@@ -29,7 +29,7 @@ class PermissionMiddleware
             }
 
             return back()
-                ->with('status', 'Niet geautoriseerd!');
+                ->with(['status' => 'Niet geautoriseerd!', 'class' => 'is-danger']);
         }
 
         return $next($request);
