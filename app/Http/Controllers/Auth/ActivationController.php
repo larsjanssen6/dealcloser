@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Dealcloser\Interfaces\Repositories\IUserRepo;
+use App\Http\Requests\Auth\ActivationRequest;
 use Auth;
 use App\Http\Controllers\Controller;
 
@@ -45,13 +46,14 @@ class ActivationController extends Controller
     /**
      * Activate user
      *
+     * @param ActivationRequest $request
      * @param $token
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function activate($token)
+    public function activate(ActivationRequest $request, $token)
     {
         if($this->exists($token)) {
-            Auth::login($this->userRepo->activate('confirmation_code', $token));
+            Auth::login($this->userRepo->activate('confirmation_code', $token, $request->password));
 
             return redirect('/dashboard')
                 ->with('status', sprintf('Welkom uw account is geactiveerd'));
