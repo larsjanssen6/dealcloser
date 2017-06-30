@@ -27,8 +27,7 @@
 									       name="email"
 									       value="{{ old('email') }}"
 									       required
-									       autofocus
-									       v-focus>
+									       autofocus>
 
 									<span class="icon is-small is-left">
 								        <i class="fa fa-envelope"></i>
