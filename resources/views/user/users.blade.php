@@ -20,29 +20,29 @@
                     <div>
                         <table class="table">
                             <thead>
-                            <tr>
-                                <th>
-                                    <abbr>Naam</abbr>
-                                </th>
+                                <tr>
+                                    <th>
+                                        <abbr>Naam</abbr>
+                                    </th>
 
-                                <th>
-                                    <abbr>Achternaam</abbr>
-                                </th>
+                                    <th>
+                                        <abbr>Achternaam</abbr>
+                                    </th>
 
-                                <th>
-                                    <abbr>Actief sinds</abbr>
-                                </th>
+                                    <th>
+                                        <abbr>Actief sinds</abbr>
+                                    </th>
 
-                                <th>
-                                    <abbr>Actief</abbr>
-                                </th>
+                                    <th>
+                                        <abbr>Actief</abbr>
+                                    </th>
 
-                                <th>
-                                    <abbr>Role</abbr>
-                                </th>
+                                    <th>
+                                        <abbr>Role</abbr>
+                                    </th>
 
-                                <th></th>
-                            </tr>
+                                    <th></th>
+                                </tr>
                             </thead>
 
                             <tbody>

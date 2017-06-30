@@ -26,13 +26,13 @@
                                            autofocus>
 
                                     <span class="icon is-small is-left">
-								        <i class="fa fa-envelope"></i>
-								    </span>
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
 
                                     @if ($errors->has('email'))
                                         <span class="icon is-small is-right">
-									        <i class="fa fa-warning"></i>
-									    </span>
+                                            <i class="fa fa-warning"></i>
+                                        </span>
                                     @endif
                                 </p>
 
@@ -52,13 +52,13 @@
                                            required>
 
                                     <span class="icon is-small is-left">
-								        <i class="fa fa-lock"></i>
-								    </span>
+                                        <i class="fa fa-lock"></i>
+                                    </span>
 
                                     @if ($errors->has('password'))
                                         <span class="icon is-small is-right">
-									        <i class="fa fa-warning"></i>
-									    </span>
+                                            <i class="fa fa-warning"></i>
+                                        </span>
                                     @endif
                                 </p>
 
