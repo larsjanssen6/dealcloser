@@ -83,11 +83,11 @@
                             <label for="description" class="label">Omschrijving:</label>
 
                             <div class="control">
-								<textarea id="description"
+                                <textarea id="description"
                                           name="description"
                                           type="text"
                                           class="input">{{ settings()->description }}
-								</textarea>
+                                </textarea>
 
                                 @if ($errors->has('description'))
                                     <p class="help is-danger">{{ $errors->first('description') }}</p>
