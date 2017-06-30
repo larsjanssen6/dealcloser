@@ -53943,7 +53943,6 @@ window.Event = new Vue();
  */
 
 Vue.component('users', __webpack_require__("./resources/assets/js/pages/Users.vue"));
-Vue.component('updateUser', __webpack_require__("./resources/assets/js/components/user/update.vue"));
 Vue.component('roles', __webpack_require__("./resources/assets/js/components/settings/Roles.vue"));
 Vue.component('modal', __webpack_require__("./resources/assets/js/components/shared/Modal.vue"));
 Vue.component('modalCard', __webpack_require__("./resources/assets/js/components/shared/modalCard.vue"));
@@ -54233,29 +54232,6 @@ if (false) {(function () {
     disposed = true
   })
 })()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/user/update.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
-  /* script */
-  null,
-  /* template */
-  null,
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/Janssen/Code/dealcloser/resources/assets/js/components/user/update.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 
 module.exports = Component.exports
 

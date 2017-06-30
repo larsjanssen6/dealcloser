@@ -14,7 +14,7 @@
     import Datepicker from 'vue-bulma-datepicker'
 
     export default {
-        components: { Datepicker },
+        components: {Datepicker},
 
         props: ['date'],
 

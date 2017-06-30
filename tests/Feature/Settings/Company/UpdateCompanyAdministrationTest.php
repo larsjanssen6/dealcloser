@@ -51,8 +51,8 @@ class UpdateCompanyAdministrationTest extends TestCase
         $this->signIn($user);
 
         $settings = [
-            'kvk'           => '8a9sdfasdf9jnkasa',
-            'btw'           => 'asdf0asf9uasodfas',
+            'kvk' => '8a9sdfasdf9jnkasa',
+            'btw' => 'asdf0asf9uasodfas',
         ];
 
         $this->patch('/instellingen/bedrijf/administratie', $settings)
@@ -71,8 +71,8 @@ class UpdateCompanyAdministrationTest extends TestCase
         $this->signIn($user);
 
         $settings = [
-            'kvk'           => '8a9sdfasdf9jnkasa',
-            'btw'           => 'asdf0asf9uasodfas',
+            'kvk' => '8a9sdfasdf9jnkasa',
+            'btw' => 'asdf0asf9uasodfas',
         ];
 
         $this->patch('/instellingen/bedrijf/administratie', $settings)

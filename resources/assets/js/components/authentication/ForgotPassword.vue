@@ -66,7 +66,7 @@
 </template>
 
 <script>
-    import { default as swal } from 'sweetalert2'
+    import {default as swal} from 'sweetalert2'
     import AuthenticationService from '../../services/AuthenticationService';
 
     export default {

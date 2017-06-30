@@ -36,7 +36,7 @@
 
         created() {
             Event.$on('show-user-modal', (id) => {
-                if(this.user === id) {
+                if (this.user === id) {
                     this.show = true;
                 }
             });

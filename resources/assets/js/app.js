@@ -26,7 +26,6 @@ window.Event = new Vue();
  */
 
 Vue.component('users',                          require('./pages/Users.vue'));
-Vue.component('updateUser',                     require('./components/user/update.vue'));
 Vue.component('roles',                          require('./components/settings/Roles.vue'));
 Vue.component('modal',                          require('./components/shared/Modal.vue'));
 Vue.component('modalCard',                      require('./components/shared/modalCard.vue'));
