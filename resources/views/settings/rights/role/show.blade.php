@@ -22,7 +22,8 @@
 						<roles :prp-roles="{{ json_encode($roles) }}"></roles>
 
 						<div class="column is-5">
-							<form method="POST" class="form-horizontal" role="form" action="{{ route('settings.rights.role') }}">
+							<form method="POST" class="form-horizontal" role="form"
+							      action="{{ route('settings.rights.role') }}">
 								{{ csrf_field() }}
 
 								<div class="field">

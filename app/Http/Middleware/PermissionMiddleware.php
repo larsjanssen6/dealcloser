@@ -12,7 +12,7 @@ class PermissionMiddleware
      * right permission.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
+     * @param \Closure $next
      * @param $permission
      *
      * @return mixed
@@ -24,7 +24,7 @@ class PermissionMiddleware
         }
 
         if (!$request->user()->hasPermissionTo($permission)) {
-            if($request->ajax() || $request->isJson()) {
+            if ($request->ajax() || $request->isJson()) {
                 return response()->json(['status' => 'Niet geautoriseerd!'], 401);
             }
 

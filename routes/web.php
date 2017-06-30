@@ -17,12 +17,12 @@
 
 $login = 'Auth\LoginController@';
 
-Route::get('/', $login. 'showLoginForm')
+Route::get('/', $login . 'showLoginForm')
     ->name('login');
 
-Route::post('/', $login. 'login');
+Route::post('/', $login . 'login');
 
-Route::get('logout', $login. 'logout')
+Route::get('logout', $login . 'logout')
     ->name('logout');
 
 /*
@@ -32,9 +32,9 @@ Route::get('logout', $login. 'logout')
 $forgotPasswordWeb = 'Auth\ForgotPasswordController@';
 $passwordReset = 'Auth\ResetPasswordController@';
 
-Route::post('password/reset', $forgotPasswordWeb.'sendResetLinkEmail')->name('password.email');
-Route::post('wachtwoord/reset/{token}', $passwordReset.'reset')->name('password.reset');
-Route::get('wachtwoord/reset/{token}', $passwordReset.'showResetForm');
+Route::post('password/reset', $forgotPasswordWeb . 'sendResetLinkEmail')->name('password.email');
+Route::post('wachtwoord/reset/{token}', $passwordReset . 'reset')->name('password.reset');
+Route::get('wachtwoord/reset/{token}', $passwordReset . 'showResetForm');
 
 
 /*
@@ -105,18 +105,18 @@ Route::group(['middleware' => ['auth', 'throttle:100', 'CheckIfApplicationIsActi
 
     Route::patch('instellingen/profiel', 'Settings\User\SettingsUserController@update');
 
-   /*
-   | Settings || Permissions
-   */
+    /*
+    | Settings || Permissions
+    */
 
     Route::get('instellingen/bedrijf/permissie', 'Settings\Rights\SettingsPermissionController@index')
         ->name('settings.rights.permission');
 
     Route::get('instellingen/bedrijf/permissie/update', 'Settings\Rights\SettingsPermissionController@update');
 
-   /*
-   | Settings || Rollen
-   */
+    /*
+    | Settings || Rollen
+    */
 
     Route::get('instellingen/bedrijf/role', 'Settings\Rights\SettingsRoleController@index')
         ->name('settings.rights.role');

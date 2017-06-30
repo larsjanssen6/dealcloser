@@ -11,13 +11,13 @@ class CheckIfApplicationIsActive
      * incoming request.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
+     * @param \Closure $next
      *
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        if(appIsActive(settings()->active, $request->user())) {
+        if (appIsActive(settings()->active, $request->user())) {
             return $next($request);
         }
 

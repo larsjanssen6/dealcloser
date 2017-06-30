@@ -26,8 +26,8 @@ class SettingsPermissionController extends Controller
     public function index()
     {
         return view('settings.rights.permission.show')->with([
-                'categories'    => Category::all(),
-                'roles'         => Role::all()
+                'categories' => Category::all(),
+                'roles' => Role::all()
             ]
         );
     }
@@ -42,7 +42,7 @@ class SettingsPermissionController extends Controller
     {
         $role = Role::findOrFail($request->role);
 
-        if($role->hasPermissionTo($request->permission)) {
+        if ($role->hasPermissionTo($request->permission)) {
             $role->revokePermissionTo($request->permission);
 
             return back()->with('status', 'Permissie ingetrokken');

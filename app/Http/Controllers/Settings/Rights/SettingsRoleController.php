@@ -71,7 +71,7 @@ class SettingsRoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        if(Auth::user()->hasRole($role->name)) {
+        if (Auth::user()->hasRole($role->name)) {
             return response()->json([
                 'status' => 'U kunt deze rol niet verwijder. Koppel uzelf eerst aan een andere rol.'
             ], 401);
