@@ -15,27 +15,35 @@
 | Login / Logout
 */
 
-$login = 'Auth\LoginController@';
-
-Route::get('/', $login . 'showLoginForm')
+Route::get('/', 'Auth\LoginController@showLoginForm')
     ->name('login');
 
-Route::post('/', $login . 'login');
+Route::post('/', 'Auth\LoginController@login');
 
-Route::get('logout', $login . 'logout')
+Route::get('logout', 'Auth\LoginController@logout')
     ->name('logout');
 
 /*
 | Password reset
 */
 
-$forgotPasswordWeb = 'Auth\ForgotPasswordController@';
-$passwordReset = 'Auth\ResetPasswordController@';
+Route::post('password/reset', 'Auth\ForgotPasswordController@sendResetLinkEmail')
+    ->name('password.email');
 
-Route::post('password/reset', $forgotPasswordWeb . 'sendResetLinkEmail')->name('password.email');
-Route::post('wachtwoord/reset/{token}', $passwordReset . 'reset')->name('password.reset');
-Route::get('wachtwoord/reset/{token}', $passwordReset . 'showResetForm');
+Route::post('wachtwoord/reset/{token}', 'Auth\ResetPasswordController@reset')
+    ->name('password.reset');
 
+Route::get('wachtwoord/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+
+/*
+| User activation
+*/
+
+Route::get('registreer/{token}', 'Auth\ActivationController@show')
+    ->name('register.activate');
+
+Route::post('registreer/{token}', 'Auth\ActivationController@activate')
+    ->name('register.activate');
 
 /*
 | Info controller
@@ -53,78 +61,85 @@ Route::group(['middleware' => ['auth', 'throttle:100', 'CheckIfApplicationIsActi
     | User
     */
 
-    Route::get('gebruikers', 'User\UserController@index')
-        ->name('users');
+        /*
+        | Users
+        */
 
-    Route::get('gebruikers/registreer', 'Auth\RegisterController@show')
-        ->name('register.show');
+        Route::get('gebruikers', 'User\UserController@index')
+            ->name('users');
 
-    Route::post('gebruikers/registreer', 'Auth\RegisterController@store')
-        ->name('register.store');
+        /*
+        | Register
+        */
+
+        Route::get('gebruikers/registreer', 'Auth\RegisterController@show')
+            ->name('register.show');
+
+        Route::post('gebruikers/registreer', 'Auth\RegisterController@store')
+            ->name('register.store');
 
     /*
     | Settings
     */
 
+        /*
+        | CompanyInfo
+        */
 
-    /*
-    | Settings || CompanyInfo
-    */
+        Route::get('instellingen/bedrijf/administratie', 'Settings\Company\SettingsAdministrationController@index')
+            ->name('settings.company.administration');
 
-    Route::get('instellingen/bedrijf/administratie', 'Settings\Company\SettingsAdministrationController@index')
-        ->name('settings.company.administration');
+        Route::patch('instellingen/bedrijf/administratie', 'Settings\Company\SettingsAdministrationController@update');
 
-    Route::patch('instellingen/bedrijf/administratie', 'Settings\Company\SettingsAdministrationController@update');
+        Route::get('instellingen/bedrijf/locatie', 'Settings\Company\SettingsLocationController@index')
+            ->name('settings.company.location');
 
-    Route::get('instellingen/bedrijf/locatie', 'Settings\Company\SettingsLocationController@index')
-        ->name('settings.company.location');
+        Route::patch('instellingen/bedrijf/locatie', 'Settings\Company\SettingsLocationController@update');
 
-    Route::patch('instellingen/bedrijf/locatie', 'Settings\Company\SettingsLocationController@update');
+        Route::get('instellingen/bedrijf/profiel', 'Settings\Company\SettingsProfileController@index')
+            ->name('settings.company.profile');
 
-    Route::get('instellingen/bedrijf/profiel', 'Settings\Company\SettingsProfileController@index')
-        ->name('settings.company.profile');
+        Route::patch('instellingen/bedrijf/profiel', 'Settings\Company\SettingsProfileController@update');
 
-    Route::patch('instellingen/bedrijf/profiel', 'Settings\Company\SettingsProfileController@update');
+        /*
+        |  Usage
+        */
 
-    /*
-    | Settings || Usage
-    */
+        Route::get('instellingen/bedrijf/gebruik', 'Settings\Usage\SettingsUsageController@index')
+            ->name('settings.company.usage');
 
-    Route::get('instellingen/bedrijf/gebruik', 'Settings\Usage\SettingsUsageController@index')
-        ->name('settings.company.usage');
-
-    Route::patch('instellingen/bedrijf/gebruik', 'Settings\Usage\SettingsUsageController@update');
+        Route::patch('instellingen/bedrijf/gebruik', 'Settings\Usage\SettingsUsageController@update');
 
 
-    /*
-    | Settings || User profile
-    */
+        /*
+        |  User profile
+        */
 
-    Route::get('instellingen/profiel', 'Settings\User\SettingsUserController@index')
-        ->name('settings.profile');
+        Route::get('instellingen/profiel', 'Settings\User\SettingsUserController@index')
+            ->name('settings.profile');
 
-    Route::patch('instellingen/profiel', 'Settings\User\SettingsUserController@update');
+        Route::patch('instellingen/profiel', 'Settings\User\SettingsUserController@update');
 
-    /*
-    | Settings || Permissions
-    */
+        /*
+        |  Permissions
+        */
 
-    Route::get('instellingen/bedrijf/permissie', 'Settings\Rights\SettingsPermissionController@index')
-        ->name('settings.rights.permission');
+        Route::get('instellingen/bedrijf/permissie', 'Settings\Rights\SettingsPermissionController@index')
+            ->name('settings.rights.permission');
 
-    Route::get('instellingen/bedrijf/permissie/update', 'Settings\Rights\SettingsPermissionController@update');
+        Route::get('instellingen/bedrijf/permissie/update', 'Settings\Rights\SettingsPermissionController@update');
 
-    /*
-    | Settings || Rollen
-    */
+        /*
+        | Roles
+        */
 
-    Route::get('instellingen/bedrijf/role', 'Settings\Rights\SettingsRoleController@index')
-        ->name('settings.rights.role');
+        Route::get('instellingen/bedrijf/role', 'Settings\Rights\SettingsRoleController@index')
+            ->name('settings.rights.role');
 
-    Route::post('instellingen/bedrijf/role', 'Settings\Rights\SettingsRoleController@store')
-        ->name('settings.rights.role');
+        Route::post('instellingen/bedrijf/role', 'Settings\Rights\SettingsRoleController@store')
+            ->name('settings.rights.role');
 
-    Route::patch('instellingen/bedrijf/role/{role}', 'Settings\Rights\SettingsRoleController@update');
+        Route::patch('instellingen/bedrijf/role/{role}', 'Settings\Rights\SettingsRoleController@update');
 
-    Route::delete('instellingen/bedrijf/role/{role}', 'Settings\Rights\SettingsRoleController@destroy');
+        Route::delete('instellingen/bedrijf/role/{role}', 'Settings\Rights\SettingsRoleController@destroy');
 });
