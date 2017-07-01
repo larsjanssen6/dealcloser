@@ -3,6 +3,7 @@
 namespace Tests\Feature\Settings\Rights;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Spatie\Permission\Models\Permission;
 use Tests\TestCase;
 
 class PermissionTest extends TestCase
@@ -38,6 +39,11 @@ class PermissionTest extends TestCase
                 $this->superAdminRole->id,
                 $this->permissions['register-users']))
             ->assertSessionHas('status', 'Permissie toegevoegd');
+
+        $this->assertDatabaseHas('role_has_permissions', [
+            'role_id' => $this->superAdminRole->id,
+            'permission_id' => Permission::where('name', $this->permissions['register-users'])->first()->id,
+        ]);
     }
 
     /** @test */
@@ -63,6 +69,11 @@ class PermissionTest extends TestCase
             ->get(sprintf("/instellingen/bedrijf/permissie/update?role=%s&permission=%s",
                 $this->superAdminRole->id, $this->permissions['register-users']))
             ->assertSessionHas('status', 'Permissie ingetrokken');
+
+        $this->assertDatabaseMissing('role_has_permissions', [
+            'role_id' => $this->superAdminRole->id,
+            'permission_id' => Permission::where('name', $this->permissions['register-users'])->first()->id,
+        ]);
     }
 
     /** @test */
