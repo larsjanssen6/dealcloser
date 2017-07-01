@@ -88,6 +88,7 @@ class CreatePermissionTables extends Migration
 
         Category::create(['name' => 'Instellingen']);
         Category::create(['name' => 'Gebruikers']);
+        Role::create(['name' => 'Super-admin']);
 
         Permission::create([
             'name'                      => 'edit-company-settings',
