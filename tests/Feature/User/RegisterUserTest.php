@@ -6,7 +6,7 @@ use App\Dealcloser\Core\User\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
-class CreateUserTest extends TestCase
+class RegisterUserTest extends TestCase
 {
     use DatabaseMigrations;
 
@@ -64,6 +64,53 @@ class CreateUserTest extends TestCase
         $this->actingAs($this->user)->post('/gebruikers/registreer', $userToRegister)
             ->assertSessionHas(['status' => 'Niet geautoriseerd!'])
             ->assertRedirect('/');
+    }
+
+    /** @test */
+    public function a_user_can_visit_registration_activation_page_with_correct_confirmation_code()
+    {
+        $user = create(User::class);
+
+        $this->actingAs($this->user)->get('/registreer/' . $user->confirmation_code)
+            ->assertSee("Activeer account");
+    }
+
+    /** @test */
+    public function a_user_can_not_visit_registration_activation_page_with_incorrect_confirmation_code()
+    {
+        $this->actingAs($this->user)->get('/registreer/incorrect-confirmation-code')
+            ->assertRedirect('/')
+            ->assertSessionHas(['status' => 'Niet geautoriseerd!']);
+    }
+
+    /** @test */
+    public function a_user_can_activate_his_account_with_correct_confirmation_code()
+    {
+        $user = create(User::class);
+
+        $data = [
+            'password' => 'secret',
+            'password_confirmation' => 'secret'
+        ];
+
+        $this->actingAs($this->user)->post('/registreer/' . $user->confirmation_code, $data)
+            ->assertRedirect('/dashboard')
+            ->assertSessionHas(['status' => 'Welkom uw account is geactiveerd']);
+    }
+
+    /** @test */
+    public function a_user_can_not_activate_his_account_with_incorrect_confirmation_code()
+    {
+        create(User::class);
+
+        $data = [
+            'password' => 'secret',
+            'password_confirmation' => 'secret'
+        ];
+
+        $this->actingAs($this->user)->post('/registreer/incorrect-confirmation-code', $data)
+            ->assertRedirect('/')
+            ->assertSessionHas(['status' => 'Niet geautoriseerd!']);
     }
 }
 
