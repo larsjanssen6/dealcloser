@@ -115,10 +115,11 @@ Route::group(['middleware' => ['auth', 'throttle:100', 'CheckIfApplicationIsActi
         |  User profile
         */
 
-        Route::get('instellingen/profiel', 'Settings\User\SettingsUserController@index')
+        Route::get('instellingen/profiel', 'Settings\User\SettingsProfileController@index')
             ->name('settings.profile');
 
-        Route::patch('instellingen/profiel', 'Settings\User\SettingsUserController@update');
+        Route::patch('instellingen/profiel', 'Settings\User\SettingsProfileController@update')
+            ->name('settings.profile');
 
         /*
         |  Permissions

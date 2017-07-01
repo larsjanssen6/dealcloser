@@ -8,10 +8,25 @@ use Spatie\Permission\Models\Permission;
 
 class Category extends Model
 {
+    /**
+     * Table name.
+     *
+     * @var string
+     */
     protected $table = 'category_permissions';
 
+    /**
+     * The attributes that must be eager-loaded.
+     *
+     * @var array
+     */
     protected $with = ['permissions'];
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = ['name'];
 
     /**

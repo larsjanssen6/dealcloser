@@ -19,6 +19,32 @@ class UserRepo implements IUserRepo
     }
 
     /**
+     * Update a user
+     *
+     * @param User $user
+     * @param array $request
+     */
+    public function update(User $user, $request)
+    {
+        if(isset($request['password'])) {
+            $request['password'] = bcrypt($request['password']);
+        }
+
+        $user->update($request);
+    }
+
+    /**
+     * Find a user based on id
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function find($id)
+    {
+        return User::find($id);
+    }
+
+    /**
      * Check if value exists
      *
      * @param $column

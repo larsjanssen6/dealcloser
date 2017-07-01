@@ -10,6 +10,13 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * The attributes that must be eager-loaded.
+     *
+     * @var array
+     */
+    protected $with = ['roles'];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
