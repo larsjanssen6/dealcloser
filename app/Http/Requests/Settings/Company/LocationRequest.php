@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Settings;
+namespace App\Http\Requests\settings\Company;;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SettingsProfileRequest extends FormRequest
+class LocationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,9 @@ class SettingsProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          => 'max:50|nullable',
-            'email'         => 'max:50|email|nullable',
-            'phone'         => 'max:20|nullable',
-            'website'       => 'max:50|url|nullable',
-            'description'   => 'max:500|nullable',
+            'address'   => 'max:30|nullable',
+            'zip'       => 'max:10|nullable',
+            'city'      => 'max:30|nullable',
         ];
     }
 }

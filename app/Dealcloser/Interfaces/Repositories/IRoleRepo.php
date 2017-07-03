@@ -2,6 +2,6 @@
 
 namespace App\Dealcloser\Interfaces\Repositories;
 
-interface IUserRepo
+interface IRoleRepo
 {
 }

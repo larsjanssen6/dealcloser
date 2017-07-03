@@ -24,7 +24,7 @@ class ActivationRequest extends FormRequest
     public function rules()
     {
         return [
-            'password'      => 'min:5|max:30|confirmed',
+            'password' => 'min:5|max:30|confirmed',
         ];
     }
 }

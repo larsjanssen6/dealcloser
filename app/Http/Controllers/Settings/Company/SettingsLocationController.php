@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Settings\Company;
 
 use App\Dealcloser\Core\Settings\Settings;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\settings\SettingsLocationRequest;
+use App\Http\Requests\settings\Company\LocationRequest;
 
 class SettingsLocationController extends Controller
 {
@@ -30,11 +30,11 @@ class SettingsLocationController extends Controller
     /**
      * Update corporation location settings.
      *
-     * @param SettingsLocationRequest $request
+     * @param LocationRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(SettingsLocationRequest $request)
+    public function update(LocationRequest $request)
     {
         Settings::set($request->only('address', 'zip', 'city'));
 

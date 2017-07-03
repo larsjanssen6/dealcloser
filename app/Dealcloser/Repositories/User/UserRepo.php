@@ -4,56 +4,34 @@ namespace App\Dealcloser\Repositories\User;
 
 use App\Dealcloser\Core\User\User;
 use App\Dealcloser\Interfaces\Repositories\IUserRepo;
+use App\Dealcloser\Repositories\EloquentRepo;
 
-class UserRepo implements IUserRepo
+class UserRepo extends EloquentRepo implements IUserRepo
 {
     /**
-     * Store a user
+     * Get model.
      *
-     * @param array $user
-     * @return User
+     * @return string
      */
-    public function store(array $user)
+    public function getModel()
     {
-        return User::create($user);
+        return User::class;
     }
 
     /**
-     * Update a user
+     * Update user if there is a password encrypt it.
      *
-     * @param User $user
+     * @param $id
      * @param array $request
+     * @return bool|mixed|void
      */
-    public function update(User $user, $request)
+    public function update($id, array $request)
     {
         if(isset($request['password'])) {
             $request['password'] = bcrypt($request['password']);
         }
 
-        $user->update($request);
-    }
-
-    /**
-     * Find a user based on id
-     *
-     * @param $id
-     * @return mixed
-     */
-    public function find($id)
-    {
-        return User::find($id);
-    }
-
-    /**
-     * Check if value exists
-     *
-     * @param $column
-     * @param $value
-     * @return mixed
-     */
-    public function exists($column, $value)
-    {
-        return User::where($column, $value)->exists();
+        $this->find($id)->update($request);
     }
 
     /**
@@ -65,8 +43,8 @@ class UserRepo implements IUserRepo
      */
     public function activate($token, $password)
     {
-        return tap(User::where('confirmation_code', $token)->first(), function ($user) use ($password) {
-            $user->update([
+        return tap($this->findBy('confirmation_code', $token), function ($user) use ($password) {
+            $user->update(        [
                 'active' => true,
                 'confirmation_code' => null,
                 'password' => bcrypt($password)

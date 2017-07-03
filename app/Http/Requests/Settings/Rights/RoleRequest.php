@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Settings;
+namespace App\Http\Requests\Settings\Rights;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SettingsUsageRequest extends FormRequest
+class RoleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class SettingsUsageRequest extends FormRequest
     public function rules()
     {
         return [
-            'users'          => 'integer|nullable',
-            'active'         => 'max:50|date|nullable',
-            'license'        => 'max:50|nullable',
+            'name' => 'max:15|required'
         ];
     }
 }

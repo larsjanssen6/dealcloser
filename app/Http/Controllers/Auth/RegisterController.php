@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
 use Auth;
 use App\Dealcloser\Interfaces\Repositories\IUserRepo;
 use App\Events\Registered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
-use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -19,15 +19,24 @@ class RegisterController extends Controller
     private $userRepo;
 
     /**
+     * IRoleRepo implementation
+     *
+     * @var IRoleRepo
+     */
+    private $roleRepo;
+
+    /**
      * Create a new controller instance. Only users with permission
      * register-users have access to this controller.
      *
      * @param IUserRepo $userRepo
+     * @param IRoleRepo $roleRepo
      */
-    public function __construct(IUserRepo $userRepo)
+    public function __construct(IUserRepo $userRepo, IRoleRepo $roleRepo)
     {
         $this->middleware('permission:register-users');
         $this->userRepo = $userRepo;
+        $this->roleRepo = $roleRepo;
     }
 
     /**
@@ -38,7 +47,7 @@ class RegisterController extends Controller
     public function show()
     {
         return view('auth.register')->with([
-            'roles' => Role::all()
+            'roles' => $this->roleRepo->getAll()
         ]);
     }
 
@@ -50,12 +59,12 @@ class RegisterController extends Controller
      */
     public function store(RegisterRequest $request)
     {
-        $user = $this->userRepo->store(
+        $user = $this->userRepo->create(
             collect($request->only('name', 'last_name', 'email', 'function'))
                 ->merge([
-                    'confirmation_code' => str_random(30),
-                    'password' => encrypt(str_random(10))
-                ])
+                        'confirmation_code' => str_random(30),
+                        'password' => str_random(10)
+                    ])
                 ->toArray()
         )->assignRole($request->role);
 

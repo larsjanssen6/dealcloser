@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Settings\User;
 
 use App\Dealcloser\Interfaces\Repositories\IUserRepo;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Settings\User\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
 
 class SettingsProfileController extends Controller
@@ -42,14 +42,18 @@ class SettingsProfileController extends Controller
     /**
      * Update user profile settings
      *
-     * @param Request $request
+     * @param ProfileRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request)
+    public function update(ProfileRequest $request)
     {
-        $this->userRepo->update(Auth::user(), $request->only(
-            'name', 'last_name', 'email', 'password', 'function'
-        ));
+        $items = collect(['name', 'last_name', 'email', 'password', 'function']);
+
+        if(isset($request->password)) {
+            $items = $items->merge('password');
+        }
+
+        $this->userRepo->update(Auth::user()->id, $request->only($items->toArray()));
 
         return back()
             ->with('status', 'Profiel geupdatet!');

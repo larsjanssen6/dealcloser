@@ -34,17 +34,17 @@ class RegisterUserTest extends TestCase
         $this->superAdminRole->givePermissionTo($this->permissions['register-users']);
         $this->user->assignRole($this->superAdminRole->name);
 
-        $userToRegister = collect(make(User::class))
+        $user = collect(make(User::class))
             ->merge(['role' => $this->superAdminRole->name])
             ->toArray();
 
-        $this->actingAs($this->user)->post('/gebruikers/registreer', $userToRegister)
+        $this->actingAs($this->user)->post('/gebruikers/registreer', $user)
             ->assertSessionHas(['status' => 'Gebruiker geregistreerd e-mail succesvol verzonden']);
 
         $this->assertDatabaseHas('users', [
-            'name' => $userToRegister['name'],
-            'last_name' => $userToRegister['last_name'],
-            'email' => $userToRegister['email']
+            'name' => $user['name'],
+            'last_name' => $user['last_name'],
+            'email' => $user['email']
         ]);
 
         $this->assertDatabaseHas('model_has_roles', [

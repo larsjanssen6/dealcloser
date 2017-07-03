@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\settings;
+namespace App\Http\Requests\Settings\Rights;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SettingsLocationRequest extends FormRequest
+class PermissionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class SettingsLocationRequest extends FormRequest
     public function rules()
     {
         return [
-            'address'   => 'max:30|nullable',
-            'zip'       => 'max:10|nullable',
-            'city'      => 'max:30|nullable',
+            'role'          => 'integer|required|exists:roles,id',
+            'permission'    => 'required|exists:permissions,name',
         ];
     }
 }

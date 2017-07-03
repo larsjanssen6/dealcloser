@@ -2,20 +2,31 @@
 
 namespace App\Http\Controllers\Settings\Rights;
 
+use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
 use Auth;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Settings\SettingsRoleRequest;
+use App\Http\Requests\Settings\Rights\RoleRequest;
 use Spatie\Permission\Models\Role;
 
 class SettingsRoleController extends Controller
 {
     /**
+     * IUserRepo implementation
+     *
+     * @var IRoleRepo
+     */
+    private $roleRepo;
+
+    /**
      * Create a new controller instance. Only users with permission
      * edit-role-settings have access to this controller.
+     *
+     * @param IRoleRepo $roleRepo
      */
-    public function __construct()
+    public function __construct(IRoleRepo $roleRepo)
     {
         $this->middleware('permission:edit-role-settings');
+        $this->roleRepo = $roleRepo;
     }
 
     /**
@@ -26,7 +37,7 @@ class SettingsRoleController extends Controller
     public function index()
     {
         return view('settings.rights.role.show')->with([
-                'roles' => Role::all()
+                'roles' => $this->roleRepo->getAll()
             ]
         );
     }
@@ -34,10 +45,10 @@ class SettingsRoleController extends Controller
     /**
      * Store role.
      *
-     * @param SettingsRoleRequest $request
+     * @param RoleRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(SettingsRoleRequest $request)
+    public function store(RoleRequest $request)
     {
         $this->validate(request(), ['name' => 'unique:roles']);
 
@@ -51,14 +62,13 @@ class SettingsRoleController extends Controller
     /**
      * Update role
      *
-     * @param SettingsRoleRequest $request
+     * @param RoleRequest $request
      * @param Role $role
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(SettingsRoleRequest $request, Role $role)
+    public function update(RoleRequest $request, Role $role)
     {
-        $role->name = ucfirst($request->name);
-        $role->save();
+        $this->roleRepo->update($role->id, ['name' => $request->name]);
 
         return response()->json(['status' => 'Rol geupdatet.']);
     }
@@ -77,7 +87,7 @@ class SettingsRoleController extends Controller
             ], 401);
         }
 
-        $role->delete();
+        $this->roleRepo->delete($role->id);
 
         return response()->json(['status' => 'Rol verwijderd.']);
     }

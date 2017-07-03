@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Settings\Usage;
 
 use App\Dealcloser\Core\Settings\Settings;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Settings\SettingsUsageRequest;
+use App\Http\Requests\Settings\Usage\UsageRequest;
 
 class SettingsUsageController extends Controller
 {
@@ -30,11 +30,11 @@ class SettingsUsageController extends Controller
     /**
      * Update corporation usage settings.
      *
-     * @param SettingsUsageRequest $request
+     * @param UsageRequest $request
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function update(SettingsUsageRequest $request)
+    public function update(UsageRequest $request)
     {
         Settings::set($request->only('users', 'active', 'license'));
 

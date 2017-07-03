@@ -3,19 +3,28 @@
 namespace App\Http\Controllers\Settings\Rights;
 
 use App\Dealcloser\Core\Settings\Category;
+use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Settings\SettingsPermissionRequest;
-use Spatie\Permission\Models\Role;
+use App\Http\Requests\Settings\Rights\PermissionRequest;
 
 class SettingsPermissionController extends Controller
 {
     /**
+     * IUserRepo implementation
+     *
+     * @var IRoleRepo
+     */
+    private $roleRepo;
+
+    /**
      * Create a new controller instance. Only users with permission
      * edit-permission-settings have access to this controller.
+     * @param IRoleRepo $roleRepo
      */
-    public function __construct()
+    public function __construct(IRoleRepo $roleRepo)
     {
         $this->middleware('permission:edit-permission-settings');
+        $this->roleRepo = $roleRepo;
     }
 
     /**
@@ -27,20 +36,20 @@ class SettingsPermissionController extends Controller
     {
         return view('settings.rights.permission.show')->with([
                 'categories' => Category::all(),
-                'roles' => Role::all()
+                'roles' => $this->roleRepo->getAll()
             ]
         );
     }
 
     /**
-     * Add or remove permissions to a role.
+     * Add or revoke permissions to a role.
      *
-     * @param SettingsPermissionRequest $request
+     * @param PermissionRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(SettingsPermissionRequest $request)
+    public function update(PermissionRequest $request)
     {
-        $role = Role::findOrFail($request->role);
+        $role = $this->roleRepo->find($request->role);
 
         if ($role->hasPermissionTo($request->permission)) {
             $role->revokePermissionTo($request->permission);

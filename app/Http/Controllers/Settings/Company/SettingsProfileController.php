@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Settings\Company;
 
 use App\Dealcloser\Core\Settings\Settings;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Settings\SettingsProfileRequest;
+use App\Http\Requests\Settings\Company\ProfileRequest;
 
 class SettingsProfileController extends Controller
 {
@@ -30,11 +30,11 @@ class SettingsProfileController extends Controller
     /**
      * Update corporation profile settings.
      *
-     * @param SettingsProfileRequest $request
+     * @param ProfileRequest $request
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function update(SettingsProfileRequest $request)
+    public function update(ProfileRequest $request)
     {
         Settings::set($request->only('name', 'email', 'phone', 'website', 'description'));
 

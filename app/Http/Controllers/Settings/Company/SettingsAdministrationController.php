@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Settings\Company;
 
 use App\Dealcloser\Core\Settings\Settings;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Settings\SettingsAdministrationRequest;
+use App\Http\Requests\Settings\Company\AdministrationRequest;
 
 class SettingsAdministrationController extends Controller
 {
@@ -30,11 +30,11 @@ class SettingsAdministrationController extends Controller
     /**
      * Update corporation administration settings.
      *
-     * @param SettingsAdministrationRequest $request
+     * @param AdministrationRequest $request
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function update(SettingsAdministrationRequest $request)
+    public function update(AdministrationRequest $request)
     {
         Settings::set($request->only('kvk', 'btw'));
 
