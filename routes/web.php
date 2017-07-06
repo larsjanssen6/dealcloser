@@ -11,16 +11,16 @@
 |
 */
 
-require('settings/WebAuthentication.php');
+require('components/WebAuthentication.php');
 
-require('settings/WebInfo.php');
+require('components/WebInfo.php');
 
 Route::group(['middleware' => ['auth', 'throttle:100', 'CheckIfApplicationIsActive']], function () {
     Route::get('dashboard', function () {
         return view('dashboard/dashboard');
     })->name('dashboard');
 
-        require('settings/WebUser.php');
+        require('components/WebUser.php');
 
-        require('settings/WebSettings.php');
+        require('components/WebSettings.php');
 });
