@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\User;
 
+use App\Dealcloser\Core\Settings\Settings;
 use App\Dealcloser\Core\User\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
@@ -41,7 +42,7 @@ class RegisterUserTest extends TestCase
         $this->actingAs($this->user)->post('/gebruikers/registreer', $user)
             ->assertSessionHas(['status' => 'Gebruiker geregistreerd e-mail succesvol verzonden']);
 
-        $this->assertDatabaseHas('users', [
+        $this->assertDatabaseHas('user', [
             'name' => $user['name'],
             'last_name' => $user['last_name'],
             'email' => $user['email']
@@ -57,13 +58,32 @@ class RegisterUserTest extends TestCase
     /** @test */
     public function a_user_with_not_the_right_permission_can_not_register_a_user()
     {
-        $userToRegister = collect(make(User::class))
+        $user = collect(make(User::class))
             ->merge(['role' => $this->superAdminRole->name])
             ->toArray();
 
-        $this->actingAs($this->user)->post('/gebruikers/registreer', $userToRegister)
+        $this->actingAs($this->user)->post('/gebruikers/registreer', $user)
             ->assertSessionHas(['status' => 'Niet geautoriseerd!'])
             ->assertRedirect('/');
+    }
+
+    /** @test */
+    public function a_user_can_not_be_registered_when_user_limit_is_reached()
+    {
+        Settings::set(['users' => 2]);
+
+        $this->superAdminRole->givePermissionTo($this->permissions['register-users']);
+        $this->user->assignRole($this->superAdminRole->name);
+
+        $user = collect(make(User::class))
+            ->merge(['role' => $this->superAdminRole->name])
+            ->toArray();
+
+        $this->actingAs($this->user)->post('/gebruikers/registreer', $user)
+            ->assertSessionHas([
+                'status' => 'Het gebruikers limiet is bereikt. Contacteer de beheerder.',
+                'class' => 'is-danger'
+            ]);
     }
 
     /** @test */

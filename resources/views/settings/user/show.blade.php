@@ -137,6 +137,26 @@
                                 @endif
                             </div>
 
+                            <div class="field">
+                                <label for="department_id" class="label">Afdeling</label>
+
+                                <select id="department_id" name="department_id"
+                                        class="input {{ $errors->has('department_id') ? ' is-danger' : '' }}">
+                                    <option selected disabled>Selecteer een afdeling</option>
+
+                                    @foreach($departments as $department)
+                                        <option
+                                            value="{{ $department->id }}" {{ $department->id == $user->department_id ? 'selected' : '' }}>
+                                            {{ $department->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('department_id'))
+                                    <p class="help is-danger">{{ $errors->first('department_id') }}</p>
+                                @endif
+                            </div>
+
                             <div class="control">
                                 <button type="submit" class="button is-primary is-outlined">
                                     Update profiel

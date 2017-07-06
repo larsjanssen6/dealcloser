@@ -95,7 +95,7 @@
                             </div>
 
                             <div class="control">
-                                <button type="submit" class="button is-primary is-outlined">
+                                <button id="submit" type="submit" class="button is-primary">
                                     Update profiel
                                 </button>
                             </div>

@@ -34,6 +34,9 @@ footer {
   padding-top: 50px;
   background: linear-gradient(to right, #f9f9f9, #fff 20px);
 }
+[v-cloak] {
+  display: none;
+}
 .input,
 .textarea {
   padding: 0 15px;
@@ -53,6 +56,13 @@ footer {
 }
 .modal-content {
   overflow: hidden;
+}
+.button {
+  font-weight: 700px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .footer {
   padding: 1rem 1rem 1rem !important;

@@ -28,6 +28,13 @@
             </li>
 
             <li>
+                <a href="{{ route('settings.company.department') }}"
+                   class="{{ setActive('instellingen/bedrijf/afdeling') }}">
+                    Afdeling
+                </a>
+            </li>
+
+            <li>
                 <a href="{{ route('settings.company.administration') }}"
                    class="{{ setActive('instellingen/bedrijf/administratie') }}">
                     Administratie

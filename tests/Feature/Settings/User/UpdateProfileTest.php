@@ -16,13 +16,14 @@ class UpdateProfileTest extends TestCase
             'name' => 'name',
             'last_name' => 'last_name',
             'email' => 'domain@corporation.com',
+            'department_id' => 1,
             'function' => 'function',
         ];
 
         $this->actingAs($this->user)->patch('/instellingen/profiel', $user)
             ->assertSessionHas(['status' => 'Profiel geupdatet!']);
 
-        $this->assertDatabaseHas('users', $user);
+        $this->assertDatabaseHas('user', $user);
     }
 }
 

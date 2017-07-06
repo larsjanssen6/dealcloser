@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
-class RollTest extends TestCase
+class RoleTest extends TestCase
 {
     use DatabaseMigrations;
 
@@ -68,7 +68,7 @@ class RollTest extends TestCase
             'name' => 'New role'
         ];
 
-        $this->actingAs($this->user)->patch('instellingen/bedrijf/role/' . $this->superAdminRole->id, $role)
+        $this->actingAs($this->user)->patchJson('instellingen/bedrijf/role/' . $this->superAdminRole->id, $role)
             ->assertJson(['status' => 'Rol geupdatet.']);
 
         $this->assertDatabaseHas('roles', $role);
@@ -95,7 +95,7 @@ class RollTest extends TestCase
 
         $role = create(Role::class, ['name' => 'admin']);
 
-        $this->actingAs($this->user)->delete('instellingen/bedrijf/role/' . $role->id)
+        $this->actingAs($this->user)->deleteJson('instellingen/bedrijf/role/' . $role->id)
             ->assertJson(['status' => 'Rol verwijderd.']);
 
         $this->assertDatabaseMissing('roles', $role->toArray());

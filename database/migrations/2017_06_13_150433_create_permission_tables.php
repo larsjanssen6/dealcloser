@@ -125,6 +125,12 @@ class CreatePermissionTables extends Migration
             'description'               => 'Registreer gebruikers',
             'category_permissions_id'   => 2
         ]);
+
+        Permission::create([
+            'name'                      => 'edit-users',
+            'description'               => 'Bewerk gebruikers',
+            'category_permissions_id'   => 2
+        ]);
     }
 
     /**

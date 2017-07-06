@@ -16,7 +16,7 @@
             @endcan
 
             <div class="column">
-                <users inline-template>
+                <users inline-template v-cloak>
                     <div>
                         <table class="table">
                             <thead>
@@ -71,7 +71,9 @@
                                         @endif
 
                                         <td>
-                                            <span class="tag is-warning">Admin</span>
+                                            <span class="tag is-warning">
+                                                {{ $user->roles->first()->name }}
+                                            </span>
                                         </td>
 
                                         <td>
@@ -80,23 +82,14 @@
                                     </tr>
 
                                     <div>
-                                        <modal-card :user="{{json_encode($user->id)}}">
-                                            @hasrole('super-admin')
-                                                <update-user :user="{{json_encode($user)}}"></update-user>
-                                            @else
-                                                <slot name="header">
-                                                    {{ $user->name . ' ' . $user->last_name}}
-                                                </slot>
-
-                                                <slot>
-                                                    <p>testtest</p>
-                                                </slot>
-
-                                                <slot name="footer">
-                                                    <a class="button">Annuleer</a>
-                                                </slot>
-                                            @endhasrole
-                                        </modal-card>
+                                        @can('edit-users')
+                                            <update-user :prp-user="{{json_encode($user)}}"
+                                                         :prp-departments="{{json_encode($departments)}}"
+                                                         :prp-roles="{{json_encode($roles)}}">
+                                            </update-user>
+                                        @else
+                                            <user :prp-user="{{json_encode($user)}}"></user>
+                                        @endcan
                                     </div>
                                 @endforeach
                             </tbody>

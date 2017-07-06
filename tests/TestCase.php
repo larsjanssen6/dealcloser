@@ -5,6 +5,7 @@ namespace Tests;
 use App\Dealcloser\Core\User\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -44,7 +45,8 @@ abstract class TestCase extends BaseTestCase
             'edit-permission-settings' => 'edit-permission-settings',
             'edit-role-settings' => 'edit-role-settings',
             'edit-usage-settings' => 'edit-usage-settings',
-            'application-is-always-active' => 'application-is-always-active'
+            'application-is-always-active' => 'application-is-always-active',
+            'edit-users' => 'edit-users'
         ];
 
         $this->superAdminRole = Role::first();
@@ -62,5 +64,16 @@ abstract class TestCase extends BaseTestCase
         $this->actingAs($user);
 
         return $this;
+    }
+
+    /**
+     * Reload the permissions.
+     *
+     * @return bool
+     */
+    protected function reloadPermissions()
+    {
+        app(PermissionRegistrar::class)->forgetCachedPermissions();
+        return app(PermissionRegistrar::class)->registerPermissions();
     }
 }

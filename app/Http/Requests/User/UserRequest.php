@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Settings\User;
+namespace App\Http\Requests\User;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProfileRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,10 +27,11 @@ class ProfileRequest extends FormRequest
         $rules =  [
             'name'          => 'min:3|max:50|required',
             'last_name'     => 'min:3|max:50|required',
-            'email'         => 'min:5|max:50|email|unique:user,email,' . Auth::user()->id,
+            'email'         => 'min:5|max:50|email|unique:user,email,' . $this->request->all()['id'],
             'function'      => 'min:3|max:50|nullable',
-            'department_id' => 'integer|required|exists:department,id'
-
+            'department_id' => 'integer|required|exists:department,id',
+            'active'        => 'integer|required|between:0,1',
+            'role'          => 'required|exists:roles,name'
         ];
 
         if(isset($this->request->all()['password']))

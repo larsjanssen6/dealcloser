@@ -27,11 +27,11 @@ class UserRepo extends EloquentRepo implements IUserRepo
      */
     public function update($id, array $request)
     {
-        if(isset($request['password'])) {
+        if (isset($request['password'])) {
             $request['password'] = bcrypt($request['password']);
         }
 
-        $this->find($id)->update($request);
+        parent::update($id, $request);
     }
 
     /**
@@ -44,7 +44,7 @@ class UserRepo extends EloquentRepo implements IUserRepo
     public function activate($token, $password)
     {
         return tap($this->findBy('confirmation_code', $token), function ($user) use ($password) {
-            $user->update(        [
+            $user->update([
                 'active' => true,
                 'confirmation_code' => null,
                 'password' => bcrypt($password)
@@ -52,4 +52,3 @@ class UserRepo extends EloquentRepo implements IUserRepo
         });
     }
 }
-

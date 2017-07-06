@@ -68,6 +68,8 @@ Route::group(['middleware' => ['auth', 'throttle:100', 'CheckIfApplicationIsActi
         Route::get('gebruikers', 'User\UserController@index')
             ->name('users');
 
+        Route::patch('gebruikers/{user}', 'User\UserController@update');
+
         /*
         | Register
         */
@@ -101,9 +103,19 @@ Route::group(['middleware' => ['auth', 'throttle:100', 'CheckIfApplicationIsActi
 
         Route::patch('instellingen/bedrijf/profiel', 'Settings\Company\SettingsProfileController@update');
 
-        /*
-        |  Usage
-        */
+        Route::get('instellingen/bedrijf/afdeling', 'Settings\Company\SettingsDepartmentController@index')
+            ->name('settings.company.department');
+
+        Route::post('instellingen/bedrijf/afdeling', 'Settings\Company\SettingsDepartmentController@store')
+            ->name('settings.company.department');
+
+        Route::patch('instellingen/bedrijf/afdeling/{department}', 'Settings\Company\SettingsDepartmentController@update');
+
+        Route::delete('instellingen/bedrijf/afdeling/{department}', 'Settings\Company\SettingsDepartmentController@destroy');
+
+    /*
+    |  Usage
+    */
 
         Route::get('instellingen/bedrijf/gebruik', 'Settings\Usage\SettingsUsageController@index')
             ->name('settings.company.usage');

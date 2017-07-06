@@ -2,10 +2,11 @@
 
 namespace App\Dealcloser\Repositories;
 
-use App\Dealcloser\Interfaces\Repositories\RepoInterface;
+use App\Dealcloser\Interfaces\Repositories\IRepo;
 use stdClass;
+use Illuminate\Cache\Repository as CacheRepository;
 
-abstract class EloquentRepo implements RepoInterface
+abstract class EloquentRepo implements IRepo
 {
     /**
      * @var \Illuminate\Database\Eloquent\Model
@@ -13,15 +14,26 @@ abstract class EloquentRepo implements RepoInterface
     protected $_model;
 
     /**
-     * EloquentRepository constructor.
+     * Cache repo
+     *
+     * @var
      */
-    public function __construct()
+    protected $cache;
+
+    /**
+     * Create a new repo instance.
+     *
+     * @param CacheRepository $cache
+     */
+    public function __construct(CacheRepository $cache)
     {
         $this->setModel();
+        $this->cache = $cache;
     }
 
     /**
      * Get model.
+     *
      * @return string
      */
     abstract protected function getModel();
@@ -43,22 +55,26 @@ abstract class EloquentRepo implements RepoInterface
      */
     public function getAll()
     {
-        return $this->_model->all();
+        return $this->cache->remember($this->getModel(), 60, function () {
+            return $this->_model->all();
+        });
     }
 
     /**
-     * Find
+     * Find.
      *
      * @param $id
      * @return mixed
      */
     public function find($id)
     {
-        return $this->findBy('id', $id);
+        return $this->cache->remember($this->getModel() . $id, 60, function () use ($id) {
+            return $this->findBy('id', $id);
+        });
     }
 
     /**
-     * Find by column and value
+     * Find by column and value.
      *
      * @param $column
      * @param $value
@@ -70,7 +86,7 @@ abstract class EloquentRepo implements RepoInterface
     }
 
     /**
-     * Check if value exists
+     * Check if value exists.
      *
      * @param $column
      * @param $value
@@ -82,17 +98,20 @@ abstract class EloquentRepo implements RepoInterface
     }
 
     /**
-     * Create
+     * Create.
+     *
      * @param array $attributes
      * @return mixed
      */
     public function create(array $attributes)
     {
+        $this->cache->flush($this->getModel());
         return $this->_model->create($attributes);
     }
 
     /**
-     * Update
+     * Update.
+     *
      * @param $id
      * @param array $attributes
      * @return bool|mixed
@@ -101,8 +120,12 @@ abstract class EloquentRepo implements RepoInterface
     {
         $result = $this->find($id);
 
-        if($result) {
+        $this->cache->flush($this->getModel());
+        $this->cache->flush($this->getModel() . $id);
+
+        if ($result) {
             $result->update($attributes);
+
             return $result;
         }
 
@@ -110,7 +133,7 @@ abstract class EloquentRepo implements RepoInterface
     }
 
     /**
-     * Delete
+     * Delete.
      *
      * @param $id
      * @return bool
@@ -119,7 +142,9 @@ abstract class EloquentRepo implements RepoInterface
     {
         $result = $this->find($id);
 
-        if($result) {
+        $this->cache->flush($this->getModel());
+
+        if ($result) {
             $result->delete();
             return true;
         }
@@ -128,10 +153,20 @@ abstract class EloquentRepo implements RepoInterface
     }
 
     /**
+     * Count total records.
+     *
+     * @return mixed
+     */
+    public function count()
+    {
+        return $this->_model->count();
+    }
+
+    /**
      * Make a new instance of the entity to query on.
      *
      * @param array $with
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function make(array $with = [])
     {
@@ -155,28 +190,16 @@ abstract class EloquentRepo implements RepoInterface
      * Get Results by Page.
      *
      * @param int $page
-     * @param int $limit
      * @param array $with
      * @return StdClass Object with $items and $totalItems for pagination
      */
-    public function paginate($page = 1, $limit = 10, $with = [])
+    public function paginate($page, $with = [])
     {
-        $result = new StdClass;
-        $result->page = $page;
-        $result->limit = $limit;
-        $result->totalItems = 0;
-        $result->items = [];
-
-        $query = $this->make($with);
-
-        $model = $query
-            ->skip($limit * ($page - 1))
-            ->take($limit)
-            ->get();
-
-        $result->totalItems = $this->_model->count();
-        $result->items = $model->all();
-
-        return $result;
+        return $this->cache->remember($this->getModel() . '_page_' . $page, 60, function () use ($with) {
+            return $this->_model
+                ->with($with)
+                ->latest()
+                ->paginate(10);
+        });
     }
 }

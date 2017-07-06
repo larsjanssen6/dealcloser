@@ -108,9 +108,34 @@
                             </div>
 
                             <div class="field">
+                                <label for="department_id" class="label">Afdeling</label>
+
+                                @if(!$departments->isEmpty())
+                                    <select id="department_id" name="department_id"
+                                            class="input {{ $errors->has('department_id') ? ' is-danger' : '' }}">
+                                        <option selected disabled>Selecteer een afdeling</option>
+
+                                        @foreach($departments as $department)
+                                            <option
+                                                value="{{ $department->id }}" {{ old('department_id') == $department->id ? 'selected' : '' }}>
+                                                {{ $department->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    @if ($errors->has('department_id'))
+                                        <p class="help is-danger">{{ $errors->first('department_id') }}</p>
+                                    @endif
+                                @else
+                                    <p>Er zijn geen afdelingen maak deze <a href="#">hier</a> aan.</p>
+                                @endif
+                            </div>
+
+                            <div class="field">
                                 <label for="role" class="label">Role</label>
 
-                                <select id="role" name="role" class="input {{ $errors->has('role') ? ' is-danger' : '' }}">
+                                <select id="role" name="role"
+                                        class="input {{ $errors->has('role') ? ' is-danger' : '' }}">
                                     <option selected disabled>Selecteer een rol</option>
 
                                     @foreach($roles as $role)

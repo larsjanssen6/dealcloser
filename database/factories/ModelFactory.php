@@ -35,6 +35,7 @@ $factory->define(App\Dealcloser\Core\User\User::class, function (Faker\Generator
         'name'              => $faker->name,
         'last_name'         => $faker->lastName,
         'function'          => $faker->jobTitle,
+        'department_id'     => factory(\App\Dealcloser\Core\Department\Department::class)->create()->id,
         'email'             => $faker->unique()->safeEmail,
         'password'          => $password ?: $password = bcrypt('secret'),
         'remember_token'    => str_random(10),
@@ -54,5 +55,12 @@ $factory->define(App\Dealcloser\Core\Settings\Settings::class, function (Faker\G
         'city'          => $faker->city,
         'kvk'           => $faker->numberBetween(1, 10),
         'btw'           => $faker->numberBetween(1, 10),
+    ];
+});
+
+/* @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(\App\Dealcloser\Core\Department\Department::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name
     ];
 });

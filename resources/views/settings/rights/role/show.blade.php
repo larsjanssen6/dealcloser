@@ -18,11 +18,14 @@
                             Rollen
                         </h2>
 
-                        <roles :prp-roles="{{ json_encode($roles) }}"></roles>
+                        <roles :prp-roles="{{ json_encode($roles) }}" v-cloak></roles>
 
                         <div class="column is-5">
-                            <form method="POST" class="form-horizontal" role="form"
+                            <form method="POST"
+                                  class="form-horizontal"
+                                  role="form"
                                   action="{{ route('settings.rights.role') }}">
+
                                 {{ csrf_field() }}
 
                                 <div class="field">
@@ -50,7 +53,7 @@
 
                                 <div class="field is-grouped is-centered">
                                     <div class="control">
-                                        <button id="submit" class="button is-primary">
+                                        <button id="submit" type="submit" class="button is-primary">
                                             Maak rol
                                         </button>
                                     </div>

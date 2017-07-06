@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Settings\Rights;
 use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
 use Auth;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Settings\Rights\RoleRequest;
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class SettingsRoleController extends Controller
@@ -45,14 +45,14 @@ class SettingsRoleController extends Controller
     /**
      * Store role.
      *
-     * @param RoleRequest $request
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(RoleRequest $request)
+    public function store(Request $request)
     {
-        $this->validate(request(), ['name' => 'unique:roles']);
+        $this->validate($request, ['name' => 'max:15|required|unique:roles']);
 
-        Role::create(['name' => ucfirst($request->name)]);
+        $this->roleRepo->create($request->only('name'));
 
         return back()->with([
             'status' => 'Role aangemaakt'
@@ -62,13 +62,15 @@ class SettingsRoleController extends Controller
     /**
      * Update role
      *
-     * @param RoleRequest $request
+     * @param Request $request
      * @param Role $role
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(RoleRequest $request, Role $role)
+    public function update(Request $request, Role $role)
     {
-        $this->roleRepo->update($role->id, ['name' => $request->name]);
+        $this->validate($request, ['name' => 'max:15|required|unique:roles,name,' . $role->name .',name']);
+
+        $this->roleRepo->update($role->id, $request->only('name'));
 
         return response()->json(['status' => 'Rol geupdatet.']);
     }

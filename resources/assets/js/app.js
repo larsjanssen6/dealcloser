@@ -25,11 +25,15 @@ window.Event = new Vue();
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('users',                          require('./pages/Users.vue'));
-Vue.component('roles',                          require('./components/settings/Roles.vue'));
-Vue.component('modal',                          require('./components/shared/Modal.vue'));
-Vue.component('modalCard',                      require('./components/shared/modalCard.vue'));
-Vue.component('datePicker',                     require('./components/shared/DatePicker.vue'));
+Vue.component('Users',                          require('./pages/Users.vue'));
+Vue.component('User',                           require('./components/user/User.vue'));
+Vue.component('UpdateUser',                     require('./components/user/UpdateUser.vue'));
+
+Vue.component('Roles',                          require('./components/settings/Roles.vue'));
+Vue.component('Departments',                    require('./components/settings/Departments.vue'));
+Vue.component('Modal',                          require('./components/shared/Modal.vue'));
+Vue.component('ModalCard',                      require('./components/shared/ModalCard.vue'));
+Vue.component('DatePicker',                     require('./components/shared/DatePicker.vue'));
 Vue.component('ForgotPassword',                 require('./components/authentication/ForgotPassword.vue'));
 
 Vue.directive('focus', {

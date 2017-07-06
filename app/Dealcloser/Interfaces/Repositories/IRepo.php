@@ -2,7 +2,7 @@
 
 namespace App\Dealcloser\Interfaces\Repositories;
 
-interface RepoInterface
+interface IRepo
 {
     /**
      * Get all
