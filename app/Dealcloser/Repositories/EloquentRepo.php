@@ -143,6 +143,7 @@ abstract class EloquentRepo implements IRepo
         $result = $this->find($id);
 
         $this->cache->flush($this->getModel());
+        $this->cache->flush($this->getModel() . $id);
 
         if ($result) {
             $result->delete();
