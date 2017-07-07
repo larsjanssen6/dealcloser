@@ -21,6 +21,6 @@ Route::group(['middleware' => ['auth', 'throttle:100', 'CheckIfApplicationIsActi
     })->name('dashboard');
 
         require('components/WebUser.php');
-
         require('components/WebSettings.php');
+        require('components/WebRelation.php');
 });

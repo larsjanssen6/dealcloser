@@ -2094,6 +2094,116 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/shared/CountryState.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_StateService__ = __webpack_require__("./resources/assets/js/services/StateService.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        countries: {
+            default: function _default() {
+                return [];
+            }
+        },
+
+        state: {
+            default: function _default() {
+                return "";
+            }
+        },
+
+        country: {
+            default: function _default() {
+                return "";
+            }
+        },
+
+        countryName: {
+            default: function _default() {
+                return "Land";
+            }
+        },
+
+        stateName: {
+            default: function _default() {
+                return "Provincie";
+            }
+        },
+
+        countryNameInput: {
+            default: function _default() {
+                return "country";
+            }
+        },
+
+        stateNameInput: {
+            default: function _default() {
+                return "state";
+            }
+        }
+    },
+
+    data: function data() {
+        return {
+            states: []
+        };
+    },
+
+
+    methods: {
+        getStates: function getStates($event) {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0__services_StateService__["a" /* default */].index($event.target.value).then(function (_ref) {
+                var data = _ref.data;
+
+                _this.states = data;
+            });
+        }
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/shared/DatePicker.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2184,6 +2294,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_UserService__ = __webpack_require__("./resources/assets/js/services/UserService.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_DepartmentService__ = __webpack_require__("./resources/assets/js/services/DepartmentService.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_validation_js__ = __webpack_require__("./resources/assets/js/mixins/validation.js");
+//
+//
 //
 //
 //
@@ -2500,13 +2612,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.show = true;
             }
         });
-    },
-
-
-    methods: {
-        update: function update() {
-            alert('jow');
-        }
     }
 });
 
@@ -44315,8 +44420,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('option', {
     attrs: {
-      "selected": "",
-      "disabled": ""
+      "disabled": "",
+      "value": ""
     }
   }, [_vm._v("Selecteer een afdeling")]), _vm._v(" "), _vm._l((_vm.prpDepartments), function(department) {
     return _c('option', {
@@ -44359,8 +44464,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('option', {
     attrs: {
-      "selected": "",
-      "disabled": ""
+      "disabled": "",
+      "value": ""
     }
   }, [_vm._v("Selecteer een rol")]), _vm._v(" "), _vm._l((_vm.prpRoles), function(role) {
     return _c('option', {
@@ -44535,6 +44640,108 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-6dda31f6", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-72554afb\"}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/shared/CountryState.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "field"
+  }, [_c('div', {
+    staticClass: "field"
+  }, [_c('label', {
+    staticClass: "label",
+    attrs: {
+      "for": "country"
+    }
+  }, [_vm._v(_vm._s(_vm.countryName))]), _vm._v(" "), (_vm.countries) ? _c('div', [_c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.country),
+      expression: "country"
+    }],
+    staticClass: "input",
+    attrs: {
+      "id": "country",
+      "name": _vm.countryNameInput
+    },
+    on: {
+      "change": [function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.country = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }, function($event) {
+        _vm.getStates($event)
+      }]
+    }
+  }, [_c('option', {
+    attrs: {
+      "disabled": "",
+      "value": ""
+    }
+  }, [_vm._v("Selecteer een land")]), _vm._v(" "), _vm._l((_vm.countries), function(country, key) {
+    return _c('option', {
+      domProps: {
+        "value": key
+      }
+    }, [_vm._v("\n                    " + _vm._s(country) + "\n                ")])
+  })], 2)]) : _c('p', [_vm._v("Er zijn geen landen.")])]), _vm._v(" "), (_vm.country) ? _c('div', {
+    staticClass: "field"
+  }, [_c('label', {
+    staticClass: "label",
+    attrs: {
+      "for": "state"
+    }
+  }, [_vm._v(_vm._s(_vm.stateName))]), _vm._v(" "), _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.state),
+      expression: "state"
+    }],
+    staticClass: "input",
+    attrs: {
+      "id": "state",
+      "name": _vm.stateNameInput
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.state = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, [_c('option', {
+    attrs: {
+      "disabled": "",
+      "value": ""
+    }
+  }, [_vm._v("Selecteer een provincie")]), _vm._v(" "), _vm._l((_vm.states), function(state, key) {
+    return _c('option', {
+      domProps: {
+        "value": key
+      }
+    }, [_vm._v("\n                " + _vm._s(state) + "\n            ")])
+  })], 2)]) : _vm._e()])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-72554afb", module.exports)
   }
 }
 
@@ -54870,6 +55077,7 @@ Vue.component('UpdateUser', __webpack_require__("./resources/assets/js/component
 
 Vue.component('Roles', __webpack_require__("./resources/assets/js/components/settings/Roles.vue"));
 Vue.component('Departments', __webpack_require__("./resources/assets/js/components/settings/Departments.vue"));
+Vue.component('CountryState', __webpack_require__("./resources/assets/js/components/shared/CountryState.vue"));
 Vue.component('Modal', __webpack_require__("./resources/assets/js/components/shared/Modal.vue"));
 Vue.component('ModalCard', __webpack_require__("./resources/assets/js/components/shared/ModalCard.vue"));
 Vue.component('DatePicker', __webpack_require__("./resources/assets/js/components/shared/DatePicker.vue"));
@@ -54903,7 +55111,6 @@ setTimeout(function () {
 
 /***/ "./resources/assets/js/bootstrap.js":
 /***/ (function(module, exports, __webpack_require__) {
-
 
 window._ = __webpack_require__("./node_modules/lodash/lodash.js");
 
@@ -55071,6 +55278,47 @@ if (false) {(function () {
     hotAPI.createRecord("data-v-80642b6a", Component.options)
   } else {
     hotAPI.reload("data-v-80642b6a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/shared/CountryState.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/shared/CountryState.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-72554afb\"}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/shared/CountryState.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/Janssen/Code/dealcloser/resources/assets/js/components/shared/CountryState.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] CountryState.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-72554afb", Component.options)
+  } else {
+    hotAPI.reload("data-v-72554afb", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -55372,8 +55620,8 @@ module.exports = Component.exports
         department._method = "PATCH";
         return axios.post('/instellingen/bedrijf/afdeling/' + department.id, department);
     },
-    destroy: function destroy(afdeling) {
-        return axios.delete('/instellingen/bedrijf/afdeling/' + afdeling.id);
+    destroy: function destroy(department) {
+        return axios.delete('/instellingen/bedrijf/afdeling/' + department.id);
     }
 });
 
@@ -55390,6 +55638,18 @@ module.exports = Component.exports
     },
     destroy: function destroy(role) {
         return axios.delete('/instellingen/bedrijf/role/' + role.id);
+    }
+});
+
+/***/ }),
+
+/***/ "./resources/assets/js/services/StateService.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    index: function index(country) {
+        return axios.get('/states/' + country);
     }
 });
 

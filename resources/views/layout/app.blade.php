@@ -32,10 +32,10 @@
                     </div>
 
                     <span class="nav-toggle">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
 
                     <div class="nav-right nav-menu">
                         @if(Auth::guest())
@@ -55,6 +55,10 @@
 
                             <a href="{{ route('dashboard') }}" class="nav-item is-tab">
                                 Projecten
+                            </a>
+
+                            <a href="{{ route('relations') }}" class="nav-item is-tab {{ setActive('relaties') }}">
+                                Relaties
                             </a>
 
                             <a href="{{ route('users') }}" class="nav-item is-tab {{ setActive('gebruikers') }}">

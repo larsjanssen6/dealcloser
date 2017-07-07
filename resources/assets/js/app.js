@@ -31,6 +31,7 @@ Vue.component('UpdateUser',                     require('./components/user/Updat
 
 Vue.component('Roles',                          require('./components/settings/Roles.vue'));
 Vue.component('Departments',                    require('./components/settings/Departments.vue'));
+Vue.component('CountryState',                   require('./components/shared/CountryState.vue'));
 Vue.component('Modal',                          require('./components/shared/Modal.vue'));
 Vue.component('ModalCard',                      require('./components/shared/ModalCard.vue'));
 Vue.component('DatePicker',                     require('./components/shared/DatePicker.vue'));

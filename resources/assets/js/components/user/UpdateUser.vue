@@ -107,7 +107,7 @@
                         <select id="department_id" name="department_id"
                                 class="input" :class="{ 'is-danger': errorsHas('department_id') }"
                                 v-model="user.department_id">
-                            <option selected disabled>Selecteer een afdeling</option>
+                            <option disabled value="">Selecteer een afdeling</option>
 
                             <option v-for="department in prpDepartments" :value="department.id">
                                 {{ department.name }}
@@ -120,7 +120,7 @@
 
                         <select id="role" name="role"
                                 class="input" :class="{ 'is-danger': errorsHas('role') }" v-model="user.role">
-                            <option selected disabled>Selecteer een rol</option>
+                            <option disabled value="">Selecteer een rol</option>
 
                             <option v-for="role in prpRoles" :value="role.name">
                                 {{ role.name }}

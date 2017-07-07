@@ -53,7 +53,7 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show()
+    public function create()
     {
         return view('auth.register')->with([
             'roles' => $this->roleRepo->getAll(),

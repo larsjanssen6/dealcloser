@@ -9,7 +9,7 @@
         <div class="section">
             @can('register-users')
                 <div class="column">
-                    <a href="{{ route('register.show') }}" class="button is-primary is-outlined">
+                    <a href="{{ route('register.create') }}" class="button is-primary is-outlined">
                         Nieuwe gebruiker
                     </a>
                 </div>

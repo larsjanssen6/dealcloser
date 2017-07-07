@@ -11,7 +11,9 @@ use Spatie\Sluggable\SlugOptions;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRoles, HasSlug;
+    use Notifiable,
+        HasRoles,
+        HasSlug;
 
     /**
      * Table name.

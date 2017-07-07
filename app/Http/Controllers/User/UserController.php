@@ -56,7 +56,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.users')->with([
+        return view('user.index')->with([
             'users' => $this->userRepo->paginate(Paginator::resolveCurrentPage(), ['department', 'roles']),
             'departments' => $this->departmentRepo->getAll(),
             'roles' => $this->roleRepo->getAll()
