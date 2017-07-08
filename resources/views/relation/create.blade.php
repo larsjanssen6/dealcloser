@@ -86,22 +86,15 @@
                             @endcomponent
 
                             @component('layout/input', [
-                                    'name' => 'facebook',
-                                    'label' => 'Facebook',
+                                    'name' => 'website',
+                                    'label' => 'Website',
                                     'required' => false
                                 ])
                             @endcomponent
 
                             @component('layout/input', [
-                                    'name' => 'whatsapp',
-                                    'label' => 'Whatsapp',
-                                    'required' => false
-                                 ])
-                            @endcomponent
-
-                            @component('layout/input', [
-                                    'name' => 'website',
-                                    'label' => 'Website',
+                                    'name' => 'linkedin',
+                                    'label' => 'LinkedIn',
                                     'required' => false
                                 ])
                             @endcomponent
