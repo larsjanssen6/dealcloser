@@ -9,6 +9,7 @@ use Spatie\Sluggable\SlugOptions;
 class Relation extends Model
 {
     use HasSlug;
+
     /**
      * Table name.
      *
@@ -34,8 +35,7 @@ class Relation extends Model
         'town',
         'phone',
         'email',
-        'facebook',
-        'whatsapp',
+        'linkedin',
         'website'
     ];
 
