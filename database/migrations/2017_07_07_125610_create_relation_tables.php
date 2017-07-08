@@ -29,10 +29,9 @@ class CreateRelationTables extends Migration
             $table->string('sales_area', 50);
             $table->string('zip', 10);
             $table->string('town', 50);
-            $table->string('phone', 20);
+            $table->string('phone', 50);
             $table->string('email', 50)->unique();
-            $table->string('facebook', 50)->nullable();
-            $table->string('whatsapp', 50)->nullable();
+            $table->string('linkedin', 50)->nullable();
             $table->string('website', 50)->nullable();
             $table->timestamps();
 
