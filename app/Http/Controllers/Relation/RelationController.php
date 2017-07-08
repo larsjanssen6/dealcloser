@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Relation;
 
-use App\Dealcloser\Core\Relation\Relation;
 use App\Dealcloser\Interfaces\Repositories\ICategoryRepo;
 use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Relation\RelationRequest;
 use DougSisk\CountryState\CountryState;
-use PragmaRX\Countries\Support\CountriesRepository;
 
 class RelationController extends Controller
 {
@@ -65,6 +63,6 @@ class RelationController extends Controller
         $this->relationRepo->create($request->all());
 
         return redirect('/relaties')
-            ->with('status', 'Relate aangemaakt!');
+            ->with('status', 'Relatie aangemaakt!');
     }
 }
