@@ -34,7 +34,7 @@ class RelationRequest extends FormRequest
             'sales_area'        => 'required|max:50|required',
             'zip'               => 'required|max:10|required',
             'town'              => 'required|max:50|required',
-            'phone'             => 'required|max:20|required',
+            'phone'             => 'required|max:50|required',
             'email'             => 'required|max:50|email|unique:relation,email',
             'facebook'          => 'max:50|nullable',
             'whatsapp'          => 'max:50|nullable',
