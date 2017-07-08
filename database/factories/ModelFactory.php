@@ -64,3 +64,24 @@ $factory->define(\App\Dealcloser\Core\Department\Department::class, function (Fa
         'name' => $faker->name
     ];
 });
+
+/* @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(\App\Dealcloser\Core\Relation\Relation::class, function (Faker\Generator $faker) {
+    return [
+        'category_id'       => 4,
+        'account_manager'   => $faker->name,
+        'organisation'      => $faker->company,
+        'country_code'      => 'NL',
+        'state_code'        => 'ZH',
+        'street'            => $faker->streetName,
+        'house_number'      => $faker->numberBetween(1, 10),
+        'sales_area'        => "Noord holland",
+        'zip'               => $faker->postcode,
+        'town'              => $faker->city,
+        'phone'             => $faker->phoneNumber,
+        'email'             => $faker->email,
+        'linkedin'          => $faker->text(10),
+        'website'           => $faker->text(10),
+    ];
+});
+
