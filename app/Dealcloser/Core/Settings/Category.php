@@ -13,29 +13,22 @@ class Category extends Model
      *
      * @var string
      */
-    protected $table = 'category_permissions';
-
-    /**
-     * The attributes that must be eager-loaded.
-     *
-     * @var array
-     */
-    protected $with = ['permissions'];
+    protected $table = 'category';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'type'];
 
     /**
      * A category belongs to many permissions
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function permissions(): HasMany
+    public function permissions() : HasMany
     {
-        return $this->hasMany(Permission::class, 'category_permissions_id');
+        return $this->hasMany(Permission::class, 'category_id');
     }
 }

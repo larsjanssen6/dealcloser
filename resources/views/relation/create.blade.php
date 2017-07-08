@@ -38,6 +38,10 @@
 
                             <country-state :countries="{{json_encode($countries)}}"></country-state>
 
+                            @if ($errors->has('state_code'))
+                                <p class="help is-danger">{{ $errors->first('state_code') }}</p>
+                            @endif
+
                             @component('layout/input', [
                                     'name' => 'street',
                                     'label' => 'Straat'

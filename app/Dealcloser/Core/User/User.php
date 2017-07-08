@@ -53,7 +53,7 @@ class User extends Authenticatable
     /**
      * Get the options for generating the slug.
      */
-    public function getSlugOptions(): SlugOptions
+    public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('name')
@@ -61,7 +61,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Check if user is active
+     * Check if user is active.
      *
      * @return bool
      */
@@ -71,7 +71,7 @@ class User extends Authenticatable
     }
 
     /**
-     * A user has one department
+     * A user has one department.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

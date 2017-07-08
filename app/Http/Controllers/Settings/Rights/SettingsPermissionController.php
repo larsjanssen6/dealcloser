@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Settings\Rights;
 
-use App\Dealcloser\Core\Settings\Category;
+use App\Dealcloser\Interfaces\Repositories\ICategoryRepo;
 use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\Rights\PermissionRequest;
+use Spatie\Permission\Models\Permission;
 
 class SettingsPermissionController extends Controller
 {
@@ -17,14 +18,24 @@ class SettingsPermissionController extends Controller
     private $roleRepo;
 
     /**
+     * ICategory implementation
+     *
+     * @var ICategoryRepo
+     */
+    private $categoryRepo;
+
+    /**
      * Create a new controller instance. Only users with permission
      * edit-permission-settings have access to this controller.
+     *
      * @param IRoleRepo $roleRepo
+     * @param ICategoryRepo $categoryRepo
      */
-    public function __construct(IRoleRepo $roleRepo)
+    public function __construct(IRoleRepo $roleRepo, ICategoryRepo $categoryRepo)
     {
         $this->middleware('permission:edit-permission-settings');
         $this->roleRepo = $roleRepo;
+        $this->categoryRepo = $categoryRepo;
     }
 
     /**
@@ -35,7 +46,7 @@ class SettingsPermissionController extends Controller
     public function index()
     {
         return view('settings.rights.permission.show')->with([
-                'categories' => Category::all(),
+                'categories' => $this->categoryRepo->findAll('type', 'permission-categories','permissions'),
                 'roles' => $this->roleRepo->getAll()
             ]
         );

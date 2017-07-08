@@ -74,7 +74,7 @@ abstract class EloquentRepo implements IRepo
     }
 
     /**
-     * Find by column and value.
+     * Find first by column and value.
      *
      * @param $column
      * @param $value
@@ -83,6 +83,21 @@ abstract class EloquentRepo implements IRepo
     public function findBy($column, $value)
     {
         return $this->_model->where($column, $value)->first();
+    }
+
+    /**
+     * Find all by column and value.
+     *
+     * @param $column
+     * @param $value
+     * @param array $with
+     * @return mixed
+     */
+    public function findAll($column, $value, $with = [])
+    {
+        return $this->cache->remember($column . '__' . $value, 60, function () use ($column, $value, $with) {
+            return $this->_model->where($column, $value)->with($with)->get();
+        });
     }
 
     /**
@@ -178,6 +193,7 @@ abstract class EloquentRepo implements IRepo
      * Return all results that have a required relationship.
      *
      * @param string $relation
+     * @param array $with
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function has($relation, array $with = [])

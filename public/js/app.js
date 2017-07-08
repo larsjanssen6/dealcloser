@@ -2140,60 +2140,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         countries: {
-            default: function _default() {
-                return [];
-            }
+            type: Object,
+            default: []
         },
 
-        state: {
-            default: function _default() {
-                return "";
-            }
+        prpState: {
+            type: String,
+            default: "NH"
         },
 
-        country: {
-            default: function _default() {
-                return "";
-            }
+        prpCountry: {
+            type: String,
+            default: "NL"
         },
 
         countryName: {
-            default: function _default() {
-                return "Land";
-            }
+            type: String,
+            default: "Land"
         },
 
         stateName: {
-            default: function _default() {
-                return "Provincie";
-            }
+            type: String,
+            default: "Provincie"
         },
 
         countryNameInput: {
-            default: function _default() {
-                return "country";
-            }
+            type: String,
+            default: "country_code"
         },
 
         stateNameInput: {
-            default: function _default() {
-                return "state";
-            }
+            type: String,
+            default: "state_code"
         }
     },
 
     data: function data() {
         return {
-            states: []
+            states: [],
+            country: "",
+            state: ""
         };
+    },
+    created: function created() {
+        this.country = this.prpCountry;
+        this.state = this.prpState;
+        this.getStates(this.country);
     },
 
 
     methods: {
-        getStates: function getStates($event) {
+        getStates: function getStates(state) {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0__services_StateService__["a" /* default */].index($event.target.value).then(function (_ref) {
+            __WEBPACK_IMPORTED_MODULE_0__services_StateService__["a" /* default */].index(state).then(function (_ref) {
                 var data = _ref.data;
 
                 _this.states = data;
@@ -44668,7 +44668,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "input",
     attrs: {
       "id": "country",
-      "name": _vm.countryNameInput
+      "name": _vm.countryNameInput,
+      "required": ""
     },
     on: {
       "change": [function($event) {
@@ -44680,7 +44681,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         });
         _vm.country = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
       }, function($event) {
-        _vm.getStates($event)
+        _vm.getStates($event.target.value)
       }]
     }
   }, [_c('option', {
@@ -44711,7 +44712,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "input",
     attrs: {
       "id": "state",
-      "name": _vm.stateNameInput
+      "name": _vm.stateNameInput,
+      "required": ""
     },
     on: {
       "change": function($event) {

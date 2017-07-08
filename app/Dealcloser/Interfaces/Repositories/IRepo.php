@@ -18,6 +18,22 @@ interface IRepo
     public function find($id);
 
     /**
+     * @param $column
+     * @param $value
+     * @return mixed
+     */
+    public function findBy($column, $value);
+
+    /**
+     * @param $column
+     * @param $value
+     * @param $with
+     * @return mixed
+     */
+    public function findAll($column, $value, $with);
+
+
+    /**
      * Create
      * @param array $attributes
      * @return mixed

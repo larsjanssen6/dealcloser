@@ -3,7 +3,7 @@
 
     @if(!$collection->isEmpty())
         <select id="{{ $name }}" name="{{ $name }}"
-                class="input {{ $errors->has($name) ? ' is-danger' : '' }}">
+                class="input {{ $errors->has($name) ? ' is-danger' : '' }}" required>
             <option selected disabled>Selecteer een {{ $label }}</option>
 
             @foreach($collection as $c)

@@ -6,10 +6,6 @@ use App\Dealcloser\Core\Department\Department;
 use App\Dealcloser\Interfaces\Repositories\IDepartmentRepo;
 use App\Dealcloser\Repositories\EloquentRepo;
 
-/**
- * Class DepartmentRepo
- * @package App\Dealcloser\Repositories\Department
- */
 class DepartmentRepo extends EloquentRepo implements IDepartmentRepo
 {
     /**

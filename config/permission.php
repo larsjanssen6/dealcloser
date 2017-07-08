@@ -69,12 +69,6 @@ return [
          */
 
         'role_has_permissions' => 'role_has_permissions',
-
-        /*
-        * The table category_permissions is being added manually to this package.
-        */
-
-        'category_permissions' => 'category_permissions',
     ],
 
     /*

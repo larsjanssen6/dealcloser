@@ -5,7 +5,7 @@
 
             <div v-if="countries">
                 <select id="country" :name="countryNameInput"
-                        class="input" v-model="country" @change="getStates($event)">
+                        class="input" v-model="country" @change="getStates($event.target.value)" required>
                     <option disabled value="">Selecteer een land</option>
 
                     <option v-for="(country, key) in countries" :value="key">
@@ -21,7 +21,7 @@
             <label for="state" class="label">{{ stateName }}</label>
 
             <select id="state" :name="stateNameInput"
-                    class="input" v-model="state">
+                    class="input" v-model="state" required>
                 <option disabled value="">Selecteer een provincie</option>
 
                 <option v-for="(state, key) in states" :value="key">
@@ -38,43 +38,58 @@
     export default {
         props: {
             countries: {
-                default: () => []
+                type: Object,
+                default: []
             },
 
-            state: {
-                default: () => ""
+            prpState: {
+                type: String,
+                default: "NH"
             },
 
-            country: {
-                default: () => ""
+            prpCountry: {
+                type: String,
+                default: "NL"
             },
 
             countryName: {
-                default: () => "Land"
+                type: String,
+                default: "Land"
             },
 
             stateName: {
-                default: () => "Provincie"
+                type: String,
+                default: "Provincie"
             },
 
             countryNameInput: {
-                default: () => "country"
+                type: String,
+                default: "country_code"
             },
 
             stateNameInput: {
-                default: () => "state"
+                type: String,
+                default: "state_code"
             }
         } ,
 
         data() {
             return {
-                states: []
+                states: [],
+                country: "",
+                state: ""
             }
         },
 
+        created() {
+            this.country = this.prpCountry;
+            this.state = this.prpState;
+            this.getStates(this.country);
+        },
+
         methods: {
-            getStates($event) {
-                StateService.index($event.target.value)
+            getStates(state) {
+                StateService.index(state)
                     .then(({data}) => {
                         this.states = data;
                     })

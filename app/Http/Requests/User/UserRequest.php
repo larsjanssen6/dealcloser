@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\User;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
@@ -25,12 +24,12 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $rules =  [
-            'name'          => 'min:3|max:50|required',
-            'last_name'     => 'min:3|max:50|required',
-            'email'         => 'min:5|max:50|email|unique:user,email,' . $this->request->all()['id'],
-            'function'      => 'min:3|max:50|nullable',
-            'department_id' => 'integer|required|exists:department,id',
-            'active'        => 'integer|required|between:0,1',
+            'name'          => 'required|max:50|required',
+            'last_name'     => 'required|max:50|required',
+            'email'         => 'required|max:50|email|unique:user,email,' . $this->request->all()['id'],
+            'function'      => 'required|max:50|nullable',
+            'department_id' => 'required|integer|exists:department,id',
+            'active'        => 'required|integer|between:0,1',
             'role'          => 'required|exists:roles,name'
         ];
 
