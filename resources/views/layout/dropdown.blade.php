@@ -4,11 +4,11 @@
     @if(!$collection->isEmpty())
         <select id="{{ $name }}" name="{{ $name }}"
                 class="input {{ $errors->has($name) ? ' is-danger' : '' }}" required>
-            <option selected disabled>Selecteer een {{ $label }}</option>
+            <option selected disabled>Selecteer een {{ lcfirst($label) }}</option>
 
             @foreach($collection as $c)
                 <option
-                    value="{{ $c->$value }}" {{ old($name) == $c->id ? 'selected' : '' }}>
+                    value="{{ $c->$value }}" {{ $selected == $c->id ? 'selected' : '' }}>
                     {{ $c->$option }}
                 </option>
             @endforeach

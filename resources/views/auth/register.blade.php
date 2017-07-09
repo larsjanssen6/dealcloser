@@ -15,141 +15,50 @@
                         <form method="POST" class="form-horizontal" role="form" action="{{ route('register.store') }}">
                             {{ csrf_field() }}
 
-                            <div class="field">
-                                <label for="name" class="label">Voornaam</label>
+                            @component('layout/input', [
+                                    'name' => 'name',
+                                    'label' => 'Voornaam',
+                                ])
+                            @endcomponent
 
-                                <p class="control {{ $errors->has('name') ? ' has-icons-right' : '' }}">
-                                    <input id="name"
-                                           name="name"
-                                           type="text"
-                                           value="{{ old('name') }}"
-                                           class="input {{ $errors->has('name') ? ' is-danger' : '' }}"
-                                           required
-                                           autofocus>
+                            @component('layout/input', [
+                                    'name' => 'last_name',
+                                    'label' => 'Achternaam',
+                                ])
+                            @endcomponent
 
-                                    @if ($errors->has('name'))
-                                        <span class="icon is-small is-right">
-                                            <i class="fa fa-warning"></i>
-                                        </span>
-                                    @endif
-                                </p>
+                            @component('layout/input', [
+                                     'name' => 'email',
+                                     'label' => 'Email',
+                                     'type' => 'email'
+                                 ])
+                            @endcomponent
 
-                                @if ($errors->has('name'))
-                                    <p class="help is-danger">{{ $errors->first('name') }}</p>
-                                @endif
-                            </div>
+                            @component('layout/input', [
+                                     'name' => 'function',
+                                     'label' => 'Functie',
+                                 ])
+                            @endcomponent
 
-                            <div class="field">
-                                <label for="last_name" class="label">Achternaam</label>
+                            @component('layout/dropdown', [
+                                   'name' => 'department_id',
+                                   'label' => 'Afdeling',
+                                   'collection' => $departments,
+                                   'value' => 'id',
+                                   'option' => 'name',
+                                   'selected' => old('department_id')
+                               ])
+                            @endcomponent
 
-                                <p class="control {{ $errors->has('last_name') ? ' has-icons-right' : '' }}">
-                                    <input id="last_name"
-                                           name="last_name"
-                                           type="text"
-                                           value="{{ old('last_name') }}"
-                                           class="input {{ $errors->has('last_name') ? ' is-danger' : '' }}"
-                                           required>
-
-                                    @if ($errors->has('last_name'))
-                                        <span class="icon is-small is-right">
-                                            <i class="fa fa-warning"></i>
-                                        </span>
-                                    @endif
-                                </p>
-
-                                @if ($errors->has('last_name'))
-                                    <p class="help is-danger">{{ $errors->first('last_name') }}</p>
-                                @endif
-                            </div>
-
-                            <div class="field">
-                                <label for="email" class="label">Email</label>
-
-                                <p class="control {{ $errors->has('email') ? ' has-icons-right' : '' }}">
-                                    <input id="email"
-                                           name="email"
-                                           type="email"
-                                           value="{{ old('email') }}"
-                                           class="input {{ $errors->has('email') ? ' is-danger' : '' }}"
-                                           required>
-
-                                    @if ($errors->has('email'))
-                                        <span class="icon is-small is-right">
-                                            <i class="fa fa-warning"></i>
-                                        </span>
-                                    @endif
-                                </p>
-
-                                @if ($errors->has('email'))
-                                    <p class="help is-danger">{{ $errors->first('email') }}</p>
-                                @endif
-                            </div>
-
-                            <div class="field">
-                                <label for="function" class="label">Functie</label>
-
-                                <p class="control {{ $errors->has('function') ? ' has-icons-right' : '' }}">
-                                    <input id="function"
-                                           name="function"
-                                           type="text"
-                                           class="input {{ $errors->has('function') ? ' is-danger' : '' }}"
-                                           value="{{ old('function') }}">
-
-                                    @if ($errors->has('function'))
-                                        <span class="icon is-small is-right">
-                                            <i class="fa fa-warning"></i>
-                                        </span>
-                                    @endif
-                                </p>
-
-                                @if ($errors->has('function'))
-                                    <p class="help is-danger">{{ $errors->first('function') }}</p>
-                                @endif
-                            </div>
-
-                            <div class="field">
-                                <label for="department_id" class="label">Afdeling</label>
-
-                                @if(!$departments->isEmpty())
-                                    <select id="department_id" name="department_id"
-                                            class="input {{ $errors->has('department_id') ? ' is-danger' : '' }}">
-                                        <option selected disabled>Selecteer een afdeling</option>
-
-                                        @foreach($departments as $department)
-                                            <option
-                                                value="{{ $department->id }}" {{ old('department_id') == $department->id ? 'selected' : '' }}>
-                                                {{ $department->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-
-                                    @if ($errors->has('department_id'))
-                                        <p class="help is-danger">{{ $errors->first('department_id') }}</p>
-                                    @endif
-                                @else
-                                    <p>Er zijn geen afdelingen maak deze <a href="#">hier</a> aan.</p>
-                                @endif
-                            </div>
-
-                            <div class="field">
-                                <label for="role" class="label">Role</label>
-
-                                <select id="role" name="role"
-                                        class="input {{ $errors->has('role') ? ' is-danger' : '' }}">
-                                    <option selected disabled>Selecteer een rol</option>
-
-                                    @foreach($roles as $role)
-                                        <option
-                                            value="{{ $role->name }}" {{ old('role') == $role->name ? 'selected' : '' }}>
-                                            {{ $role->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-
-                                @if ($errors->has('role'))
-                                    <p class="help is-danger">{{ $errors->first('role') }}</p>
-                                @endif
-                            </div>
+                            @component('layout/dropdown', [
+                                   'name' => 'role',
+                                   'label' => 'Role',
+                                   'collection' => $roles,
+                                   'value' => 'name',
+                                   'option' => 'name',
+                                   'selected' => old('role')
+                               ])
+                            @endcomponent
 
                             <div class="field is-grouped is-centered">
                                 <div class="control">

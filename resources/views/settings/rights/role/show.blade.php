@@ -28,28 +28,12 @@
 
                                 {{ csrf_field() }}
 
-                                <div class="field">
-                                    <p class="control {{ $errors->has('name') ? ' has-icons-right' : '' }}">
-                                        <input id="name"
-                                               name="name"
-                                               type="text"
-                                               class="input {{ $errors->has('name') ? ' is-danger' : '' }}"
-                                               value="{{ old('name') }}"
-                                               placeholder="Typ hier de rol naam die u wilt toevoegen"
-                                               required
-                                               autofocus>
-
-                                        @if ($errors->has('name'))
-                                            <span class="icon is-small is-right">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                        @endif
-                                    </p>
-
-                                    @if ($errors->has('name'))
-                                        <p class="help is-danger">{{ $errors->first('name') }}</p>
-                                    @endif
-                                </div>
+                                @component('layout/input', [
+                                       'name' => 'name',
+                                       'label' => 'Naam',
+                                       'placeholder' => 'Typ hier de naam die u wilt toevoegen'
+                                   ])
+                                @endcomponent
 
                                 <div class="field is-grouped is-centered">
                                     <div class="control">

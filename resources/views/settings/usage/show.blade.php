@@ -23,20 +23,13 @@
 
                             <input name="_method" type="hidden" value="PATCH">
 
-                            <div class="control">
-                                <label for="users" class="label">Max aantal gebruikers:</label>
-
-                                <input id="users"
-                                       name="users"
-                                       type="number"
-                                       value="{{ settings()->users }}"
-                                       class="input {{ $errors->has('users') ? ' is-danger' : '' }}"
-                                       autofocus>
-
-                                @if ($errors->has('users'))
-                                    <p class="help is-danger">{{ $errors->first('users') }}</p>
-                                @endif
-                            </div>
+                            @component('layout/input', [
+                                   'name' => 'users',
+                                   'label' => 'Max aantal gebruikers',
+                                   'value' => settings()->users,
+                                   'type' => 'number'
+                               ])
+                            @endcomponent
 
                             <div class="control">
                                 <label for="active" class="label">Actief t/m:</label>
@@ -48,19 +41,12 @@
                                 @endif
                             </div>
 
-                            <div class="control">
-                                <label for="license" class="label">Licentie code:</label>
-
-                                <input id="license"
-                                       name="license"
-                                       type="text"
-                                       value="{{ settings()->license }}"
-                                       class="input">
-
-                                @if ($errors->has('license'))
-                                    <p class="help is-danger">{{ $errors->first('license') }}</p>
-                                @endif
-                            </div>
+                            @component('layout/input', [
+                                   'name' => 'license',
+                                   'label' => 'Licentie code',
+                                   'value' => settings()->license
+                               ])
+                            @endcomponent
 
                             <div class="control">
                                 <button type="submit" class="button is-primary is-outlined">

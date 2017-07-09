@@ -32,7 +32,8 @@
                                     'label' => 'Bedrijfscategorie',
                                     'collection' => $categories,
                                     'value' => 'id',
-                                    'option' => 'name'
+                                    'option' => 'name',
+                                    'selected' => old('category_id')
                                 ])
                             @endcomponent
 

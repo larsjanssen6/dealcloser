@@ -5,9 +5,10 @@
         <input id="{{ $name }}"
                name="{{ $name }}"
                type="{{ $type or 'text' }}"
-               value="{{ old($name) }}"
+               value="{{ $value or old($name) }}"
                class="input {{ $errors->has($name) ? ' is-danger' : '' }}"
-               {{ isset($required) ? '' : 'required' }}>
+               {{ isset($required) ? '' : 'required' }}
+               placeholder="{{ $placeholder or "" }}">
 
         @if ($errors->has($name))
             <span class="icon is-small is-right">

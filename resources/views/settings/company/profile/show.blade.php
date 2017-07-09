@@ -23,76 +23,46 @@
 
                             <input name="_method" type="hidden" value="PATCH">
 
-                            <div class="control">
-                                <label for="name" class="label">Naam:</label>
+                            @component('layout/input', [
+                                    'name' => 'name',
+                                    'label' => 'Naam',
+                                    'value' => settings()->name,
+                                    'required' => false
+                                ])
+                            @endcomponent
 
-                                <input id="name"
-                                       name="name"
-                                       type="text"
-                                       value="{{ settings()->name }}"
-                                       class="input {{ $errors->has('name') ? ' is-danger' : '' }}"
-                                       autofocus>
+                            @component('layout/input', [
+                                    'name' => 'email',
+                                    'label' => 'Email',
+                                    'type' => 'email',
+                                    'value' => settings()->email,
+                                    'required' => false
+                                ])
+                            @endcomponent
 
-                                @if ($errors->has('name'))
-                                    <p class="help is-danger">{{ $errors->first('name') }}</p>
-                                @endif
-                            </div>
+                            @component('layout/input', [
+                                    'name' => 'phone',
+                                    'label' => 'Telefoon',
+                                    'value' => settings()->phone,
+                                    'required' => false
+                                ])
+                            @endcomponent
 
-                            <div class="control">
-                                <label for="email" class="label">Email:</label>
+                            @component('layout/input', [
+                                    'name' => 'website',
+                                    'label' => 'Website',
+                                    'value' => settings()->website,
+                                    'required' => false
+                                ])
+                            @endcomponent
 
-                                <input id="email"
-                                       name="email"
-                                       type="email"
-                                       value="{{ settings()->email }}"
-                                       class="input">
-
-                                @if ($errors->has('email'))
-                                    <p class="help is-danger">{{ $errors->first('email') }}</p>
-                                @endif
-                            </div>
-
-                            <div class="control">
-                                <label for="phone" class="label">Telefoon:</label>
-
-                                <input id="phone"
-                                       name="phone"
-                                       type="text"
-                                       value="{{ settings()->phone }}"
-                                       class="input">
-
-                                @if ($errors->has('phone'))
-                                    <p class="help is-danger">{{ $errors->first('phone') }}</p>
-                                @endif
-                            </div>
-
-                            <div class="control">
-                                <label for="website" class="label">Website:</label>
-
-                                <input id="website"
-                                       name="website"
-                                       type="text"
-                                       value="{{ settings()->website }}"
-                                       class="input">
-
-                                @if ($errors->has('website'))
-                                    <p class="help is-danger">{{ $errors->first('website') }}</p>
-                                @endif
-                            </div>
-
-                            <label for="description" class="label">Omschrijving:</label>
-
-                            <div class="control">
-                                <textarea id="description"
-                                          name="description"
-                                          type="text"
-                                          class="input">{{ settings()->description }}
-                                </textarea>
-
-                                @if ($errors->has('description'))
-                                    <p class="help is-danger">{{ $errors->first('description') }}</p>
-                                @endif
-                            </div>
+                            @component('layout/input', [
+                                    'name' => 'description',
+                                    'label' => 'Omschrijving',
+                                    'value' => settings()->description,
+                                    'required' => false
+                                ])
+                            @endcomponent
 
                             <div class="control">
                                 <button id="submit" type="submit" class="button is-primary">

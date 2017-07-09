@@ -23,48 +23,29 @@
 
                             <input name="_method" type="hidden" value="PATCH">
 
-                            <div class="control">
-                                <label for="address" class="label">Adres:</label>
+                            @component('layout/input', [
+                                     'name' => 'address',
+                                     'label' => 'Adres',
+                                     'value' => settings()->address,
+                                     'required' => false
+                                 ])
+                            @endcomponent
 
-                                <input id="address"
-                                       name="address"
-                                       type="text"
-                                       value="{{ settings()->address }}"
-                                       class="input {{ $errors->has('address') ? ' is-danger' : '' }}"
-                                       autofocus>
+                            @component('layout/input', [
+                                     'name' => 'zip',
+                                     'label' => 'Postcode',
+                                     'value' => settings()->zip,
+                                     'required' => false
+                                 ])
+                            @endcomponent
 
-                                @if ($errors->has('address'))
-                                    <p class="help is-danger">{{ $errors->first('address') }}</p>
-                                @endif
-                            </div>
-
-                            <div class="control">
-                                <label for="zip" class="label">Postcode:</label>
-
-                                <input id="zip"
-                                       name="zip"
-                                       type="text"
-                                       value="{{ settings()->zip }}"
-                                       class="input {{ $errors->has('zip') ? ' is-danger' : '' }}">
-
-                                @if ($errors->has('zip'))
-                                    <p class="help is-danger">{{ $errors->first('zip') }}</p>
-                                @endif
-                            </div>
-
-                            <div class="control">
-                                <label for="city" class="label">Woonplaats:</label>
-
-                                <input id="city"
-                                       name="city"
-                                       type="text"
-                                       value="{{ settings()->city }}"
-                                       class="input {{ $errors->has('city') ? ' is-danger' : '' }}">
-
-                                @if ($errors->has('city'))
-                                    <p class="help is-danger">{{ $errors->first('city') }}</p>
-                                @endif
-                            </div>
+                            @component('layout/input', [
+                                    'name' => 'city',
+                                    'label' => 'Woonplaats',
+                                    'value' => settings()->city,
+                                    'required' => false
+                                ])
+                            @endcomponent
 
                             <div class="control">
                                 <button type="submit" class="button is-primary is-outlined">

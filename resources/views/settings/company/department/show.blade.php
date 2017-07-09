@@ -28,21 +28,13 @@
 
                                 {{ csrf_field() }}
 
-                                <div class="control">
-                                    <label for="name" class="label">Naam:</label>
-
-                                    <input id="name"
-                                           name="name"
-                                           type="text"
-                                           class="input {{ $errors->has('name') ? ' is-danger' : '' }}"
-                                           placeholder="Typ hier de afdelingsnaam die u wilt toevoegen"
-                                           required
-                                           autofocus>
-
-                                    @if ($errors->has('name'))
-                                        <p class="help is-danger">{{ $errors->first('name') }}</p>
-                                    @endif
-                                </div>
+                                @component('layout/input', [
+                                        'name' => 'name',
+                                        'label' => 'Naam',
+                                        'placeholder' => 'Typ hier de afdelingsnaam die u wilt toevoegen',
+                                        'required' => false
+                                    ])
+                                @endcomponent
 
                                 <div class="control">
                                     <button id="submit" type="submit" class="button is-primary is-outlined">

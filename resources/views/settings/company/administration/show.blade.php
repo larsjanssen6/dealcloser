@@ -23,34 +23,21 @@
 
                             <input name="_method" type="hidden" value="PATCH">
 
-                            <div class="control">
-                                <label for="kvk" class="label">Kvk:</label>
+                            @component('layout/input', [
+                                    'name' => 'kvk',
+                                    'label' => 'Kvk',
+                                    'value' => settings()->kvk,
+                                    'required' => false
+                                ])
+                            @endcomponent
 
-                                <input id="kvk"
-                                       name="kvk"
-                                       type="text"
-                                       value="{{ settings()->kvk }}"
-                                       class="input {{ $errors->has('kvk') ? ' is-danger' : '' }}"
-                                       autofocus>
-
-                                @if ($errors->has('kvk'))
-                                    <p class="help is-danger">{{ $errors->first('kvk') }}</p>
-                                @endif
-                            </div>
-
-                            <div class="control">
-                                <label for="btw" class="label">Btw:</label>
-
-                                <input id="btw"
-                                       name="btw"
-                                       type="text"
-                                       value="{{ settings()->btw }}"
-                                       class="input {{ $errors->has('btw') ? ' is-danger' : '' }}">
-
-                                @if ($errors->has('btw'))
-                                    <p class="help is-danger">{{ $errors->first('btw') }}</p>
-                                @endif
-                            </div>
+                            @component('layout/input', [
+                                    'name' => 'btw',
+                                    'label' => 'Btw',
+                                    'value' => settings()->btw,
+                                    'required' => false
+                                ])
+                            @endcomponent
 
                             <div class="control">
                                 <button type="submit" class="button is-primary is-outlined">
