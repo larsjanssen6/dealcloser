@@ -1,11 +1,11 @@
 <template>
     <div class="field">
         <div class="field">
-            <label for="country" class="label">{{ countryName }}</label>
+            <label for="country_code" class="label">{{ countryName }}</label>
 
             <div v-if="countries">
-                <select id="country" :name="countryNameInput"
-                        class="input" v-model="country" @change="getStates($event.target.value)" required>
+                <select id="country_code" name="country_code"
+                        class="input" v-model="country" @change="$emit('countryChanged', $event.target.value) && getStates($event.target.value)" required>
                     <option disabled value="">Selecteer een land</option>
 
                     <option v-for="(country, key) in countries" :value="key">
@@ -18,10 +18,10 @@
         </div>
 
         <div class="field" v-if="country">
-            <label for="state" class="label">{{ stateName }}</label>
+            <label for="state_code" class="label">{{ stateName }}</label>
 
-            <select id="state" :name="stateNameInput"
-                    class="input" v-model="state" required>
+            <select id="state_code" name="state_code"
+                    class="input" v-model="state" @change="$emit('stateChanged', $event.target.value)" required>
                 <option disabled value="">Selecteer een provincie</option>
 
                 <option v-for="(state, key) in states" :value="key">
@@ -60,16 +60,6 @@
             stateName: {
                 type: String,
                 default: "Provincie"
-            },
-
-            countryNameInput: {
-                type: String,
-                default: "country_code"
-            },
-
-            stateNameInput: {
-                type: String,
-                default: "state_code"
             }
         } ,
 

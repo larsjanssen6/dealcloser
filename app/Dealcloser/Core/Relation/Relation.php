@@ -2,13 +2,14 @@
 
 namespace App\Dealcloser\Core\Relation;
 
+use App\Dealcloser\Traits\Categorizable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
 class Relation extends Model
 {
-    use HasSlug;
+    use HasSlug, Categorizable;
 
     /**
      * Table name.

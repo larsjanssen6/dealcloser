@@ -13,4 +13,6 @@ Route::get('relaties/registreer', 'Relation\RelationController@create')
 Route::post('relaties/registreer', 'Relation\RelationController@store')
     ->name('relations.create');
 
+Route::patch('relaties/{relation}', 'Relation\RelationController@update');
+
 Route::get('/states/{country}', 'State\StateController@index');

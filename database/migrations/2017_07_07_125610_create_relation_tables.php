@@ -1,5 +1,6 @@
 <?php
 
+use App\Dealcloser\Core\Relation\Relation;
 use App\Dealcloser\Core\Settings\Category;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -46,18 +47,18 @@ class CreateRelationTables extends Migration
         */
 
         $settings = Category::create([
-            'name' => 'Instellingen',
-            'type' => 'permission-categories'
+            'name'          => 'Instellingen',
+            'model_type'    => Permission::class
         ]);
 
         $user = Category::create([
-            'name' => 'Gebruikers',
-            'type' => 'permission-categories'
+            'name'          => 'Gebruikers',
+            'model_type'    => Permission::class
         ]);
 
         $relation = Category::create([
-            'name' => 'Relaties',
-            'type' => 'permission-categories'
+            'name'          => 'Relaties',
+            'model_type'    => Permission::class
         ]);
 
         /*
@@ -65,8 +66,8 @@ class CreateRelationTables extends Migration
          */
 
         Category::create([
-            'name' => 'Klant',
-            'type' => 'corporation-categories'
+            'name'      => 'Klant',
+            'model_type' => Relation::class
         ]);
 
         /*
@@ -124,6 +125,12 @@ class CreateRelationTables extends Migration
         Permission::create([
             'name'                      => 'register-relations',
             'description'               => 'Registreer relaties',
+            'category_id'               => $relation->id
+        ]);
+
+        Permission::create([
+            'name'                      => 'edit-relations',
+            'description'               => 'Bewerk relaties',
             'category_id'               => $relation->id
         ]);
     }

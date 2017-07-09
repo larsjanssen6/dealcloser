@@ -57,6 +57,9 @@ footer {
 .modal-content {
   overflow: hidden;
 }
+.modal-card-body .column {
+  border-bottom: 1px dashed #d7d7d7;
+}
 .button {
   font-weight: 700px;
   -webkit-user-select: none;

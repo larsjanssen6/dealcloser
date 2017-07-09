@@ -7,27 +7,27 @@
 
             <slot>
                 <div class="column">
-                    <strong>Voornaam:</strong>
+                    <strong>Voornaam</strong>
                     <p>{{ prpUser.name }}</p>
                 </div>
 
                 <div class="column">
-                    <strong>Achternaam:</strong>
+                    <strong>Achternaam</strong>
                     <p>{{ prpUser.last_name }}</p>
                 </div>
 
                 <div class="column">
-                    <strong>Functie:</strong>
+                    <strong>Functie</strong>
                     <p>{{ prpUser.function }}</p>
                 </div>
 
                 <div class="column">
-                    <strong>Email:</strong>
-                    <a :href="'mailto:' + prpUser.email">{{ prpUser.email }}</a>
+                    <strong>Email</strong>
+                    <p><a :href="'mailto:' + prpUser.email">{{ prpUser.email }}</a></p>
                 </div>
 
                 <div class="column">
-                    <strong>Afdeling:</strong>
+                    <strong>Afdeling</strong>
                     <p>
                         <span class="tag is-success">
                             {{ prpUser.department.name }}
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="column">
-                    <strong>Role:</strong>
+                    <strong>Role</strong>
 
                     <p>
                         <span class="tag is-success" v-for="role in prpUser.roles">
@@ -55,11 +55,7 @@
 </template>
 
 <script>
-    import ModalCard from '../shared/ModalCard.vue';
-
     export default {
-        component: {ModalCard},
-
         props: ['prp-user'],
 
         data() {

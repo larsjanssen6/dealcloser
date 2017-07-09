@@ -46,7 +46,7 @@ class SettingsPermissionController extends Controller
     public function index()
     {
         return view('settings.rights.permission.show')->with([
-                'categories' => $this->categoryRepo->findAll('type', 'permission-categories','permissions'),
+                'categories' => $this->categoryRepo->findAll('model_type', Permission::class, 'permissions'),
                 'roles' => $this->roleRepo->getAll()
             ]
         );

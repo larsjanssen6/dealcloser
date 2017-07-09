@@ -16,15 +16,15 @@
                             {{ csrf_field() }}
 
                             @component('layout/input', [
-                                    'name' => 'account_manager',
-                                    'label' => 'Account Manager'
-                                 ])
+                                   'name' => 'organisation',
+                                   'label' => 'Organisatie'
+                               ])
                             @endcomponent
 
                             @component('layout/input', [
-                                    'name' => 'organisation',
-                                    'label' => 'Organisatie'
-                                ])
+                                    'name' => 'account_manager',
+                                    'label' => 'Account Manager'
+                                 ])
                             @endcomponent
 
                             @component('layout/dropdown', [

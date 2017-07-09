@@ -7,50 +7,56 @@
 
             <slot>
                 <form>
-                    <div class="control">
-                        <label for="name" class="label">Naam:</label>
+                    <div class="field">
+                        <label for="name" class="label">Naam</label>
 
-                        <input id="name"
-                               name="name"
-                               type="text"
-                               v-model="user.name"
-                               class="input"
-                               :class="{ 'is-danger': errorsHas('name') }"
-                               autofocus>
+                        <div class="control">
+                            <input id="name"
+                                   name="name"
+                                   type="text"
+                                   v-model="user.name"
+                                   class="input"
+                                   :class="{ 'is-danger': errorsHas('name') }"
+                                   autofocus>
 
-                        <p class="help is-danger" v-if="errorsHas('name')">{{ error('name') }}</p>
+                            <p class="help is-danger" v-if="errorsHas('name')">{{ error('name') }}</p>
+                        </div>
                     </div>
 
-                    <div class="control">
-                        <label for="last_name" class="label">Achternaam:</label>
+                    <div class="field">
+                        <label for="last_name" class="label">Achternaam</label>
 
-                        <input id="last_name"
-                               name="last_name"
-                               type="text"
-                               v-model="user.last_name"
-                               class="input"
-                               :class="{ 'is-danger': errorsHas('last_name') }">
+                        <div class="control">
+                            <input id="last_name"
+                                   name="last_name"
+                                   type="text"
+                                   v-model="user.last_name"
+                                   class="input"
+                                   :class="{ 'is-danger': errorsHas('last_name') }">
 
-                        <p class="help is-danger" v-if="errorsHas('last_name')">{{ error('last_name') }}</p>
+                            <p class="help is-danger" v-if="errorsHas('last_name')">{{ error('last_name') }}</p>
+                        </div>
                     </div>
 
-                    <div class="control">
-                        <label for="email" class="label">Email:</label>
+                    <div class="field">
+                        <label for="email" class="label">Email</label>
 
-                        <input id="email"
-                               name="email"
-                               type="text"
-                               v-model="user.email"
-                               class="input"
-                               :class="{ 'is-danger': errorsHas('email') }">
+                        <div class="control">
+                            <input id="email"
+                                   name="email"
+                                   type="text"
+                                   v-model="user.email"
+                                   class="input"
+                                   :class="{ 'is-danger': errorsHas('email') }">
 
-                        <p class="help is-danger" v-if="errorsHas('email')">{{ error('email') }}</p>
+                            <p class="help is-danger" v-if="errorsHas('email')">{{ error('email') }}</p>
+                        </div>
                     </div>
 
                     <div class="field">
                         <label for="password" class="label">Wachtwoord</label>
 
-                        <p class="control has-icons-left">
+                        <div class="control">
                             <input id="password"
                                    name="password"
                                    type="password"
@@ -59,18 +65,14 @@
                                    class="input"
                                    :class="{ 'is-danger': errorsHas('password') }">
 
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-lock"></i>
-                            </span>
-                        </p>
-
-                        <p class="help is-danger" v-if="errorsHas('password')">{{ error('password') }}</p>
+                            <p class="help is-danger" v-if="errorsHas('password')">{{ error('password') }}</p>
+                        </div>
                     </div>
 
                     <div class="field">
                         <label for="password_confirmation" class="label">Bevestig wachtwoord</label>
 
-                        <p class="control has-icons-left">
+                        <div class="control">
                             <input id="password_confirmation"
                                    name="password_confirmation"
                                    type="password"
@@ -79,26 +81,23 @@
                                    class="input"
                                    :class="{ 'is-danger': errorsHas('password_confirmation') }">
 
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-lock"></i>
-                            </span>
-                        </p>
-
-                        <p class="help is-danger" v-if="errorsHas('password_confirmation')">{{
-                            error('password_confirmation') }}</p>
+                            <p class="help is-danger" v-if="errorsHas('password_confirmation')">{{ error('password_confirmation') }}</p>
+                        </div>
                     </div>
 
-                    <div class="control">
-                        <label for="function" class="label">Functie:</label>
+                    <div class="field">
+                        <label for="function" class="label">Functie</label>
 
-                        <input id="function"
-                               name="function"
-                               type="text"
-                               v-model="user.function"
-                               class="input"
-                               :class="{ 'is-danger': errorsHas('function') }">
+                        <div class="control">
+                            <input id="function"
+                                   name="function"
+                                   type="text"
+                                   v-model="user.function"
+                                   class="input"
+                                   :class="{ 'is-danger': errorsHas('function') }">
 
-                        <p class="help is-danger" v-if="errorsHas('function')">{{ error('function') }}</p>
+                            <p class="help is-danger" v-if="errorsHas('function')">{{ error('function') }}</p>
+                        </div>
                     </div>
 
                     <div class="field">
@@ -164,14 +163,11 @@
 </template>
 
 <script>
-    import ModalCard from '../shared/ModalCard.vue';
     import UserService from '../../services/UserService';
     import DepartmentService from '../../services/DepartmentService';
     import Validation from '../../mixins/validation.js';
 
     export default {
-        component: {ModalCard},
-
         props: ['prp-user', 'prp-departments', 'prp-roles'],
 
         mixins: [Validation],

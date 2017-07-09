@@ -1872,6 +1872,378 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/relation/Relation.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['prpRelation'],
+
+    data: function data() {
+        return {
+            show: false
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        Event.$on('show-relation-modal', function (id) {
+            if (_this.prpRelation.id === id) {
+                _this.show = true;
+            }
+        });
+    }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/relation/UpdateRelation.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_validation_js__ = __webpack_require__("./resources/assets/js/mixins/validation.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_RelationService__ = __webpack_require__("./resources/assets/js/services/RelationService.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['prp-relation', 'prp-categories', 'prp-countries'],
+
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_validation_js__["a" /* default */]],
+
+    data: function data() {
+        return {
+            loading: false,
+            show: false,
+            relation: {}
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        this.relation = this.prpRelation;
+
+        Event.$on('show-relation-modal', function (id) {
+            if (_this.relation.id === id) {
+                _this.show = true;
+            }
+        });
+    },
+
+
+    methods: {
+        updateState: function updateState(state) {
+            this.relation.state_code = state;
+        },
+        updateCountry: function updateCountry(country) {
+            this.relation.country_code = country;
+        },
+        update: function update() {
+            var _this2 = this;
+
+            this.loading = true;
+
+            __WEBPACK_IMPORTED_MODULE_1__services_RelationService__["a" /* default */].update(this.relation).then(function (_ref) {
+                var data = _ref.data;
+
+                _this2.loading = false;
+
+                swal({
+                    title: data.status,
+                    type: 'success',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+
+                location.reload();
+            }).catch(function (error) {
+                _this2.loading = false;
+                _this2.errors = error.response.data;
+            });
+        }
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/settings/Departments.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2162,16 +2534,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         stateName: {
             type: String,
             default: "Provincie"
-        },
-
-        countryNameInput: {
-            type: String,
-            default: "country_code"
-        },
-
-        stateNameInput: {
-            type: String,
-            default: "state_code"
         }
     },
 
@@ -2289,11 +2651,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_ModalCard_vue__ = __webpack_require__("./resources/assets/js/components/shared/ModalCard.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_ModalCard_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__shared_ModalCard_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_UserService__ = __webpack_require__("./resources/assets/js/services/UserService.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_DepartmentService__ = __webpack_require__("./resources/assets/js/services/DepartmentService.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_validation_js__ = __webpack_require__("./resources/assets/js/mixins/validation.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_UserService__ = __webpack_require__("./resources/assets/js/services/UserService.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_DepartmentService__ = __webpack_require__("./resources/assets/js/services/DepartmentService.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_validation_js__ = __webpack_require__("./resources/assets/js/mixins/validation.js");
 //
 //
 //
@@ -2458,19 +2818,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    component: { ModalCard: __WEBPACK_IMPORTED_MODULE_0__shared_ModalCard_vue___default.a },
-
     props: ['prp-user', 'prp-departments', 'prp-roles'],
 
-    mixins: [__WEBPACK_IMPORTED_MODULE_3__mixins_validation_js__["a" /* default */]],
+    mixins: [__WEBPACK_IMPORTED_MODULE_2__mixins_validation_js__["a" /* default */]],
 
     data: function data() {
         return {
@@ -2505,7 +2861,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.loading = true;
 
-            __WEBPACK_IMPORTED_MODULE_1__services_UserService__["a" /* default */].update(this.user).then(function (_ref) {
+            __WEBPACK_IMPORTED_MODULE_0__services_UserService__["a" /* default */].update(this.user).then(function (_ref) {
                 var data = _ref.data;
 
                 _this2.loading = false;
@@ -2533,8 +2889,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_ModalCard_vue__ = __webpack_require__("./resources/assets/js/components/shared/ModalCard.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_ModalCard_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__shared_ModalCard_vue__);
 //
 //
 //
@@ -2591,12 +2945,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    component: { ModalCard: __WEBPACK_IMPORTED_MODULE_0__shared_ModalCard_vue___default.a },
-
     props: ['prp-user'],
 
     data: function data() {
@@ -2612,6 +2962,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.show = true;
             }
         });
+    }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/pages/Relations.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    methods: {
+        show: function show(id) {
+            Event.$emit('show-relation-modal', id);
+        }
     }
 });
 
@@ -44030,6 +44396,437 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-140604ce\"}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/relation/UpdateRelation.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return (_vm.show) ? _c('div', [_c('modal-card', {
+    on: {
+      "close": function($event) {
+        _vm.show = false
+      }
+    }
+  }, [_c('div', {
+    slot: "title"
+  }, [_c('p', [_vm._v("Bewerk " + _vm._s(_vm.relation.organisation))])]), _vm._v(" "), _vm._t("default", [_c('form', [_c('div', {
+    staticClass: "field"
+  }, [_c('label', {
+    staticClass: "label",
+    attrs: {
+      "for": "organisation"
+    }
+  }, [_vm._v("Organisatie")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.relation.organisation),
+      expression: "relation.organisation"
+    }],
+    staticClass: "input",
+    class: {
+      'is-danger': _vm.errorsHas('organisation')
+    },
+    attrs: {
+      "id": "organisation",
+      "name": "organisation",
+      "type": "text",
+      "autofocus": ""
+    },
+    domProps: {
+      "value": (_vm.relation.organisation)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.relation.organisation = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errorsHas('organisation')) ? _c('p', {
+    staticClass: "help is-danger"
+  }, [_vm._v(_vm._s(_vm.error('organisation')))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('label', {
+    staticClass: "label",
+    attrs: {
+      "for": "account_manager"
+    }
+  }, [_vm._v("Account manager")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.relation.account_manager),
+      expression: "relation.account_manager"
+    }],
+    staticClass: "input",
+    class: {
+      'is-danger': _vm.errorsHas('account_manager')
+    },
+    attrs: {
+      "id": "account_manager",
+      "name": "account_manager",
+      "type": "text",
+      "autofocus": ""
+    },
+    domProps: {
+      "value": (_vm.relation.account_manager)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.relation.account_manager = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errorsHas('account_manager')) ? _c('p', {
+    staticClass: "help is-danger"
+  }, [_vm._v(_vm._s(_vm.error('account_manager')))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('label', {
+    staticClass: "label",
+    attrs: {
+      "for": "category_id"
+    }
+  }, [_vm._v("Bedrijfscategorie")]), _vm._v(" "), _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.relation.category_id),
+      expression: "relation.category_id"
+    }],
+    staticClass: "input",
+    class: {
+      'is-danger': _vm.errorsHas('category_id')
+    },
+    attrs: {
+      "id": "category_id",
+      "name": "category_id"
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.relation.category_id = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, [_c('option', {
+    attrs: {
+      "disabled": "",
+      "value": ""
+    }
+  }, [_vm._v("Selecteer een categorie")]), _vm._v(" "), _vm._l((_vm.prpCategories), function(category) {
+    return _c('option', {
+      domProps: {
+        "value": category.id
+      }
+    }, [_vm._v("\n                            " + _vm._s(category.name) + "\n                        ")])
+  })], 2)]), _vm._v(" "), _c('country-state', {
+    attrs: {
+      "countries": _vm.prpCountries,
+      "prpState": _vm.relation.state_code,
+      "prpCountry": _vm.relation.country_code
+    },
+    on: {
+      "stateChanged": _vm.updateState,
+      "countryChanged": _vm.updateCountry
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('label', {
+    staticClass: "label",
+    attrs: {
+      "for": "street"
+    }
+  }, [_vm._v("Straat")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.relation.street),
+      expression: "relation.street"
+    }],
+    staticClass: "input",
+    class: {
+      'is-danger': _vm.errorsHas('street')
+    },
+    attrs: {
+      "id": "street",
+      "name": "street",
+      "type": "text",
+      "autofocus": ""
+    },
+    domProps: {
+      "value": (_vm.relation.street)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.relation.street = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errorsHas('street')) ? _c('p', {
+    staticClass: "help is-danger"
+  }, [_vm._v(_vm._s(_vm.error('street')))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('label', {
+    staticClass: "label",
+    attrs: {
+      "for": "town"
+    }
+  }, [_vm._v("Woonplaats")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.relation.town),
+      expression: "relation.town"
+    }],
+    staticClass: "input",
+    class: {
+      'is-danger': _vm.errorsHas('town')
+    },
+    attrs: {
+      "id": "town",
+      "name": "town",
+      "type": "text",
+      "autofocus": ""
+    },
+    domProps: {
+      "value": (_vm.relation.town)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.relation.town = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errorsHas('town')) ? _c('p', {
+    staticClass: "help is-danger"
+  }, [_vm._v(_vm._s(_vm.error('town')))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('label', {
+    staticClass: "label",
+    attrs: {
+      "for": "sales_area"
+    }
+  }, [_vm._v("Verkoopgebied")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.relation.sales_area),
+      expression: "relation.sales_area"
+    }],
+    staticClass: "input",
+    class: {
+      'is-danger': _vm.errorsHas('sales_area')
+    },
+    attrs: {
+      "id": "sales_area",
+      "name": "sales_area",
+      "type": "text",
+      "autofocus": ""
+    },
+    domProps: {
+      "value": (_vm.relation.sales_area)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.relation.sales_area = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errorsHas('sales_area')) ? _c('p', {
+    staticClass: "help is-danger"
+  }, [_vm._v(_vm._s(_vm.error('sales_area')))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('label', {
+    staticClass: "label",
+    attrs: {
+      "for": "email"
+    }
+  }, [_vm._v("Email")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.relation.email),
+      expression: "relation.email"
+    }],
+    staticClass: "input",
+    class: {
+      'is-danger': _vm.errorsHas('email')
+    },
+    attrs: {
+      "id": "email",
+      "name": "email",
+      "type": "email",
+      "autofocus": ""
+    },
+    domProps: {
+      "value": (_vm.relation.email)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.relation.email = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errorsHas('email')) ? _c('p', {
+    staticClass: "help is-danger"
+  }, [_vm._v(_vm._s(_vm.error('email')))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('label', {
+    staticClass: "label",
+    attrs: {
+      "for": "phone"
+    }
+  }, [_vm._v("Telefoon")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.relation.phone),
+      expression: "relation.phone"
+    }],
+    staticClass: "input",
+    class: {
+      'is-danger': _vm.errorsHas('phone')
+    },
+    attrs: {
+      "id": "phone",
+      "name": "phone",
+      "type": "phone",
+      "autofocus": ""
+    },
+    domProps: {
+      "value": (_vm.relation.phone)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.relation.phone = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errorsHas('phone')) ? _c('p', {
+    staticClass: "help is-danger"
+  }, [_vm._v(_vm._s(_vm.error('phone')))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('label', {
+    staticClass: "label",
+    attrs: {
+      "for": "website"
+    }
+  }, [_vm._v("Website")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.relation.website),
+      expression: "relation.website"
+    }],
+    staticClass: "input",
+    class: {
+      'is-danger': _vm.errorsHas('website')
+    },
+    attrs: {
+      "id": "website",
+      "name": "website",
+      "type": "website",
+      "autofocus": ""
+    },
+    domProps: {
+      "value": (_vm.relation.website)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.relation.website = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errorsHas('website')) ? _c('p', {
+    staticClass: "help is-danger"
+  }, [_vm._v(_vm._s(_vm.error('website')))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('label', {
+    staticClass: "label",
+    attrs: {
+      "for": "linkedin"
+    }
+  }, [_vm._v("Linkedin")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.relation.linkedin),
+      expression: "relation.linkedin"
+    }],
+    staticClass: "input",
+    class: {
+      'is-danger': _vm.errorsHas('linkedin')
+    },
+    attrs: {
+      "id": "linkedin",
+      "name": "linkedin",
+      "type": "linkedin",
+      "autofocus": ""
+    },
+    domProps: {
+      "value": (_vm.relation.linkedin)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.relation.linkedin = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errorsHas('linkedin')) ? _c('p', {
+    staticClass: "help is-danger"
+  }, [_vm._v(_vm._s(_vm.error('linkedin')))]) : _vm._e()])])], 1)]), _vm._v(" "), _c('div', {
+    slot: "footer"
+  }, [_c('button', {
+    staticClass: "button is-primary",
+    class: {
+      'is-loading': _vm.loading
+    },
+    attrs: {
+      "id": "submit"
+    },
+    on: {
+      "click": _vm.update
+    }
+  }, [_vm._v("\n                Update\n            ")]), _vm._v(" "), _c('a', {
+    staticClass: "button is-primary is-outlined",
+    on: {
+      "click": function($event) {
+        _vm.show = false
+      }
+    }
+  }, [_vm._v("\n                Annuleer\n            ")])])], 2)], 1) : _vm._e()
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-140604ce", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-230e4af4\"}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./node_modules/vue-bulma-datepicker/src/WrapperInput.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -44112,6 +44909,82 @@ if (false) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-4a520e25\"}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/relation/Relation.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return (_vm.show) ? _c('div', [_c('modal-card', {
+    on: {
+      "close": function($event) {
+        _vm.show = false
+      }
+    }
+  }, [_c('div', {
+    slot: "title"
+  }, [_c('p', [_vm._v(_vm._s(_vm.prpRelation.organisation))])]), _vm._v(" "), _vm._t("default", [_c('div', {
+    staticClass: "column"
+  }, [_c('strong', [_vm._v("Accountmanager")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpRelation.account_manager))])]), _vm._v(" "), _c('div', {
+    staticClass: "column"
+  }, [_c('strong', [_vm._v("Bedrijfscategorie")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpRelation.category.name))])]), _vm._v(" "), _c('div', {
+    staticClass: "column"
+  }, [_c('strong', [_vm._v("Land")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpRelation.country_code))])]), _vm._v(" "), _c('div', {
+    staticClass: "column"
+  }, [_c('strong', [_vm._v("Provincie")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpRelation.state_code))])]), _vm._v(" "), _c('div', {
+    staticClass: "column"
+  }, [_c('strong', [_vm._v("Verkoopgebied")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpRelation.sales_area))])]), _vm._v(" "), _c('div', {
+    staticClass: "column"
+  }, [_c('strong', [_vm._v("Straat")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpRelation.street))])]), _vm._v(" "), _c('div', {
+    staticClass: "column"
+  }, [_c('strong', [_vm._v("Nummer")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpRelation.house_number))])]), _vm._v(" "), _c('div', {
+    staticClass: "column"
+  }, [_c('strong', [_vm._v("Postcode")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpRelation.zip))])]), _vm._v(" "), _c('div', {
+    staticClass: "column"
+  }, [_c('strong', [_vm._v("Plaats")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpRelation.town))])]), _vm._v(" "), _c('div', {
+    staticClass: "column"
+  }, [_c('strong', [_vm._v("Telefoon")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpRelation.phone))])]), _vm._v(" "), _c('div', {
+    staticClass: "column"
+  }, [_c('strong', [_vm._v("Email")]), _vm._v(" "), _c('p', [_c('a', {
+    attrs: {
+      "href": 'mailto:' + _vm.prpRelation.email
+    }
+  }, [_vm._v(_vm._s(_vm.prpRelation.email))])])]), _vm._v(" "), (_vm.prpRelation.linkedin) ? _c('div', {
+    staticClass: "column"
+  }, [_c('strong', [_vm._v("Linkedin")]), _vm._v(" "), _c('p', [_c('a', {
+    attrs: {
+      "href": _vm.prpRelation.linkedin
+    }
+  }, [_vm._v("Profiel")])])]) : _vm._e(), _vm._v(" "), (_vm.prpRelation.website) ? _c('div', {
+    staticClass: "column"
+  }, [_c('strong', [_vm._v("Website")]), _vm._v(" "), _c('p', [_c('a', {
+    attrs: {
+      "href": _vm.prpRelation.website
+    }
+  }, [_vm._v(_vm._s(_vm.prpRelation.website))])])]) : _vm._e()]), _vm._v(" "), _c('div', {
+    slot: "footer"
+  }, [_c('a', {
+    staticClass: "button is-primary",
+    attrs: {
+      "href": 'mailto:' + _vm.prpRelation.email
+    }
+  }, [_vm._v("Contact")]), _vm._v(" "), _c('a', {
+    staticClass: "button is-primary is-outlined",
+    on: {
+      "click": function($event) {
+        _vm.show = false
+      }
+    }
+  }, [_vm._v("Annuleer")])])], 2)], 1) : _vm._e()
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4a520e25", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-5350f92d\"}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/shared/ModalCard.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -44167,13 +45040,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     slot: "title"
   }, [_c('p', [_vm._v("Bewerk " + _vm._s(_vm.user.name) + " " + _vm._s(_vm.user.last_name))])]), _vm._v(" "), _vm._t("default", [_c('form', [_c('div', {
-    staticClass: "control"
+    staticClass: "field"
   }, [_c('label', {
     staticClass: "label",
     attrs: {
       "for": "name"
     }
-  }, [_vm._v("Naam:")]), _vm._v(" "), _c('input', {
+  }, [_vm._v("Naam")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -44201,14 +45076,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errorsHas('name')) ? _c('p', {
     staticClass: "help is-danger"
-  }, [_vm._v(_vm._s(_vm.error('name')))]) : _vm._e()]), _vm._v(" "), _c('div', {
-    staticClass: "control"
+  }, [_vm._v(_vm._s(_vm.error('name')))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
   }, [_c('label', {
     staticClass: "label",
     attrs: {
       "for": "last_name"
     }
-  }, [_vm._v("Achternaam:")]), _vm._v(" "), _c('input', {
+  }, [_vm._v("Achternaam")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -44235,14 +45112,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errorsHas('last_name')) ? _c('p', {
     staticClass: "help is-danger"
-  }, [_vm._v(_vm._s(_vm.error('last_name')))]) : _vm._e()]), _vm._v(" "), _c('div', {
-    staticClass: "control"
+  }, [_vm._v(_vm._s(_vm.error('last_name')))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
   }, [_c('label', {
     staticClass: "label",
     attrs: {
       "for": "email"
     }
-  }, [_vm._v("Email:")]), _vm._v(" "), _c('input', {
+  }, [_vm._v("Email")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -44269,15 +45148,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errorsHas('email')) ? _c('p', {
     staticClass: "help is-danger"
-  }, [_vm._v(_vm._s(_vm.error('email')))]) : _vm._e()]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.error('email')))]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "field"
   }, [_c('label', {
     staticClass: "label",
     attrs: {
       "for": "password"
     }
-  }, [_vm._v("Wachtwoord")]), _vm._v(" "), _c('p', {
-    staticClass: "control has-icons-left"
+  }, [_vm._v("Wachtwoord")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -44304,21 +45183,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.user.password = $event.target.value
       }
     }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "icon is-small is-left"
-  }, [_c('i', {
-    staticClass: "fa fa-lock"
-  })])]), _vm._v(" "), (_vm.errorsHas('password')) ? _c('p', {
+  }), _vm._v(" "), (_vm.errorsHas('password')) ? _c('p', {
     staticClass: "help is-danger"
-  }, [_vm._v(_vm._s(_vm.error('password')))]) : _vm._e()]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.error('password')))]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "field"
   }, [_c('label', {
     staticClass: "label",
     attrs: {
       "for": "password_confirmation"
     }
-  }, [_vm._v("Bevestig wachtwoord")]), _vm._v(" "), _c('p', {
-    staticClass: "control has-icons-left"
+  }, [_vm._v("Bevestig wachtwoord")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -44345,20 +45220,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.user.password_confirmation = $event.target.value
       }
     }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "icon is-small is-left"
-  }, [_c('i', {
-    staticClass: "fa fa-lock"
-  })])]), _vm._v(" "), (_vm.errorsHas('password_confirmation')) ? _c('p', {
+  }), _vm._v(" "), (_vm.errorsHas('password_confirmation')) ? _c('p', {
     staticClass: "help is-danger"
-  }, [_vm._v(_vm._s(_vm.error('password_confirmation')))]) : _vm._e()]), _vm._v(" "), _c('div', {
-    staticClass: "control"
+  }, [_vm._v(_vm._s(_vm.error('password_confirmation')))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
   }, [_c('label', {
     staticClass: "label",
     attrs: {
       "for": "function"
     }
-  }, [_vm._v("Functie:")]), _vm._v(" "), _c('input', {
+  }, [_vm._v("Functie")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -44385,7 +45258,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errorsHas('function')) ? _c('p', {
     staticClass: "help is-danger"
-  }, [_vm._v(_vm._s(_vm.error('function')))]) : _vm._e()]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.error('function')))]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "field"
   }, [_c('label', {
     staticClass: "label",
@@ -44599,23 +45472,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     slot: "title"
   }, [_c('p', [_vm._v(_vm._s(_vm.prpUser.name) + " " + _vm._s(_vm.prpUser.last_name))])]), _vm._v(" "), _vm._t("default", [_c('div', {
     staticClass: "column"
-  }, [_c('strong', [_vm._v("Voornaam:")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpUser.name))])]), _vm._v(" "), _c('div', {
+  }, [_c('strong', [_vm._v("Voornaam")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpUser.name))])]), _vm._v(" "), _c('div', {
     staticClass: "column"
-  }, [_c('strong', [_vm._v("Achternaam:")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpUser.last_name))])]), _vm._v(" "), _c('div', {
+  }, [_c('strong', [_vm._v("Achternaam")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpUser.last_name))])]), _vm._v(" "), _c('div', {
     staticClass: "column"
-  }, [_c('strong', [_vm._v("Functie:")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpUser.function))])]), _vm._v(" "), _c('div', {
+  }, [_c('strong', [_vm._v("Functie")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.prpUser.function))])]), _vm._v(" "), _c('div', {
     staticClass: "column"
-  }, [_c('strong', [_vm._v("Email:")]), _vm._v(" "), _c('a', {
+  }, [_c('strong', [_vm._v("Email")]), _vm._v(" "), _c('p', [_c('a', {
     attrs: {
       "href": 'mailto:' + _vm.prpUser.email
     }
-  }, [_vm._v(_vm._s(_vm.prpUser.email))])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.prpUser.email))])])]), _vm._v(" "), _c('div', {
     staticClass: "column"
-  }, [_c('strong', [_vm._v("Afdeling:")]), _vm._v(" "), _c('p', [_c('span', {
+  }, [_c('strong', [_vm._v("Afdeling")]), _vm._v(" "), _c('p', [_c('span', {
     staticClass: "tag is-success"
   }, [_vm._v("\n                        " + _vm._s(_vm.prpUser.department.name) + "\n                    ")])])]), _vm._v(" "), _c('div', {
     staticClass: "column"
-  }, [_c('strong', [_vm._v("Role:")]), _vm._v(" "), _c('p', _vm._l((_vm.prpUser.roles), function(role) {
+  }, [_c('strong', [_vm._v("Role")]), _vm._v(" "), _c('p', _vm._l((_vm.prpUser.roles), function(role) {
     return _c('span', {
       staticClass: "tag is-success"
     }, [_vm._v("\n                        " + _vm._s(role.name) + "\n                    ")])
@@ -44656,7 +45529,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('label', {
     staticClass: "label",
     attrs: {
-      "for": "country"
+      "for": "country_code"
     }
   }, [_vm._v(_vm._s(_vm.countryName))]), _vm._v(" "), (_vm.countries) ? _c('div', [_c('select', {
     directives: [{
@@ -44667,8 +45540,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "input",
     attrs: {
-      "id": "country",
-      "name": _vm.countryNameInput,
+      "id": "country_code",
+      "name": "country_code",
       "required": ""
     },
     on: {
@@ -44681,7 +45554,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         });
         _vm.country = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
       }, function($event) {
-        _vm.getStates($event.target.value)
+        _vm.$emit('countryChanged', $event.target.value) && _vm.getStates($event.target.value)
       }]
     }
   }, [_c('option', {
@@ -44700,7 +45573,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('label', {
     staticClass: "label",
     attrs: {
-      "for": "state"
+      "for": "state_code"
     }
   }, [_vm._v(_vm._s(_vm.stateName))]), _vm._v(" "), _c('select', {
     directives: [{
@@ -44711,12 +45584,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "input",
     attrs: {
-      "id": "state",
-      "name": _vm.stateNameInput,
+      "id": "state_code",
+      "name": "state_code",
       "required": ""
     },
     on: {
-      "change": function($event) {
+      "change": [function($event) {
         var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
           return o.selected
         }).map(function(o) {
@@ -44724,7 +45597,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           return val
         });
         _vm.state = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-      }
+      }, function($event) {
+        _vm.$emit('stateChanged', $event.target.value)
+      }]
     }
   }, [_c('option', {
     attrs: {
@@ -55074,8 +55949,11 @@ window.Event = new Vue();
  */
 
 Vue.component('Users', __webpack_require__("./resources/assets/js/pages/Users.vue"));
+Vue.component('Relations', __webpack_require__("./resources/assets/js/pages/Relations.vue"));
 Vue.component('User', __webpack_require__("./resources/assets/js/components/user/User.vue"));
+Vue.component('Relation', __webpack_require__("./resources/assets/js/components/relation/Relation.vue"));
 Vue.component('UpdateUser', __webpack_require__("./resources/assets/js/components/user/UpdateUser.vue"));
+Vue.component('UpdateRelation', __webpack_require__("./resources/assets/js/components/relation/UpdateRelation.vue"));
 
 Vue.component('Roles', __webpack_require__("./resources/assets/js/components/settings/Roles.vue"));
 Vue.component('Departments', __webpack_require__("./resources/assets/js/components/settings/Departments.vue"));
@@ -55198,6 +56076,88 @@ if (false) {(function () {
     hotAPI.createRecord("data-v-d11c0e6a", Component.options)
   } else {
     hotAPI.reload("data-v-d11c0e6a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/relation/Relation.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/relation/Relation.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-4a520e25\"}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/relation/Relation.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/Janssen/Code/dealcloser/resources/assets/js/components/relation/Relation.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Relation.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4a520e25", Component.options)
+  } else {
+    hotAPI.reload("data-v-4a520e25", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/relation/UpdateRelation.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/relation/UpdateRelation.vue"),
+  /* template */
+  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-140604ce\"}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/relation/UpdateRelation.vue"),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/Janssen/Code/dealcloser/resources/assets/js/components/relation/UpdateRelation.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] UpdateRelation.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-140604ce", Component.options)
+  } else {
+    hotAPI.reload("data-v-140604ce", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -55561,6 +56521,46 @@ module.exports = Component.exports
 
 /***/ }),
 
+/***/ "./resources/assets/js/pages/Relations.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/pages/Relations.vue"),
+  /* template */
+  null,
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/Janssen/Code/dealcloser/resources/assets/js/pages/Relations.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c258f7e6", Component.options)
+  } else {
+    hotAPI.reload("data-v-c258f7e6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/pages/Users.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -55624,6 +56624,19 @@ module.exports = Component.exports
     },
     destroy: function destroy(department) {
         return axios.delete('/instellingen/bedrijf/afdeling/' + department.id);
+    }
+});
+
+/***/ }),
+
+/***/ "./resources/assets/js/services/RelationService.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    update: function update(relation) {
+        relation._method = "PATCH";
+        return axios.post('/relaties/' + relation.id, relation);
     }
 });
 

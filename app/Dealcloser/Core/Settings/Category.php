@@ -20,7 +20,7 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'type'];
+    protected $fillable = ['name', 'model_type'];
 
     /**
      * A category belongs to many permissions
