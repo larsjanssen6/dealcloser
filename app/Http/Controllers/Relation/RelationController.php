@@ -34,8 +34,7 @@ class RelationController extends Controller
     private $countryState;
 
     /**
-     * Create a new controller instance. Only users with permission
-     * register-relations have access to this controller.
+     * Create a new controller instance. 
      *
      * @param IRelationRepo $relationRepo
      * @param ICategoryRepo $categoryRepo
@@ -44,6 +43,7 @@ class RelationController extends Controller
     public function __construct(IRelationRepo $relationRepo, ICategoryRepo $categoryRepo, CountryState $countryState)
     {
         $this->middleware('permission:register-relations')->only('create', 'store');
+        $this->middleware('permission:edit-relations')->only('update');
         $this->relationRepo = $relationRepo;
         $this->categoryRepo = $categoryRepo;
         $this->countryState = $countryState;
