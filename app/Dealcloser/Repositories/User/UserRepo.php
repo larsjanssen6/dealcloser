@@ -3,8 +3,8 @@
 namespace App\Dealcloser\Repositories\User;
 
 use App\Dealcloser\Core\User\User;
-use App\Dealcloser\Interfaces\Repositories\IUserRepo;
 use App\Dealcloser\Repositories\EloquentRepo;
+use App\Dealcloser\Interfaces\Repositories\IUserRepo;
 
 class UserRepo extends EloquentRepo implements IUserRepo
 {

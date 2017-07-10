@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Settings\Usage;
 
-use App\Dealcloser\Core\Settings\Settings;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
+use App\Dealcloser\Core\Settings\Settings;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UpdateUsageTest extends TestCase
 {

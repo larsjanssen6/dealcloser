@@ -23,7 +23,7 @@ class PermissionMiddleware
             return redirect('/');
         }
 
-        if (!$request->user()->hasPermissionTo($permission)) {
+        if (! $request->user()->hasPermissionTo($permission)) {
             if ($request->ajax() || $request->isJson()) {
                 return response()->json(['status' => 'Niet geautoriseerd!'], 401);
             }

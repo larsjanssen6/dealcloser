@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Dealcloser\Interfaces\Repositories\IDepartmentRepo;
-use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
-use App\Dealcloser\Interfaces\Repositories\IUserRepo;
 use App\Events\Registered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
+use App\Dealcloser\Interfaces\Repositories\IUserRepo;
+use App\Dealcloser\Interfaces\Repositories\IDepartmentRepo;
 
 class RegisterController extends Controller
 {

@@ -3,8 +3,8 @@
 namespace App\Dealcloser\Repositories\Category;
 
 use App\Dealcloser\Core\Settings\Category;
-use App\Dealcloser\Interfaces\Repositories\ICategoryRepo;
 use App\Dealcloser\Repositories\EloquentRepo;
+use App\Dealcloser\Interfaces\Repositories\ICategoryRepo;
 
 class CategoryRepo extends EloquentRepo implements ICategoryRepo
 {

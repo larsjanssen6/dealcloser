@@ -3,8 +3,8 @@
 namespace App\Dealcloser\Core\Settings;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
