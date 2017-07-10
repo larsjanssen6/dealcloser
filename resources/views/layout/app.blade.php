@@ -23,6 +23,7 @@
 </head>
     <body>
         <div id="app">
+            <div class="bar"></div>
             <nav class="nav has-shadow">
                 <div class="container">
                     <div class="nav-left">
