@@ -1,6 +1,10 @@
 export default {
     update(relation) {
-        relation._method = "PATCH";
-        return axios.post('/relaties/' + relation.id, relation);
+        console.log('updateeee');
+        return axios.patch('/relaties/' + relation.id, relation);
     },
+
+    destroy(id) {
+        return axios.delete('/relaties/' + id);
+    }
 }

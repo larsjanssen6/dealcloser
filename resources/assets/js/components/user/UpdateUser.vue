@@ -81,7 +81,8 @@
                                    class="input"
                                    :class="{ 'is-danger': errorsHas('password_confirmation') }">
 
-                            <p class="help is-danger" v-if="errorsHas('password_confirmation')">{{ error('password_confirmation') }}</p>
+                            <p class="help is-danger" v-if="errorsHas('password_confirmation')">{{
+                                error('password_confirmation') }}</p>
                         </div>
                     </div>
 
@@ -153,6 +154,8 @@
                     Update
                 </button>
 
+                <destroy :service="UserService" :id="user.id"></destroy>
+
                 <a class="button is-primary is-outlined"
                    @click="show = false">
                     Annuleer
@@ -176,7 +179,8 @@
             return {
                 loading: false,
                 show: false,
-                user: {role: ""}
+                user: {role: ""},
+                UserService: UserService
             }
         },
 

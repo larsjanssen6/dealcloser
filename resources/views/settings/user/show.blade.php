@@ -42,7 +42,7 @@
                             @endcomponent
 
                             @component('layout/input', [
-                                   'name' => 'email ',
+                                   'name' => 'email',
                                    'label' => 'Email',
                                    'value' => $user->email,
                                    'type' => 'email'

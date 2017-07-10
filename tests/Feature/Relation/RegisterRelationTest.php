@@ -44,7 +44,7 @@ class RegisterRelationTest extends TestCase
     }
 
     /** @test */
-    public function a_user_with_not_the_right_permission_can_not_register_a_user()
+    public function a_user_with_not_the_right_permission_can_not_register_a_relation()
     {
         $relation = make(Relation::class)->toArray();
 

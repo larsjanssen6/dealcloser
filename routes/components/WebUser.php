@@ -15,3 +15,5 @@ Route::get('gebruikers/registreer', 'Auth\RegisterController@create')
 
 Route::post('gebruikers/registreer', 'Auth\RegisterController@store')
     ->name('register.store');
+
+Route::delete('gebruikers/{user}', 'User\UserController@destroy');

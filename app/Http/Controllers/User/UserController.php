@@ -43,7 +43,7 @@ class UserController extends Controller
      */
     public function __construct(IUserRepo $userRepo, IDepartmentRepo $departmentRepo, IRoleRepo $roleRepo)
     {
-        $this->middleware('permission:edit-users')->only('update');
+        $this->middleware('permission:edit-users')->only('update', 'destroy');
         $this->userRepo = $userRepo;
         $this->departmentRepo = $departmentRepo;
         $this->roleRepo = $roleRepo;
@@ -82,5 +82,17 @@ class UserController extends Controller
         $this->userRepo->update($user->id, $request->only($items->toArray()));
 
         return response()->json(['status' => 'Geupdatet']);
+    }
+
+    /**
+     * Destroy a user
+     *
+     * @param User $user
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(User $user)
+    {
+        $this->userRepo->delete($user->id);
+        return response()->json(['status' => 'Verwijderd']);
     }
 }

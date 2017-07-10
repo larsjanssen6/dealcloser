@@ -34,11 +34,16 @@ Vue.component('UpdateRelation',                 require('./components/relation/U
 
 Vue.component('Roles',                          require('./components/settings/Roles.vue'));
 Vue.component('Departments',                    require('./components/settings/Departments.vue'));
+Vue.component('ForgotPassword',                 require('./components/authentication/ForgotPassword.vue'));
+
+/**
+ * Shared
+ */
 Vue.component('CountryState',                   require('./components/shared/CountryState.vue'));
+//Vue.component('DatePicker',                     require('./components/shared/DatePicker.vue'));
 Vue.component('Modal',                          require('./components/shared/Modal.vue'));
 Vue.component('ModalCard',                      require('./components/shared/ModalCard.vue'));
-Vue.component('DatePicker',                     require('./components/shared/DatePicker.vue'));
-Vue.component('ForgotPassword',                 require('./components/authentication/ForgotPassword.vue'));
+Vue.component('Destroy',                        require('./components/shared/Destroy.vue'));
 
 Vue.directive('focus', {
     inserted: function (el) {

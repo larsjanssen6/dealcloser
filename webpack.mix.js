@@ -12,10 +12,11 @@ const { mix } = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-    .sass('resources/assets/stylus/bulma.scss', 'public/css')
-    .stylus('resources/assets/stylus/app.styl', 'public/css')
+   .sass('resources/assets/stylus/bulma.scss', 'public/css')
+   .stylus('resources/assets/stylus/app.styl', 'public/css')
     .combine([
         'resources/assets/libraries/css/animations.css',
         './node_modules/sweetalert2/dist/sweetalert2.css'
     ], 'public/css/packages.css')
+    .sourceMaps()
     .version();

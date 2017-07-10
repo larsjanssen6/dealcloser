@@ -37,6 +37,9 @@ footer {
 [v-cloak] {
   display: none;
 }
+.menu-list li {
+  border-bottom: 1px dashed #d7d7d7;
+}
 .input,
 .textarea {
   padding: 0 15px;
@@ -82,3 +85,4 @@ footer {
   bottom: 20px;
   right: 20px;
 }
+/*# sourceMappingURL=resources/assets/stylus/app.css.map */

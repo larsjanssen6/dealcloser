@@ -181,6 +181,8 @@
                     Update
                 </button>
 
+                <destroy :service="RelationService" :id="relation.id"></destroy>
+
                 <a class="button is-primary is-outlined"
                    @click="show = false">
                     Annuleer
@@ -203,7 +205,8 @@
             return {
                 loading: false,
                 show: false,
-                relation: {}
+                relation: {},
+                RelationService: RelationService
             }
         },
 

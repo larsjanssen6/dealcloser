@@ -15,4 +15,6 @@ Route::post('relaties/registreer', 'Relation\RelationController@store')
 
 Route::patch('relaties/{relation}', 'Relation\RelationController@update');
 
+Route::delete('relaties/{relation}', 'Relation\RelationController@destroy');
+
 Route::get('/states/{country}', 'State\StateController@index');

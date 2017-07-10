@@ -3,4 +3,8 @@ export default {
         user._method = "PATCH";
         return axios.post('/gebruikers/' + user.id, user);
     },
+
+    destroy(id) {
+        return axios.delete('/gebruikers/' + id);
+    }
 }

@@ -34,7 +34,7 @@ class RelationController extends Controller
     private $countryState;
 
     /**
-     * Create a new controller instance. 
+     * Create a new controller instance.
      *
      * @param IRelationRepo $relationRepo
      * @param ICategoryRepo $categoryRepo
@@ -43,7 +43,7 @@ class RelationController extends Controller
     public function __construct(IRelationRepo $relationRepo, ICategoryRepo $categoryRepo, CountryState $countryState)
     {
         $this->middleware('permission:register-relations')->only('create', 'store');
-        $this->middleware('permission:edit-relations')->only('update');
+        $this->middleware('permission:edit-relations')->only('update', 'destroy');
         $this->relationRepo = $relationRepo;
         $this->categoryRepo = $categoryRepo;
         $this->countryState = $countryState;
@@ -77,7 +77,7 @@ class RelationController extends Controller
     }
 
     /**
-     * Store a user.
+     * Store a relation.
      *
      * @param RelationRequest $request
      * @return \Illuminate\Http\RedirectResponse
@@ -91,6 +91,8 @@ class RelationController extends Controller
     }
 
     /**
+     * Update a relation
+     *
      * @param RelationRequest $request
      * @param Relation $relation
      * @return \Illuminate\Http\JsonResponse
@@ -99,5 +101,17 @@ class RelationController extends Controller
     {
         $this->relationRepo->update($relation->id, $request->all());
         return response()->json(['status' => 'Geupdatet']);
+    }
+
+    /**
+     * Destroy a relation.
+     *
+     * @param Relation $relation
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(Relation $relation)
+    {
+        $this->relationRepo->delete($relation->id);
+        return response()->json(['status' => 'Verwijderd']);
     }
 }

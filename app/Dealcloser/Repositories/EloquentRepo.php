@@ -51,12 +51,13 @@ abstract class EloquentRepo implements IRepo
     /**
      * Get all.
      *
+     * @param array $with
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getAll()
+    public function getAll($with = [])
     {
-        return $this->cache->remember($this->getModel(), 60, function () {
-            return $this->_model->all();
+        return $this->cache->remember($this->getModel(), 60, function () use ($with) {
+            return $this->_model->with($with)->get();
         });
     }
 
@@ -135,11 +136,10 @@ abstract class EloquentRepo implements IRepo
     {
         $result = $this->find($id);
 
-        $this->cache->flush($this->getModel());
-        $this->cache->flush($this->getModel() . $id);
-
         if ($result) {
             $result->update($attributes);
+
+            $this->cache->flush($this->getModel());
 
             return $result;
         }
