@@ -19,10 +19,10 @@ class DeleteUserTest extends TestCase
         $user = create(User::class);
         $total = User::count();
 
-        $this->actingAs($this->user)->deleteJson('/gebruikers/' . $user->id)
+        $this->actingAs($this->user)->deleteJson('/gebruikers/'.$user->id)
             ->assertJson(['status' => 'Verwijderd']);
 
-        $this->assertEquals($total -1, User::count());
+        $this->assertEquals($total - 1, User::count());
         $this->assertDatabaseMissing('user', $user->toArray());
     }
 
@@ -32,11 +32,10 @@ class DeleteUserTest extends TestCase
         $user = create(User::class);
         $total = User::count();
 
-        $this->actingAs($this->user)->deleteJson('/gebruikers/' . $user->id)
-            ->assertJson(["status" => "Niet geautoriseerd!"]);
+        $this->actingAs($this->user)->deleteJson('/gebruikers/'.$user->id)
+            ->assertJson(['status' => 'Niet geautoriseerd!']);
 
         $this->assertEquals($total, User::count());
         $this->assertDatabaseHas('user', $user->toArray());
     }
 }
-

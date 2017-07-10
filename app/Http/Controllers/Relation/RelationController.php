@@ -92,7 +92,7 @@ class RelationController extends Controller
     }
 
     /**
-     * Update a relation
+     * Update a relation.
      *
      * @param RelationRequest $request
      * @param Relation        $relation
@@ -110,11 +110,13 @@ class RelationController extends Controller
      * Destroy a relation.
      *
      * @param Relation $relation
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Relation $relation)
     {
         $this->relationRepo->delete($relation->id);
+
         return response()->json(['status' => 'Verwijderd']);
     }
 }
