@@ -24,11 +24,9 @@ class RelationRequest extends FormRequest
     public function rules()
     {
         if ($this->method() == 'PATCH') {
-            $organisation = 'required|max:50|required|unique:relation,organisation,' . $this->request->all()['id'];
-            $email = 'required|max:50|email|unique:relation,email,' . $this->request->all()['id'];
-        }
-
-        else {
+            $organisation = 'required|max:50|required|unique:relation,organisation,'.$this->request->all()['id'];
+            $email = 'required|max:50|email|unique:relation,email,'.$this->request->all()['id'];
+        } else {
             $organisation = 'required|max:50|required|unique:relation,organisation';
             $email = 'required|max:50|email|unique:relation,email';
         }
@@ -48,7 +46,7 @@ class RelationRequest extends FormRequest
             'email'             => $email,
             'facebook'          => 'max:50|nullable',
             'whatsapp'          => 'max:50|nullable',
-            'website'           => 'max:50|nullable'
+            'website'           => 'max:50|nullable',
         ];
     }
 }

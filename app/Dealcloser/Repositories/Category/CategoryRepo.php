@@ -18,4 +18,3 @@ class CategoryRepo extends EloquentRepo implements ICategoryRepo
         return Category::class;
     }
 }
-

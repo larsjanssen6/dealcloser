@@ -11,14 +11,14 @@ use Spatie\Permission\Models\Permission;
 class SettingsPermissionController extends Controller
 {
     /**
-     * IUserRepo implementation
+     * IUserRepo implementation.
      *
      * @var IRoleRepo
      */
     private $roleRepo;
 
     /**
-     * ICategory implementation
+     * ICategory implementation.
      *
      * @var ICategoryRepo
      */
@@ -28,7 +28,7 @@ class SettingsPermissionController extends Controller
      * Create a new controller instance. Only users with permission
      * edit-permission-settings have access to this controller.
      *
-     * @param IRoleRepo $roleRepo
+     * @param IRoleRepo     $roleRepo
      * @param ICategoryRepo $categoryRepo
      */
     public function __construct(IRoleRepo $roleRepo, ICategoryRepo $categoryRepo)
@@ -47,7 +47,7 @@ class SettingsPermissionController extends Controller
     {
         return view('settings.rights.permission.show')->with([
                 'categories' => $this->categoryRepo->findAll('model_type', Permission::class, 'permissions'),
-                'roles' => $this->roleRepo->getAll()
+                'roles'      => $this->roleRepo->getAll(),
             ]
         );
     }
@@ -56,6 +56,7 @@ class SettingsPermissionController extends Controller
      * Add or revoke permissions to a role.
      *
      * @param PermissionRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(PermissionRequest $request)

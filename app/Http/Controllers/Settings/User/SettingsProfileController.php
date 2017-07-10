@@ -11,14 +11,14 @@ use Illuminate\Support\Facades\Auth;
 class SettingsProfileController extends Controller
 {
     /**
-     * IUserRepo implementation
+     * IUserRepo implementation.
      *
      * @var IUserRepo
      */
     private $userRepo;
 
     /**
-     * IDepartmentRepo implementation
+     * IDepartmentRepo implementation.
      *
      * @var IUserRepo
      */
@@ -28,7 +28,7 @@ class SettingsProfileController extends Controller
      * Create a new controller instance. Only users with permission
      * register-users have access to this controller.
      *
-     * @param IUserRepo $userRepo
+     * @param IUserRepo       $userRepo
      * @param IDepartmentRepo $departmentRepo
      */
     public function __construct(IUserRepo $userRepo, IDepartmentRepo $departmentRepo)
@@ -45,8 +45,8 @@ class SettingsProfileController extends Controller
     public function index()
     {
         return view('settings.user.show')->with([
-            'user' => $this->userRepo->find(Auth::user()->id),
-            'departments' => $this->departmentRepo->getAll()
+            'user'        => $this->userRepo->find(Auth::user()->id),
+            'departments' => $this->departmentRepo->getAll(),
         ]);
     }
 
@@ -54,13 +54,14 @@ class SettingsProfileController extends Controller
      * Update user profile settings.
      *
      * @param ProfileRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(ProfileRequest $request)
     {
         $items = collect(['name', 'last_name', 'email', 'function', 'department_id']);
 
-        if(isset($request->password)) {
+        if (isset($request->password)) {
             $items = $items->merge('password');
         }
 

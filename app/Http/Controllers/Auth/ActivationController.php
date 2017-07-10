@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Dealcloser\Interfaces\Repositories\IUserRepo;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\ActivationRequest;
 use Auth;
-use App\Http\Controllers\Controller;
 
 class ActivationController extends Controller
 {
     /**
-     * IUserRepo implementation
+     * IUserRepo implementation.
      *
      * @var IUserRepo
      */
@@ -27,16 +27,17 @@ class ActivationController extends Controller
     }
 
     /**
-     * Show user activation form
+     * Show user activation form.
      *
      * @param $token
+     *
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show($token)
     {
-        if($this->exists($token)) {
+        if ($this->exists($token)) {
             return view('auth.activate')->with([
-                'token' => $token
+                'token' => $token,
             ]);
         }
 
@@ -44,15 +45,16 @@ class ActivationController extends Controller
     }
 
     /**
-     * Activate user
+     * Activate user.
      *
      * @param ActivationRequest $request
      * @param $token
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function activate(ActivationRequest $request, $token)
     {
-        if($this->exists($token)) {
+        if ($this->exists($token)) {
             Auth::login($this->userRepo->activate($token, $request->password));
 
             return redirect('/dashboard')
@@ -63,9 +65,10 @@ class ActivationController extends Controller
     }
 
     /**
-     * Check if token exists
+     * Check if token exists.
      *
      * @param $token
+     *
      * @return bool
      */
     public function exists($token)
@@ -74,7 +77,7 @@ class ActivationController extends Controller
     }
 
     /**
-     * Redirect with unauthorized message
+     * Redirect with unauthorized message.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -83,7 +86,7 @@ class ActivationController extends Controller
         return redirect('/')
             ->with([
                 'status' => 'Niet geautoriseerd!',
-                'class' => 'is-danger'
+                'class'  => 'is-danger',
             ]);
     }
 }

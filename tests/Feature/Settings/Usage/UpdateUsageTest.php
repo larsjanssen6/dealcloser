@@ -38,7 +38,7 @@ class UpdateUsageTest extends TestCase
         $settings = [
             'users'     => 12,
             'active'    => '2017-05-10 17:38:00',
-            'license'   => '11324543132443'
+            'license'   => '11324543132443',
         ];
 
         $this->actingAs($this->user)->patch('/instellingen/bedrijf/gebruik', $settings)
@@ -53,7 +53,7 @@ class UpdateUsageTest extends TestCase
         $settings = [
             'users'     => 12,
             'active'    => '2017-05-10 17:38:00',
-            'license'   => '11324543132443'
+            'license'   => '11324543132443',
         ];
 
         $this->actingAs($this->user)->patch('/instellingen/bedrijf/gebruik', $settings)
@@ -72,8 +72,8 @@ class UpdateUsageTest extends TestCase
         Settings::set(['active' => Carbon::now()->subDays(1)]);
 
         $this->post('/', [
-            'email'     =>  $this->user->email,
-            'password'  => 'secret'
+            'email'     => $this->user->email,
+            'password'  => 'secret',
         ])
             ->assertRedirect('/dashboard')
             ->assertSessionHas('status', sprintf('Welkom %s', $this->user->name));
@@ -86,10 +86,9 @@ class UpdateUsageTest extends TestCase
 
         $this->post('/', [
             'email'     => $this->user->email,
-            'password'  => 'secret'
+            'password'  => 'secret',
         ])
             ->assertRedirect('/')
             ->assertSessionHas('status', 'Applicatie is niet actief, contacteer de beheerder');
     }
 }
-

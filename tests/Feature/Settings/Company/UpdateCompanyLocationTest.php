@@ -61,4 +61,3 @@ class UpdateCompanyLocationTest extends TestCase
         $this->assertDatabaseMissing('settings', $settings);
     }
 }
-

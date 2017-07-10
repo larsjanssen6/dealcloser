@@ -29,7 +29,7 @@ class CreatePermissionTables extends Migration
                 ->onDelete('cascade');
         });
 
-        Schema::create($tableNames['roles'], function (Blueprint $table)  use ($tableNames, $foreignKeys) {
+        Schema::create($tableNames['roles'], function (Blueprint $table) use ($tableNames, $foreignKeys) {
             $table->increments('id');
             $table->string('name');
             $table->string('guard_name');

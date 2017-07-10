@@ -18,4 +18,3 @@ class RelationRepo extends EloquentRepo implements IRelationRepo
         return Relation::class;
     }
 }
-

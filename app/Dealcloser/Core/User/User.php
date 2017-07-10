@@ -36,7 +36,7 @@ class User extends Authenticatable
         'department_id',
         'role',
         'active',
-        'confirmation_code'
+        'confirmation_code',
     ];
 
     /**
@@ -47,7 +47,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'confirmation_code'
+        'confirmation_code',
     ];
 
     /**

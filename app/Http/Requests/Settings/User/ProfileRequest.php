@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Settings\User;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileRequest extends FormRequest
 {
@@ -24,17 +24,16 @@ class ProfileRequest extends FormRequest
      */
     public function rules()
     {
-        $rules =  [
+        $rules = [
             'name'          => 'min:3|max:50|required',
             'last_name'     => 'min:3|max:50|required',
-            'email'         => 'min:5|max:50|email|unique:user,email,' . Auth::user()->id,
+            'email'         => 'min:5|max:50|email|unique:user,email,'.Auth::user()->id,
             'function'      => 'min:3|max:50|nullable',
-            'department_id' => 'integer|required|exists:department,id'
+            'department_id' => 'integer|required|exists:department,id',
 
         ];
 
-        if(isset($this->request->all()['password']))
-        {
+        if (isset($this->request->all()['password'])) {
             $rules += ['password' => 'min:5|max:30|confirmed'];
         }
 

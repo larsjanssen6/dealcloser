@@ -12,6 +12,7 @@ class StateController extends Controller
      *
      * @param $country
      * @param CountryState $countryState
+     *
      * @return array
      */
     public function index($country, CountryState $countryState)

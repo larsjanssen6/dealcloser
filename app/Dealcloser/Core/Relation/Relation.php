@@ -37,7 +37,7 @@ class Relation extends Model
         'phone',
         'email',
         'linkedin',
-        'website'
+        'website',
     ];
 
     /**
@@ -50,4 +50,3 @@ class Relation extends Model
             ->saveSlugsTo('slug');
     }
 }
-

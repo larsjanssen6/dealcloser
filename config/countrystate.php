@@ -15,7 +15,7 @@ return [
     |
     */
     'language' => 'eng',
-    
+
     /*
     |--------------------------------------------------------------------------
     | Limit countries to load automatically
