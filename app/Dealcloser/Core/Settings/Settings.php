@@ -2,8 +2,8 @@
 
 namespace App\Dealcloser\Core\Settings;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Database\Eloquent\Model;
 
 class Settings extends Model
 {

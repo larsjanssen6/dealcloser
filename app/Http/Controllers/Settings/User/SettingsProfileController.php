@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Settings\User;
 
-use App\Dealcloser\Interfaces\Repositories\IDepartmentRepo;
-use App\Dealcloser\Interfaces\Repositories\IUserRepo;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Settings\User\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Settings\User\ProfileRequest;
+use App\Dealcloser\Interfaces\Repositories\IUserRepo;
+use App\Dealcloser\Interfaces\Repositories\IDepartmentRepo;
 
 class SettingsProfileController extends Controller
 {

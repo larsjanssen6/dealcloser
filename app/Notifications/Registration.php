@@ -2,11 +2,11 @@
 
 namespace App\Notifications;
 
-use App\Dealcloser\Core\User\User;
 use Illuminate\Bus\Queueable;
+use App\Dealcloser\Core\User\User;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
 class Registration extends Notification implements ShouldQueue
 {

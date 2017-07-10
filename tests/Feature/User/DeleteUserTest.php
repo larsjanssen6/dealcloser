@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\User;
 
+use Tests\TestCase;
 use App\Dealcloser\Core\User\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Tests\TestCase;
 
 class DeleteUserTest extends TestCase
 {

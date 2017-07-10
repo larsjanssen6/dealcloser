@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Settings\Rights;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Spatie\Permission\Models\Role;
 use Tests\TestCase;
+use Spatie\Permission\Models\Role;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class RoleTest extends TestCase
 {

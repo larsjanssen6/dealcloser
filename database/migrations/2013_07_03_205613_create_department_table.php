@@ -1,9 +1,9 @@
 <?php
 
-use App\Dealcloser\Core\Department\Department;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+use App\Dealcloser\Core\Department\Department;
 
 class CreateDepartmentTable extends Migration
 {

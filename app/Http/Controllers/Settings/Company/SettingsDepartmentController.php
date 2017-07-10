@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Settings\Company;
 
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Dealcloser\Core\Department\Department;
 use App\Dealcloser\Interfaces\Repositories\IDepartmentRepo;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class SettingsDepartmentController extends Controller
 {

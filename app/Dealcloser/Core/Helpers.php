@@ -1,11 +1,11 @@
 <?php
 
-use App\Dealcloser\Core\Settings\Settings;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
+use App\Dealcloser\Core\Settings\Settings;
 
-if (!function_exists('setActive')) {
+if (! function_exists('setActive')) {
     /**
      * @param $path
      * @param string $active
@@ -18,7 +18,7 @@ if (!function_exists('setActive')) {
     }
 }
 
-if (!function_exists('settings')) {
+if (! function_exists('settings')) {
     /**
      * @return mixed
      */
@@ -30,7 +30,7 @@ if (!function_exists('settings')) {
     }
 }
 
-if (!function_exists('appIsActive')) {
+if (! function_exists('appIsActive')) {
     function appIsActive($date, $user)
     {
         if (is_null($date) || $date > Carbon::now() || $user->hasPermissionTo('application-is-always-active')) {

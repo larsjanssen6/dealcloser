@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Dealcloser\Interfaces\Repositories\IUserRepo;
+use Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\ActivationRequest;
-use Auth;
+use App\Dealcloser\Interfaces\Repositories\IUserRepo;
 
 class ActivationController extends Controller
 {

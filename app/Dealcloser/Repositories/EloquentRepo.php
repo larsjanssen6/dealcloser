@@ -2,9 +2,9 @@
 
 namespace App\Dealcloser\Repositories;
 
+use stdClass;
 use App\Dealcloser\Interfaces\Repositories\IRepo;
 use Illuminate\Cache\Repository as CacheRepository;
-use stdClass;
 
 abstract class EloquentRepo implements IRepo
 {

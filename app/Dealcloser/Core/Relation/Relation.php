@@ -2,10 +2,10 @@
 
 namespace App\Dealcloser\Core\Relation;
 
-use App\Dealcloser\Traits\Categorizable;
-use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use Illuminate\Database\Eloquent\Model;
+use App\Dealcloser\Traits\Categorizable;
 
 class Relation extends Model
 {

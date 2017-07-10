@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Dealcloser\Core\User\User;
-use App\Dealcloser\Interfaces\Repositories\IDepartmentRepo;
+use App\Http\Controllers\Controller;
+use Illuminate\Pagination\Paginator;
+use App\Http\Requests\User\UserRequest;
 use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
 use App\Dealcloser\Interfaces\Repositories\IUserRepo;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\User\UserRequest;
-use Illuminate\Pagination\Paginator;
+use App\Dealcloser\Interfaces\Repositories\IDepartmentRepo;
 
 class UserController extends Controller
 {
