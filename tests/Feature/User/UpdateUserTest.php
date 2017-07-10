@@ -23,23 +23,23 @@ class UpdateUserTest extends TestCase
         $role = create(Role::class);
 
         $toUpdate = [
-            'id' => $user->id,
-            'name' => 'lars',
-            'last_name' => 'janssen',
-            'email' => 'lars@domain.com',
-            'function' => 'Ontwikkelaar',
-            'active' => 1,
+            'id'            => $user->id,
+            'name'          => 'lars',
+            'last_name'     => 'janssen',
+            'email'         => 'lars@domain.com',
+            'function'      => 'Ontwikkelaar',
+            'active'        => 1,
             'department_id' => $department->id,
-            'role' => $role->name
+            'role'          => $role->name,
         ];
 
-        $this->actingAs($this->user)->patchJson('/gebruikers/' . $user->id, $toUpdate)
+        $this->actingAs($this->user)->patchJson('/gebruikers/'.$user->id, $toUpdate)
             ->assertJson(['status' => 'Geupdatet']);
 
         $this->assertDatabaseHas('model_has_roles', [
-            'role_id' => $role->id,
-            'model_id' => $toUpdate['id'],
-            'model_type' => 'App\Dealcloser\Core\User\User'
+            'role_id'    => $role->id,
+            'model_id'   => $toUpdate['id'],
+            'model_type' => 'App\Dealcloser\Core\User\User',
         ]);
 
         $toUpdate = collect($toUpdate)
@@ -57,18 +57,17 @@ class UpdateUserTest extends TestCase
         $role = create(Role::class);
 
         $toUpdate = [
-            'id' => $user->id,
-            'name' => 'lars',
-            'last_name' => 'janssen',
-            'email' => 'lars@domain.com',
-            'function' => 'Ontwikkelaar',
-            'active' => 1,
+            'id'            => $user->id,
+            'name'          => 'lars',
+            'last_name'     => 'janssen',
+            'email'         => 'lars@domain.com',
+            'function'      => 'Ontwikkelaar',
+            'active'        => 1,
             'department_id' => $department->id,
-            'role' => $role->name
+            'role'          => $role->name,
         ];
 
-        $this->actingAs($this->user)->patchJson('/gebruikers/' . $user->id, $toUpdate)
+        $this->actingAs($this->user)->patchJson('/gebruikers/'.$user->id, $toUpdate)
             ->assertJson(['status' => 'Niet geautoriseerd!']);
     }
 }
-

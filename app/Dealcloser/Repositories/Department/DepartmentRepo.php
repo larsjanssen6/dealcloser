@@ -19,7 +19,7 @@ class DepartmentRepo extends EloquentRepo implements IDepartmentRepo
     }
 
     /**
-     * A department has users
+     * A department has users.
      *
      * @return bool
      */
@@ -28,4 +28,3 @@ class DepartmentRepo extends EloquentRepo implements IDepartmentRepo
         return $this->_model->find($id)->users()->count() > 0;
     }
 }
-

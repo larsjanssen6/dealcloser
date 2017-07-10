@@ -23,6 +23,7 @@ class UserRepo extends EloquentRepo implements IUserRepo
      *
      * @param $id
      * @param array $request
+     *
      * @return bool|mixed|void
      */
     public function update($id, array $request)
@@ -35,19 +36,20 @@ class UserRepo extends EloquentRepo implements IUserRepo
     }
 
     /**
-     * Activate user
+     * Activate user.
      *
      * @param $token
      * @param $password
+     *
      * @return User $user
      */
     public function activate($token, $password)
     {
         return tap($this->findBy('confirmation_code', $token), function ($user) use ($password) {
             $user->update([
-                'active' => true,
+                'active'            => true,
                 'confirmation_code' => null,
-                'password' => bcrypt($password)
+                'password'          => bcrypt($password),
             ]);
         });
     }

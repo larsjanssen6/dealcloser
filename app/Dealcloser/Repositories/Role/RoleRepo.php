@@ -18,4 +18,3 @@ class RoleRepo extends EloquentRepo implements IRoleRepo
         return Role::class;
     }
 }
-

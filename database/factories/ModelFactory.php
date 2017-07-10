@@ -15,19 +15,19 @@
 $factory->define(\Spatie\Permission\Models\Permission::class, function (Faker\Generator $faker) {
     return [
         'name'              => $faker->name,
-        'guard_name'        => 'web'
+        'guard_name'        => 'web',
     ];
 });
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/* @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(\Spatie\Permission\Models\Role::class, function (Faker\Generator $faker) {
     return [
         'name'              => $faker->name,
-        'guard_name'        => 'web'
+        'guard_name'        => 'web',
     ];
 });
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/* @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Dealcloser\Core\User\User::class, function (Faker\Generator $faker) {
     static $password;
 
@@ -61,7 +61,7 @@ $factory->define(App\Dealcloser\Core\Settings\Settings::class, function (Faker\G
 /* @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(\App\Dealcloser\Core\Department\Department::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name
+        'name' => $faker->name,
     ];
 });
 
@@ -75,7 +75,7 @@ $factory->define(\App\Dealcloser\Core\Relation\Relation::class, function (Faker\
         'state_code'        => 'ZH',
         'street'            => $faker->streetName,
         'house_number'      => $faker->numberBetween(1, 10),
-        'sales_area'        => "Noord holland",
+        'sales_area'        => 'Noord holland',
         'zip'               => $faker->postcode,
         'town'              => $faker->city,
         'phone'             => $faker->phoneNumber,
@@ -84,4 +84,3 @@ $factory->define(\App\Dealcloser\Core\Relation\Relation::class, function (Faker\
         'website'           => $faker->text(10),
     ];
 });
-

@@ -7,7 +7,7 @@ use App\Dealcloser\Core\Settings\Category;
 trait Categorizable
 {
     /**
-     * Make model categorizable
+     * Make model categorizable.
      *
      * @return mixed
      */

@@ -13,32 +13,32 @@ use Illuminate\Pagination\Paginator;
 class RelationController extends Controller
 {
     /**
-     * IRelationRepo implementation
+     * IRelationRepo implementation.
      *
      * @var IRelationRepo
      */
     private $relationRepo;
 
     /**
-     * ICategory implementation
+     * ICategory implementation.
      *
      * @var ICategoryRepo
      */
     private $categoryRepo;
 
     /**
-     * CountryState implementation
+     * CountryState implementation.
      *
      * @var CountryState
      */
     private $countryState;
 
     /**
-     * Create a new controller instance. 
+     * Create a new controller instance.
      *
      * @param IRelationRepo $relationRepo
      * @param ICategoryRepo $categoryRepo
-     * @param CountryState $countryState
+     * @param CountryState  $countryState
      */
     public function __construct(IRelationRepo $relationRepo, ICategoryRepo $categoryRepo, CountryState $countryState)
     {
@@ -57,9 +57,9 @@ class RelationController extends Controller
     public function index()
     {
         return view('relation.index')->with([
-            'relations' => $this->relationRepo->paginate(Paginator::resolveCurrentPage(), ['category']),
+            'relations'  => $this->relationRepo->paginate(Paginator::resolveCurrentPage(), ['category']),
             'categories' => $this->categoryRepo->findAll('model_type', Relation::class),
-            'countries' => collect($this->countryState->getCountries())
+            'countries'  => collect($this->countryState->getCountries()),
         ]);
     }
 
@@ -72,7 +72,7 @@ class RelationController extends Controller
     {
         return view('relation.create')->with([
             'categories' => $this->categoryRepo->findAll('model_type', Relation::class),
-            'countries' => collect($this->countryState->getCountries()),
+            'countries'  => collect($this->countryState->getCountries()),
         ]);
     }
 
@@ -80,6 +80,7 @@ class RelationController extends Controller
      * Store a user.
      *
      * @param RelationRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(RelationRequest $request)
@@ -92,12 +93,14 @@ class RelationController extends Controller
 
     /**
      * @param RelationRequest $request
-     * @param Relation $relation
+     * @param Relation        $relation
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function update(RelationRequest $request, Relation $relation)
     {
         $this->relationRepo->update($relation->id, $request->all());
+
         return response()->json(['status' => 'Geupdatet']);
     }
 }

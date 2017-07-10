@@ -59,4 +59,3 @@ class UpdateCompanyAdministrationTest extends TestCase
         $this->assertDatabaseMissing('settings', $settings);
     }
 }
-

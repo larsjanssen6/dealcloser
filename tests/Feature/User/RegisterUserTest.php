@@ -43,15 +43,15 @@ class RegisterUserTest extends TestCase
             ->assertSessionHas(['status' => 'Gebruiker geregistreerd e-mail succesvol verzonden']);
 
         $this->assertDatabaseHas('user', [
-            'name' => $user['name'],
+            'name'      => $user['name'],
             'last_name' => $user['last_name'],
-            'email' => $user['email']
+            'email'     => $user['email'],
         ]);
 
         $this->assertDatabaseHas('model_has_roles', [
-            'role_id' => 1,
-            'model_id' => $this->user->id + 1,
-            'model_type' => 'App\Dealcloser\Core\User\User'
+            'role_id'    => 1,
+            'model_id'   => $this->user->id + 1,
+            'model_type' => 'App\Dealcloser\Core\User\User',
         ]);
     }
 
@@ -82,7 +82,7 @@ class RegisterUserTest extends TestCase
         $this->actingAs($this->user)->post('/gebruikers/registreer', $user)
             ->assertSessionHas([
                 'status' => 'Het gebruikers limiet is bereikt. Contacteer de beheerder.',
-                'class' => 'is-danger'
+                'class'  => 'is-danger',
             ]);
     }
 
@@ -91,8 +91,8 @@ class RegisterUserTest extends TestCase
     {
         $user = create(User::class);
 
-        $this->actingAs($this->user)->get('/registreer/' . $user->confirmation_code)
-            ->assertSee("Activeer account");
+        $this->actingAs($this->user)->get('/registreer/'.$user->confirmation_code)
+            ->assertSee('Activeer account');
     }
 
     /** @test */
@@ -109,11 +109,11 @@ class RegisterUserTest extends TestCase
         $user = create(User::class);
 
         $data = [
-            'password' => 'secret',
-            'password_confirmation' => 'secret'
+            'password'              => 'secret',
+            'password_confirmation' => 'secret',
         ];
 
-        $this->actingAs($this->user)->post('/registreer/' . $user->confirmation_code, $data)
+        $this->actingAs($this->user)->post('/registreer/'.$user->confirmation_code, $data)
             ->assertRedirect('/dashboard')
             ->assertSessionHas(['status' => 'Welkom uw account is geactiveerd']);
     }
@@ -124,8 +124,8 @@ class RegisterUserTest extends TestCase
         create(User::class);
 
         $data = [
-            'password' => 'secret',
-            'password_confirmation' => 'secret'
+            'password'              => 'secret',
+            'password_confirmation' => 'secret',
         ];
 
         $this->actingAs($this->user)->post('/registreer/incorrect-confirmation-code', $data)
@@ -133,4 +133,3 @@ class RegisterUserTest extends TestCase
             ->assertSessionHas(['status' => 'Niet geautoriseerd!']);
     }
 }
-

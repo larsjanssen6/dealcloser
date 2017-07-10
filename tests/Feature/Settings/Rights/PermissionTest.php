@@ -35,13 +35,13 @@ class PermissionTest extends TestCase
         $this->user->assignRole($this->superAdminRole->name);
 
         $this->actingAs($this->user)
-            ->get(sprintf("/instellingen/bedrijf/permissie/update?role=%s&permission=%s",
+            ->get(sprintf('/instellingen/bedrijf/permissie/update?role=%s&permission=%s',
                 $this->superAdminRole->id,
                 $this->permissions['register-users']))
             ->assertSessionHas('status', 'Permissie toegevoegd');
 
         $this->assertDatabaseHas('role_has_permissions', [
-            'role_id' => $this->superAdminRole->id,
+            'role_id'       => $this->superAdminRole->id,
             'permission_id' => Permission::where('name', $this->permissions['register-users'])->first()->id,
         ]);
     }
@@ -50,7 +50,7 @@ class PermissionTest extends TestCase
     public function a_user_with_not_the_right_permission_can_not_assign_permission_to_role()
     {
         $this->actingAs($this->user)
-            ->get(sprintf("/instellingen/bedrijf/permissie/update?role=%s&permission=%s",
+            ->get(sprintf('/instellingen/bedrijf/permissie/update?role=%s&permission=%s',
                 $this->superAdminRole->id,
                 $this->permissions['register-users']))
             ->assertRedirect('/')
@@ -66,12 +66,12 @@ class PermissionTest extends TestCase
         $this->user->assignRole($this->superAdminRole->name);
 
         $this->actingAs($this->user)
-            ->get(sprintf("/instellingen/bedrijf/permissie/update?role=%s&permission=%s",
+            ->get(sprintf('/instellingen/bedrijf/permissie/update?role=%s&permission=%s',
                 $this->superAdminRole->id, $this->permissions['register-users']))
             ->assertSessionHas('status', 'Permissie ingetrokken');
 
         $this->assertDatabaseMissing('role_has_permissions', [
-            'role_id' => $this->superAdminRole->id,
+            'role_id'       => $this->superAdminRole->id,
             'permission_id' => Permission::where('name', $this->permissions['register-users'])->first()->id,
         ]);
     }
@@ -82,9 +82,8 @@ class PermissionTest extends TestCase
         $this->superAdminRole->givePermissionTo($this->permissions['register-users']);
 
         $this->actingAs($this->user)
-            ->get(sprintf("/instellingen/bedrijf/permissie/update?role=%s&permission=%s",
+            ->get(sprintf('/instellingen/bedrijf/permissie/update?role=%s&permission=%s',
                 $this->superAdminRole->id, $this->permissions['register-users']))
             ->assertSessionHas('status', 'Niet geautoriseerd!');
     }
 }
-

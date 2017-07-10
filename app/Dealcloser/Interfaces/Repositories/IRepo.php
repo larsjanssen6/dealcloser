@@ -5,14 +5,17 @@ namespace App\Dealcloser\Interfaces\Repositories;
 interface IRepo
 {
     /**
-     * Get all
+     * Get all.
+     *
      * @return mixed
      */
     public function getAll();
 
     /**
-     * Get one
+     * Get one.
+     *
      * @param $id
+     *
      * @return mixed
      */
     public function find($id);
@@ -20,6 +23,7 @@ interface IRepo
     /**
      * @param $column
      * @param $value
+     *
      * @return mixed
      */
     public function findBy($column, $value);
@@ -28,29 +32,35 @@ interface IRepo
      * @param $column
      * @param $value
      * @param $with
+     *
      * @return mixed
      */
     public function findAll($column, $value, $with);
 
-
     /**
-     * Create
+     * Create.
+     *
      * @param array $attributes
+     *
      * @return mixed
      */
     public function create(array $attributes);
 
     /**
-     * Update
+     * Update.
+     *
      * @param $id
      * @param array $attributes
+     *
      * @return mixed
      */
     public function update($id, array $attributes);
 
     /**
-     * Delete
+     * Delete.
+     *
      * @param $id
+     *
      * @return mixed
      */
     public function delete($id);
