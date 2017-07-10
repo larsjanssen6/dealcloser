@@ -86,14 +86,16 @@ class UserController extends Controller
     }
 
     /**
-     * Destroy a user
+     * Destroy a user.
      *
      * @param User $user
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(User $user)
     {
         $this->userRepo->delete($user->id);
+
         return response()->json(['status' => 'Verwijderd']);
     }
 }

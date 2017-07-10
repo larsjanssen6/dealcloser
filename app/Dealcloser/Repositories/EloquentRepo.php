@@ -52,6 +52,7 @@ abstract class EloquentRepo implements IRepo
      * Get all.
      *
      * @param array $with
+     *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function getAll($with = [])

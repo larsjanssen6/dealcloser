@@ -83,26 +83,26 @@ class CreateRelationTables extends Migration
         Permission::create([
             'name'                      => 'edit-company-settings',
             'description'               => 'Bedrijfsinformatie',
-            'category_id'               => $settings->id
+            'category_id'               => $settings->id,
 
         ]);
 
         Permission::create([
             'name'                      => 'edit-usage-settings',
             'description'               => 'Gebruik',
-            'category_id'               => $settings->id
+            'category_id'               => $settings->id,
         ]);
 
         Permission::create([
             'name'                      => 'edit-role-settings',
             'description'               => 'Rollen',
-            'category_id'               => $settings->id
+            'category_id'               => $settings->id,
         ]);
 
         Permission::create([
             'name'                      => 'edit-permission-settings',
             'description'               => 'Permissies',
-            'category_id'               => $settings->id
+            'category_id'               => $settings->id,
         ]);
 
         Permission::create([
@@ -120,7 +120,7 @@ class CreateRelationTables extends Migration
         Permission::create([
             'name'                      => 'edit-users',
             'description'               => 'Bewerk/verwijder gebruikers',
-            'category_id'               => $user->id
+            'category_id'               => $user->id,
         ]);
 
         Permission::create([
@@ -132,7 +132,7 @@ class CreateRelationTables extends Migration
         Permission::create([
             'name'                      => 'edit-relations',
             'description'               => 'Bewerk/verwijder relaties',
-            'category_id'               => $relation->id
+            'category_id'               => $relation->id,
         ]);
     }
 

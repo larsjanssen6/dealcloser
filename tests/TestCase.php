@@ -46,9 +46,9 @@ abstract class TestCase extends BaseTestCase
             'edit-role-settings'           => 'edit-role-settings',
             'edit-usage-settings'          => 'edit-usage-settings',
             'application-is-always-active' => 'application-is-always-active',
-            'edit-users' => 'edit-users',
-            'register-relations' => 'register-relations',
-            'edit-relations' => 'edit-relations'
+            'edit-users'                   => 'edit-users',
+            'register-relations'           => 'register-relations',
+            'edit-relations'               => 'edit-relations',
         ];
 
         $this->superAdminRole = Role::first();

@@ -19,7 +19,7 @@ class UpdateRelationTest extends TestCase
         $relation = create(Relation::class);
         $toUpdate = collect(make(Relation::class))->merge(['id' => $relation->id])->toArray();
 
-        $this->actingAs($this->user)->patchJson('/relaties/' . $relation->id, $toUpdate)
+        $this->actingAs($this->user)->patchJson('/relaties/'.$relation->id, $toUpdate)
             ->assertJson(['status' => 'Geupdatet']);
 
         $this->assertDatabaseHas('relation', $toUpdate);
@@ -31,8 +31,7 @@ class UpdateRelationTest extends TestCase
         $relation = create(Relation::class);
         $toUpdate = collect(make(Relation::class))->merge(['id' => $relation->id])->toArray();
 
-        $this->actingAs($this->user)->patchJson('/relaties/' . $relation->id, $toUpdate)
+        $this->actingAs($this->user)->patchJson('/relaties/'.$relation->id, $toUpdate)
             ->assertJson(['status' => 'Niet geautoriseerd!']);
     }
 }
-

@@ -19,10 +19,10 @@ class DeleteRelationTest extends TestCase
         $relation = create(Relation::class);
         $total = Relation::count();
 
-        $this->actingAs($this->user)->deleteJson('/relaties/' . $relation->id)
+        $this->actingAs($this->user)->deleteJson('/relaties/'.$relation->id)
             ->assertJson(['status' => 'Verwijderd']);
 
-        $this->assertEquals($total -1, Relation::count());
+        $this->assertEquals($total - 1, Relation::count());
         $this->assertDatabaseMissing('relation', $relation->toArray());
     }
 
@@ -32,11 +32,10 @@ class DeleteRelationTest extends TestCase
         $relation = create(Relation::class);
         $total = Relation::count();
 
-        $this->actingAs($this->user)->deleteJson('/relaties/' . $relation->id)
-            ->assertJson(["status" => "Niet geautoriseerd!"]);
+        $this->actingAs($this->user)->deleteJson('/relaties/'.$relation->id)
+            ->assertJson(['status' => 'Niet geautoriseerd!']);
 
         $this->assertEquals($total, Relation::count());
         $this->assertDatabaseHas('relation', $relation->toArray());
     }
 }
-
