@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Settings\Department;
 
+use Tests\TestCase;
 use App\Dealcloser\Core\Department\Department;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Tests\TestCase;
 
 class DepartmentTest extends TestCase
 {

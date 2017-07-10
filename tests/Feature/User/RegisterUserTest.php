@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\User;
 
-use App\Dealcloser\Core\Settings\Settings;
-use App\Dealcloser\Core\User\User;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
+use App\Dealcloser\Core\User\User;
+use App\Dealcloser\Core\Settings\Settings;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class RegisterUserTest extends TestCase
 {

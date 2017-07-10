@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Settings\Profile;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UpdateProfileTest extends TestCase
 {

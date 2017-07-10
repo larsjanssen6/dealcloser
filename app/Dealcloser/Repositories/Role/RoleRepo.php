@@ -2,9 +2,9 @@
 
 namespace App\Dealcloser\Repositories\Role;
 
-use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
-use App\Dealcloser\Repositories\EloquentRepo;
 use Spatie\Permission\Models\Role;
+use App\Dealcloser\Repositories\EloquentRepo;
+use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
 
 class RoleRepo extends EloquentRepo implements IRoleRepo
 {

@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\User;
 
-use App\Dealcloser\Core\Department\Department;
-use App\Dealcloser\Core\User\User;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Spatie\Permission\Models\Role;
 use Tests\TestCase;
+use App\Dealcloser\Core\User\User;
+use Spatie\Permission\Models\Role;
+use App\Dealcloser\Core\Department\Department;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UpdateUserTest extends TestCase
 {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Settings\Usage;
 
-use App\Dealcloser\Core\Settings\Settings;
 use App\Http\Controllers\Controller;
+use App\Dealcloser\Core\Settings\Settings;
 use App\Http\Requests\Settings\Usage\UsageRequest;
 
 class SettingsUsageController extends Controller

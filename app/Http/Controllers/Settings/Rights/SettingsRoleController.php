@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Settings\Rights;
 
-use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
-use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
 
 class SettingsRoleController extends Controller
 {

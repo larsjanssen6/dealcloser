@@ -2,9 +2,9 @@
 
 namespace App\Dealcloser\Repositories\Department;
 
+use App\Dealcloser\Repositories\EloquentRepo;
 use App\Dealcloser\Core\Department\Department;
 use App\Dealcloser\Interfaces\Repositories\IDepartmentRepo;
-use App\Dealcloser\Repositories\EloquentRepo;
 
 class DepartmentRepo extends EloquentRepo implements IDepartmentRepo
 {
