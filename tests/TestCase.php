@@ -12,39 +12,39 @@ abstract class TestCase extends BaseTestCase
     use CreatesApplication;
 
     /**
-     * All permissions
+     * All permissions.
      *
      * @var
      */
     protected $permissions;
 
     /**
-     * User instance with super-admin role
+     * User instance with super-admin role.
      *
      * @var
      */
     protected $superAdminRole;
 
     /**
-     * User instance
+     * User instance.
      *
      * @var
      */
     protected $user;
 
     /**
-     * Test setup
+     * Test setup.
      */
     public function setup()
     {
         parent::setUp();
 
         $this->permissions = [
-            'register-users' => 'register-users',
-            'edit-company-settings' => 'edit-company-settings',
-            'edit-permission-settings' => 'edit-permission-settings',
-            'edit-role-settings' => 'edit-role-settings',
-            'edit-usage-settings' => 'edit-usage-settings',
+            'register-users'               => 'register-users',
+            'edit-company-settings'        => 'edit-company-settings',
+            'edit-permission-settings'     => 'edit-permission-settings',
+            'edit-role-settings'           => 'edit-role-settings',
+            'edit-usage-settings'          => 'edit-usage-settings',
             'application-is-always-active' => 'application-is-always-active',
             'edit-users' => 'edit-users',
             'register-relations' => 'register-relations',
@@ -76,6 +76,7 @@ abstract class TestCase extends BaseTestCase
     protected function reloadPermissions()
     {
         app(PermissionRegistrar::class)->forgetCachedPermissions();
+
         return app(PermissionRegistrar::class)->registerPermissions();
     }
 }

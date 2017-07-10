@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class SettingsDepartmentController extends Controller
 {
     /**
-     * IDepartmentRepo implementation
+     * IDepartmentRepo implementation.
      *
      * @var IDepartmentRepo
      */
@@ -36,14 +36,15 @@ class SettingsDepartmentController extends Controller
     public function index()
     {
         return view('settings.company.department.show')->with([
-            'departments' => $this->departmentRepo->getAll()
+            'departments' => $this->departmentRepo->getAll(),
         ]);
     }
 
     /**
-     * Store a department
+     * Store a department.
      *
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -57,15 +58,16 @@ class SettingsDepartmentController extends Controller
     }
 
     /**
-     * Update department
+     * Update department.
      *
-     * @param Request $request
+     * @param Request    $request
      * @param Department $department
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Department $department)
     {
-        $this->validate($request, ['name' => 'required|max:50|unique:department,name,' . $department->name . ',name']);
+        $this->validate($request, ['name' => 'required|max:50|unique:department,name,'.$department->name.',name']);
 
         $this->departmentRepo->update($department->id, $request->only('name'));
 
@@ -73,17 +75,17 @@ class SettingsDepartmentController extends Controller
     }
 
     /**
-     * Destroy department
+     * Destroy department.
      *
      * @param Department $department
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Department $department)
     {
-        if($this->departmentRepo->hasUsers($department->id))
-        {
+        if ($this->departmentRepo->hasUsers($department->id)) {
             return response()->json([
-                'status' => 'Er zijn nog gebruikers gekoppeld aan deze afdeling.'
+                'status' => 'Er zijn nog gebruikers gekoppeld aan deze afdeling.',
             ], 401);
         }
 

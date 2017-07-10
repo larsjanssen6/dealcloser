@@ -12,7 +12,7 @@ class PermissionMiddleware
      * right permission.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Closure $next
+     * @param \Closure                 $next
      * @param $permission
      *
      * @return mixed

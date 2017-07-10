@@ -65,4 +65,3 @@ class UpdateCompanyProfileTest extends TestCase
         $this->assertDatabaseMissing('settings', $settings);
     }
 }
-

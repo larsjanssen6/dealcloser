@@ -13,21 +13,21 @@ use Illuminate\Pagination\Paginator;
 class UserController extends Controller
 {
     /**
-     * IUserRepo implementation
+     * IUserRepo implementation.
      *
      * @var IUserRepo
      */
     private $userRepo;
 
     /**
-     * IDepartment implementation
+     * IDepartment implementation.
      *
      * @var IUserRepo
      */
     private $departmentRepo;
 
     /**
-     * IRoleRepo implementation
+     * IRoleRepo implementation.
      *
      * @var IUserRepo
      */
@@ -37,9 +37,9 @@ class UserController extends Controller
      * Create a new controller instance. Only users with permission
      * register-users have access to this controller.
      *
-     * @param IUserRepo $userRepo
+     * @param IUserRepo       $userRepo
      * @param IDepartmentRepo $departmentRepo
-     * @param IRoleRepo $roleRepo
+     * @param IRoleRepo       $roleRepo
      */
     public function __construct(IUserRepo $userRepo, IDepartmentRepo $departmentRepo, IRoleRepo $roleRepo)
     {
@@ -57,17 +57,18 @@ class UserController extends Controller
     public function index()
     {
         return view('user.index')->with([
-            'users' => $this->userRepo->paginate(Paginator::resolveCurrentPage(), ['department', 'roles']),
+            'users'       => $this->userRepo->paginate(Paginator::resolveCurrentPage(), ['department', 'roles']),
             'departments' => $this->departmentRepo->getAll(),
-            'roles' => $this->roleRepo->getAll()
+            'roles'       => $this->roleRepo->getAll(),
         ]);
     }
 
     /**
-     * Update user
+     * Update user.
      *
      * @param UserRequest $request
-     * @param User $user
+     * @param User        $user
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function update(UserRequest $request, User $user)

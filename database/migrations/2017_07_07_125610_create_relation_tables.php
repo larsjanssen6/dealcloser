@@ -2,9 +2,9 @@
 
 use App\Dealcloser\Core\Relation\Relation;
 use App\Dealcloser\Core\Settings\Category;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -48,17 +48,17 @@ class CreateRelationTables extends Migration
 
         $settings = Category::create([
             'name'          => 'Instellingen',
-            'model_type'    => Permission::class
+            'model_type'    => Permission::class,
         ]);
 
         $user = Category::create([
             'name'          => 'Gebruikers',
-            'model_type'    => Permission::class
+            'model_type'    => Permission::class,
         ]);
 
         $relation = Category::create([
             'name'          => 'Relaties',
-            'model_type'    => Permission::class
+            'model_type'    => Permission::class,
         ]);
 
         /*
@@ -66,8 +66,8 @@ class CreateRelationTables extends Migration
          */
 
         Category::create([
-            'name'      => 'Klant',
-            'model_type' => Relation::class
+            'name'       => 'Klant',
+            'model_type' => Relation::class,
         ]);
 
         /*
@@ -84,6 +84,7 @@ class CreateRelationTables extends Migration
             'name'                      => 'edit-company-settings',
             'description'               => 'Bedrijfsinformatie',
             'category_id'               => $settings->id
+
         ]);
 
         Permission::create([
@@ -107,13 +108,13 @@ class CreateRelationTables extends Migration
         Permission::create([
             'name'                      => 'application-is-always-active',
             'description'               => 'Applicatie is altijd actief voor',
-            'category_id'               => $settings->id
+            'category_id'               => $settings->id,
         ]);
 
         Permission::create([
             'name'                      => 'register-users',
             'description'               => 'Registreer gebruikers',
-            'category_id'               => $user->id
+            'category_id'               => $user->id,
         ]);
 
         Permission::create([
@@ -125,7 +126,7 @@ class CreateRelationTables extends Migration
         Permission::create([
             'name'                      => 'register-relations',
             'description'               => 'Registreer relaties',
-            'category_id'               => $relation->id
+            'category_id'               => $relation->id,
         ]);
 
         Permission::create([

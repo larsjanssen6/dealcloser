@@ -11,7 +11,7 @@ class CheckIfApplicationIsActive
      * incoming request.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Closure $next
+     * @param \Closure                 $next
      *
      * @return mixed
      */
@@ -26,7 +26,7 @@ class CheckIfApplicationIsActive
         return redirect('/')
             ->with([
                 'status' => 'Applicatie is niet actief, contacteer de beheerder',
-                'class' => 'is-danger'
+                'class'  => 'is-danger',
             ]);
     }
 }

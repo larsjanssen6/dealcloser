@@ -23,7 +23,7 @@ class Category extends Model
     protected $fillable = ['name', 'model_type'];
 
     /**
-     * A category belongs to many permissions
+     * A category belongs to many permissions.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

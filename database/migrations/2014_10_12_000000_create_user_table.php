@@ -41,7 +41,7 @@ class CreateUserTable extends Migration
             'password'          => bcrypt('secret'),
             'function'          => 'Ontwikkelaar',
             'department_id'     => 1,
-            'active'            => 1
+            'active'            => 1,
         ]);
     }
 

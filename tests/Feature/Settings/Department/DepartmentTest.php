@@ -35,10 +35,10 @@ class DepartmentTest extends TestCase
         $this->user->assignRole($this->superAdminRole->name);
 
         $department = [
-            "name" => 'Tech'
+            'name' => 'Tech',
         ];
 
-        $this->actingAs($this->user)->post("/instellingen/bedrijf/afdeling", $department)
+        $this->actingAs($this->user)->post('/instellingen/bedrijf/afdeling', $department)
             ->assertSessionHas('status', 'Afdeling aangemaakt!');
 
         $this->assertDatabaseHas('department', $department);
@@ -48,7 +48,7 @@ class DepartmentTest extends TestCase
     public function a_user_with_not_the_right_permission_can_not_create_a_department()
     {
         $department = [
-            "name" => 'Tech'
+            'name' => 'Tech',
         ];
 
         $this->actingAs($this->user)->post('/instellingen/bedrijf/afdeling', $department)
@@ -65,7 +65,7 @@ class DepartmentTest extends TestCase
         $this->user->assignRole($this->superAdminRole->name);
 
         $department = [
-            'name' => 'New role'
+            'name' => 'New role',
         ];
 
         $this->actingAs($this->user)->patchJson('instellingen/bedrijf/afdeling/1', $department)
@@ -78,7 +78,7 @@ class DepartmentTest extends TestCase
     public function a_user_with_not_the_right_permission_can_not_update_a_department()
     {
         $department = [
-            "name" => 'Tech'
+            'name' => 'Tech',
         ];
 
         $this->actingAs($this->user)->patchJson('/instellingen/bedrijf/afdeling/1', $department)
@@ -95,7 +95,7 @@ class DepartmentTest extends TestCase
 
         $department = create(Department::class, ['name' => 'Tech']);
 
-        $this->actingAs($this->user)->deleteJson('instellingen/bedrijf/afdeling/' . $department->id)
+        $this->actingAs($this->user)->deleteJson('instellingen/bedrijf/afdeling/'.$department->id)
             ->assertJson(['status' => 'Afdeling verwijderd.']);
 
         $this->assertDatabaseMissing('department', $department->toArray());
@@ -106,7 +106,7 @@ class DepartmentTest extends TestCase
     {
         $department = create(Department::class, ['name' => 'Tech']);
 
-        $this->actingAs($this->user)->deleteJson('instellingen/bedrijf/afdeling/' . $department->id)
+        $this->actingAs($this->user)->deleteJson('instellingen/bedrijf/afdeling/'.$department->id)
             ->assertJson(['status' => 'Niet geautoriseerd!']);
 
         $this->assertDatabaseHas('department', $department->toArray());
@@ -124,4 +124,3 @@ class DepartmentTest extends TestCase
             ->assertSessionHasErrors('name');
     }
 }
-

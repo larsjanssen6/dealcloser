@@ -35,7 +35,7 @@ class RoleTest extends TestCase
         $this->user->assignRole($this->superAdminRole->name);
 
         $role = [
-            'name' => 'Account-manager'
+            'name' => 'Account-manager',
         ];
 
         $this->actingAs($this->user)->post('/instellingen/bedrijf/role', $role)
@@ -48,7 +48,7 @@ class RoleTest extends TestCase
     public function a_user_with_not_the_right_permission_can_not_create_a_role()
     {
         $role = [
-            'name' => 'account-manager'
+            'name' => 'account-manager',
         ];
 
         $this->actingAs($this->user)->post('/instellingen/bedrijf/role', $role)
@@ -65,10 +65,10 @@ class RoleTest extends TestCase
         $this->user->assignRole($this->superAdminRole->name);
 
         $role = [
-            'name' => 'New role'
+            'name' => 'New role',
         ];
 
-        $this->actingAs($this->user)->patchJson('instellingen/bedrijf/role/' . $this->superAdminRole->id, $role)
+        $this->actingAs($this->user)->patchJson('instellingen/bedrijf/role/'.$this->superAdminRole->id, $role)
             ->assertJson(['status' => 'Rol geupdatet.']);
 
         $this->assertDatabaseHas('roles', $role);
@@ -78,10 +78,10 @@ class RoleTest extends TestCase
     public function a_user_with_not_the_right_permission_can_not_update_a_role()
     {
         $role = [
-            'name' => 'New role'
+            'name' => 'New role',
         ];
 
-        $this->actingAs($this->user)->patchJson('instellingen/bedrijf/role/' . $this->superAdminRole->id, $role)
+        $this->actingAs($this->user)->patchJson('instellingen/bedrijf/role/'.$this->superAdminRole->id, $role)
             ->assertJson(['status' => 'Niet geautoriseerd!']);
 
         $this->assertDatabaseMissing('roles', $role);
@@ -95,7 +95,7 @@ class RoleTest extends TestCase
 
         $role = create(Role::class, ['name' => 'admin']);
 
-        $this->actingAs($this->user)->deleteJson('instellingen/bedrijf/role/' . $role->id)
+        $this->actingAs($this->user)->deleteJson('instellingen/bedrijf/role/'.$role->id)
             ->assertJson(['status' => 'Rol verwijderd.']);
 
         $this->assertDatabaseMissing('roles', $role->toArray());
@@ -106,7 +106,7 @@ class RoleTest extends TestCase
     {
         $role = create(Role::class, ['name' => 'admin']);
 
-        $this->actingAs($this->user)->deleteJson('instellingen/bedrijf/role/' . $role->id)
+        $this->actingAs($this->user)->deleteJson('instellingen/bedrijf/role/'.$role->id)
             ->assertJson(['status' => 'Niet geautoriseerd!']);
 
         $this->assertDatabaseHas('roles', $role->toArray());
@@ -118,7 +118,7 @@ class RoleTest extends TestCase
         $this->superAdminRole->givePermissionTo($this->permissions['edit-role-settings']);
         $this->user->assignRole($this->superAdminRole->name);
 
-        $this->actingAs($this->user)->deleteJson('instellingen/bedrijf/role/' . $this->superAdminRole->id)
+        $this->actingAs($this->user)->deleteJson('instellingen/bedrijf/role/'.$this->superAdminRole->id)
             ->assertJson(['status' => 'U kunt deze rol niet verwijder. Koppel uzelf eerst aan een andere rol.']);
 
         $this->assertDatabaseHas('roles', $this->superAdminRole->toArray());
@@ -134,4 +134,3 @@ class RoleTest extends TestCase
             ->assertSessionHasErrors('name');
     }
 }
-

@@ -29,7 +29,7 @@ class RegisterRequest extends FormRequest
             'email'         => 'required|max:50|email|unique:user',
             'function'      => 'required|max:50|nullable',
             'role'          => 'required|exists:roles,name',
-            'department_id' => 'required|integer|exists:department,id'
+            'department_id' => 'required|integer|exists:department,id',
         ];
     }
 }

@@ -22,7 +22,7 @@ class Department extends Model
     protected $fillable = ['name', 'description'];
 
     /**
-     * A department belongs to a user
+     * A department belongs to a user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

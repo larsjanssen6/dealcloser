@@ -38,7 +38,6 @@ Route::get('instellingen/bedrijf/gebruik', 'Settings\Usage\SettingsUsageControll
 
 Route::patch('instellingen/bedrijf/gebruik', 'Settings\Usage\SettingsUsageController@update');
 
-
 /*
 |  User profile
 */
@@ -71,4 +70,3 @@ Route::post('instellingen/bedrijf/role', 'Settings\Rights\SettingsRoleController
 Route::patch('instellingen/bedrijf/role/{role}', 'Settings\Rights\SettingsRoleController@update');
 
 Route::delete('instellingen/bedrijf/role/{role}', 'Settings\Rights\SettingsRoleController@destroy');
-

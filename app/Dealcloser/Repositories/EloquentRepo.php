@@ -3,8 +3,8 @@
 namespace App\Dealcloser\Repositories;
 
 use App\Dealcloser\Interfaces\Repositories\IRepo;
-use stdClass;
 use Illuminate\Cache\Repository as CacheRepository;
+use stdClass;
 
 abstract class EloquentRepo implements IRepo
 {
@@ -14,7 +14,7 @@ abstract class EloquentRepo implements IRepo
     protected $_model;
 
     /**
-     * Cache repo
+     * Cache repo.
      *
      * @var
      */
@@ -65,11 +65,12 @@ abstract class EloquentRepo implements IRepo
      * Find.
      *
      * @param $id
+     *
      * @return mixed
      */
     public function find($id)
     {
-        return $this->cache->remember($this->getModel() . $id, 60, function () use ($id) {
+        return $this->cache->remember($this->getModel().$id, 60, function () use ($id) {
             return $this->findBy('id', $id);
         });
     }
@@ -79,6 +80,7 @@ abstract class EloquentRepo implements IRepo
      *
      * @param $column
      * @param $value
+     *
      * @return mixed
      */
     public function findBy($column, $value)
@@ -92,11 +94,12 @@ abstract class EloquentRepo implements IRepo
      * @param $column
      * @param $value
      * @param array $with
+     *
      * @return mixed
      */
     public function findAll($column, $value, $with = [])
     {
-        return $this->cache->remember($column . '__' . $value, 60, function () use ($column, $value, $with) {
+        return $this->cache->remember($column.'__'.$value, 60, function () use ($column, $value, $with) {
             return $this->_model->where($column, $value)->with($with)->get();
         });
     }
@@ -106,6 +109,7 @@ abstract class EloquentRepo implements IRepo
      *
      * @param $column
      * @param $value
+     *
      * @return mixed
      */
     public function exists($column, $value)
@@ -117,11 +121,13 @@ abstract class EloquentRepo implements IRepo
      * Create.
      *
      * @param array $attributes
+     *
      * @return mixed
      */
     public function create(array $attributes)
     {
         $this->cache->flush($this->getModel());
+
         return $this->_model->create($attributes);
     }
 
@@ -130,11 +136,15 @@ abstract class EloquentRepo implements IRepo
      *
      * @param $id
      * @param array $attributes
+     *
      * @return bool|mixed
      */
     public function update($id, array $attributes)
     {
         $result = $this->find($id);
+
+        $this->cache->flush($this->getModel());
+        $this->cache->flush($this->getModel().$id);
 
         if ($result) {
             $result->update($attributes);
@@ -151,6 +161,7 @@ abstract class EloquentRepo implements IRepo
      * Delete.
      *
      * @param $id
+     *
      * @return bool
      */
     public function delete($id)
@@ -158,10 +169,11 @@ abstract class EloquentRepo implements IRepo
         $result = $this->find($id);
 
         $this->cache->flush($this->getModel());
-        $this->cache->flush($this->getModel() . $id);
+        $this->cache->flush($this->getModel().$id);
 
         if ($result) {
             $result->delete();
+
             return true;
         }
 
@@ -182,6 +194,7 @@ abstract class EloquentRepo implements IRepo
      * Make a new instance of the entity to query on.
      *
      * @param array $with
+     *
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function make(array $with = [])
@@ -193,7 +206,8 @@ abstract class EloquentRepo implements IRepo
      * Return all results that have a required relationship.
      *
      * @param string $relation
-     * @param array $with
+     * @param array  $with
+     *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function has($relation, array $with = [])
@@ -206,13 +220,14 @@ abstract class EloquentRepo implements IRepo
     /**
      * Get Results by Page.
      *
-     * @param int $page
+     * @param int   $page
      * @param array $with
+     *
      * @return StdClass Object with $items and $totalItems for pagination
      */
     public function paginate($page, $with = [])
     {
-        return $this->cache->remember($this->getModel() . '_page_' . $page, 60, function () use ($with) {
+        return $this->cache->remember($this->getModel().'_page_'.$page, 60, function () use ($with) {
             return $this->_model
                 ->with($with)
                 ->latest()
