@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Settings\Company;
 
-use App\Dealcloser\Core\Settings\Settings;
 use App\Http\Controllers\Controller;
+use App\Dealcloser\Core\Settings\Settings;
 use App\Http\Requests\Settings\Company\ProfileRequest;
 
 class SettingsProfileController extends Controller

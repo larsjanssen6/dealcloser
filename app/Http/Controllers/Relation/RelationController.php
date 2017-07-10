@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Relation;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Pagination\Paginator;
+use DougSisk\CountryState\CountryState;
 use App\Dealcloser\Core\Relation\Relation;
+use App\Http\Requests\Relation\RelationRequest;
 use App\Dealcloser\Interfaces\Repositories\ICategoryRepo;
 use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Relation\RelationRequest;
-use DougSisk\CountryState\CountryState;
-use Illuminate\Pagination\Paginator;
 
 class RelationController extends Controller
 {

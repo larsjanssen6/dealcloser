@@ -3,8 +3,8 @@
 namespace App\Dealcloser\Repositories\Relation;
 
 use App\Dealcloser\Core\Relation\Relation;
-use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
 use App\Dealcloser\Repositories\EloquentRepo;
+use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
 
 class RelationRepo extends EloquentRepo implements IRelationRepo
 {

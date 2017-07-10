@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Relation;
 
+use Tests\TestCase;
 use App\Dealcloser\Core\Relation\Relation;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Tests\TestCase;
 
 class DeleteRelationTest extends TestCase
 {

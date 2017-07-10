@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Settings\User;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Http\FormRequest;
 
 class ProfileRequest extends FormRequest
 {

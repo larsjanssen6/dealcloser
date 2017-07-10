@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Settings\Rights;
 
-use App\Dealcloser\Interfaces\Repositories\ICategoryRepo;
-use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Settings\Rights\PermissionRequest;
 use Spatie\Permission\Models\Permission;
+use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
+use App\Http\Requests\Settings\Rights\PermissionRequest;
+use App\Dealcloser\Interfaces\Repositories\ICategoryRepo;
 
 class SettingsPermissionController extends Controller
 {
