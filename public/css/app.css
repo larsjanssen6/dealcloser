@@ -40,6 +40,11 @@ footer {
 .menu-list li {
   border-bottom: 1px dashed #d7d7d7;
 }
+.bar {
+  background: -webkit-gradient(linear, left top, right top, from(#e15151), to(#2e5bb3));
+  background: linear-gradient(90deg, #e15151, #2e5bb3);
+  height: 6px;
+}
 .input,
 .textarea {
   padding: 0 15px;
@@ -56,6 +61,9 @@ footer {
 }
 .title {
   font-size: 3rem;
+}
+.hero {
+  background: url("/img/header-bg.svg") #373e45;
 }
 .modal-content {
   overflow: hidden;
