@@ -57,9 +57,7 @@ abstract class EloquentRepo implements IRepo
      */
     public function getAll($with = [])
     {
-        return $this->cache->remember($this->getModel(), 60, function () use ($with) {
-            return $this->_model->with($with)->get();
-        });
+        return $this->_model->with($with)->get();
     }
 
     /**
@@ -71,14 +69,13 @@ abstract class EloquentRepo implements IRepo
      */
     public function find($id)
     {
-        return $this->cache->remember($this->getModel().$id, 60, function () use ($id) {
-            return $this->findBy('id', $id);
-        });
+        return $this->findBy('id', $id);
     }
 
     /**
      * Find first by column and value.
      *
+
      * @param $column
      * @param $value
      *
@@ -100,9 +97,7 @@ abstract class EloquentRepo implements IRepo
      */
     public function findAll($column, $value, $with = [])
     {
-        return $this->cache->remember($column.'__'.$value, 60, function () use ($column, $value, $with) {
-            return $this->_model->where($column, $value)->with($with)->get();
-        });
+        return $this->_model->where($column, $value)->with($with)->get();
     }
 
     /**
@@ -127,8 +122,6 @@ abstract class EloquentRepo implements IRepo
      */
     public function create(array $attributes)
     {
-        $this->cache->flush($this->getModel());
-
         return $this->_model->create($attributes);
     }
 
@@ -144,13 +137,8 @@ abstract class EloquentRepo implements IRepo
     {
         $result = $this->find($id);
 
-        $this->cache->flush($this->getModel());
-        $this->cache->flush($this->getModel().$id);
-
         if ($result) {
             $result->update($attributes);
-
-            $this->cache->flush($this->getModel());
 
             return $result;
         }
@@ -168,9 +156,6 @@ abstract class EloquentRepo implements IRepo
     public function delete($id)
     {
         $result = $this->find($id);
-
-        $this->cache->flush($this->getModel());
-        $this->cache->flush($this->getModel().$id);
 
         if ($result) {
             $result->delete();
@@ -221,18 +206,16 @@ abstract class EloquentRepo implements IRepo
     /**
      * Get Results by Page.
      *
-     * @param int   $page
+     * @param int $page
      * @param array $with
      *
-     * @return StdClass Object with $items and $totalItems for pagination
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function paginate($page, $with = [])
     {
-        return $this->cache->remember($this->getModel().'_page_'.$page, 60, function () use ($with) {
-            return $this->_model
-                ->with($with)
-                ->latest()
-                ->paginate(10);
-        });
+        return $this->_model
+            ->with($with)
+            ->latest()
+            ->paginate(10);
     }
 }
