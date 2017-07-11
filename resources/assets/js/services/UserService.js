@@ -1,7 +1,6 @@
 export default {
     update(user) {
-        user._method = "PATCH";
-        return axios.post('/gebruikers/' + user.id, user);
+        return axios.patch('/gebruikers/' + user.id, user);
     },
 
     destroy(id) {
