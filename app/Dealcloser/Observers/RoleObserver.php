@@ -2,8 +2,8 @@
 
 namespace App\Dealcloser\Observers;
 
-use Illuminate\Cache\Repository as CacheRepository;
 use Spatie\Permission\Models\Role;
+use Illuminate\Cache\Repository as CacheRepository;
 
 class RoleObserver
 {

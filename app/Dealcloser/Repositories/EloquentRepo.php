@@ -56,7 +56,7 @@ abstract class EloquentRepo implements IRepo
      */
     public function getAll($with = [])
     {
-        return $this->cache->tags($this->getModel())->remember($this->getModel() . '|get-all|', 60, function () use ($with) {
+        return $this->cache->tags($this->getModel())->remember($this->getModel().'|get-all|', 60, function () use ($with) {
             return $this->_model->with($with)->get();
         });
     }
@@ -70,7 +70,7 @@ abstract class EloquentRepo implements IRepo
      */
     public function find($id)
     {
-        return $this->cache->tags($this->getModel())->remember($this->getModel() . '|find|' . $id, 60, function () use ($id) {
+        return $this->cache->tags($this->getModel())->remember($this->getModel().'|find|'.$id, 60, function () use ($id) {
             return $this->findBy('id', $id);
         });
     }
@@ -86,7 +86,7 @@ abstract class EloquentRepo implements IRepo
      */
     public function findBy($column, $value)
     {
-        return $this->cache->tags($this->getModel())->remember($this->getModel() . '|find_by|' . $column . '|' . $value, 60, function () use ($column, $value) {
+        return $this->cache->tags($this->getModel())->remember($this->getModel().'|find_by|'.$column.'|'.$value, 60, function () use ($column, $value) {
             return $this->_model->where($column, $value)->first();
         });
     }
@@ -102,7 +102,7 @@ abstract class EloquentRepo implements IRepo
      */
     public function findAll($column, $value, $with = [])
     {
-        return $this->cache->tags($this->getModel())->remember($this->getModel() . '|find_all|' . $column . '|' . $value, 60, function () use ($column, $value, $with) {
+        return $this->cache->tags($this->getModel())->remember($this->getModel().'|find_all|'.$column.'|'.$value, 60, function () use ($column, $value, $with) {
             return $this->_model->where($column, $value)->with($with)->get();
         });
     }
@@ -117,7 +117,7 @@ abstract class EloquentRepo implements IRepo
      */
     public function exists($column, $value)
     {
-        return $this->cache->tags($this->getModel())->remember($this->getModel() . '|exists|' . $column . '|' . $value, 60, function () use ($column, $value) {
+        return $this->cache->tags($this->getModel())->remember($this->getModel().'|exists|'.$column.'|'.$value, 60, function () use ($column, $value) {
             return $this->_model->where($column, $value)->exists();
         });
     }
@@ -182,7 +182,7 @@ abstract class EloquentRepo implements IRepo
      */
     public function count()
     {
-        return $this->cache->tags($this->getModel())->remember($this->getModel() . '|count|', 60, function () use ($count) {
+        return $this->cache->tags($this->getModel())->remember($this->getModel().'|count|', 60, function () use ($count) {
             return $this->_model->count();
         });
     }
@@ -224,7 +224,7 @@ abstract class EloquentRepo implements IRepo
      */
     public function paginate($page, $with = [])
     {
-        return $this->cache->tags($this->getModel())->remember($this->getModel() . '|paginate|' . $page, 60, function () use ($page, $with) {
+        return $this->cache->tags($this->getModel())->remember($this->getModel().'|paginate|'.$page, 60, function () use ($page, $with) {
             return $this->_model
                 ->with($with)
                 ->latest()
