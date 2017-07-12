@@ -182,7 +182,7 @@ abstract class EloquentRepo implements IRepo
      */
     public function count()
     {
-        return $this->cache->tags($this->getModel())->remember($this->getModel().'|count|', 60, function () use ($count) {
+        return $this->cache->tags($this->getModel())->remember($this->getModel().'|count|', 60, function () {
             return $this->_model->count();
         });
     }
