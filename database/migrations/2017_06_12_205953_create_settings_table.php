@@ -15,40 +15,40 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 50)
+            $table->string('name')
                 ->nullable();
 
-            $table->string('email', 50)
+            $table->string('email')
                 ->nullable();
 
-            $table->string('phone', 20)
+            $table->integer('phone')
                 ->nullable();
 
-            $table->string('website', 50)
+            $table->string('website')
                 ->nullable();
 
-            $table->text('description', 500)
+            $table->text('description')
                 ->nullable();
 
-            $table->string('address', 30)
+            $table->string('address')
                 ->nullable();
 
-            $table->string('zip', 10)
+            $table->string('zip')
                 ->nullable();
 
-            $table->string('city', 30)
+            $table->string('city')
                 ->nullable();
 
-            $table->string('kvk', 20)
+            $table->string('kvk')
                 ->nullable();
 
-            $table->string('btw', 20)
+            $table->string('btw')
                 ->nullable();
 
             $table->integer('users')
                 ->nullable();
 
-            $table->string('license', 50)
+            $table->string('license')
                 ->nullable();
 
             $table->timestamp('active')

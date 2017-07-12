@@ -19,21 +19,21 @@ class CreateRelationTables extends Migration
     {
         Schema::create('relation', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('slug', 100);
+            $table->string('slug');
             $table->integer('category_id')->unsigned();
-            $table->string('account_manager', 50);
-            $table->string('organisation', 50)->unique();
-            $table->string('country_code', 3);
-            $table->string('state_code', 3);
-            $table->string('street', 30);
-            $table->string('house_number', 50);
-            $table->string('sales_area', 50);
-            $table->string('zip', 10);
-            $table->string('town', 50);
-            $table->string('phone', 50);
-            $table->string('email', 50)->unique();
-            $table->string('linkedin', 50)->nullable();
-            $table->string('website', 50)->nullable();
+            $table->string('account_manager');
+            $table->string('organisation')->unique();
+            $table->string('country_code');
+            $table->string('state_code');
+            $table->string('street');
+            $table->integer('house_number');
+            $table->string('sales_area');
+            $table->string('zip');
+            $table->string('town');
+            $table->integer('phone');
+            $table->string('email')->unique();
+            $table->string('linkedin')->nullable();
+            $table->string('website')->nullable();
             $table->timestamps();
 
             $table->foreign('category_id')
