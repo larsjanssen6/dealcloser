@@ -16,9 +16,7 @@ require 'components/WebAuthentication.php';
 require 'components/WebInfo.php';
 
 Route::group(['middleware' => ['auth', 'throttle:100', 'CheckIfApplicationIsActive']], function () {
-    Route::get('dashboard', function () {
-        return view('dashboard/dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', 'Dashboard\DashboardController@index');
 
     require 'components/WebUser.php';
     require 'components/WebSettings.php';
