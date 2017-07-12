@@ -1,0 +1,56 @@
+$card-meta
+  background #fff
+  color #abb2b9
+  font-weight 800
+  font-size 14px
+  padding 8px 20px
+
+.card
+  border-radius 6px
+  overflow hidden
+  box-shadow 0 2px 3px 0 rgba(0,0,0,.16);
+  margin 25px 0 5px
+  &:hover
+    transform translateY(-1px)
+    box-shadow:0 3px 3px 0 rgba(0,0,0,.16)
+
+.card-meta
+  @extends $card-meta
+
+.card-meta-yellow
+  @extends $card-meta
+  background #fde428
+  color black
+
+.card-meta-blue
+  @extends $card-meta
+  color white
+  background rgb(52, 73, 94)
+
+.card-meta-primary
+  @extends $card-meta
+  background url("/img/header-bg.svg") #373e45
+  color white
+
+.card-content
+  background #f8f8fa
+  padding 20px
+
+.card .card-content header
+  border-bottom 1px solid #dcdcde
+  padding-bottom 20px
+  margin-bottom 20px
+
+.card .card-content h3
+  margin 0 0 12px
+  color #2b315b
+  font-size 20px
+  font-weight 400
+
+.tag
+  color: #455097;
+  font-size: 12px;
+  background: #dde0f3;
+  border-radius: 4px;
+  padding: 0 9px;
+  line-height: 22px;
