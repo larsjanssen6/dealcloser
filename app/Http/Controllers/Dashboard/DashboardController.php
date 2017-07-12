@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
-use App\Dealcloser\Interfaces\Repositories\IUserRepo;
 use App\Http\Controllers\Controller;
+use App\Dealcloser\Interfaces\Repositories\IUserRepo;
+use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
 
 class DashboardController extends Controller
 {
@@ -37,7 +37,7 @@ class DashboardController extends Controller
     {
         return view('dashboard/dashboard')->with([
             'total_relations' => $this->relationRepo->count(),
-            'total_users' => $this->userRepo->count()
+            'total_users' => $this->userRepo->count(),
         ]);
     }
 }
