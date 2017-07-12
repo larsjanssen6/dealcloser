@@ -2,15 +2,15 @@
 
 namespace App\Providers;
 
-use App\Dealcloser\Core\Department\Department;
-use App\Dealcloser\Core\Relation\Relation;
 use App\Dealcloser\Core\User\User;
-use App\Dealcloser\Observers\DepartmentObserver;
-use App\Dealcloser\Observers\RelationObserver;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\ServiceProvider;
+use App\Dealcloser\Core\Relation\Relation;
 use App\Dealcloser\Observers\RoleObserver;
 use App\Dealcloser\Observers\UserObserver;
-use Illuminate\Support\ServiceProvider;
-use Spatie\Permission\Models\Role;
+use App\Dealcloser\Core\Department\Department;
+use App\Dealcloser\Observers\RelationObserver;
+use App\Dealcloser\Observers\DepartmentObserver;
 
 class ObserverServiceProvider extends ServiceProvider
 {
