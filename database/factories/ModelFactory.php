@@ -78,7 +78,7 @@ $factory->define(\App\Dealcloser\Core\Relation\Relation::class, function (Faker\
         'sales_area'        => 'Noord holland',
         'zip'               => $faker->postcode,
         'town'              => $faker->city,
-        'phone'             => $faker->phoneNumber,
+        'phone'             => '0623844932',
         'email'             => $faker->email,
         'linkedin'          => $faker->text(10),
         'website'           => $faker->text(10),
