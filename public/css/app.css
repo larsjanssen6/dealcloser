@@ -45,6 +45,64 @@ footer {
   background: linear-gradient(90deg, #e15151, #2e5bb3);
   height: 6px;
 }
+.card-meta,
+.card-meta-yellow,
+.card-meta-blue,
+.card-meta-primary {
+  background: #fff;
+  color: #abb2b9;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 8px 20px;
+}
+.card {
+  border-radius: 6px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.16);
+          box-shadow: 0 2px 3px 0 rgba(0,0,0,0.16);
+  margin: 25px 0 5px;
+}
+.card:hover {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+  -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+          box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+}
+.card-meta-yellow {
+  background: #fde428;
+  color: #000;
+}
+.card-meta-blue {
+  color: #fff;
+  background: #34495e;
+}
+.card-meta-primary {
+  background: url("/img/header-bg.svg") #373e45;
+  color: #fff;
+}
+.card-content {
+  background: #f8f8fa;
+  padding: 20px;
+}
+.card .card-content header {
+  border-bottom: 1px solid #dcdcde;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.card .card-content h3 {
+  margin: 0 0 12px;
+  color: #2b315b;
+  font-size: 20px;
+  font-weight: 400;
+}
+.tag {
+  color: #455097;
+  font-size: 12px;
+  background: #dde0f3;
+  border-radius: 4px;
+  padding: 0 9px;
+  line-height: 22px;
+}
 .input,
 .textarea {
   padding: 0 15px;
@@ -71,6 +129,28 @@ footer {
 .modal-card-body .column {
   border-bottom: 1px dashed #d7d7d7;
 }
+.table {
+  background: #f9f9f9;
+  border-radius: 6px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.16);
+          box-shadow: 0 2px 3px 0 rgba(0,0,0,0.16);
+}
+.table:hover {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+  -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+          box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+}
+.header-border {
+  border-bottom: 1px solid #dbdbe0;
+}
+.header-clearance {
+  padding-top: 26px;
+}
+.header-align {
+  line-height: 50px;
+}
 .button {
   font-weight: 700px;
   -webkit-user-select: none;
@@ -81,6 +161,13 @@ footer {
 .footer {
   padding: 1rem 1rem 1rem !important;
   height: 60px;
+  background: url("/img/header-bg.svg") #373e45;
+}
+footer > div > div > p,
+footer > div > div > p > a,
+footer > div > div > p > strong {
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
 }
 .message__top {
   margin-top: 20px;
