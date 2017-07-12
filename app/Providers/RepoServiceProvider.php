@@ -33,10 +33,10 @@ class RepoServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(ICategoryRepo::class, CategoryRepo::class);
-        $this->app->bind(IRelationRepo::class, RelationRepo::class);
-        $this->app->bind(IUserRepo::class, UserRepo::class);
-        $this->app->bind(IRoleRepo::class, RoleRepo::class);
-        $this->app->bind(IDepartmentRepo::class, DepartmentRepo::class);
+        $this->app->singleton(ICategoryRepo::class, CategoryRepo::class);
+        $this->app->singleton(IRelationRepo::class, RelationRepo::class);
+        $this->app->singleton(IUserRepo::class, UserRepo::class);
+        $this->app->singleton(IRoleRepo::class, RoleRepo::class);
+        $this->app->singleton(IDepartmentRepo::class, DepartmentRepo::class);
     }
 }
