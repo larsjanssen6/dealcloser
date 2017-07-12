@@ -19,7 +19,7 @@
                 <users inline-template v-cloak>
                     <div>
                         <table class="table">
-                            <thead>
+                            <thead class="thead-is-blue">
                                 <tr>
                                     <th>
                                         <abbr>Naam</abbr>

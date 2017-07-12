@@ -48,7 +48,8 @@ footer {
 .card-meta,
 .card-meta-yellow,
 .card-meta-blue,
-.card-meta-primary {
+.card-meta-primary,
+.thead-is-blue {
   background: #fff;
   color: #abb2b9;
   font-weight: 800;
@@ -130,7 +131,7 @@ footer {
   border-bottom: 1px dashed #d7d7d7;
 }
 .table {
-  background: #f9f9f9;
+  background: #f8f8fa;
   border-radius: 6px;
   overflow: hidden;
   -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.16);
@@ -141,6 +142,12 @@ footer {
           transform: translateY(-1px);
   -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
           box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+}
+th abbr {
+  color: #fff;
+}
+.thead-is-blue {
+  background: #34495e;
 }
 .header-border {
   border-bottom: 1px solid #dbdbe0;
