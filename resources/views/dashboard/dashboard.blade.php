@@ -40,7 +40,7 @@
             <div class="column is-one-quarter">
                 @component('layout/card',
                     [
-                        'label' => 'Totaal, 10',
+                        'label' =>  sprintf('Totaal, %s', $total_relations),
                         'header' => 'November 17, 2016',
                         'footer' => 'Hier ziet u alle relaties.',
                         'meta' => 'card-meta-blue'
@@ -72,9 +72,9 @@
             <div class="column is-half">
                 @component('layout/card',
                     [
-                        'label' => 'Totaal, 10',
+                        'label' => sprintf('Totaal, %s', $total_users),
                         'header' => 'November 17, 2016',
-                        'footer' => 'Hier ziet u alle lopende projecten.',
+                        'footer' => 'Hier ziet u alle gebruikers van Dealcloser.',
                         'meta' => 'card-meta-yellow'
                     ])
 
