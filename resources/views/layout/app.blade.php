@@ -24,55 +24,91 @@
     <body>
         <div id="app">
             <div class="bar"></div>
-            <nav class="nav has-shadow">
-                <div class="container">
-                    <div class="nav-left">
-                        <a href="/" class="nav-item">
-                            <strong>DEALCLOSER</strong>
-                        </a>
+            <nav class="navbar">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="/">
+                        <strong>DEALCLOSER</strong>
+                    </a>
+
+                    <div class="navbar-burger burger" data-target="dealCloserNav">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
+                </div>
 
-                    <span class="nav-toggle">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-
-                    <div class="nav-right nav-menu">
+                <div id="dealCloserNav" class="navbar-menu">
+                    <div class="navbar-end">
                         @if(Auth::guest())
-                            <a href="/" class="nav-item is-tab {{ setActive('/') }}">
+                            <a href="/" class="navbar-item">
                                 <i class="fa fa-sign-in" aria-hidden="true"></i> &nbsp;
                                 Login
                             </a>
 
-                            <a href="{{ route('info.info') }}" class="nav-item is-tab {{ setActive('info') }}">
+                            <a href="{{ route('info.info') }}" class="navbar-item">
                                 <i class="fa fa-info" aria-hidden="true"></i> &nbsp;
                                 Info
                             </a>
                         @else
-                            <a href="{{ route('dashboard') }}" class="nav-item is-tab {{ setActive('dashboard') }}">
+                            <a href="/" class="navbar-item">
                                 Dashboard
                             </a>
 
-                            <a href="{{ route('dashboard') }}" class="nav-item is-tab">
-                                Projecten
-                            </a>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a href="#" class="navbar-link">
+                                    Overzicht
+                                </a>
 
-                            <a href="{{ route('relations') }}" class="nav-item is-tab {{ setActive('relaties') }}">
-                                Relaties
-                            </a>
+                                <div class="navbar-dropdown">
+                                    <a href="#" class="navbar-item">
+                                        Projecten
+                                    </a>
 
-                            <a href="{{ route('users') }}" class="nav-item is-tab {{ setActive('gebruikers') }}">
-                                Gebruikers
-                            </a>
+                                    <a href="#" class="navbar-item">
+                                        Opportunities
+                                    </a>
 
-                            <a href="{{ route('logout') }}" class="nav-item is-tab">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp;
-                                Uitloggen
-                            </a>
+                                    <a href="{{ route('relations') }}" class="navbar-item">
+                                        Relaties
+                                    </a>
 
-                            <a href="{{ route('settings.profile') }}"
-                               class="nav-item is-tab {{ setActive('instellingen/profiel') }}">
+                                    <a href="#" class="navbar-item">
+                                        Producten
+                                    </a>
+
+                                    <hr class="navbar-divider">
+
+                                    <a href="{{ route('users') }}" class="navbar-item is-active">
+                                        Gebruikers
+                                    </a>
+
+                                    <a href="{{ route('settings.profile') }}" class="navbar-item">
+                                        Instellingen
+                                    </a>
+
+                                    <hr class="navbar-divider">
+
+                                    <div class="navbar-item">
+                                        <div>Versie <p class="has-text-info">1.0</p></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="navbar-item">
+                                <div class="field">
+                                    <p class="control">
+                                        <a href="{{ route('logout') }}" class="button is-primary">
+                                            <span class="icon">
+                                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                            </span>
+
+                                            <span>Uitloggen</span>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <a href="{{ route('settings.profile') }}" class="navbar-item">
                                 <i class="fa fa-cog" aria-hidden="true"></i>
                             </a>
                         @endif

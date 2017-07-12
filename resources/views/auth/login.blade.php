@@ -6,80 +6,81 @@
     <div class="container">
         <div class="columns">
             <div class="column is-half is-offset-one-quarter">
-                @component('layout/panel')
-                    <p>Login</p>
+                @component('layout/card',
+                   [
+                       'header' => 'Login',
+                       'meta' => 'card-meta-primary'
+                   ])
 
-                    @slot('body')
-                        <form method="POST" class="form-horizontal" role="form" action="{{ route('login') }}">
-                            {{ csrf_field() }}
+                    <form method="POST" class="form-horizontal" role="form" action="{{ route('login') }}">
+                        {{ csrf_field() }}
 
-                            <div class="field">
-                                <label for="email" class="label">Email</label>
+                        <div class="field">
+                            <label for="email" class="label">Email</label>
 
-                                <p class="control has-icons-left {{ $errors->has('email') ? ' has-icons-right' : '' }}">
-                                    <input id="email"
-                                           name="email"
-                                           type="email"
-                                           value="{{ old('email') }}"
-                                           class="input {{ $errors->has('email') ? ' is-danger' : '' }}"
-                                           required
-                                           autofocus>
+                            <p class="control has-icons-left {{ $errors->has('email') ? ' has-icons-right' : '' }}">
+                                <input id="email"
+                                       name="email"
+                                       type="email"
+                                       value="{{ old('email') }}"
+                                       class="input {{ $errors->has('email') ? ' is-danger' : '' }}"
+                                       required
+                                       autofocus>
 
-                                    <span class="icon is-small is-left">
+                                <span class="icon is-small is-left">
                                         <i class="fa fa-envelope"></i>
                                     </span>
 
-                                    @if ($errors->has('email'))
-                                        <span class="icon is-small is-right">
+                                @if ($errors->has('email'))
+                                    <span class="icon is-small is-right">
                                             <i class="fa fa-warning"></i>
                                         </span>
-                                    @endif
-                                </p>
-
-                                @if ($errors->has('email'))
-                                    <p class="help is-danger">{{ $errors->first('email') }}</p>
                                 @endif
-                            </div>
+                            </p>
 
-                            <div class="field">
-                                <label for="password" class="label">Wachtwoord</label>
+                            @if ($errors->has('email'))
+                                <p class="help is-danger">{{ $errors->first('email') }}</p>
+                            @endif
+                        </div>
 
-                                <p class="control has-icons-left {{ $errors->has('password') ? ' has-icons-right' : '' }}">
-                                    <input id="password"
-                                           name="password"
-                                           type="password"
-                                           class="input {{ $errors->has('password') ? ' is-danger' : '' }}"
-                                           required>
+                        <div class="field">
+                            <label for="password" class="label">Wachtwoord</label>
 
-                                    <span class="icon is-small is-left">
+                            <p class="control has-icons-left {{ $errors->has('password') ? ' has-icons-right' : '' }}">
+                                <input id="password"
+                                       name="password"
+                                       type="password"
+                                       class="input {{ $errors->has('password') ? ' is-danger' : '' }}"
+                                       required>
+
+                                <span class="icon is-small is-left">
                                         <i class="fa fa-lock"></i>
                                     </span>
 
-                                    @if ($errors->has('password'))
-                                        <span class="icon is-small is-right">
+                                @if ($errors->has('password'))
+                                    <span class="icon is-small is-right">
                                             <i class="fa fa-warning"></i>
                                         </span>
-                                    @endif
-                                </p>
-
-                                @if ($errors->has('password'))
-                                    <p class="help is-danger">{{ $errors->first('password') }}</p>
                                 @endif
+                            </p>
+
+                            @if ($errors->has('password'))
+                                <p class="help is-danger">{{ $errors->first('password') }}</p>
+                            @endif
+                        </div>
+
+                        <div class="field is-grouped is-centered">
+                            <div class="control">
+                                <button id="submit" class="button is-primary">
+                                    Login
+                                </button>
                             </div>
 
-                            <div class="field is-grouped is-centered">
-                                <div class="control">
-                                    <button id="submit" class="button is-primary">
-                                        Login
-                                    </button>
-                                </div>
-
-                                <div class="control">
-                                    <a @click="showModal = true">Wachtwoord vergeten?</a>
-                                </div>
+                            <div class="control">
+                                <a @click="showModal = true">Wachtwoord vergeten?</a>
                             </div>
-                        </form>
-                    @endslot
+                        </div>
+                    </form>
                 @endcomponent
             </div>
         </div>

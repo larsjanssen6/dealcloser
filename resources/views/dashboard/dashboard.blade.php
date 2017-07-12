@@ -6,21 +6,94 @@
     @endcomponent
 
     <div class="container">
-        <div class="tile is-4 is-vertical" style="margin-top: 10px;">
-            <article class="tile is-child notification is-danger slideRight">
-                <p class="title">Projecten</p>
-                <p class="subtitle">3</p>
-            </article>
+        @component('layout/header')
+            Begin Hier
+        @endcomponent
 
-            <article class="tile is-child notification slideRight">
-                <p class="title">Opportunities</p>
-                <p class="subtitle">3 lopend, 2 afgesloten</p>
-            </article>
+        <div class="columns">
+            <div class="column is-one-quarter">
+                @component('layout/card',
+                    [
+                        'label' => 'Totaal, 10',
+                        'header' => 'November 17, 2016',
+                        'footer' => 'Hier ziet u alle projecten.',
+                        'meta' => 'card-meta-blue'
+                    ])
 
-            <article class="tile is-child notification is-warning slideRight">
-                <p class="title">Gebruikers</p>
-                <p class="subtitle">4 actief, 3 inactief</p>
-            </article>
+                    <a href="#">Projecten</a>
+                @endcomponent
+            </div>
+
+            <div class="column is-one-quarter">
+                @component('layout/card',
+                    [
+                        'label' => 'Totaal, 10',
+                        'header' => 'November 17, 2016',
+                        'footer' => 'Hier ziet u alle opportunities.',
+                        'meta' => 'card-meta-blue'
+                    ])
+
+                    <a href="#">Opportunities</a>
+                @endcomponent
+            </div>
+
+            <div class="column is-one-quarter">
+                @component('layout/card',
+                    [
+                        'label' => 'Totaal, 10',
+                        'header' => 'November 17, 2016',
+                        'footer' => 'Hier ziet u alle relaties.',
+                        'meta' => 'card-meta-blue'
+                    ])
+
+                    <a href="{{ route('relations') }}">Relaties</a>
+                @endcomponent
+            </div>
+
+            <div class="column is-one-quarter">
+                @component('layout/card',
+                    [
+                        'label' => 'Totaal, 10',
+                        'header' => 'November 17, 2016',
+                        'footer' => 'Hier ziet u alle producten.',
+                        'meta' => 'card-meta-blue'
+                    ])
+
+                    <a href="#">Producten</a>
+                @endcomponent
+            </div>
+        </div>
+
+        @component('layout/header')
+            Besturing Dealcloser
+        @endcomponent
+
+        <div class="columns">
+            <div class="column is-half">
+                @component('layout/card',
+                    [
+                        'label' => 'Totaal, 10',
+                        'header' => 'November 17, 2016',
+                        'footer' => 'Hier ziet u alle lopende projecten.',
+                        'meta' => 'card-meta-yellow'
+                    ])
+
+                    <a href="{{ route('users') }}">Gebruikers</a>
+                @endcomponent
+            </div>
+
+            <div class="column is-half">
+                @component('layout/card',
+                    [
+                        'label' => 'Voor Lars Janssen',
+                        'header' => 'November 17, 2016',
+                        'footer' => 'Bekijk hier uw instellingen.',
+                        'meta' => 'card-meta-yellow'
+                    ])
+
+                    <a href="{{ route('settings.profile') }}">Instellingen</a>
+                @endcomponent
+            </div>
         </div>
     </div>
 @endsection

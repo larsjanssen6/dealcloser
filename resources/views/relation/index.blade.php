@@ -94,8 +94,12 @@
                 </div>
             @else
                 <div class="notification is-info">
-                    <p>Er zijn momenteel geen relaties. Maak deze
-                        <a href="{{ route('relations.create') }}">hier</a> aan.
+                    <p>
+                        Er zijn momenteel geen relaties.
+
+                        @can('register-relations')
+                            Maak deze <a href="{{ route('relations.create') }}">hier</a> aan.
+                        @endcan
                     </p>
                 </div>
             @endif
