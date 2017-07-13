@@ -20,8 +20,7 @@ class CreateProductTables extends Migration
             $table->string('description');
             $table->decimal('price');
             $table->decimal('purchase');
-            $table->integer('license');
-            $table->integer('days');
+            $table->integer('amount');
             $table->timestamps();
         });
 

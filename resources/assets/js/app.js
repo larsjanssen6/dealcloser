@@ -25,6 +25,7 @@ window.Event = new Vue();
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('Products',                       require('./pages/Products.vue'));
 Vue.component('Users',                          require('./pages/Users.vue'));
 Vue.component('Relations',                      require('./pages/Relations.vue'));
 Vue.component('User',                           require('./components/user/User.vue'));

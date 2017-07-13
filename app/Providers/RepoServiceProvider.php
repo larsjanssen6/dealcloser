@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Dealcloser\Interfaces\Repositories\IProductRepo;
+use App\Dealcloser\Repositories\Product\ProductRepo;
 use Illuminate\Support\ServiceProvider;
 use App\Dealcloser\Repositories\Role\RoleRepo;
 use App\Dealcloser\Repositories\User\UserRepo;
@@ -33,6 +35,7 @@ class RepoServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton(IProductRepo::class, ProductRepo::class);
         $this->app->singleton(ICategoryRepo::class, CategoryRepo::class);
         $this->app->singleton(IRelationRepo::class, RelationRepo::class);
         $this->app->singleton(IUserRepo::class, UserRepo::class);

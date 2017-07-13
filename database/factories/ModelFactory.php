@@ -84,3 +84,14 @@ $factory->define(\App\Dealcloser\Core\Relation\Relation::class, function (Faker\
         'website'           => $faker->text(10),
     ];
 });
+
+/* @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(\App\Dealcloser\Core\Product\Product::class, function (Faker\Generator $faker) {
+    return [
+        'name'          => $faker->name,
+        'description'   => $faker->text(50),
+        'price'         => $faker->numberBetween(1, 999),
+        'purchase'      => $faker->numberBetween(1, 999),
+        'amount'        => $faker->numberBetween(1, 999)
+    ];
+});
