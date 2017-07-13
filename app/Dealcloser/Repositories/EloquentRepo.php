@@ -188,6 +188,18 @@ abstract class EloquentRepo implements IRepo
     }
 
     /**
+     * Return latest record
+     *
+     * @return mixed
+     */
+    public function latest()
+    {
+        return $this->cache->tags($this->getModel())->remember($this->getModel().'|latest|', 60, function () {
+            return $this->_model->latest()->first();
+        });
+    }
+
+    /**
      * Make a new instance of the entity to query on.
      *
      * @param array $with
