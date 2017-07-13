@@ -1,0 +1,20 @@
+<?php
+
+namespace Tests\Unit\Product;
+
+use App\Dealcloser\Core\Product\Product;
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
+class ProductTest extends TestCase
+{
+    use DatabaseMigrations;
+
+    /** @test */
+    public function a_product_can_calculate()
+    {
+        $this->assertInstanceOf(
+            'App\Dealcloser\Logic\ProductCalculation', (new Product())->calculate()
+        );
+    }
+}
