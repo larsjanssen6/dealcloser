@@ -40,3 +40,11 @@ if (! function_exists('appIsActive')) {
         return false;
     }
 }
+
+if (! function_exists('toMoney')) {
+    function toMoney($amount)
+    {
+        return money_format("€ %!n", $amount);
+    }
+}
+
