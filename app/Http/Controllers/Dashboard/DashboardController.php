@@ -37,7 +37,10 @@ class DashboardController extends Controller
     {
         return view('dashboard/dashboard')->with([
             'total_relations' => $this->relationRepo->count(),
+            'relations_latest' => $this->relationRepo->latest()->created_at,
+
             'total_users' => $this->userRepo->count(),
+            'users_latest' => $this->userRepo->latest()->created_at
         ]);
     }
 }
