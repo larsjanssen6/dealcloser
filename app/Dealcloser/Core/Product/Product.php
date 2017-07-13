@@ -2,11 +2,11 @@
 
 namespace App\Dealcloser\Core\Product;
 
-use App\Dealcloser\Logic\ProductCalculation;
-use App\Dealcloser\Traits\Calculatable;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use App\Dealcloser\Traits\Calculatable;
 use Illuminate\Database\Eloquent\Model;
+use App\Dealcloser\Logic\ProductCalculation;
 
 class Product extends Model
 {
@@ -30,7 +30,7 @@ class Product extends Model
         'price',
         'purchase',
         'license',
-        'days'
+        'days',
     ];
 
     /**

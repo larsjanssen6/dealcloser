@@ -92,6 +92,6 @@ $factory->define(\App\Dealcloser\Core\Product\Product::class, function (Faker\Ge
         'description'   => $faker->text(50),
         'price'         => $faker->numberBetween(1, 999),
         'purchase'      => $faker->numberBetween(1, 999),
-        'amount'        => $faker->numberBetween(1, 999)
+        'amount'        => $faker->numberBetween(1, 999),
     ];
 });

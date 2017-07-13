@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Product;
 
-use App\Dealcloser\Logic\ProductCalculation;
 use Tests\TestCase;
+use App\Dealcloser\Logic\ProductCalculation;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ProductCalculationTest extends TestCase

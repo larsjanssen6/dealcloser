@@ -188,7 +188,7 @@ abstract class EloquentRepo implements IRepo
     }
 
     /**
-     * Return latest record
+     * Return latest record.
      *
      * @return mixed
      */

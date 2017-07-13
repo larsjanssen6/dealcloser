@@ -40,7 +40,7 @@ class DashboardController extends Controller
             'relations_latest' => $this->relationRepo->latest()->created_at,
 
             'total_users' => $this->userRepo->count(),
-            'users_latest' => $this->userRepo->latest()->created_at
+            'users_latest' => $this->userRepo->latest()->created_at,
         ]);
     }
 }

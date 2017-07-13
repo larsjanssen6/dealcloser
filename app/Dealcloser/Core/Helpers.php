@@ -44,7 +44,6 @@ if (! function_exists('appIsActive')) {
 if (! function_exists('toMoney')) {
     function toMoney($amount)
     {
-        return money_format("€ %!n", $amount);
+        return money_format('€ %!n', $amount);
     }
 }
-
