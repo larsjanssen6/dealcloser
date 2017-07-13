@@ -41,7 +41,7 @@
                 @component('layout/card',
                     [
                         'label' =>  sprintf('Totaal, %s', $total_relations),
-                        'header' => 'November 17, 2016',
+                        'header' => $relations_latest->diffForHumans(),
                         'footer' => 'Hier ziet u alle relaties.',
                         'meta' => 'card-meta-blue'
                     ])
@@ -59,7 +59,7 @@
                         'meta' => 'card-meta-blue'
                     ])
 
-                    <a href="#">Producten</a>
+                    <a href="{{ route('products') }}">Producten</a>
                 @endcomponent
             </div>
         </div>
@@ -73,7 +73,7 @@
                 @component('layout/card',
                     [
                         'label' => sprintf('Totaal, %s', $total_users),
-                        'header' => 'November 17, 2016',
+                        'header' => $users_latest->diffForHumans(),
                         'footer' => 'Hier ziet u alle gebruikers van Dealcloser.',
                         'meta' => 'card-meta-yellow'
                     ])

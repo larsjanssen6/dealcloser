@@ -72,7 +72,7 @@
                                         Relaties
                                     </a>
 
-                                    <a href="#" class="navbar-item">
+                                    <a href="{{ route('products') }}" class="navbar-item">
                                         Producten
                                     </a>
 
