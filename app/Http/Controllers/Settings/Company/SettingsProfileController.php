@@ -36,7 +36,7 @@ class SettingsProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
-        Settings::set($request->only(ucfirst('name'), 'email', 'phone', 'website', 'description'));
+        Settings::set($request->only('name', 'email', 'phone', 'website', 'description'));
 
         return back()
             ->with('status', 'Bedrijfsprofiel geupdatet!');
