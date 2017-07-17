@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\User;
 
-use App\Dealcloser\Core\User\User;
 use Tests\TestCase;
+use App\Dealcloser\Core\User\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UserTest extends TestCase

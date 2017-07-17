@@ -2,12 +2,12 @@
 
 namespace App\Dealcloser\Core\User;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use App\Dealcloser\Core\Department\Department;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -62,13 +62,13 @@ class User extends Authenticatable
     }
 
     /**
-     * Return full name
+     * Return full name.
      *
      * @return string
      */
     public function getFullNameAttribute()
     {
-        return $this->name . ' ' . $this->last_name;
+        return $this->name.' '.$this->last_name;
     }
 
     /**

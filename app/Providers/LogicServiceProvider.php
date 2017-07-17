@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Dealcloser\Interfaces\Logic\IProductCalculation;
-use App\Dealcloser\Logic\ProductCalculation;
 use Illuminate\Support\ServiceProvider;
+use App\Dealcloser\Logic\ProductCalculation;
+use App\Dealcloser\Interfaces\Logic\IProductCalculation;
 
 class LogicServiceProvider extends ServiceProvider
 {

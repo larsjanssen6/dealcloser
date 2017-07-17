@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Cache\Repository as CacheRepository;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class BelongsToManyWithSyncCacheClear extends BelongsToMany {
-
+class BelongsToManyWithSyncCacheClear extends BelongsToMany
+{
     /**
      * BelongsToManyWithSyncEvents constructor.
      *
@@ -32,8 +32,8 @@ class BelongsToManyWithSyncCacheClear extends BelongsToMany {
      * @param bool $detaching
      * @return array
      */
-    public function sync($ids, $detaching = true) {
-
+    public function sync($ids, $detaching = true)
+    {
         $changes = parent::sync($ids, $detaching);
 
         resolve(CacheRepository::class)->tags(get_class($this->parent))->flush();

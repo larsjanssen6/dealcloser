@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Product;
 
-use App\Dealcloser\Core\Product\Product;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Product\ProductRequest;
 use Illuminate\Pagination\Paginator;
+use App\Dealcloser\Core\Product\Product;
+use App\Http\Requests\Product\ProductRequest;
 use App\Dealcloser\Interfaces\Repositories\IProductRepo;
 
 class ProductController extends Controller

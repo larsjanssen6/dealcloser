@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Relation;
 
-use App\Dealcloser\Core\Product\Product;
 use Tests\TestCase;
+use App\Dealcloser\Core\Product\Product;
 use App\Dealcloser\Core\Relation\Relation;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -51,8 +51,8 @@ class DeleteRelationTest extends TestCase
         dd(Relation::with('products')->products);
         $this->actingAs($this->user)->deleteJson('/relaties/'.$relation->id);
         $this->assertDatabaseMissing('product_has_relations', [
-            "product_id" => 1,
-            "relation_id" => 1,
+            'product_id' => 1,
+            'relation_id' => 1,
         ]);
     }
 }

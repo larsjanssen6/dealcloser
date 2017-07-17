@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Relation;
 
-use App\Dealcloser\Core\Product\Product;
 use Tests\TestCase;
+use App\Dealcloser\Core\Product\Product;
 use App\Dealcloser\Core\Relation\Relation;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 

@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Department;
 
-use App\Dealcloser\Core\Department\Department;
 use Tests\TestCase;
+use App\Dealcloser\Core\Department\Department;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class DepartmentTest extends TestCase
