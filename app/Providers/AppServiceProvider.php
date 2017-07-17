@@ -17,6 +17,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Date::setLocale('nl');
         Carbon::setLocale('nl');
+
+        //Enable foreign keys support for sqlite when testing
+        if(config('database.default') == 'sqlite'){
+            $db = app()->make('db');
+            $db->connection()->getPdo()->exec("pragma foreign_keys=1");
+        }
     }
 
     /**
