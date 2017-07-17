@@ -2,7 +2,7 @@
 
 namespace App\Dealcloser\Custom;
 
-trait BelongsToManyWithSyncEvents
+trait BelongsToManyWithSyncEvent
 {
     /**
      * Custom belongs to many because by default it does not observes

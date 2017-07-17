@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Dealcloser\Interfaces\Repositories\IProductRepo;
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Dealcloser\Interfaces\Repositories\IUserRepo;
+use App\Dealcloser\Interfaces\Repositories\IProductRepo;
 use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
-use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -58,9 +58,9 @@ class DashboardController extends Controller
 
             'relations_total'               => $relations->count(),
             'relations_latest'              => $relations->last(),
-            "relations_total_last_month"    => $relations->where('created_at', '>=', Carbon::now()->startOfMonth()->subMonth())
+            'relations_total_last_month'    => $relations->where('created_at', '>=', Carbon::now()->startOfMonth()->subMonth())
                                                         ->where('created_at', '<=', Carbon::now()->startOfMonth())->count(),
-            "relations_total_current_month" => $relations->where('created_at', '>=', Carbon::now()->startOfMonth())->count(),
+            'relations_total_current_month' => $relations->where('created_at', '>=', Carbon::now()->startOfMonth())->count(),
 
             /*
             * Get user information
@@ -78,7 +78,7 @@ class DashboardController extends Controller
             'products_revenue'      => $products->sum('revenue'),
             'products_gross_margin' => $products->sum('grossMargin'),
             'products_purchase'     => $products->sum('purchase'),
-            'products_price'        => $products->sum('price')
+            'products_price'        => $products->sum('price'),
         ]);
     }
 }

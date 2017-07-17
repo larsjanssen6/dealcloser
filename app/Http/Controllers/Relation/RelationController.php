@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Relation;
 
-use App\Dealcloser\Interfaces\Repositories\IProductRepo;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
 use DougSisk\CountryState\CountryState;
 use App\Dealcloser\Core\Relation\Relation;
 use App\Http\Requests\Relation\RelationRequest;
+use App\Dealcloser\Interfaces\Repositories\IProductRepo;
 use App\Dealcloser\Interfaces\Repositories\ICategoryRepo;
 use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
 
@@ -131,6 +131,7 @@ class RelationController extends Controller
     public function destroy(Relation $relation)
     {
         $this->relationRepo->delete($relation->id);
+
         return response()->json(['status' => 'Verwijderd']);
     }
 }

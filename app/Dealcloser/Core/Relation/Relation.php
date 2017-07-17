@@ -2,13 +2,13 @@
 
 namespace App\Dealcloser\Core\Relation;
 
-use App\Dealcloser\Core\Product\Product;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
+use App\Dealcloser\Core\Product\Product;
 use App\Dealcloser\Traits\Categorizable;
 use App\Dealcloser\Custom\BelongsToManyWithSyncEvents;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Relation extends Model
 {

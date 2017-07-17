@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Carbon\Carbon;
-use Illuminate\Support\ServiceProvider;
 use Jenssegers\Date\Date;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {

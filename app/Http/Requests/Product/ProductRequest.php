@@ -28,7 +28,7 @@ class ProductRequest extends FormRequest
             'description'   => 'required|max:255',
             'price'         => 'required|max:8|regex:/^\d*(\.\d{1,2})?$/',
             'purchase'      => 'required|max:8|regex:/^\d*(\.\d{1,2})?$/',
-            'amount'        => 'required|max:2147483647|integer'
+            'amount'        => 'required|max:2147483647|integer',
         ];
     }
 }

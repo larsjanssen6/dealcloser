@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Category;
 
-use App\Dealcloser\Core\Category\Category;
 use Tests\TestCase;
+use App\Dealcloser\Core\Category\Category;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class CategoryTest extends TestCase

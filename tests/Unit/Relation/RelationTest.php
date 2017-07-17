@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Relation;
 
+use Tests\TestCase;
 use App\Dealcloser\Core\Product\Product;
 use App\Dealcloser\Core\Relation\Relation;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class RelationTest extends TestCase

@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Product;
 
+use Tests\TestCase;
 use App\Dealcloser\Core\Product\Product;
 use App\Dealcloser\Core\Relation\Relation;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class DeleteProductTest extends TestCase
@@ -58,8 +58,8 @@ class DeleteProductTest extends TestCase
         $this->actingAs($this->user)->deleteJson('/producten/'.$product->id);
 
         $this->assertdatabasehas('product_has_relations', [
-            "product_id" => "1",
-            "relation_id" => "1"
+            'product_id' => '1',
+            'relation_id' => '1',
         ]);
     }
 }

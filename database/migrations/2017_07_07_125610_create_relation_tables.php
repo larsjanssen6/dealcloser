@@ -1,10 +1,10 @@
 <?php
 
-use App\Dealcloser\Core\Category\Category;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Schema;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Database\Schema\Blueprint;
+use App\Dealcloser\Core\Category\Category;
 use App\Dealcloser\Core\Relation\Relation;
 use Illuminate\Database\Migrations\Migration;
 
