@@ -43,14 +43,17 @@ class UpdateRelationTest extends TestCase
         $this->user->assignRole($this->superAdminRole->name);
 
         $relation = create(Relation::class);
-        $product = create(Product::class)->toArray();
+        $product = create(Product::class);
 
         $toUpdate = collect(make(Relation::class))
-            ->merge(['products' => [$product]])
+            ->merge(['products' => [$product->toArray()]])
             ->merge(['id' => $relation->id]);
 
         $this->actingAs($this->user)->patchJson('/relaties/'.$relation->id, $toUpdate->toArray());
 
-        $this->assertEquals($relation->products()->count(), 1);
+        $this->assertDatabaseHas('product_has_relations', [
+            'product_id' => $product->id,
+            'relation_id'=> $relation->id,
+        ]);
     }
 }
