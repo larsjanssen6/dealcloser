@@ -57,7 +57,6 @@ class DashboardController extends Controller
             * Get relation information
             */
 
-
             'relations_total'               => $relations->count(),
             'relations_latest'              => $relations->last(),
             'relations_total_last_month'    => $relations->where('created_at', '>=', Carbon::now()->startOfMonth()->subMonth())
