@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use Gate;
 use App\Dealcloser\Core\User\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
@@ -56,10 +57,15 @@ class UserController extends Controller
      */
     public function index()
     {
+        if (Gate::allows('edit-users')) {
+            $departments = $this->departmentRepo->getAll();
+            $roles = $this->roleRepo->getAll();
+        }
+
         return view('user.index')->with([
             'users'       => $this->userRepo->paginate(Paginator::resolveCurrentPage(), ['department', 'roles']),
-            'departments' => $this->departmentRepo->getAll(),
-            'roles'       => $this->roleRepo->getAll(),
+            'departments' => isset($departments) ? $departments : '',
+            'roles'       => isset($roles) ? $roles : '',
         ]);
     }
 
@@ -73,7 +79,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        $items = collect(['name', 'last_name', 'email', 'function', 'department_id', 'active']);
+        $items = collect(['name', 'preposition', 'last_name', 'email', 'function', 'department_id', 'active']);
 
         if (isset($request->password)) {
             $items = $items->merge('password');

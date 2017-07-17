@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Relation;
 
+use Gate;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
 use DougSisk\CountryState\CountryState;
@@ -69,11 +70,17 @@ class RelationController extends Controller
      */
     public function index()
     {
+        if (Gate::allows('edit-relations')) {
+            $products = $this->productRepo->getAll();
+            $categories = $this->categoryRepo->findAll('model_type', Relation::class);
+            $countries = collect($this->countryState->getCountries());
+        }
+
         return view('relation.index')->with([
-            'products'   => $this->productRepo->getAll(),
+            'products'   => isset($products) ? $products : '',
             'relations'  => $this->relationRepo->paginate(Paginator::resolveCurrentPage(), ['category', 'products']),
-            'categories' => $this->categoryRepo->findAll('model_type', Relation::class),
-            'countries'  => collect($this->countryState->getCountries()),
+            'categories' => isset($categories) ? $categories : '',
+            'countries'  => isset($countries) ? $countries : '',
         ]);
     }
 
