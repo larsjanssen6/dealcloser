@@ -48,7 +48,7 @@ class DeleteRelationTest extends TestCase
 
         $product = create(Product::class)->toArray();
         $relation = create(Relation::class)->syncProducts([$product]);
-        dd(Relation::with('products')->products);
+
         $this->actingAs($this->user)->deleteJson('/relaties/'.$relation->id);
         $this->assertDatabaseMissing('product_has_relations', [
             'product_id' => 1,
