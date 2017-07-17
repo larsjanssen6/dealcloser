@@ -2,7 +2,9 @@
 
 namespace App\Dealcloser\Logic;
 
-class ProductCalculation
+use App\Dealcloser\Interfaces\Logic\IProductCalculation;
+
+class ProductCalculation implements IProductCalculation
 {
     /**
      * Calculate the revenue.

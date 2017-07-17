@@ -11,7 +11,7 @@ class ProductTest extends TestCase
     use DatabaseMigrations;
 
     /** @test */
-    public function a_product_can_calculate()
+    public function it_can_calculate()
     {
         $this->assertInstanceOf(
             'App\Dealcloser\Logic\ProductCalculation', (new Product())->calculate()

@@ -4,6 +4,7 @@ namespace App\Dealcloser\Core\Department;
 
 use App\Dealcloser\Core\User\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Department extends Model
 {
@@ -26,7 +27,7 @@ class Department extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function users()
+    public function users() : HasMany
     {
         return $this->hasMany(User::class);
     }

@@ -80,7 +80,8 @@
                                             @can('edit-relations')
                                                 <update-relation :prp-relation="{{json_encode($relation)}}"
                                                                  :prp-categories="{{json_encode($categories)}}"
-                                                                 :prp-countries="{{json_encode($countries)}}">
+                                                                 :prp-countries="{{json_encode($countries)}}"
+                                                                 :prp-products="{{json_encode($products)}}">
                                                 </update-relation>
                                             @else
                                                 <relation :prp-relation="{{json_encode($relation)}}"></relation>

@@ -29,9 +29,15 @@ class Product extends Model
         'description',
         'price',
         'purchase',
-        'license',
-        'days',
+        'amount',
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['revenue', 'totalPurchase', 'grossMargin'];
 
     /**
      * Get the options for generating the slug.
@@ -48,7 +54,7 @@ class Product extends Model
      *
      * @return ProductCalculation
      */
-    public function calculate()
+    public function calculate() : ProductCalculation
     {
         return new ProductCalculation();
     }

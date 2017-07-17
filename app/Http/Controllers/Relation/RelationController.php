@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Relation;
 
+use App\Dealcloser\Interfaces\Repositories\IProductRepo;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
 use DougSisk\CountryState\CountryState;
@@ -27,6 +28,13 @@ class RelationController extends Controller
     private $categoryRepo;
 
     /**
+     * IProduct implementation.
+     *
+     * @var IProductRepo
+     */
+    private $productRepo;
+
+    /**
      * CountryState implementation.
      *
      * @var CountryState
@@ -38,14 +46,19 @@ class RelationController extends Controller
      *
      * @param IRelationRepo $relationRepo
      * @param ICategoryRepo $categoryRepo
-     * @param CountryState  $countryState
+     * @param IProductRepo $productRepo
+     * @param CountryState $countryState
      */
-    public function __construct(IRelationRepo $relationRepo, ICategoryRepo $categoryRepo, CountryState $countryState)
+    public function __construct(IRelationRepo $relationRepo,
+                                ICategoryRepo $categoryRepo,
+                                IProductRepo $productRepo,
+                                CountryState $countryState)
     {
         $this->middleware('permission:register-relations')->only('create', 'store');
         $this->middleware('permission:edit-relations')->only('update', 'destroy');
         $this->relationRepo = $relationRepo;
         $this->categoryRepo = $categoryRepo;
+        $this->productRepo = $productRepo;
         $this->countryState = $countryState;
     }
 
@@ -57,7 +70,8 @@ class RelationController extends Controller
     public function index()
     {
         return view('relation.index')->with([
-            'relations'  => $this->relationRepo->paginate(Paginator::resolveCurrentPage(), ['category']),
+            'products'   => $this->productRepo->getAll(),
+            'relations'  => $this->relationRepo->paginate(Paginator::resolveCurrentPage(), ['category', 'products']),
             'categories' => $this->categoryRepo->findAll('model_type', Relation::class),
             'countries'  => collect($this->countryState->getCountries()),
         ]);
@@ -101,6 +115,7 @@ class RelationController extends Controller
      */
     public function update(RelationRequest $request, Relation $relation)
     {
+        $relation->syncProducts($request->products);
         $this->relationRepo->update($relation->id, $request->all());
 
         return response()->json(['status' => 'Geupdatet']);
@@ -116,7 +131,6 @@ class RelationController extends Controller
     public function destroy(Relation $relation)
     {
         $this->relationRepo->delete($relation->id);
-
         return response()->json(['status' => 'Verwijderd']);
     }
 }

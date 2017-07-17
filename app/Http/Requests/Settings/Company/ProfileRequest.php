@@ -28,7 +28,7 @@ class ProfileRequest extends FormRequest
             'email'         => 'max:50|email|nullable',
             'phone'         => 'max:20|nullable',
             'website'       => 'max:50|url|nullable',
-            'description'   => 'max:500|nullable',
+            'description'   => 'max:255|nullable',
         ];
     }
 }

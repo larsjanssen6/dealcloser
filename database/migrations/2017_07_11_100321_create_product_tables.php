@@ -18,8 +18,8 @@ class CreateProductTables extends Migration
             $table->string('slug');
             $table->string('name');
             $table->string('description');
-            $table->decimal('price');
-            $table->decimal('purchase');
+            $table->decimal('price', 10);
+            $table->decimal('purchase', 10);
             $table->integer('amount');
             $table->timestamps();
         });

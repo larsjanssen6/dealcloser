@@ -48,7 +48,7 @@
 
             <div slot="footer">
                 <a :href="'mailto:' + prpUser.email" class="button is-primary">Contact</a>
-                <a class="button is-primary is-outlined" @click="show = false">Annuleer</a>
+                <a class="button is-primary is-outlined" @click="show = false">Terug</a>
             </div>
         </modal-card>
     </div>

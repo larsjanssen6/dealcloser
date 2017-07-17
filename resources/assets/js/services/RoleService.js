@@ -1,7 +1,6 @@
 export default {
     update(role) {
-        role._method = "PATCH";
-        return axios.post('/instellingen/bedrijf/role/' + role.id, role);
+        return axios.patch('/instellingen/bedrijf/role/' + role.id, role);
     },
 
     destroy(role) {

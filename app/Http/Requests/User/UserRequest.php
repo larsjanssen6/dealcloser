@@ -24,8 +24,8 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'name'          => 'required|max:50|required',
-            'last_name'     => 'required|max:50|required',
+            'name'          => 'required|max:50',
+            'last_name'     => 'required|max:50',
             'email'         => 'required|max:50|email|unique:user,email,'.$this->request->all()['id'],
             'function'      => 'required|max:50|nullable',
             'department_id' => 'required|integer|exists:department,id',

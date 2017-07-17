@@ -1,11 +1,11 @@
 <?php
 
+use App\Dealcloser\Core\Category\Category;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Schema;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Database\Schema\Blueprint;
 use App\Dealcloser\Core\Relation\Relation;
-use App\Dealcloser\Core\Settings\Category;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateRelationTables extends Migration
@@ -30,7 +30,7 @@ class CreateRelationTables extends Migration
             $table->string('sales_area');
             $table->string('zip');
             $table->string('town');
-            $table->integer('phone');
+            $table->bigInteger('phone');
             $table->string('email')->unique();
             $table->string('linkedin')->nullable();
             $table->string('website')->nullable();
@@ -58,6 +58,11 @@ class CreateRelationTables extends Migration
 
         $relation = Category::create([
             'name'          => 'Relaties',
+            'model_type'    => Permission::class,
+        ]);
+
+        $product = Category::create([
+            'name'          => 'Producten',
             'model_type'    => Permission::class,
         ]);
 
@@ -107,7 +112,13 @@ class CreateRelationTables extends Migration
 
         Permission::create([
             'name'                      => 'application-is-always-active',
-            'description'               => 'Applicatie is altijd actief voor',
+            'description'               => 'Applicatie is altijd actief',
+            'category_id'               => $settings->id,
+        ]);
+
+        Permission::create([
+            'name'                      => 'see-graphs',
+            'description'               => 'Toon grafieken',
             'category_id'               => $settings->id,
         ]);
 
@@ -133,6 +144,18 @@ class CreateRelationTables extends Migration
             'name'                      => 'edit-relations',
             'description'               => 'Bewerk/verwijder relaties',
             'category_id'               => $relation->id,
+        ]);
+
+        Permission::create([
+            'name'                      => 'register-products',
+            'description'               => 'Registreer producten',
+            'category_id'               => $product->id,
+        ]);
+
+        Permission::create([
+            'name'                      => 'edit-products',
+            'description'               => 'Bewerk/verwijder producten',
+            'category_id'               => $product->id,
         ]);
     }
 

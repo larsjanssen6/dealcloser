@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
+use Jenssegers\Date\Date;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Date::setLocale('nl');
         Carbon::setLocale('nl');
     }
 

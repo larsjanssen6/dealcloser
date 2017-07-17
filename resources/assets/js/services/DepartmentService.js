@@ -1,7 +1,6 @@
 export default {
     update(department) {
-        department._method = "PATCH";
-        return axios.post('/instellingen/bedrijf/afdeling/' + department.id, department);
+        return axios.patch('/instellingen/bedrijf/afdeling/' + department.id, department);
     },
 
     destroy(department) {

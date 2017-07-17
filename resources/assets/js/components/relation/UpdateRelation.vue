@@ -170,6 +170,30 @@
                             <p class="help is-danger" v-if="errorsHas('linkedin')">{{ error('linkedin') }}</p>
                         </div>
                     </div>
+
+                    <div class="field">
+                        <label for="relations" class="label">Producten van relatie</label>
+
+                        <div class="control">
+                            <div v-if="options.length != 0">
+                                <multiselect
+                                        v-model="relation.products"
+                                        :multiple="true"
+                                        :options="options"
+                                        track-by="id"
+                                        :custom-label="customLabel"
+                                        placeholder="Kies product(en)"
+                                        selectLabel="Druk op enter en voeg toe"
+                                        deselectLabel="Druk op enter en verwijder">
+                                </multiselect>
+                            </div>
+
+                            <p v-else>
+                                Er zijn nog geen producten. Maak deze
+                                <a href="/producten/registreer">hier</a> aan.
+                            </p>
+                        </div>
+                    </div>
                 </form>
             </slot>
 
@@ -193,11 +217,14 @@
 </template>
 
 <script>
+    import Multiselect from 'vue-multiselect'
     import Validation from '../../mixins/validation.js';
     import RelationService from "../../services/RelationService";
 
     export default {
-        props: ['prp-relation', 'prp-categories', 'prp-countries'],
+        props: ['prp-relation', 'prp-categories', 'prp-countries', 'prp-products'],
+
+        components: { Multiselect },
 
         mixins: [Validation],
 
@@ -206,12 +233,15 @@
                 loading: false,
                 show: false,
                 relation: {},
-                RelationService: RelationService
+                RelationService: RelationService,
+                selected: null,
+                options: []
             }
         },
 
         created() {
             this.relation = this.prpRelation;
+            this.options = this.prpProducts;
 
             Event.$on('show-relation-modal', (id) => {
                 if (this.relation.id === id) {
@@ -227,6 +257,10 @@
 
             updateCountry(country) {
                 this.relation.country_code = country;
+            },
+
+            customLabel (option) {
+                return `${option.name} - € ${option.price}`
             },
 
             update() {

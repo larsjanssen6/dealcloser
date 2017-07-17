@@ -8,6 +8,10 @@
 
     <title>DealCloser</title>
 
+    <!-- Js (We use Turbolinks) -->
+
+    <script src={{ mix('/js/app.js') }}></script>
+
     <!-- Css -->
     <link href="{{ mix('/css/bulma.css') }}" rel="stylesheet">
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
@@ -138,7 +142,5 @@
                 </p>
             </div>
         @endif
-
-        <script src={{ mix('/js/app.js') }}></script>
     </body>
 </html>

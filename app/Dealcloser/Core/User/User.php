@@ -2,6 +2,7 @@
 
 namespace App\Dealcloser\Core\User;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Permission\Traits\HasRoles;
@@ -61,6 +62,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Return full name
+     *
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return $this->name . ' ' . $this->last_name;
+    }
+
+    /**
      * Check if user is active.
      *
      * @return bool
@@ -75,7 +86,7 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function department()
+    public function department() : belongsTo
     {
         return $this->belongsTo(Department::class);
     }

@@ -5,8 +5,10 @@
         <header>
             <h3>{{ $slot }}</h3>
 
-            @if(isset($label))
-                <a href="#" class="tag">{{ $label }}</a>&nbsp;
+            @if(isset($labels))
+                @foreach($labels as $label)
+                    <a href="#" class="tag">{{ $label }}</a>&nbsp;
+                @endforeach
             @endif
         </header>
 

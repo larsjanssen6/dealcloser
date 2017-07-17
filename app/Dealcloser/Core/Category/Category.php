@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Dealcloser\Core\Settings;
+namespace App\Dealcloser\Core\Category;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Models\Permission;

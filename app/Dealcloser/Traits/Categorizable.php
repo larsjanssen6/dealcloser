@@ -2,7 +2,7 @@
 
 namespace App\Dealcloser\Traits;
 
-use App\Dealcloser\Core\Settings\Category;
+use App\Dealcloser\Core\Category\Category;
 
 trait Categorizable
 {

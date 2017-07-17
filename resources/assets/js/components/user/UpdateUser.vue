@@ -167,11 +167,11 @@
 
 <script>
     import UserService from '../../services/UserService';
-    import DepartmentService from '../../services/DepartmentService';
     import Validation from '../../mixins/validation.js';
+    import DepartmentService from '../../services/DepartmentService';
 
     export default {
-        props: ['prp-user', 'prp-departments', 'prp-roles'],
+        props: ['prp-user', 'prp-departments', 'prp-roles', 'prp-products'],
 
         mixins: [Validation],
 
@@ -179,7 +179,7 @@
             return {
                 loading: false,
                 show: false,
-                user: {role: ""},
+                user: { role: "" },
                 UserService: UserService
             }
         },

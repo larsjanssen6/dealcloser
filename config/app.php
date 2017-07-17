@@ -170,6 +170,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
         DougSisk\CountryState\CountryStateServiceProvider::class,
+        Jenssegers\Date\DateServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -180,6 +181,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepoServiceProvider::class,
+        App\Providers\LogicServiceProvider::class,
         App\Providers\ObserverServiceProvider::class,
     ],
 
@@ -229,6 +231,7 @@ return [
         'URL'          => Illuminate\Support\Facades\URL::class,
         'Validator'    => Illuminate\Support\Facades\Validator::class,
         'View'         => Illuminate\Support\Facades\View::class,
+        'Date'         => Jenssegers\Date\Date::class,
     ],
 
 ];

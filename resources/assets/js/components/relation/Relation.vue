@@ -70,11 +70,20 @@
                     <strong>Website</strong>
                     <p><a :href="prpRelation.website">{{ prpRelation.website }}</a></p>
                 </div>
+
+                <div class="column" v-if="prpRelation.products">
+                    <strong>Producten</strong>
+                    <p>
+                         <span class="tag is-warning is-medium" v-for="product in prpRelation.products">
+                        {{ product.name }}
+                    </span>
+                    </p>
+                </div>
             </slot>
 
             <div slot="footer">
                 <a :href="'mailto:' + prpRelation.email" class="button is-primary">Contact</a>
-                <a class="button is-primary is-outlined" @click="show = false">Annuleer</a>
+                <a class="button is-primary is-outlined" @click="show = false">Terug</a>
             </div>
         </modal-card>
     </div>

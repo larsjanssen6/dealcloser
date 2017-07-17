@@ -12,11 +12,12 @@ const { mix } = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/stylus/bulma.scss', 'public/css')
+   .fastSass('resources/assets/stylus/bulma.scss', 'public/css')
    .stylus('resources/assets/stylus/app.styl', 'public/css')
     .combine([
         'resources/assets/libraries/css/animations.css',
-        './node_modules/sweetalert2/dist/sweetalert2.css'
+        './node_modules/sweetalert2/dist/sweetalert2.css',
+        './node_modules/vue-multiselect/dist/vue-multiselect.min.css'
     ], 'public/css/packages.css')
     .sourceMaps()
     .version();

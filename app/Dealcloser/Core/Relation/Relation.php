@@ -2,14 +2,17 @@
 
 namespace App\Dealcloser\Core\Relation;
 
+use App\Dealcloser\Core\Product\Product;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use App\Dealcloser\Traits\Categorizable;
+use App\Dealcloser\Custom\BelongsToManyWithSyncEvents;
 
 class Relation extends Model
 {
-    use HasSlug, Categorizable;
+    use HasSlug, Categorizable, BelongsToManyWithSyncEvents;
 
     /**
      * Table name.
@@ -48,5 +51,29 @@ class Relation extends Model
         return SlugOptions::create()
             ->generateSlugsFrom('organisation')
             ->saveSlugsTo('slug');
+    }
+
+    /**
+     * A relation belongs to many products.
+     *
+     * @return BelongsToMany
+     */
+    public function products() : belongsToMany
+    {
+        return $this->belongsToMany(Product::class, 'product_has_relations');
+    }
+
+    /**
+     * Sync products with relation.
+     *
+     * @param $products
+     *
+     * @return $this
+     */
+    public function syncProducts($products)
+    {
+        $this->products()->sync(collect($products)->pluck('id'));
+
+        return $this;
     }
 }

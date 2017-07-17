@@ -95,3 +95,11 @@ $factory->define(\App\Dealcloser\Core\Product\Product::class, function (Faker\Ge
         'amount'        => $faker->numberBetween(1, 999),
     ];
 });
+
+/* @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(\App\Dealcloser\Core\Category\Category::class, function (Faker\Generator $faker) {
+    return [
+        'name'          => $faker->name,
+        'model_type'    => 'App\Dealcloser\Core\Relation\Relation'
+    ];
+});

@@ -70,8 +70,7 @@ class RegisterController extends Controller
      */
     public function store(RegisterRequest $request)
     {
-        if ($this->userCanBeRegistered(settings()->users, $this->userRepo->count())
-        ) {
+        if ($this->userCanBeRegistered(settings()->users, $this->userRepo->count())) {
             $user = $this->userRepo->create(
                 collect($request->only('name', 'last_name', 'email', 'function', 'department_id'))
                     ->merge([

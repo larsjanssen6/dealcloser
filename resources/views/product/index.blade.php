@@ -8,9 +8,9 @@
     <div class="container">
         <div class="section">
             @if(!$products->isEmpty())
-                @can('register-relations')
+                @can('register-products')
                     <div class="column">
-                        <a href="#" class="button is-primary is-outlined">
+                        <a href="{{ route('products.create') }}" class="button is-primary is-outlined">
                             Nieuw product
                         </a>
                     </div>
@@ -91,6 +91,14 @@
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </td>
                                         </tr>
+
+                                        <div>
+                                            @can('edit-products')
+                                                <update-product :prp-product="{{json_encode($product)}}"></update-product>
+                                            @else
+                                                <product :prp-product="{{json_encode($product)}}"></product>
+                                            @endcan
+                                        </div>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -103,7 +111,7 @@
                         Er zijn momenteel geen producten.
 
                         @can('register-products')
-                            Maak deze <a href="#">hier</a> aan.
+                            Maak deze <a href="{{ route('products.create') }}">hier</a> aan.
                         @endcan
                     </p>
                 </div>
