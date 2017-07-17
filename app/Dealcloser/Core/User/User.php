@@ -69,7 +69,7 @@ class User extends Authenticatable
      */
     public function getFullNameAttribute()
     {
-        return $this->name. ($this->preposition == null ? '' : ' '.$this->preposition) . ' ' .$this->last_name;
+        return $this->name.($this->preposition == null ? '' : ' '.$this->preposition).' '.$this->last_name;
     }
 
     /**
