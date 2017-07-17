@@ -50,11 +50,13 @@ class DashboardController extends Controller
     {
         $products = $this->productRepo->getAll();
         $relations = $this->relationRepo->getAll();
+        $users = $this->userRepo->getAll();
 
         return view('dashboard/dashboard')->with([
             /*
             * Get relation information
             */
+
 
             'relations_total'               => $relations->count(),
             'relations_latest'              => $relations->last(),
@@ -66,8 +68,8 @@ class DashboardController extends Controller
             * Get user information
             */
 
-            'users_total'           => $this->userRepo->count(),
-            'users_latest'          => $this->userRepo->latest(),
+            'users_total'           => $users->count(),
+            'users_latest'          => $users->last(),
 
             /*
              * Get product information
