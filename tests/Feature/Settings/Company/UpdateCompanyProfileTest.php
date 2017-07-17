@@ -36,7 +36,7 @@ class UpdateCompanyProfileTest extends TestCase
         $settings = [
             'name'          => 'Company',
             'email'         => 'info@company.com',
-            'phone'         => '0623844932',
+            'phone'         => '623844932',
             'website'       => 'http://www.domain.com',
             'description'   => 'A short description',
         ];
