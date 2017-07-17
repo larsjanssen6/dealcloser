@@ -22,6 +22,12 @@
                             @endcomponent
 
                             @component('layout/input', [
+                                    'name' => 'preposition',
+                                    'label' => 'Tussenvoegsel',
+                                ])
+                            @endcomponent
+
+                            @component('layout/input', [
                                     'name' => 'last_name',
                                     'label' => 'Achternaam',
                                 ])

@@ -19,6 +19,7 @@ class CreateUserTable extends Migration
             $table->string('slug');
             $table->integer('department_id')->unsigned();
             $table->string('name');
+            $table->string('preposition')->nullable();
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password')->nullable();

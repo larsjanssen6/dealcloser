@@ -24,7 +24,8 @@ class UpdateUserTest extends TestCase
 
         $toUpdate = [
             'id'            => $user->id,
-            'name'          => 'lars',
+            'name'          => 'jan',
+            'preposition'   => 'van',
             'last_name'     => 'janssen',
             'email'         => 'lars@domain.com',
             'function'      => 'Ontwikkelaar',

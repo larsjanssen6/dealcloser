@@ -72,7 +72,7 @@ class RegisterController extends Controller
     {
         if ($this->userCanBeRegistered(settings()->users, $this->userRepo->count())) {
             $user = $this->userRepo->create(
-                collect($request->only('name', 'last_name', 'email', 'function', 'department_id'))
+                collect($request->only('name', 'preposition', 'last_name', 'email', 'function', 'department_id'))
                     ->merge([
                         'confirmation_code' => str_random(30),
                         'password'          => str_random(10),

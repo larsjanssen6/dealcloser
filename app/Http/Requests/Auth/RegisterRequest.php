@@ -25,6 +25,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name'          => 'required|max:50|required',
+            'preposition'   => 'max:10|nullable',
             'last_name'     => 'required|max:50|required',
             'email'         => 'required|max:50|email|unique:user',
             'function'      => 'required|max:50|nullable',

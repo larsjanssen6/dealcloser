@@ -35,6 +35,14 @@
                             @endcomponent
 
                             @component('layout/input', [
+                                    'name' => 'preposition',
+                                    'label' => 'Tussenvoegsel',
+                                    'value' => $user->preposition,
+                                    'required' => false
+                                ])
+                            @endcomponent
+
+                            @component('layout/input', [
                                     'name' => 'last_name',
                                     'label' => 'Achternaam',
                                     'value' => $user->last_name

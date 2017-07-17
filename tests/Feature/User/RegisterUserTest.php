@@ -43,9 +43,10 @@ class RegisterUserTest extends TestCase
             ->assertSessionHas(['status' => 'Gebruiker geregistreerd e-mail succesvol verzonden']);
 
         $this->assertDatabaseHas('user', [
-            'name'      => $user['name'],
-            'last_name' => $user['last_name'],
-            'email'     => $user['email'],
+            'name'          => $user['name'],
+            'preposition'   => $user['preposition'],
+            'last_name'     => $user['last_name'],
+            'email'         => $user['email'],
         ]);
 
         $this->assertDatabaseHas('model_has_roles', [

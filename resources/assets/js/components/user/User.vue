@@ -11,6 +11,11 @@
                     <p>{{ prpUser.name }}</p>
                 </div>
 
+                <div class="column" v-if="prpUser.preposition">
+                    <strong>Tussenvoegsel</strong>
+                    <p>{{ prpUser.preposition }}</p>
+                </div>
+
                 <div class="column">
                     <strong>Achternaam</strong>
                     <p>{{ prpUser.last_name }}</p>

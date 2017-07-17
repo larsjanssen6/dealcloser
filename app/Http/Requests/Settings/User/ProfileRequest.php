@@ -26,6 +26,7 @@ class ProfileRequest extends FormRequest
     {
         $rules = [
             'name'          => 'min:3|max:50|required',
+            'preposition'   => 'max:10|nullable',
             'last_name'     => 'min:3|max:50|required',
             'email'         => 'min:5|max:50|email|unique:user,email,'.Auth::user()->id,
             'function'      => 'min:3|max:50|nullable',

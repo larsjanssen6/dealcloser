@@ -33,6 +33,7 @@ $factory->define(App\Dealcloser\Core\User\User::class, function (Faker\Generator
 
     return [
         'name'              => $faker->name,
+        'preposition'       => $faker->safeColorName,
         'last_name'         => $faker->lastName,
         'function'          => $faker->jobTitle,
         'department_id'     => factory(\App\Dealcloser\Core\Department\Department::class)->create()->id,

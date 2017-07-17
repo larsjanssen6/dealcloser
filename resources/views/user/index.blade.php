@@ -26,10 +26,6 @@
                                     </th>
 
                                     <th>
-                                        <abbr>Achternaam</abbr>
-                                    </th>
-
-                                    <th>
                                         <abbr>Actief sinds</abbr>
                                     </th>
 
@@ -49,11 +45,7 @@
                                 @foreach($users as $user)
                                     <tr @click="show({{json_encode($user->id)}})">
                                         <td>
-                                            {{ $user->name }}
-                                        </td>
-
-                                        <td>
-                                            {{ $user->last_name }}
+                                            {{ $user->fullName }}
                                         </td>
 
                                         <td>

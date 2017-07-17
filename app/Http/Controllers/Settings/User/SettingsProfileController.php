@@ -59,7 +59,7 @@ class SettingsProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
-        $items = collect(['name', 'last_name', 'email', 'function', 'department_id']);
+        $items = collect(['name', 'preposition', 'last_name', 'email', 'function', 'department_id']);
 
         if (isset($request->password)) {
             $items = $items->merge('password');

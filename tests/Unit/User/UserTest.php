@@ -16,13 +16,20 @@ class UserTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = create(User::class, ['name' => 'Lars', 'last_name' => 'Janssen']);
+        $this->user = create(User::class, ['name' => 'Jan', 'preposition' => 'van', 'last_name' => 'Janssen']);
     }
 
     /** @test */
-    public function it_can_receive_his_full_name()
+    public function it_can_receive_his_full_name_with_preposition()
     {
-        $this->assertEquals($this->user->fullName, 'Lars Janssen');
+        $this->assertEquals($this->user->fullName, 'Jan van Janssen');
+    }
+
+    /** @test */
+    public function it_can_receive_his_full_name_without_preposition()
+    {
+        $user = create(User::class, ['name' => 'Jan', 'preposition' => null, 'last_name' => 'Janssen']);
+        $this->assertEquals($user->fullName, 'Jan Janssen');
     }
 
     /** @test */

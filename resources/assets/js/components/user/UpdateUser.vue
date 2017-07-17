@@ -24,6 +24,22 @@
                     </div>
 
                     <div class="field">
+                        <label for="preposition" class="label">Tussenvoegsel</label>
+
+                        <div class="control">
+                            <input id="preposition"
+                                   name="preposition"
+                                   type="text"
+                                   v-model="user.preposition"
+                                   class="input"
+                                   :class="{ 'is-danger': errorsHas('preposition') }"
+                                   autofocus>
+
+                            <p class="help is-danger" v-if="errorsHas('preposition')">{{ error('preposition') }}</p>
+                        </div>
+                    </div>
+
+                    <div class="field">
                         <label for="last_name" class="label">Achternaam</label>
 
                         <div class="control">
