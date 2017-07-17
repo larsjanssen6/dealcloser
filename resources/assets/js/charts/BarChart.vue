@@ -1,12 +1,12 @@
 <template>
-    <canvas :id="label" width="800" height="600"></canvas>
+    <canvas :id="label" :width="width" :height="height"></canvas>
 </template>
 
 <script>
     import Chart from 'chart.js';
 
     export default {
-        props: ['data', 'labels', 'label', 'title', 'background', 'border'],
+        props: ['data', 'labels', 'label', 'money', 'background', 'border', 'width', 'height'],
 
         mounted() {
             let ctx = document.getElementById(this.label);

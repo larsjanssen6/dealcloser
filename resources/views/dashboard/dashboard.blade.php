@@ -89,6 +89,9 @@
                                         "Omzet",
                                         "Bruto"
                                     ]) }}"
+                                    :width="800"
+                                    :height="600"
+                                    :money="true"
                                     :label="'Producten totaal'"
                                     :background="'rgba(253, 228, 40, 0.6)'"
                                     :border="'rgba(253, 228, 40, 1)'">
@@ -113,6 +116,8 @@
                     ])
 
                     <a href="{{ route('users') }}">Gebruikers</a>
+
+
                 @endcomponent
             </div>
 
