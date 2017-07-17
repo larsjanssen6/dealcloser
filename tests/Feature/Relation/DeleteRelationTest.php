@@ -46,13 +46,21 @@ class DeleteRelationTest extends TestCase
         $this->superAdminRole->givePermissionTo($this->permissions['edit-relations']);
         $this->user->assignRole($this->superAdminRole->name);
 
-        $product = create(Product::class)->toArray();
-        $relation = create(Relation::class)->syncProducts([$product]);
+        $product = create(Product::class);
+        $relation = create(Relation::class);
+
+        $relation->syncProducts([$product->toArray()]);
+
+        $this->assertDatabaseHas('product_has_relations', [
+            'product_id' => $product->id,
+            'relation_id' => $relation->id,
+        ]);
 
         $this->actingAs($this->user)->deleteJson('/relaties/'.$relation->id);
+
         $this->assertDatabaseMissing('product_has_relations', [
-            'product_id' => 1,
-            'relation_id' => 1,
+            'product_id' => $product->id,
+            'relation_id'=> $relation->id,
         ]);
     }
 }

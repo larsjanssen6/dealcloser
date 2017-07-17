@@ -53,13 +53,20 @@ class DeleteProductTest extends TestCase
         $this->user->assignRole($this->superAdminRole->name);
 
         $product = create(Product::class);
-        create(Relation::class)->syncProducts([$product->toArray()]);
+        $relation = create(Relation::class);
+
+        $relation->syncProducts([$relation->toArray()]);
+
+        $this->assertDatabaseHas('product_has_relations', [
+            'product_id' => $product->id,
+            'relation_id' => $relation->id,
+        ]);
 
         $this->actingAs($this->user)->deleteJson('/producten/'.$product->id);
 
-        $this->assertdatabasehas('product_has_relations', [
-            'product_id' => '1',
-            'relation_id' => '1',
+        $this->assertDatabaseMissing('product_has_relations', [
+            'product_id' => $product->id,
+            'relation_id'=> $relation->id,
         ]);
     }
 }
