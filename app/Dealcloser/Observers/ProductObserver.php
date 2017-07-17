@@ -3,6 +3,7 @@
 namespace App\Dealcloser\Observers;
 
 use App\Dealcloser\Core\Product\Product;
+use App\Dealcloser\Core\Relation\Relation;
 use Illuminate\Cache\Repository as CacheRepository;
 
 class ProductObserver
@@ -43,6 +44,7 @@ class ProductObserver
      */
     public function updated(Product $product)
     {
+        $this->cache->tags(Relation::class)->flush();
         $this->cache->tags(Product::class)->flush();
     }
 
@@ -54,6 +56,7 @@ class ProductObserver
      */
     public function deleting(Product $product)
     {
+        $this->cache->tags(Relation::class)->flush();
         $this->cache->tags(Product::class)->flush();
     }
 }
