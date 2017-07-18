@@ -72,8 +72,8 @@
                                         Opportunities
                                     </a>
 
-                                    <a href="{{ route('relations') }}" class="navbar-item">
-                                        Relaties
+                                    <a href="{{ route('organisations') }}" class="navbar-item">
+                                        Organisaties
                                     </a>
 
                                     <a href="{{ route('products') }}" class="navbar-item">

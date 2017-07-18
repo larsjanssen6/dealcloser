@@ -40,24 +40,24 @@
             <div class="column is-one-quarter">
                 @component('layout/card',
                     [
-                        'labels' => [sprintf('Totaal, %s', $relations_total)],
-                        'header' => isset($relations_latest) ? $relations_latest->created_at->diffForHumans() : 'nvt',
-                        'footer' => 'Hier ziet u alle relaties.',
+                        'labels' => [sprintf('Totaal, %s', $organisations_total)],
+                        'header' => isset($organisations_latest) ? $organisations_latest->created_at->diffForHumans() : 'nvt',
+                        'footer' => 'Hier ziet u alle organisaties.',
                         'meta'   => 'card-meta-blue'
                     ])
 
-                    <a href="{{ route('relations') }}">Relaties</a>
+                    <a href="{{ route('organisations') }}">Organisaties</a>
 
                     @can('see-graphs')
                         <pie-chart  :data="{{ json_encode([
-                                        $relations_total_last_month,
-                                        $relations_total_current_month
+                                        $organisations_total_last_month,
+                                        $organisations_total_current_month
                                     ]) }}"
                                     :labels="{{ json_encode([
                                             Date::now()->subMonth()->format('F'),
                                             Date::now()->format('F')
                                         ]) }}"
-                                    :label="'Nieuwe relaties'"
+                                    :label="'Nieuwe organisaties'"
                                     :background="'rgba(253, 228, 40, 0.6)'"
                                     :border="'rgba(253, 228, 40, 1)'">
                         </pie-chart>

@@ -36,8 +36,8 @@ Vue.component('UpdateProduct',                  require('./components/product/Up
 Vue.component('User',                           require('./components/user/User.vue'));
 Vue.component('UpdateUser',                     require('./components/user/UpdateUser.vue'));
 
-Vue.component('Relation',                       require('./components/relation/Relation.vue'));
-Vue.component('UpdateRelation',                 require('./components/relation/UpdateRelation.vue'));
+Vue.component('Organisation',                   require('./components/organisation/Organisation.vue'));
+Vue.component('UpdateOrganisation',             require('./components/organisation/UpdateOrganisation.vue'));
 
 Vue.component('Roles',                          require('./components/settings/Roles.vue'));
 Vue.component('Departments',                    require('./components/settings/Departments.vue'));
@@ -49,7 +49,7 @@ Vue.component('ForgotPassword',                 require('./components/authentica
 
 Vue.component('Users',                          require('./pages/Users.vue'));
 Vue.component('Products',                       require('./pages/Products.vue'));
-Vue.component('Relations',                      require('./pages/Relations.vue'));
+Vue.component('Organisations',                  require('./pages/Organisations.vue'));
 
 /**
  * bars

@@ -4,7 +4,7 @@ namespace Tests\Feature\Product;
 
 use Tests\TestCase;
 use App\Dealcloser\Core\Product\Product;
-use App\Dealcloser\Core\Relation\Relation;
+use App\Dealcloser\Core\Organisation\Organisation;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class DeleteProductTest extends TestCase
@@ -12,7 +12,7 @@ class DeleteProductTest extends TestCase
     use DatabaseMigrations;
 
     /** @test */
-    public function a_product_with_right_permission_can_destroy_a_product()
+    public function a_user_with_right_permission_can_destroy_a_product()
     {
         $this->superAdminRole->givePermissionTo($this->permissions['edit-products']);
         $this->user->assignRole($this->superAdminRole->name);
@@ -27,11 +27,11 @@ class DeleteProductTest extends TestCase
             ->assertJson(['status' => 'Verwijderd']);
 
         $this->assertEquals($total - 1, Product::count());
-        $this->assertDatabaseMissing('relation', $product);
+        $this->assertDatabaseMissing('product', $product);
     }
 
     /** @test */
-    public function a_user_with_not_the_right_permission_can_not_destroy_a_relation()
+    public function a_user_with_not_the_right_permission_can_not_destroy_a_product()
     {
         $product = collect(create(Product::class))
             ->except('revenue', 'totalPurchase', 'grossMargin')
@@ -53,20 +53,20 @@ class DeleteProductTest extends TestCase
         $this->user->assignRole($this->superAdminRole->name);
 
         $product = create(Product::class);
-        $relation = create(Relation::class);
+        $organisation = create(Organisation::class);
 
-        $relation->syncProducts([$relation->toArray()]);
+        $organisation->syncProducts([$organisation->toArray()]);
 
-        $this->assertDatabaseHas('product_has_relations', [
+        $this->assertDatabaseHas('organisation_has_products', [
             'product_id' => $product->id,
-            'relation_id' => $relation->id,
+            'organisation_id' => $organisation->id,
         ]);
 
         $this->actingAs($this->user)->deleteJson('/producten/'.$product->id);
 
-        $this->assertDatabaseMissing('product_has_relations', [
+        $this->assertDatabaseMissing('organisation_has_products', [
             'product_id' => $product->id,
-            'relation_id'=> $relation->id,
+            'organisation_id'=> $organisation->id,
         ]);
     }
 }

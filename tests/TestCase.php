@@ -47,8 +47,8 @@ abstract class TestCase extends BaseTestCase
             'edit-usage-settings'          => 'edit-usage-settings',
             'application-is-always-active' => 'application-is-always-active',
             'edit-users'                   => 'edit-users',
-            'register-relations'           => 'register-relations',
-            'edit-relations'               => 'edit-relations',
+            'register-organisations'       => 'register-organisations',
+            'edit-organisations'           => 'edit-organisations',
             'register-products'            => 'register-products',
             'edit-products'                => 'edit-products',
         ];

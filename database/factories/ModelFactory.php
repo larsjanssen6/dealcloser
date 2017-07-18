@@ -67,11 +67,11 @@ $factory->define(\App\Dealcloser\Core\Department\Department::class, function (Fa
 });
 
 /* @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(\App\Dealcloser\Core\Relation\Relation::class, function (Faker\Generator $faker) {
+$factory->define(\App\Dealcloser\Core\Organisation\Organisation::class, function (Faker\Generator $faker) {
     return [
         'category_id'       => 4,
         'account_manager'   => $faker->name,
-        'organisation'      => $faker->company,
+        'name'              => $faker->company,
         'country_code'      => 'NL',
         'state_code'        => 'ZH',
         'street'            => $faker->streetName,

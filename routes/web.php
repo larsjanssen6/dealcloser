@@ -19,7 +19,8 @@ Route::group(['middleware' => ['auth', 'throttle:100', 'CheckIfApplicationIsActi
     Route::get('dashboard', 'Dashboard\DashboardController@index');
 
     require 'components/WebUser.php';
-    require 'components/WebSettings.php';
-    require 'components/WebRelation.php';
     require 'components/WebProduct.php';
+    require 'components/WebSettings.php';
+    require 'components/WebOrganisation.php';
+
 });

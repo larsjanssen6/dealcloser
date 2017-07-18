@@ -9,12 +9,12 @@ use App\Dealcloser\Repositories\Product\ProductRepo;
 use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
 use App\Dealcloser\Interfaces\Repositories\IUserRepo;
 use App\Dealcloser\Repositories\Category\CategoryRepo;
-use App\Dealcloser\Repositories\Relation\RelationRepo;
 use App\Dealcloser\Interfaces\Repositories\IProductRepo;
 use App\Dealcloser\Interfaces\Repositories\ICategoryRepo;
-use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
 use App\Dealcloser\Repositories\Department\DepartmentRepo;
 use App\Dealcloser\Interfaces\Repositories\IDepartmentRepo;
+use App\Dealcloser\Interfaces\Repositories\IOrganisationRepo;
+use App\Dealcloser\Repositories\Organisation\OrganisationRepo;
 
 class RepoServiceProvider extends ServiceProvider
 {
@@ -37,7 +37,7 @@ class RepoServiceProvider extends ServiceProvider
     {
         $this->app->singleton(IProductRepo::class, ProductRepo::class);
         $this->app->singleton(ICategoryRepo::class, CategoryRepo::class);
-        $this->app->singleton(IRelationRepo::class, RelationRepo::class);
+        $this->app->singleton(IOrganisationRepo::class, OrganisationRepo::class);
         $this->app->singleton(IUserRepo::class, UserRepo::class);
         $this->app->singleton(IRoleRepo::class, RoleRepo::class);
         $this->app->singleton(IDepartmentRepo::class, DepartmentRepo::class);

@@ -24,21 +24,21 @@ class CreateProductTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('product_has_relations', function (Blueprint $table) {
+        Schema::create('organisation_has_products', function (Blueprint $table) {
             $table->integer('product_id')->unsigned();
-            $table->integer('relation_id')->unsigned();
+            $table->integer('organisation_id')->unsigned();
 
             $table->foreign('product_id')
                 ->references('id')
                 ->on('product')
                 ->onDelete('cascade');
 
-            $table->foreign('relation_id')
+            $table->foreign('organisation_id')
                 ->references('id')
-                ->on('relation')
+                ->on('organisation')
                 ->onDelete('cascade');
 
-            $table->primary(['product_id', 'relation_id']);
+            $table->primary(['product_id', 'organisation_id']);
         });
     }
 
@@ -49,7 +49,7 @@ class CreateProductTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_has_relations');
+        Schema::dropIfExists('organisation_has_products');
         Schema::dropIfExists('product');
     }
 }

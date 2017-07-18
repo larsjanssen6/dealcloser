@@ -6,16 +6,16 @@ use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Dealcloser\Interfaces\Repositories\IUserRepo;
 use App\Dealcloser\Interfaces\Repositories\IProductRepo;
-use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
+use App\Dealcloser\Interfaces\Repositories\IOrganisationRepo;
 
 class DashboardController extends Controller
 {
     /**
-     * IRelationRepo implementation.
+     * IOrganisationRepo implementation.
      *
-     * @var IRelationRepo
+     * @var IOrganisationRepo
      */
-    private $relationRepo;
+    private $organisationRepo;
 
     /**
      * IUserRepo implementation.
@@ -33,15 +33,15 @@ class DashboardController extends Controller
 
     /**
      * Create a new controller instance.
-     * @param IRelationRepo $relationRepo
+     * @param IOrganisationRepo $organisationRepo
      * @param IUserRepo $userRepo
      * @param IProductRepo $productRepo
      */
-    public function __construct(IRelationRepo $relationRepo,
+    public function __construct(IOrganisationRepo $organisationRepo,
                                 IUserRepo $userRepo,
                                 IProductRepo $productRepo)
     {
-        $this->relationRepo = $relationRepo;
+        $this->organisationRepo = $organisationRepo;
         $this->userRepo = $userRepo;
         $this->productRepo = $productRepo;
     }
@@ -49,19 +49,19 @@ class DashboardController extends Controller
     public function index()
     {
         $products = $this->productRepo->getAll();
-        $relations = $this->relationRepo->getAll();
+        $organisations = $this->organisationRepo->getAll();
         $users = $this->userRepo->getAll();
 
         return view('dashboard/dashboard')->with([
             /*
-            * Get relation information
+            * Get organisation information
             */
 
-            'relations_total'               => $relations->count(),
-            'relations_latest'              => $relations->last(),
-            'relations_total_last_month'    => $relations->where('created_at', '>=', Carbon::now()->startOfMonth()->subMonth())
+            'organisations_total'               => $organisations->count(),
+            'organisations_latest'              => $organisations->last(),
+            'organisations_total_last_month'    => $organisations->where('created_at', '>=', Carbon::now()->startOfMonth()->subMonth())
                                                         ->where('created_at', '<=', Carbon::now()->startOfMonth())->count(),
-            'relations_total_current_month' => $relations->where('created_at', '>=', Carbon::now()->startOfMonth())->count(),
+            'organisations_total_current_month' => $organisations->where('created_at', '>=', Carbon::now()->startOfMonth())->count(),
 
             /*
             * Get user information
