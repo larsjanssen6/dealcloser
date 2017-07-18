@@ -24,7 +24,7 @@ class CreateProductTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('organisation_has_products', function (Blueprint $table) {
+        Schema::create('organisation_has_product', function (Blueprint $table) {
             $table->integer('product_id')->unsigned();
             $table->integer('organisation_id')->unsigned();
 
@@ -49,7 +49,7 @@ class CreateProductTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('organisation_has_products');
+        Schema::dropIfExists('organisation_has_product');
         Schema::dropIfExists('product');
     }
 }

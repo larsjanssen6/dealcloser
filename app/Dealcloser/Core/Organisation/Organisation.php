@@ -60,7 +60,7 @@ class Organisation extends Model
      */
     public function products() : belongsToMany
     {
-        return $this->belongsToMany(Product::class, 'organisation_has_products');
+        return $this->belongsToMany(Product::class, 'organisation_has_product');
     }
 
     /**

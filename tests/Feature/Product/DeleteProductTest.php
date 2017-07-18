@@ -57,14 +57,14 @@ class DeleteProductTest extends TestCase
 
         $organisation->syncProducts([$organisation->toArray()]);
 
-        $this->assertDatabaseHas('organisation_has_products', [
+        $this->assertDatabaseHas('organisation_has_product', [
             'product_id' => $product->id,
             'organisation_id' => $organisation->id,
         ]);
 
         $this->actingAs($this->user)->deleteJson('/producten/'.$product->id);
 
-        $this->assertDatabaseMissing('organisation_has_products', [
+        $this->assertDatabaseMissing('organisation_has_product', [
             'product_id' => $product->id,
             'organisation_id'=> $organisation->id,
         ]);

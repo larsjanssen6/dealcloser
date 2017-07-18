@@ -51,7 +51,7 @@ class UpdateOrganisationTest extends TestCase
 
         $this->actingAs($this->user)->patchJson('/organisaties/'.$organisation->id, $toUpdate->toArray());
 
-        $this->assertDatabaseHas('organisation_has_products', [
+        $this->assertDatabaseHas('organisation_has_product', [
             'product_id' => $product->id,
             'organisation_id'=> $organisation->id,
         ]);
