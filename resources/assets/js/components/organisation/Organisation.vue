@@ -71,7 +71,7 @@
                     <p><a :href="prpOrganisation.website">{{ prpOrganisation.website }}</a></p>
                 </div>
 
-                <div class="column" v-if="prpRelation.products.length != 0">
+                <div class="column" v-if="prpOrganisation.products.length != 0">
                     <strong>Producten</strong>
                     <p>
                          <span class="tag is-warning is-medium" v-for="product in prpOrganisation.products">
