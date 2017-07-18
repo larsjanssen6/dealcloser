@@ -10,9 +10,9 @@ use App\Dealcloser\Observers\RoleObserver;
 use App\Dealcloser\Observers\UserObserver;
 use App\Dealcloser\Observers\ProductObserver;
 use App\Dealcloser\Core\Department\Department;
+use App\Dealcloser\Observers\DepartmentObserver;
 use App\Dealcloser\Core\Organisation\Organisation;
 use App\Dealcloser\Observers\OrganisationObserver;
-use App\Dealcloser\Observers\DepartmentObserver;
 
 class ObserverServiceProvider extends ServiceProvider
 {

@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Organisation;
 
-use App\Dealcloser\Core\Organisation\Organisation;
 use Tests\TestCase;
+use App\Dealcloser\Core\Organisation\Organisation;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class RegisterOrganisationTest extends TestCase
