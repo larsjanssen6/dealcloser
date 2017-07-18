@@ -57,7 +57,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $departments = null; $roles = null;
+        $departments = null;
+        $roles = null;
 
         if (Gate::allows('edit-users')) {
             $departments = $this->departmentRepo->getAll();

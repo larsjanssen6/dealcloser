@@ -70,7 +70,9 @@ class OrganisationController extends Controller
      */
     public function index()
     {
-        $products = null; $categories = null; $countries = null;
+        $products = null;
+        $categories = null;
+        $countries = null;
 
         if (Gate::allows('edit-organisations')) {
             $products = $this->productRepo->getAll();
