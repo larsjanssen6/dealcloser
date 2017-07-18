@@ -12,7 +12,7 @@ class IssetWithReturnTest extends TestCase
     /** @test */
     public function it_isset_and_it_returns_collection()
     {
-        $this->assertEquals(issetWithReturn(collect(["name" => "james"])), collect(["name" => "james"]));
+        $this->assertEquals(issetWithReturn(collect(['name' => 'james'])), collect(['name' => 'james']));
     }
 
     /** @test */

@@ -25,7 +25,7 @@ class SettingsTest extends TestCase
             'btw'           => 'btwnumber',
             'users'         => 10,
             'license'       => 'licensenumber',
-            'active'        => 1
+            'active'        => 1,
         ]);
 
         $this->assertEquals('Riveau', settings()->name);
