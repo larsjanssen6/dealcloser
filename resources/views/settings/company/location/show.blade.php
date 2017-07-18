@@ -40,9 +40,9 @@
                             @endcomponent
 
                             @component('layout/input', [
-                                    'name' => 'city',
+                                    'name' => 'town',
                                     'label' => 'Woonplaats',
-                                    'value' => settings()->city,
+                                    'value' => settings()->town,
                                     'required' => false
                                 ])
                             @endcomponent
