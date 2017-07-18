@@ -70,6 +70,8 @@ class OrganisationController extends Controller
      */
     public function index()
     {
+        $products = null; $categories = null; $countries = null;
+
         if (Gate::allows('edit-organisations')) {
             $products = $this->productRepo->getAll();
             $categories = $this->categoryRepo->findAll('model_type', Organisation::class);
@@ -77,10 +79,10 @@ class OrganisationController extends Controller
         }
 
         return view('organisation.index')->with([
-            'products'   => isset($products) ? $products : '',
-            'organisations'  => $this->organisationRepo->paginate(Paginator::resolveCurrentPage(), ['category', 'products']),
-            'categories' => isset($categories) ? $categories : '',
-            'countries'  => isset($countries) ? $countries : '',
+            'organisations' => $this->organisationRepo->paginate(Paginator::resolveCurrentPage(), ['category', 'products']),
+            'products'      => issetWithReturn($products),
+            'categories'    => issetWithReturn($categories),
+            'countries'     => issetWithReturn($countries),
         ]);
     }
 

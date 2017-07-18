@@ -18,6 +18,18 @@ if (! function_exists('setActive')) {
     }
 }
 
+if (! function_exists('issetWithReturn')) {
+    /**
+     * @param string $products
+     *
+     * @return mixed
+     */
+    function issetWithReturn($products)
+    {
+        return isset($products) ? $products : '';
+    }
+}
+
 if (! function_exists('settings')) {
     /**
      * @return mixed

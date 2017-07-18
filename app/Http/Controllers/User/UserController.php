@@ -57,6 +57,8 @@ class UserController extends Controller
      */
     public function index()
     {
+        $departments = null; $roles = null;
+
         if (Gate::allows('edit-users')) {
             $departments = $this->departmentRepo->getAll();
             $roles = $this->roleRepo->getAll();
@@ -64,8 +66,8 @@ class UserController extends Controller
 
         return view('user.index')->with([
             'users'       => $this->userRepo->paginate(Paginator::resolveCurrentPage(), ['department', 'roles']),
-            'departments' => isset($departments) ? $departments : '',
-            'roles'       => isset($roles) ? $roles : '',
+            'departments' => issetWithReturn($departments),
+            'roles'       => issetWithReturn($roles),
         ]);
     }
 
