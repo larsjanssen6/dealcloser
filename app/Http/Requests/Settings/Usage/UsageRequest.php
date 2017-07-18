@@ -24,7 +24,7 @@ class UsageRequest extends FormRequest
     public function rules()
     {
         return [
-            'users'          => 'integer|nullable',
+            'users'          => 'max:2147483647|integer|nullable',
             'active'         => 'max:50|date|nullable',
             'license'        => 'max:50|nullable',
         ];

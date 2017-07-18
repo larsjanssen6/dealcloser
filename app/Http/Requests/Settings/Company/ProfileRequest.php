@@ -26,7 +26,7 @@ class ProfileRequest extends FormRequest
         return [
             'name'          => 'max:50|nullable',
             'email'         => 'max:50|email|nullable',
-            'phone'         => 'max:20|nullable',
+            'phone'         => 'max:9223372036854775807|numeric|nullable',
             'website'       => 'max:50|url|nullable',
             'description'   => 'max:255|nullable',
         ];

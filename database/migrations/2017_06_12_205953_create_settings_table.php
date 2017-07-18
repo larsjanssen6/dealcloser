@@ -21,7 +21,7 @@ class CreateSettingsTable extends Migration
             $table->string('email')
                 ->nullable();
 
-            $table->integer('phone')
+            $table->bigInteger('phone')
                 ->nullable();
 
             $table->string('website')
@@ -36,7 +36,7 @@ class CreateSettingsTable extends Migration
             $table->string('zip')
                 ->nullable();
 
-            $table->string('city')
+            $table->string('town')
                 ->nullable();
 
             $table->string('kvk')
