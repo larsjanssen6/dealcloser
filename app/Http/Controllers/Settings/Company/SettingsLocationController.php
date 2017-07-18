@@ -36,7 +36,7 @@ class SettingsLocationController extends Controller
      */
     public function update(LocationRequest $request)
     {
-        Settings::set($request->only('address', 'zip', 'city'));
+        Settings::set($request->only('address', 'zip', 'town'));
 
         return back()
             ->with('status', 'Bedrijfslocatie geupdatet!');

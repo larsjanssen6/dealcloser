@@ -26,7 +26,7 @@ class LocationRequest extends FormRequest
         return [
             'address'   => 'max:30|nullable',
             'zip'       => 'max:10|nullable',
-            'city'      => 'max:30|nullable',
+            'town'      => 'max:30|nullable',
         ];
     }
 }
