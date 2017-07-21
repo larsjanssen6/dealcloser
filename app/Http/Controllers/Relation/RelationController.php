@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Relation;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Pagination\Paginator;
+use DougSisk\CountryState\CountryState;
+use App\Http\Requests\Relation\RelationRequest;
+use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
 use App\Dealcloser\Interfaces\Repositories\INegotiationRepo;
 use App\Dealcloser\Interfaces\Repositories\IOrganisationRepo;
-use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Relation\RelationRequest;
-use DougSisk\CountryState\CountryState;
-use Illuminate\Http\Request;
-use Illuminate\Pagination\Paginator;
 
 class RelationController extends Controller
 {
@@ -77,8 +76,8 @@ class RelationController extends Controller
                 'relationsInternal',
                 'relationsExternal',
                 'organisationsWorkedAt',
-                'organisationsWorkingAt'
-            ])
+                'organisationsWorkingAt',
+            ]),
         ]);
     }
 
@@ -107,7 +106,7 @@ class RelationController extends Controller
                 ->where('type', 'dmu'),
 
             'organisations' => $this->organisationRepo->getAll()->toArray(),
-            'relations' => $this->relationRepo->getAll()->toArray()
+            'relations' => $this->relationRepo->getAll()->toArray(),
         ]);
     }
 

@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
-use App\Dealcloser\Repositories\Relation\RelationRepo;
 use Illuminate\Support\ServiceProvider;
 use App\Dealcloser\Repositories\Role\RoleRepo;
 use App\Dealcloser\Repositories\User\UserRepo;
@@ -11,9 +9,11 @@ use App\Dealcloser\Repositories\Product\ProductRepo;
 use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
 use App\Dealcloser\Interfaces\Repositories\IUserRepo;
 use App\Dealcloser\Repositories\Category\CategoryRepo;
+use App\Dealcloser\Repositories\Relation\RelationRepo;
 use App\Dealcloser\Interfaces\Repositories\IProductRepo;
-use App\Dealcloser\Repositories\Relation\NegotiationRepo;
 use App\Dealcloser\Interfaces\Repositories\ICategoryRepo;
+use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
+use App\Dealcloser\Repositories\Relation\NegotiationRepo;
 use App\Dealcloser\Repositories\Department\DepartmentRepo;
 use App\Dealcloser\Interfaces\Repositories\IDepartmentRepo;
 use App\Dealcloser\Interfaces\Repositories\INegotiationRepo;
