@@ -2,7 +2,7 @@
     <div v-if="show">
         <modal-card @close="show = false">
             <div slot="title">
-                <p>Bewerk {{ user.name }} {{ user.last_name }}</p>
+                <p>Bewerk {{ user.name }} {{ user.preposition }} {{ user.last_name }}</p>
             </div>
 
             <slot>

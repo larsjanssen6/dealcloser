@@ -2,7 +2,7 @@
 @section('content')
 
     @component('layout/hero')
-        ORGANISATIE
+        ORGANISATIES
     @endcomponent
 
     <div class="container">
@@ -19,7 +19,7 @@
 
             @if(!$organisations->isEmpty())
                 <div class="column">
-                    <organisations inline-template v-cloak>
+                    <modal-wrapper name="organisation" inline-template v-cloak>
                         <div>
                             <table class="table">
                                 <thead class="thead-is-blue">
@@ -91,7 +91,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </organisations>
+                    </modal-wrapper>
                 </div>
             @else
                 <div class="notification is-info">

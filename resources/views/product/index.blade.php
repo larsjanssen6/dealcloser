@@ -19,7 +19,7 @@
 
             @if(!$products->isEmpty())
                 <div class="column">
-                    <products inline-template v-cloak>
+                    <modal-wrapper name="product" inline-template v-cloak>
                         <div>
                             <table class="table">
                                 <thead class="thead-is-blue">
@@ -103,7 +103,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </products>
+                    </modal-wrapper>
                 </div>
             @else
                 <div class="notification is-info">

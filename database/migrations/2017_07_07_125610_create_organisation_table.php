@@ -6,7 +6,6 @@ use Spatie\Permission\Models\Permission;
 use Illuminate\Database\Schema\Blueprint;
 use App\Dealcloser\Core\Category\Category;
 use Illuminate\Database\Migrations\Migration;
-use App\Dealcloser\Core\Organisation\Organisation;
 
 class CreateOrganisationTable extends Migration
 {
@@ -48,31 +47,36 @@ class CreateOrganisationTable extends Migration
 
         $settings = Category::create([
             'name'          => 'Instellingen',
-            'model_type'    => Permission::class,
+            'type'          => 'permission_category',
         ]);
 
         $user = Category::create([
             'name'          => 'Gebruikers',
-            'model_type'    => Permission::class,
+            'type'          => 'permission_category',
         ]);
 
         $organisation = Category::create([
             'name'          => 'Organisaties',
-            'model_type'    => Permission::class,
+            'type'          => 'permission_category',
         ]);
 
         $product = Category::create([
             'name'          => 'Producten',
-            'model_type'    => Permission::class,
+            'type'          => 'permission_category',
+        ]);
+
+        $relation = Category::create([
+            'name'          => 'Relaties',
+            'type'          => 'permission_category',
         ]);
 
         /*
-         * Generate the corporation categories.
+         * Generate the organisation categories.
          */
 
         Category::create([
             'name'       => 'Klant',
-            'model_type' => Organisation::class,
+            'type'       => "organisation_category",
         ]);
 
         /*
@@ -156,6 +160,12 @@ class CreateOrganisationTable extends Migration
             'name'                      => 'edit-products',
             'description'               => 'Bewerk/verwijder producten',
             'category_id'               => $product->id,
+        ]);
+
+        Permission::create([
+            'name'                      => 'register-relations',
+            'description'               => 'Registreer relaties',
+            'category_id'               => $relation->id,
         ]);
     }
 

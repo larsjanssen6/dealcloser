@@ -63,6 +63,13 @@ class User extends Authenticatable
     }
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['fullName'];
+
+    /**
      * Return full name.
      *
      * @return string

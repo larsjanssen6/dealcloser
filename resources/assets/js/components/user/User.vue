@@ -2,7 +2,7 @@
     <div v-if="show">
         <modal-card @close="show = false">
             <div slot="title">
-                <p>{{ prpUser.name }} {{ prpUser.last_name }}</p>
+                <p>{{ prpUser.fullName }}</p>
             </div>
 
             <slot>

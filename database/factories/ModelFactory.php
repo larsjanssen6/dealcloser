@@ -101,6 +101,6 @@ $factory->define(\App\Dealcloser\Core\Product\Product::class, function (Faker\Ge
 $factory->define(\App\Dealcloser\Core\Category\Category::class, function (Faker\Generator $faker) {
     return [
         'name'          => $faker->name,
-        'model_type'    => 'App\Dealcloser\Core\Relation\Relation',
+        'type'          => 'organisation_category',
     ];
 });

@@ -68,8 +68,8 @@
                                         Projecten
                                     </a>
 
-                                    <a href="#" class="navbar-item">
-                                        Opportunities
+                                    <a href="{{ route('relations') }}" class="navbar-item">
+                                        Relaties
                                     </a>
 
                                     <a href="{{ route('organisations') }}" class="navbar-item">

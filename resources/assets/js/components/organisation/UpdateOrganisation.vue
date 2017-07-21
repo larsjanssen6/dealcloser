@@ -176,16 +176,14 @@
 
                         <div class="control">
                             <div v-if="options.length != 0">
-                                <multiselect
-                                        v-model="organisation.products"
-                                        :multiple="true"
-                                        :options="options"
-                                        track-by="id"
-                                        :custom-label="customLabel"
-                                        placeholder="Kies product(en)"
-                                        selectLabel="Druk op enter en voeg toe"
-                                        deselectLabel="Druk op enter en verwijder">
-                                </multiselect>
+                                <multi-select
+                                        :prpSelected="organisation.products"
+                                        :prpOptions="options"
+                                        :prpCustomLabel="customLabel"
+                                        prpPlaceholder="Kies product(en)"
+                                        @optionAdded="addOption"
+                                        @optionRemoved="removeOption">
+                                </multi-select>
                             </div>
 
                             <p v-else>
@@ -217,14 +215,11 @@
 </template>
 
 <script>
-    import Multiselect from 'vue-multiselect'
     import Validation from '../../mixins/validation.js';
     import OrganisationService from "../../services/OrganisationService.js";
 
     export default {
         props: ['prp-organisation', 'prp-categories', 'prp-countries', 'prp-products'],
-
-        components: { Multiselect },
 
         mixins: [Validation],
 
@@ -259,8 +254,16 @@
                 this.organisation.country_code = country;
             },
 
-            customLabel (option) {
+            customLabel(option) {
                 return `${option.name} - € ${option.price}`
+            },
+
+            addOption(option) {
+                this.organisation.products.push(option)
+            },
+
+            removeOption(option) {
+                this.organisation.products = this.organisation.products.filter((item) => item.id !== option.id);
             },
 
             update() {

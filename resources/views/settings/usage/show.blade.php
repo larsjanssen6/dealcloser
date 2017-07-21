@@ -27,29 +27,29 @@
                                    'name' => 'users',
                                    'label' => 'Max aantal gebruikers',
                                    'value' => settings()->users,
-                                   'type' => 'number'
+                                   'type' => 'number',
+                                   'required' => false
                                ])
                             @endcomponent
 
-                            <div class="control">
+                            <div class="field">
                                 <label for="active" class="label">Actief t/m:</label>
 
-                                <date-picker :date="{{ json_encode(settings()->active) }}"></date-picker>
-
-                                @if ($errors->has('active'))
-                                    <p class="help is-danger">{{ $errors->first('active') }}</p>
-                                @endif
+                                <div class="control">
+                                    <date-picker prp-date="{{ json_encode(settings()->active) }}" prp-name="active"></date-picker>
+                                </div>
                             </div>
 
                             @component('layout/input', [
                                    'name' => 'license',
                                    'label' => 'Licentie code',
-                                   'value' => settings()->license
+                                   'value' => settings()->license,
+                                   'required' => false
                                ])
                             @endcomponent
 
                             <div class="control">
-                                <button type="submit" class="button is-primary is-outlined">
+                                <button class="button is-primary is-outlined">
                                     Update gebruik
                                 </button>
                             </div>

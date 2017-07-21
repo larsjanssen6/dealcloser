@@ -90,12 +90,6 @@ footer {
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
-.card .card-content h3 {
-  margin: 0 0 12px;
-  color: #2b315b;
-  font-size: 20px;
-  font-weight: 400;
-}
 .input,
 .textarea {
   padding: 0 15px;
@@ -104,8 +98,14 @@ footer {
           box-shadow: none;
   height: 42px;
 }
-.control:not(:last-child) {
-  margin-bottom: 1.3em;
+.textarea {
+  min-height: 100px;
+}
+.select {
+  width: 100%;
+}
+.field:not(:last-child) {
+  margin-bottom: 1.5em;
 }
 .hero__top {
   margin-top: 5px;

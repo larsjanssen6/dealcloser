@@ -56,8 +56,8 @@ class RegisterController extends Controller
     public function create()
     {
         return view('auth.register')->with([
-            'roles'       => $this->roleRepo->getAll(),
-            'departments' => $this->departmentRepo->getAll(),
+            'roles'       => $this->roleRepo->getAll()->toArray(),
+            'departments' => $this->departmentRepo->getAll()->toArray(),
         ]);
     }
 

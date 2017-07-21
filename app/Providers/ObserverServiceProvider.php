@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Dealcloser\Core\Relation\Relation;
 use App\Dealcloser\Core\User\User;
+use App\Dealcloser\Observers\RelationObserver;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\ServiceProvider;
 use App\Dealcloser\Core\Product\Product;
@@ -28,6 +30,7 @@ class ObserverServiceProvider extends ServiceProvider
         Role::observe(RoleObserver::class);
         User::observe(UserObserver::class);
         Product::observe(ProductObserver::class);
+        Relation::observe(RelationObserver::class);
     }
 
     /**

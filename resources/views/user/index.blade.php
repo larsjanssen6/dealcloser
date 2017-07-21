@@ -16,7 +16,7 @@
             @endcan
 
             <div class="column">
-                <users inline-template v-cloak>
+                <modal-wrapper name="user" inline-template v-cloak>
                     <div>
                         <table class="table">
                             <thead class="thead-is-blue">
@@ -87,7 +87,7 @@
                             </tbody>
                         </table>
                     </div>
-                </users>
+                </modal-wrapper>
             </div>
 
             <div class="column is-4 is-offset-4">

@@ -30,6 +30,8 @@ window.Event = new Vue();
  * Components
  */
 
+Vue.component('Relation',                       require('./components/relation/Relation.vue'));
+
 Vue.component('Product',                        require('./components/product/Product.vue'));
 Vue.component('UpdateProduct',                  require('./components/product/UpdateProduct.vue'));
 
@@ -47,9 +49,7 @@ Vue.component('ForgotPassword',                 require('./components/authentica
  * pages
  */
 
-Vue.component('Users',                          require('./pages/Users.vue'));
-Vue.component('Products',                       require('./pages/Products.vue'));
-Vue.component('Organisations',                  require('./pages/Organisations.vue'));
+Vue.component('ModalWrapper',                  require('./pages/ModalWrapper.vue'));
 
 /**
  * bars
@@ -63,10 +63,11 @@ Vue.component('PieChart',                       require('./charts/PieChart.vue')
  */
 
 Vue.component('CountryState',                   require('./components/shared/CountryState.vue'));
-// Vue.component('DatePicker',                     require('./components/shared/DatePicker.vue'));
-Vue.component('Modal',                          require('./components/shared/Modal.vue'));
+Vue.component('DatePicker',                     require('./components/shared/DatePicker.vue'));
+Vue.component('MultiSelect',                    require('./components/shared/MultiSelect.vue'));
 Vue.component('ModalCard',                      require('./components/shared/ModalCard.vue'));
 Vue.component('Destroy',                        require('./components/shared/Destroy.vue'));
+Vue.component('Modal',                          require('./components/shared/Modal.vue'));
 
 /**
  * Directives
@@ -75,6 +76,13 @@ Vue.component('Destroy',                        require('./components/shared/Des
 Vue.directive('focus', {
     inserted: function (el) {
         el.focus()
+    }
+});
+
+Vue.directive('init', {
+    bind: function(el, binding, vnode) {
+        let component = el.__vue__;
+        component[binding.arg] = binding.value
     }
 });
 

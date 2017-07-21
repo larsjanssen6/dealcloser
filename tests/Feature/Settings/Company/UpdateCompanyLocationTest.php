@@ -36,7 +36,7 @@ class UpdateCompanyLocationTest extends TestCase
         $settings = [
             'address'   => 'Boschlaan 10',
             'zip'       => '5993HK',
-            'city'      => 'Maasbree',
+            'town'      => 'Maasbree',
         ];
 
         $this->actingAs($this->user)->patch('/instellingen/bedrijf/locatie', $settings)

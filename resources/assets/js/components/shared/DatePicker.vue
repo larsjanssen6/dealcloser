@@ -6,7 +6,7 @@
                     v-model="date">
         </datepicker>
 
-        <input type="hidden" name="active" :value="date">
+        <input type="hidden" :name="name" :value="date">
     </div>
 </template>
 
@@ -16,7 +16,22 @@
     export default {
         components: {Datepicker},
 
-        props: ['date'],
+        props: {
+            prpDate: {
+                type: String,
+                default: "",
+            },
+
+            prpName: {
+                type: String,
+                default: "name",
+            }
+        },
+
+        created() {
+            this.date = this.prpDate;
+            this.name = this.prpName;
+        },
 
         data() {
             return {
@@ -30,7 +45,10 @@
                         shorthand: ['Jan', 'Feb', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Aug', 'Sept', 'Okt', 'Nov', 'Dec'],
                         longhand: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December']
                     }
-                }
+                },
+
+                date: "",
+                name: ""
             }
         }
     }

@@ -13,6 +13,6 @@ trait Categorizable
      */
     public function category()
     {
-        return $this->belongsTo(Category::class)->where('model_type', '=', static::class);
+        return $this->belongsTo(Category::class);
     }
 }

@@ -1,5 +1,7 @@
 <div class="card">
-    <section class="{{ isset($meta) ? $meta : 'card-meta' }}">{{ $header }}</section>
+    @if(isset($header))
+        <section class="{{ isset($meta) ? $meta : 'card-meta' }}">{{ $header }}</section>
+    @endif
 
     <section class="card-content">
         <header>

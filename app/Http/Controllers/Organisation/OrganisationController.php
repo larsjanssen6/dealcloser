@@ -76,7 +76,7 @@ class OrganisationController extends Controller
 
         if (Gate::allows('edit-organisations')) {
             $products = $this->productRepo->getAll();
-            $categories = $this->categoryRepo->findAll('model_type', Organisation::class);
+            $categories = $this->categoryRepo->findAll('type', 'organisation_category');
             $countries = collect($this->countryState->getCountries());
         }
 
@@ -96,7 +96,7 @@ class OrganisationController extends Controller
     public function create()
     {
         return view('organisation.create')->with([
-            'categories' => $this->categoryRepo->findAll('model_type', Organisation::class),
+            'categories' => $this->categoryRepo->findAll('type', 'organisation_category')->toArray(),
             'countries'  => collect($this->countryState->getCountries()),
         ]);
     }

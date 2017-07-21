@@ -49,7 +49,7 @@
                             @component('layout/dropdown', [
                                    'name' => 'department_id',
                                    'label' => 'Afdeling',
-                                   'collection' => $departments,
+                                   'array' => $departments,
                                    'value' => 'id',
                                    'option' => 'name',
                                    'selected' => old('department_id')
@@ -59,7 +59,7 @@
                             @component('layout/dropdown', [
                                    'name' => 'role',
                                    'label' => 'Role',
-                                   'collection' => $roles,
+                                   'array' => $roles,
                                    'value' => 'name',
                                    'option' => 'name',
                                    'selected' => old('role')

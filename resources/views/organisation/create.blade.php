@@ -2,7 +2,7 @@
 @section('content')
 
     @component('layout/hero')
-        Registreer organisatie
+        REGISTREER ORGANISATIE
     @endcomponent
 
     <div class="container">
@@ -30,7 +30,7 @@
                             @component('layout/dropdown', [
                                     'name' => 'category_id',
                                     'label' => 'Bedrijfscategorie',
-                                    'collection' => $categories,
+                                    'array' => $categories,
                                     'value' => 'id',
                                     'option' => 'name',
                                     'selected' => old('category_id')

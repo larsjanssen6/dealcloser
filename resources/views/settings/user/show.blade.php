@@ -61,7 +61,8 @@
                                    'name' => 'password',
                                    'label' => 'Wachtwoord',
                                    'placeholder' => '**********',
-                                   'required' => false
+                                   'required' => false,
+                                   'type' => 'password'
                                ])
                             @endcomponent
 
@@ -69,7 +70,8 @@
                                     'name' => 'password_confirmation',
                                     'label' => 'Bevestig wachtwoord',
                                     'placeholder' => '**********',
-                                    'required' => false
+                                    'required' => false,
+                                    'type' => 'password'
                                 ])
                             @endcomponent
 

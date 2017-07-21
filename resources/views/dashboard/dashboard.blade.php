@@ -29,11 +29,11 @@
                     [
                         'labels' => ['Totaal, 10'],
                         'header' => 'November 17, 2016',
-                        'footer' => 'Hier ziet u alle opportunities.',
+                        'footer' => 'Hier ziet u alle relaties.',
                         'meta'   => 'card-meta-blue'
                     ])
 
-                    <a href="#">Opportunities</a>
+                    <a href="{{ route('relations') }}">Relaties</a>
                 @endcomponent
             </div>
 
