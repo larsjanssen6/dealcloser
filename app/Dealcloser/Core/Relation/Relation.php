@@ -2,11 +2,11 @@
 
 namespace App\Dealcloser\Core\Relation;
 
-use App\Dealcloser\Core\Organisation\Organisation;
-use App\Dealcloser\Traits\RelationAttributes;
-use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use Illuminate\Database\Eloquent\Model;
+use App\Dealcloser\Traits\RelationAttributes;
+use App\Dealcloser\Core\Organisation\Organisation;
 
 class Relation extends Model
 {
@@ -52,7 +52,7 @@ class Relation extends Model
         'send_email',
         'christmas_card',
         'experience_with_us',
-        'track_record'
+        'track_record',
     ];
 
     /**
@@ -70,7 +70,7 @@ class Relation extends Model
         'is_o3',
         'wants_events',
         'wants_email',
-        'wants_christmas_card'
+        'wants_christmas_card',
     ];
 
     /**

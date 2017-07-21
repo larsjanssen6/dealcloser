@@ -21,6 +21,6 @@ class Negotiation extends Model
     protected $fillable = [
         'name',
         'description',
-        'type'
+        'type',
     ];
 }

@@ -1,7 +1,7 @@
 <?php
 
-use App\Dealcloser\Core\Category\Category;
 use Illuminate\Database\Schema\Blueprint;
+use App\Dealcloser\Core\Category\Category;
 use Illuminate\Database\Migrations\Migration;
 
 class CreatePermissionTables extends Migration

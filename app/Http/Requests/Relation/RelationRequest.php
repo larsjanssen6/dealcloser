@@ -51,7 +51,7 @@ class RelationRequest extends FormRequest
             'send_email'                => 'required|boolean',
             'christmas_card'            => 'required|boolean',
             'experience_with_us'        => 'max:500',
-            'track_record'              => 'max:500'
+            'track_record'              => 'max:500',
         ];
     }
 }

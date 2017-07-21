@@ -76,7 +76,7 @@ class CreateOrganisationTable extends Migration
 
         Category::create([
             'name'       => 'Klant',
-            'type'       => "organisation_category",
+            'type'       => 'organisation_category',
         ]);
 
         /*

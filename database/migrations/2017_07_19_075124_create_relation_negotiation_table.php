@@ -27,22 +27,22 @@ class CreateRelationNegotiationTable extends Migration
 
         Negotiation::create([
             'name' => 'Management',
-            'type' => 'role'
+            'type' => 'role',
         ]);
 
         Negotiation::create([
             'name' => 'Directie',
-            'type' => 'role'
+            'type' => 'role',
         ]);
 
         Negotiation::create([
             'name' => 'Medewerker',
-            'type' => 'role'
+            'type' => 'role',
         ]);
 
         Negotiation::create([
             'name' => 'Extern',
-            'type' => 'role'
+            'type' => 'role',
         ]);
 
        /*
@@ -55,22 +55,22 @@ class CreateRelationNegotiationTable extends Migration
 
         Negotiation::create([
             'name' => 'Blauw',
-            'type' => 'character'
+            'type' => 'character',
         ]);
 
         Negotiation::create([
             'name' => 'Groen',
-            'type' => 'character'
+            'type' => 'character',
         ]);
 
         Negotiation::create([
             'name' => 'Rood',
-            'type' => 'character'
+            'type' => 'character',
         ]);
 
         Negotiation::create([
             'name' => 'Geel',
-            'type' => 'character'
+            'type' => 'character',
         ]);
 
         /*
@@ -83,22 +83,22 @@ class CreateRelationNegotiationTable extends Migration
 
         Negotiation::create([
             'name' => 'Beinvloeder',
-            'type' => 'dmu'
+            'type' => 'dmu',
         ]);
 
         Negotiation::create([
             'name' => 'Beslisser',
-            'type' => 'dmu'
+            'type' => 'dmu',
         ]);
 
         Negotiation::create([
             'name' => 'Tegenstander',
-            'type' => 'dmu'
+            'type' => 'dmu',
         ]);
 
         Negotiation::create([
             'name' => 'Neutraal',
-            'type' => 'dmu'
+            'type' => 'dmu',
         ]);
 
         /*
@@ -111,27 +111,27 @@ class CreateRelationNegotiationTable extends Migration
 
         Negotiation::create([
             'name' => 'Compromis zoekend',
-            'type' => 'profile'
+            'type' => 'profile',
         ]);
 
         Negotiation::create([
             'name' => 'Samenwerkend',
-            'type' => 'profile'
+            'type' => 'profile',
         ]);
 
         Negotiation::create([
             'name' => 'Doordrukken',
-            'type' => 'profile'
+            'type' => 'profile',
         ]);
 
         Negotiation::create([
             'name' => 'Vermijdend',
-            'type' => 'profile'
+            'type' => 'profile',
         ]);
 
         Negotiation::create([
             'name' => 'Toegevend',
-            'type' => 'profile'
+            'type' => 'profile',
         ]);
 
         /*
