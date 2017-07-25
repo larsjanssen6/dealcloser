@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Relation;
 
-use App\Dealcloser\Core\Organisation\Organisation;
 use Tests\TestCase;
 use App\Dealcloser\Core\Relation\Relation;
+use App\Dealcloser\Core\Organisation\Organisation;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class RegisterRelationTest extends TestCase
@@ -76,7 +76,7 @@ class RegisterRelationTest extends TestCase
         $this->assertDatabaseHas('relation_has_organisation', [
             'relation_id' => 1,
             'organisation_id' => $organisation->id,
-            'type' => 'working_at'
+            'type' => 'working_at',
         ]);
     }
 
@@ -96,7 +96,7 @@ class RegisterRelationTest extends TestCase
         $this->assertDatabaseHas('relation_has_organisation', [
             'relation_id' => 1,
             'organisation_id' => $organisation->id,
-            'type' => 'worked_at'
+            'type' => 'worked_at',
         ]);
     }
 
@@ -116,7 +116,7 @@ class RegisterRelationTest extends TestCase
         $this->assertDatabaseHas('relation_has_relation', [
             'relation_parent_id' => 2,
             'relation_child_id' => $relationToAdd->id,
-            'type' => 'internal'
+            'type' => 'internal',
         ]);
     }
 
@@ -136,7 +136,7 @@ class RegisterRelationTest extends TestCase
         $this->assertDatabaseHas('relation_has_relation', [
             'relation_parent_id' => 2,
             'relation_child_id' => $relationToAdd->id,
-            'type' => 'external'
+            'type' => 'external',
         ]);
     }
 }
