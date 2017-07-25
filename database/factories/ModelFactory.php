@@ -113,7 +113,7 @@ $factory->define(\App\Dealcloser\Core\Relation\Relation::class, function (Faker\
         'email'                     => $faker->email,
         'linkedin'                  => $faker->email,
         'phone'                     => '0623844932',
-        'gender'                    => $faker->numberBetween(0,1),
+        'gender'                    => $faker->numberBetween(0, 1),
         'country_code'              => 'nl',
         'function'                  => $faker->name,
         'date_of_birth'             => $faker->date('Y-m-d H:i'),
@@ -133,6 +133,6 @@ $factory->define(\App\Dealcloser\Core\Relation\Relation::class, function (Faker\
         'send_email'                => 1,
         'christmas_card'            => 1,
         'experience_with_us'        => $faker->text(100),
-        'track_record'              => $faker->text(100)
+        'track_record'              => $faker->text(100),
     ];
 });
