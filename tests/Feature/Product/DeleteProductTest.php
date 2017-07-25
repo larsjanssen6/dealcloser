@@ -55,7 +55,7 @@ class DeleteProductTest extends TestCase
         $product = create(Product::class);
         $organisation = create(Organisation::class);
 
-        $organisation->syncProducts([$organisation->toArray()]);
+        $organisation->syncProducts([$organisation->id]);
 
         $this->assertDatabaseHas('organisation_has_product', [
             'product_id' => $product->id,

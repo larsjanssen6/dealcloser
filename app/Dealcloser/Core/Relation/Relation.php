@@ -5,12 +5,15 @@ namespace App\Dealcloser\Core\Relation;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
+use App\Dealcloser\Traits\CustomModelLogic;
 use App\Dealcloser\Traits\RelationAttributes;
 use App\Dealcloser\Core\Organisation\Organisation;
 
 class Relation extends Model
 {
-    use HasSlug, RelationAttributes;
+    use HasSlug,
+        RelationAttributes,
+        CustomModelLogic;
 
     /**
      * Table name.

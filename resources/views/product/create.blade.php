@@ -2,7 +2,7 @@
 @section('content')
 
     @component('layout/hero')
-        Registreer product
+        REGISTREER PRODUCT
     @endcomponent
 
     <div class="container">
@@ -12,7 +12,7 @@
                     <p>Registreer product</p>
 
                     @slot('body')
-                        <form method="POST" class="form-horizontal" role="form">
+                        <form method="POST" class="form-horizontal">
                             {{ csrf_field() }}
 
                             @component('layout/input', [

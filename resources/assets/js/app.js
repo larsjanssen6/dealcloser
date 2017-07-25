@@ -1,6 +1,6 @@
 import TurbolinksAdapter from 'vue-turbolinks'
-import "babel-polyfill";
 import swal from 'sweetalert2'
+import "babel-polyfill";
 
 /**
  * First we will load all of this project's JavaScript dependencies which

@@ -6,6 +6,7 @@ use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use App\Dealcloser\Traits\CustomModelLogic;
 use App\Dealcloser\Core\Department\Department;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -14,7 +15,8 @@ class User extends Authenticatable
 {
     use Notifiable,
         HasRoles,
-        HasSlug;
+        HasSlug,
+        CustomModelLogic;
 
     /**
      * Table name.

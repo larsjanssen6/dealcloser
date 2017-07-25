@@ -263,7 +263,7 @@
             },
 
             removeOption(option) {
-                this.organisation.products = this.organisation.products.filter((item) => item.id !== option.id);
+                this.organisation.products = this.organisation.products.filter((item) => item.id !== option);
             },
 
             update() {

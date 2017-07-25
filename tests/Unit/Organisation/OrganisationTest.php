@@ -39,8 +39,8 @@ class OrganisationTest extends TestCase
     /** @test */
     public function it_can_sync_products()
     {
-        $products = create(Product::class, [], 5)->toArray();
-        $this->organisation->syncProducts($products);
+        $products = create(Product::class, [], 5);
+        $this->organisation->syncProducts($products->pluck('id'));
         $this->assertEquals($this->organisation->products()->count(), 5);
     }
 }

@@ -73,7 +73,7 @@
 
                         <div class="field">
                             <label for="date_of_birth" class="label">Geboortedatum</label>
-                            <date-picker prp-name="date_of_birth" v-init:date="'{{ old('date_of_birth') }}'"></date-picker>
+                            <date-picker prp-name="date_of_birth" v-init:date="'{{ old('date_of_birth') }}'" :prp-time="false"></date-picker>
 
                             @if ($errors->has('date_of_birth'))
                                 <p class="help is-danger">{{ $errors->first('date_of_birth') }}</p>
@@ -82,7 +82,7 @@
 
                         <div class="field">
                             <label for="employee_since" class="label">Werknemer sinds</label>
-                            <date-picker prp-name="employee_since" v-init:date="'{{ old('employee_since') }}'"></date-picker>
+                            <date-picker prp-name="employee_since" v-init:date="'{{ old('employee_since') }}'" :prp-time="false"></date-picker>
 
                             @if ($errors->has('employee_since'))
                                 <p class="help is-danger">{{ $errors->first('employee_since') }}</p>
@@ -200,7 +200,7 @@
                                 'label' => 'Probleem eigenaar',
                                 'array' => [
                                    ['id' => 0, 'name' => 'Nee'],
-                                    ['id' => 1, 'name' => 'Ja']
+                                   ['id' => 1, 'name' => 'Ja']
                                 ],
                                 'value' => 'id',
                                 'option' => 'name',
@@ -215,7 +215,6 @@
                                 <p>
                                     Er zijn nog geen relaties.
                                 </p>
-
                             @else
                                 <div class="control">
                                     <multi-select prp-name="relations_internal"
@@ -237,7 +236,6 @@
                                 <p>
                                     Er zijn nog geen relaties.
                                 </p>
-
                             @else
                                 <div class="control">
                                     <multi-select prp-name="relations_external"

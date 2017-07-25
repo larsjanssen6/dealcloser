@@ -2,7 +2,7 @@
 @section('content')
 
     @component('layout/hero')
-        Registreer gebruiker
+        REGISTREER GEBRUIKER
     @endcomponent
 
     <div class="container">
@@ -12,7 +12,7 @@
                     <p>Registreer gebruiker</p>
 
                     @slot('body')
-                        <form method="POST" class="form-horizontal" role="form" action="{{ route('register.store') }}">
+                        <form method="POST" class="form-horizontal" action="{{ route('register.store') }}">
                             {{ csrf_field() }}
 
                             @component('layout/input', [

@@ -29,7 +29,10 @@ class DeleteUserTest extends TestCase
     /** @test */
     public function a_user_with_not_the_right_permission_can_not_destroy_a_user()
     {
+        User::$withoutAppends = true;
+
         $user = create(User::class);
+
         $total = User::count();
 
         $this->actingAs($this->user)->deleteJson('/gebruikers/'.$user->id)

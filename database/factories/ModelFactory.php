@@ -49,7 +49,7 @@ $factory->define(App\Dealcloser\Core\Settings\Settings::class, function (Faker\G
     return [
         'name'          => $faker->company,
         'email'         => $faker->email,
-        'phone'         => $faker->phoneNumber,
+        'phone'         => '0623844932',
         'description'   => $faker->title,
         'address'       => $faker->address,
         'zip'           => $faker->postcode,
@@ -102,5 +102,37 @@ $factory->define(\App\Dealcloser\Core\Category\Category::class, function (Faker\
     return [
         'name'          => $faker->name,
         'type'          => 'organisation_category',
+    ];
+});
+
+/* @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(\App\Dealcloser\Core\Relation\Relation::class, function (Faker\Generator $faker) {
+    return [
+        'name'                      => $faker->name,
+        'last_name'                 => $faker->lastName,
+        'email'                     => $faker->email,
+        'linkedin'                  => $faker->email,
+        'phone'                     => '0623844932',
+        'gender'                    => $faker->numberBetween(0,1),
+        'country_code'              => 'nl',
+        'function'                  => $faker->name,
+        'date_of_birth'             => $faker->date('Y-m-d H:i'),
+        'employee_since'            => $faker->date('Y-m-d H:i'),
+        'role_id'                   => 1,
+        'character_id'              => 1,
+        'negotiation_profile_id'    => 1,
+        'dmu_id'                    => 1,
+        'problem_owner'             => 1,
+        'worked_at'                 => $faker->company,
+        'hobbies'                   => $faker->name,
+        'married'                   => 1,
+        'children'                  => 1,
+        'newsletter'                => 1,
+        'o3'                        => 1,
+        'events'                    => 1,
+        'send_email'                => 1,
+        'christmas_card'            => 1,
+        'experience_with_us'        => $faker->text(100),
+        'track_record'              => $faker->text(100)
     ];
 });

@@ -118,6 +118,7 @@ class CreateRelationTable extends Migration
     public function down()
     {
         Schema::dropIfExists('relation_has_relation');
+        Schema::dropIfExists('relation_has_organisation');
         Schema::dropIfExists('relation');
     }
 }

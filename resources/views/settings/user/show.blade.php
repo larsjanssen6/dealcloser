@@ -85,7 +85,7 @@
                             @component('layout/dropdown', [
                                    'name' => 'department_id',
                                    'label' => 'Afdeling',
-                                   'collection' => $departments,
+                                   'array' => $departments,
                                    'value' => 'id',
                                    'option' => 'name',
                                    'selected' => $user->department_id

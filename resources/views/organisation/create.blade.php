@@ -9,10 +9,10 @@
         <div class="columns">
             <div class="column is-half is-offset-one-quarter">
                 @component('layout/panel')
-                    <p>Registreer organisatie</p>
+                    <p>REGISTREER ORGANISATIE</p>
 
                     @slot('body')
-                        <form method="POST" class="form-horizontal" role="form">
+                        <form method="POST" class="form-horizontal">
                             {{ csrf_field() }}
 
                             @component('layout/input', [

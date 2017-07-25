@@ -72,7 +72,7 @@ class Organisation extends Model
      */
     public function syncProducts($products)
     {
-        $this->products()->sync(collect($products)->pluck('id'));
+        $this->products()->sync($products);
 
         return $this;
     }

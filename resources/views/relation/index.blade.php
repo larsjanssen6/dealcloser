@@ -48,10 +48,6 @@
                                             <abbr>DMU</abbr>
                                         </th>
 
-                                        <th>
-                                            <abbr>Werknemer sinds</abbr>
-                                        </th>
-
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -81,10 +77,6 @@
 
                                         <td>
                                             {{ $relation->dmu->name }}
-                                        </td>
-
-                                        <td>
-                                            {{ isset($relation->employee_since) ? $relation->employee_since : 'nvt' }}
                                         </td>
 
                                         <td>

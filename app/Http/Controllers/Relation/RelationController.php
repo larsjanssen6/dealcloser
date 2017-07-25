@@ -53,7 +53,7 @@ class RelationController extends Controller
                                 IOrganisationRepo $organisationRepo,
                                 IRelationRepo $relationRepo)
     {
-        $this->middleware('permission:register-relations')->only('create');
+        $this->middleware('permission:register-relations')->only('create', 'store');
         $this->countryState = $countryState;
         $this->negotiationRepo = $negotiationRepo;
         $this->organisationRepo = $organisationRepo;
@@ -110,6 +110,12 @@ class RelationController extends Controller
         ]);
     }
 
+    /**
+     * Store a relation.
+     *
+     * @param RelationRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(RelationRequest $request)
     {
         $relation = $this->relationRepo->create($request->all());

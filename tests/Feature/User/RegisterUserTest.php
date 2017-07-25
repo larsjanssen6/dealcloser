@@ -18,7 +18,7 @@ class RegisterUserTest extends TestCase
         $this->user->assignRole($this->superAdminRole->name);
 
         $this->actingAs($this->user)->get('/gebruikers/registreer')
-            ->assertSee('Registreer gebruiker');
+            ->assertSee('REGISTREER GEBRUIKER');
     }
 
     /** @test */
@@ -26,7 +26,7 @@ class RegisterUserTest extends TestCase
     {
         $this->actingAs($this->user)->get('/gebruikers/registreer')
             ->assertRedirect('/')
-            ->assertDontSee('Registreer gebruiker');
+            ->assertDontSee('REGISTREER GEBRUIKER');
     }
 
     /** @test */

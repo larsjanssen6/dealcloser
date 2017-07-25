@@ -37,7 +37,7 @@ class UpdateOrganisationTest extends TestCase
     }
 
     /** @test */
-    public function a_organisation_can_sync_products_on_update()
+    public function a_organisation_can_have_products()
     {
         $this->superAdminRole->givePermissionTo($this->permissions['edit-organisations']);
         $this->user->assignRole($this->superAdminRole->name);
@@ -46,12 +46,40 @@ class UpdateOrganisationTest extends TestCase
         $product = create(Product::class);
 
         $toUpdate = collect(make(Organisation::class))
-            ->merge(['products' => [$product->toArray()]])
+            ->merge(['products' => [$product->id]])
             ->merge(['id' => $organisation->id]);
 
         $this->actingAs($this->user)->patchJson('/organisaties/'.$organisation->id, $toUpdate->toArray());
 
         $this->assertDatabaseHas('organisation_has_product', [
+            'product_id' => $product->id,
+            'organisation_id'=> $organisation->id,
+        ]);
+    }
+
+    /** @test */
+    public function a_organisation_can_have_no_products()
+    {
+        $this->superAdminRole->givePermissionTo($this->permissions['edit-organisations']);
+        $this->user->assignRole($this->superAdminRole->name);
+
+        $organisation = create(Organisation::class);
+        $product = create(Product::class);
+
+        $organisation->syncProducts($product->id);
+
+        $this->assertDatabaseHas('organisation_has_product', [
+            'product_id' => $product->id,
+            'organisation_id'=> $organisation->id,
+        ]);
+
+        $toUpdate = collect(make(Organisation::class))
+            ->merge(['products' => []])
+            ->merge(['id' => $organisation->id]);
+
+        $this->actingAs($this->user)->patchJson('/organisaties/'.$organisation->id, $toUpdate->toArray());
+
+        $this->assertDatabaseMissing('organisation_has_product', [
             'product_id' => $product->id,
             'organisation_id'=> $organisation->id,
         ]);

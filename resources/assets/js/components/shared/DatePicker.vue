@@ -2,7 +2,7 @@
     <div>
         <datepicker :alignment="'left'"
                     placeholder="Klik voor datum/tijd"
-                    :config="{ enableTime: true, dateFormat: 'Y-m-d H:i', static: false, locale: nl }"
+                    :config="{ enableTime: prpTime, dateFormat: 'Y-m-d H:i', static: false, locale: nl }"
                     v-model="date">
         </datepicker>
 
@@ -25,6 +25,11 @@
             prpName: {
                 type: String,
                 default: "name",
+            },
+
+            prpTime: {
+                type: Boolean,
+                default: true,
             }
         },
 

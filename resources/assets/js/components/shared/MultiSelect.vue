@@ -65,11 +65,11 @@
 
         methods: {
             select(value) {
-                this.$emit('optionAdded', value);
+                this.$emit('optionAdded', value.id);
             },
 
             remove(value) {
-                this.$emit('optionRemoved', value);
+                this.$emit('optionRemoved', value.id);
             }
         }
     }

@@ -6,11 +6,14 @@ use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use App\Dealcloser\Traits\Calculatable;
 use Illuminate\Database\Eloquent\Model;
+use App\Dealcloser\Traits\CustomModelLogic;
 use App\Dealcloser\Logic\ProductCalculation;
 
 class Product extends Model
 {
-    use HasSlug, Calculatable;
+    use HasSlug,
+        Calculatable,
+        CustomModelLogic;
 
     /**
      * Table name.

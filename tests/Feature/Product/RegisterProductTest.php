@@ -17,7 +17,7 @@ class RegisterProductTest extends TestCase
         $this->user->assignRole($this->superAdminRole->name);
 
         $this->actingAs($this->user)->get('/producten/registreer')
-            ->assertSee('Registreer product');
+            ->assertSee('REGISTREER PRODUCT');
     }
 
     /** @test */
@@ -25,7 +25,7 @@ class RegisterProductTest extends TestCase
     {
         $this->actingAs($this->user)->get('/producten/registreer')
             ->assertRedirect('/')
-            ->assertDontSee('Registreer product');
+            ->assertDontSee('REGISTREER PRODUCT');
     }
 
     /** @test */
@@ -34,9 +34,9 @@ class RegisterProductTest extends TestCase
         $this->superAdminRole->givePermissionTo($this->permissions['register-products']);
         $this->user->assignRole($this->superAdminRole->name);
 
-        $product = collect(make(Product::class))
-            ->except('revenue', 'totalPurchase', 'grossMargin')
-            ->toArray();
+        Product::$withoutAppends = true;
+
+        $product = make(Product::class)->toArray();
 
         $this->actingAs($this->user)->post('/producten/registreer', $product)
             ->assertRedirect('/producten')
@@ -48,9 +48,9 @@ class RegisterProductTest extends TestCase
     /** @test */
     public function a_user_with_not_the_right_permission_can_not_register_a_product()
     {
-        $product = collect(make(Product::class))
-            ->except('revenue', 'totalPurchase', 'grossMargin')
-            ->toArray();
+        Product::$withoutAppends = true;
+
+        $product = make(Product::class)->toArray();
 
         $this->actingAs($this->user)->post('/producten/registreer', $product)
             ->assertSessionHas(['status' => 'Niet geautoriseerd!'])
