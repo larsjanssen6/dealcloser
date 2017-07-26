@@ -15,4 +15,4 @@ Route::post('relaties/registreer', 'Relation\RelationController@store')
 //
 //Route::patch('producten/{product}', 'Product\ProductController@update');
 //
-//Route::delete('producten/{product}', 'Product\ProductController@destroy');
+Route::delete('relaties/{relation}', 'Relation\RelationController@destroy');

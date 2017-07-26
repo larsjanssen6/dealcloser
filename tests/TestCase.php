@@ -52,6 +52,7 @@ abstract class TestCase extends BaseTestCase
             'register-products'            => 'register-products',
             'edit-products'                => 'edit-products',
             'register-relations'           => 'register-relations',
+            'edit-relations'               => 'edit-relations',
         ];
 
         $this->superAdminRole = Role::first();

@@ -17,7 +17,20 @@ class RelationTest extends TestCase
     {
         parent::setUp();
 
-        $this->relation = create(Relation::class);
+        $this->relation = create(Relation::class, [
+            'name' => 'Jan',
+            'preposition' => 'van',
+            'last_name' => 'Janssen',
+            'gender' => 0,
+            'problem_owner' => 0,
+            'married' => 0,
+            'children' => 0,
+            'newsletter' => 0,
+            'o3' => 0,
+            'events' => 0,
+            'christmas_card' => 0,
+            'send_email' => 0
+        ]);
     }
 
     /** @test */
@@ -114,5 +127,135 @@ class RelationTest extends TestCase
         $relation = create(Relation::class, [], 5);
         $this->relation->attachRelations($relation->pluck('id'), 'external');
         $this->assertEquals($this->relation->relations()->count(), 5);
+    }
+
+    /** @test */
+    public function it_can_receive_his_full_name_with_preposition()
+    {
+        $this->assertEquals($this->relation->fullName, 'Jan van Janssen');
+    }
+
+    /** @test */
+    public function it_can_receive_his_full_name_without_preposition()
+    {
+        $relation = create(Relation::class, ['name' => 'Jan', 'preposition' => null, 'last_name' => 'Janssen']);
+        $this->assertEquals($relation->fullName, 'Jan Janssen');
+    }
+
+    /** @test */
+    public function it_can_receive_his_gender_man()
+    {
+        $this->assertEquals($this->relation->hasGender, 'Man');
+    }
+
+    /** @test */
+    public function it_can_receive_his_gender_woman()
+    {
+        $relation = create(Relation::class, ['gender' => 1]);
+        $this->assertEquals($relation->hasGender, 'Vrouw');
+    }
+
+    /** @test */
+    public function it_can_receive_problem_owner_no()
+    {
+        $this->assertEquals($this->relation->isProblemOwner, 'Nee');
+    }
+
+    /** @test */
+    public function it_can_receive_problem_owner_yes()
+    {
+        $relation = create(Relation::class, ['problem_owner' => 1]);
+        $this->assertEquals($relation->isProblemOwner, 'Ja');
+    }
+
+    /** @test */
+    public function it_can_receive_is_married_no()
+    {
+        $this->assertEquals($this->relation->isProblemOwner, 'Nee');
+    }
+
+    /** @test */
+    public function it_can_receive_is_married_yes()
+    {
+        $relation = create(Relation::class, ['married' => 1]);
+        $this->assertEquals($relation->isProblemOwner, 'Ja');
+    }
+
+    /** @test */
+    public function it_can_receive_has_children_no()
+    {
+        $this->assertEquals($this->relation->hasChildren, 'Nee');
+    }
+
+    /** @test */
+    public function it_can_receive_has_children_yes()
+    {
+        $relation = create(Relation::class, ['children' => 1]);
+        $this->assertEquals($relation->hasChildren, 'Ja');
+    }
+
+    /** @test */
+    public function it_can_receive_wants_newsletter_no()
+    {
+        $this->assertEquals($this->relation->wantsNewsletter, 'Nee');
+    }
+
+    /** @test */
+    public function it_can_receive_wants_newsletter_yes()
+    {
+        $relation = create(Relation::class, ['newsletter' => 1]);
+        $this->assertEquals($relation->wantsNewsletter, 'Ja');
+    }
+
+    /** @test */
+    public function it_can_receive_is_o3_no()
+    {
+        $this->assertEquals($this->relation->isO3, 'Nee');
+    }
+
+    /** @test */
+    public function it_can_receive_is_o3_yes()
+    {
+        $relation = create(Relation::class, ['o3' => 1]);
+        $this->assertEquals($relation->isO3, 'Ja');
+    }
+
+    /** @test */
+    public function it_can_receive_wants_events_no()
+    {
+        $this->assertEquals($this->relation->wantsEvents, 'Nee');
+    }
+
+    /** @test */
+    public function it_can_receive_wants_events_yes()
+    {
+        $relation = create(Relation::class, ['events' => 1]);
+        $this->assertEquals($relation->wantsEvents, 'Ja');
+    }
+
+    /** @test */
+    public function it_can_receive_wants_email_no()
+    {
+        $this->assertEquals($this->relation->wantsEmail, 'Nee');
+    }
+
+    /** @test */
+    public function it_can_receive_wants_email_yes()
+    {
+        $relation = create(Relation::class, ['email' => 1]);
+        $this->assertEquals($relation->wantsEmail, 'Ja');
+    }
+
+    /** @test */
+    public function it_can_receive_wants_christmas_card_no()
+    {
+        $this->assertEquals($this->relation->wantsChristmasCard, 'Nee');
+    }
+
+    /** @test */
+    public function it_can_receive_wants_christmas_card_yes()
+    {
+        $relation = create(Relation::class, ['christmas_card' => 1]);
+        $this->assertEquals($relation->wantsChristmasCard, 'Ja');
     }
 }

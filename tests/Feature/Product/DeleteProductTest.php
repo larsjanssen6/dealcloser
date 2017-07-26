@@ -14,12 +14,12 @@ class DeleteProductTest extends TestCase
     /** @test */
     public function a_user_with_right_permission_can_destroy_a_product()
     {
+        Product::$withoutAppends = true;
+
         $this->superAdminRole->givePermissionTo($this->permissions['edit-products']);
         $this->user->assignRole($this->superAdminRole->name);
 
-        $product = collect(create(Product::class))
-            ->except('revenue', 'totalPurchase', 'grossMargin')
-            ->toArray();
+        $product = create(Product::class)->toArray();
 
         $total = Product::count();
 
@@ -33,9 +33,9 @@ class DeleteProductTest extends TestCase
     /** @test */
     public function a_user_with_not_the_right_permission_can_not_destroy_a_product()
     {
-        $product = collect(create(Product::class))
-            ->except('revenue', 'totalPurchase', 'grossMargin')
-            ->toArray();
+        Product::$withoutAppends = true;
+
+        $product = create(Product::class)->toArray();
 
         $total = Product::count();
 

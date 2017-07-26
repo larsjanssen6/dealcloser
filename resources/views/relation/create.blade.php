@@ -122,24 +122,24 @@
 
                         </div>
 
-                            <div class="field">
-                                <label for="organisations_worked_at" class="label">Gewerkt bij</label>
+                        <div class="field">
+                            <label for="organisations_worked_at" class="label">Gewerkt bij</label>
 
-                                @if(empty($organisations))
-                                    <p>
-                                        Er zijn nog geen organisaties. Maak deze
-                                        <a href="{{ route('organisations.create') }}">hier</a> aan.
-                                    </p>
+                            @if(empty($organisations))
+                                <p>
+                                    Er zijn nog geen organisaties. Maak deze
+                                    <a href="{{ route('organisations.create') }}">hier</a> aan.
+                                </p>
 
-                                @else
-                                    <div class="control">
-                                        <multi-select prp-name="organisations_worked_at"
-                                                      :prp-options="{{ json_encode($organisations) }}"
-                                                      prp-placeholder="Kies organisatie(s)">
-                                        </multi-select>
-                                    </div>
-                                @endif
-                            </div>
+                            @else
+                                <div class="control">
+                                    <multi-select prp-name="organisations_worked_at"
+                                                  :prp-options="{{ json_encode($organisations) }}"
+                                                  prp-placeholder="Kies organisatie(s)">
+                                    </multi-select>
+                                </div>
+                            @endif
+                        </div>
 
                         @component('layout/input', [
                               'name' => 'worked_at',

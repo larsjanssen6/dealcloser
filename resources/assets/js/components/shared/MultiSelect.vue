@@ -27,12 +27,12 @@
         props: {
             prpSelected: {
                 type: Array,
-                default: this.selected,
+                default: [],
             },
 
             prpOptions: {
                 type: Array,
-                default: this.options,
+                default: [],
             },
 
             prpCustomLabel: {
