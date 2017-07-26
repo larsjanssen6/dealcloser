@@ -29,7 +29,7 @@ class RelationTest extends TestCase
             'o3' => 0,
             'events' => 0,
             'christmas_card' => 0,
-            'send_email' => 0
+            'send_email' => 0,
         ]);
     }
 

@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Relation;
 
-use App\Dealcloser\Core\Organisation\Organisation;
-use App\Dealcloser\Core\Relation\Relation;
 use Tests\TestCase;
+use App\Dealcloser\Core\Relation\Relation;
+use App\Dealcloser\Core\Organisation\Organisation;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class DeleteRelationTest extends TestCase
@@ -60,7 +60,7 @@ class DeleteRelationTest extends TestCase
         $this->assertDatabaseHas('relation_has_relation', [
             'relation_parent_id' => $relation->id,
             'relation_child_id' => $relationToLink->id,
-            'type' => 'internal'
+            'type' => 'internal',
         ]);
 
         $this->actingAs($this->user)->deleteJson('/relaties/'.$relation->id);
@@ -68,7 +68,7 @@ class DeleteRelationTest extends TestCase
         $this->assertDatabaseMissing('relation_has_relation', [
             'relation_parent_id' => $relation->id,
             'relation_child_id' => $relationToLink->id,
-            'type' => 'internal'
+            'type' => 'internal',
         ]);
     }
 
@@ -86,7 +86,7 @@ class DeleteRelationTest extends TestCase
         $this->assertDatabaseHas('relation_has_organisation', [
             'relation_id' => $relation->id,
             'organisation_id' => $organisation->id,
-            'type' => 'working_at'
+            'type' => 'working_at',
         ]);
 
         $this->actingAs($this->user)->deleteJson('/relaties/'.$relation->id);
@@ -94,7 +94,7 @@ class DeleteRelationTest extends TestCase
         $this->assertDatabaseMissing('relation_has_organisation', [
             'relation_id' => $relation->id,
             'organisation_id' => $organisation->id,
-            'type' => 'working_at'
+            'type' => 'working_at',
         ]);
     }
 }
