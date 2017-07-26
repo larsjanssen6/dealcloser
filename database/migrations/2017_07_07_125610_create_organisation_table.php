@@ -167,6 +167,12 @@ class CreateOrganisationTable extends Migration
             'description'               => 'Registreer relaties',
             'category_id'               => $relation->id,
         ]);
+
+        Permission::create([
+            'name'                      => 'edit-relations',
+            'description'               => 'Bewerk relaties',
+            'category_id'               => $relation->id,
+        ]);
     }
 
     /**
