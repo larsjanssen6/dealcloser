@@ -42,7 +42,7 @@
                     confirmButtonText: 'Ja verwijder afdeling',
                     cancelButtonText: 'Annuleer'
                 }).then(() => {
-                    DepartmentService.destroy(department)
+                    DepartmentService.destroy(department.id)
                         .then(({data}) => {
                             swal(({
                                 title: 'Verwijderd',

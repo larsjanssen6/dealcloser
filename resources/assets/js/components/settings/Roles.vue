@@ -42,7 +42,7 @@
                     confirmButtonText: 'Ja verwijder rol',
                     cancelButtonText: 'Annuleer'
                 }).then(() => {
-                    RoleService.destroy(role)
+                    RoleService.destroy(role.id)
                         .then(({data}) => {
                             swal(({
                                 title: 'Verwijderd',
