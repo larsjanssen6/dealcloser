@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Relation;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
 use DougSisk\CountryState\CountryState;
+use App\Dealcloser\Core\Relation\Relation;
 use App\Http\Requests\Relation\RelationRequest;
 use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
 use App\Dealcloser\Interfaces\Repositories\INegotiationRepo;
@@ -54,6 +55,7 @@ class RelationController extends Controller
                                 IRelationRepo $relationRepo)
     {
         $this->middleware('permission:register-relations')->only('create', 'store');
+        $this->middleware('permission:edit-relations')->only('destroy');
         $this->countryState = $countryState;
         $this->negotiationRepo = $negotiationRepo;
         $this->organisationRepo = $organisationRepo;
@@ -105,8 +107,13 @@ class RelationController extends Controller
             'decision_making_units' => $negotiations
                 ->where('type', 'dmu'),
 
-            'organisations' => $this->organisationRepo->getAll()->toArray(),
-            'relations' => $this->relationRepo->getAll()->toArray(),
+            'organisations' => $this->organisationRepo
+                ->getAll()
+                ->toArray(),
+
+            'relations' => $this->relationRepo
+                ->getAll()
+                ->toArray(),
         ]);
     }
 
@@ -127,5 +134,18 @@ class RelationController extends Controller
 
         return redirect('/relaties')
             ->with('status', 'Relatie aangemaakt!');
+    }
+
+    /**
+     * Destroy a relation.
+     *
+     * @param Relation $relation
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(Relation $relation)
+    {
+        $this->relationRepo->delete($relation->id);
+
+        return response()->json(['status' => 'Verwijderd']);
     }
 }

@@ -195,20 +195,33 @@
             </slot>
 
             <div slot="footer">
-                <a :href="'mailto:' + prpRelation.email" class="button is-primary">Contact</a>
-                <a class="button is-primary is-outlined" @click="show = false">Terug</a>
+                <button id="submit"
+                        class="button is-primary"
+                        @click="edit">
+                    Bewerk
+                </button>
+
+                <destroy :service="RelationService" :id="prpRelation.id"></destroy>
+
+                <a class="button is-primary is-outlined"
+                   @click="show = false">
+                    Annuleer
+                </a>
             </div>
         </modal-card>
     </div>
 </template>
 
 <script>
+    import RelationService from "../../services/RelationService.js";
+
     export default {
         props: ['prp-relation'],
 
         data() {
             return {
                 show: false,
+                RelationService: RelationService,
             }
         },
 
@@ -218,6 +231,12 @@
                     this.show = true;
                 }
             });
+        },
+
+        methods: {
+            edit() {
+                window.location.href = '/bewerk/' + this.prpRelation.id;
+            }
         }
     }
 </script>
