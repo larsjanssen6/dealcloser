@@ -81,7 +81,7 @@ trait RelationAttributes
      */
     public function getWantsEventsAttribute()
     {
-        return $this->events == 0 ? 'Nee' : 'Ja';
+        return $this->attributes['events'] == 0 ? 'Nee' : 'Ja';
     }
 
     /**
