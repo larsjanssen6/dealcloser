@@ -229,7 +229,6 @@
                 show: false,
                 organisation: {},
                 OrganisationService: OrganisationService,
-                selected: null,
                 options: []
             }
         },
