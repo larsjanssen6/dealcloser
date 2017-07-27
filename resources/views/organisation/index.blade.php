@@ -80,7 +80,6 @@
                                             @can('edit-organisations')
                                                 <update-organisation :prp-organisation="{{json_encode($organisation)}}"
                                                                      :prp-categories="{{json_encode($categories)}}"
-                                                                     :prp-countries="{{json_encode($countries)}}"
                                                                      :prp-products="{{json_encode($products)}}">
                                                 </update-organisation>
                                             @else

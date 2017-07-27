@@ -23,16 +23,23 @@ class RelationRequest extends FormRequest
      */
     public function rules()
     {
+        $email = 'required|max:50|email|unique:relation,email';
+
+        if ($this->method() == 'PATCH') {
+            $email = 'required|max:50|email|unique:relation,email,' .$this->request->all()['id'];
+        }
+
         return [
             'name'                      => 'required|max:50',
             'preposition'               => 'max:10',
             'last_name'                 => 'required|max:50',
             'initial'                   => 'max:10',
-            'email'                     => 'required|max:50|email|unique:relation,email',
+            'email'                     => $email,
             'linkedin'                  => 'max:50',
             'phone'                     => 'max:9223372036854775807|numeric|nullable',
             'gender'                    => 'required|integer|between:0,1',
             'country_code'              => 'required|max:3',
+            'state_code'                => 'required|max:3',
             'function'                  => 'required|max:50',
             'date_of_birth'             => 'date_format:Y-m-d H:i|nullable',
             'employee_since'            => 'date_format:Y-m-d H:i|nullable',

@@ -34,14 +34,10 @@
 
 <script>
     import StateService from '../../services/StateService';
+    import CountryService from '../../services/CountryService';
 
     export default {
         props: {
-            countries: {
-                type: Object,
-                default: []
-            },
-
             prpState: {
                 type: String,
                 default: "NH"
@@ -66,6 +62,7 @@
         data() {
             return {
                 states: [],
+                countries: [],
                 country: "",
                 state: ""
             }
@@ -74,6 +71,7 @@
         created() {
             this.country = this.prpCountry;
             this.state = this.prpState;
+            this.getCountries();
             this.getStates(this.country);
         },
 
@@ -82,6 +80,13 @@
                 StateService.index(state)
                     .then(({data}) => {
                         this.states = data;
+                    })
+            },
+
+            getCountries() {
+                CountryService.index()
+                    .then(({data}) => {
+                        this.countries = data;
                     })
             }
         }

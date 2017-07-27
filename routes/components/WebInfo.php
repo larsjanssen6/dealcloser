@@ -4,5 +4,5 @@
 | Info
 */
 
-Route::get('info', 'Info\InfoController@info')
+Route::get('info', 'Web\Info\InfoController@info')
     ->name('info.info');

@@ -52,8 +52,7 @@
                         </select>
                     </div>
 
-                    <country-state :countries="prpCountries"
-                                   :prpState="organisation.state_code"
+                    <country-state :prpState="organisation.state_code"
                                    :prpCountry="organisation.country_code"
                                    @stateChanged="updateState"
                                    @countryChanged="updateCountry">
@@ -129,7 +128,7 @@
                         <div class="control">
                             <input id="phone"
                                    name="phone"
-                                   type="phone"
+                                   type="number"
                                    v-model="organisation.phone"
                                    class="input"
                                    :class="{ 'is-danger': errorsHas('phone') }"
@@ -145,7 +144,7 @@
                         <div class="control">
                             <input id="website"
                                    name="website"
-                                   type="website"
+                                   type="text"
                                    v-model="organisation.website"
                                    class="input"
                                    :class="{ 'is-danger': errorsHas('website') }"
@@ -161,7 +160,7 @@
                         <div class="control">
                             <input id="linkedin"
                                    name="linkedin"
-                                   type="linkedin"
+                                   type="text"
                                    v-model="organisation.linkedin"
                                    class="input"
                                    :class="{ 'is-danger': errorsHas('linkedin') }"
@@ -219,7 +218,7 @@
     import OrganisationService from "../../services/OrganisationService.js";
 
     export default {
-        props: ['prp-organisation', 'prp-categories', 'prp-countries', 'prp-products'],
+        props: ['prp-organisation', 'prp-categories', 'prp-products'],
 
         mixins: [Validation],
 

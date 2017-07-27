@@ -53,9 +53,14 @@
                     <p>{{ prpRelation.is_married }}</p>
                 </div>
 
-                <div class="column">
+                <div class="column" v-if="prpRelation.country_code">
                     <strong>Landcode</strong>
                     <p>{{ prpRelation.country_code }}</p>
+                </div>
+
+                <div class="column" v-if="prpRelation.state_code">
+                    <strong>Provincie</strong>
+                    <p>{{ prpRelation.state_code }}</p>
                 </div>
 
                 <div class="column">

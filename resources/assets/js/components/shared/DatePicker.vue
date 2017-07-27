@@ -3,7 +3,8 @@
         <datepicker :alignment="'left'"
                     placeholder="Klik voor datum/tijd"
                     :config="{ enableTime: prpTime, dateFormat: 'Y-m-d H:i', static: false, locale: nl }"
-                    v-model="date">
+                    v-model="date"
+                    @input="timeChanged">
         </datepicker>
 
         <input type="hidden" :name="name" :value="date">
@@ -54,6 +55,12 @@
 
                 date: "",
                 name: ""
+            }
+        },
+
+        methods: {
+            timeChanged(value) {
+                this.$emit('timeChanged', value);
             }
         }
     }

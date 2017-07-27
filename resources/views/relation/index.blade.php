@@ -33,19 +33,7 @@
                                         </th>
 
                                         <th>
-                                            <abbr>Karakter</abbr>
-                                        </th>
-
-                                        <th>
-                                            <abbr>Onderhandelingsprofiel</abbr>
-                                        </th>
-
-                                        <th>
-                                            <abbr>Rol</abbr>
-                                        </th>
-
-                                        <th>
-                                            <abbr>DMU</abbr>
+                                            <abbr>Functie</abbr>
                                         </th>
 
                                         <th></th>
@@ -64,19 +52,7 @@
                                         </td>
 
                                         <td>
-                                            {{ $relation->character->name }}
-                                        </td>
-
-                                        <td>
-                                            {{ $relation->negotiationProfile->name }}
-                                        </td>
-
-                                        <td>
-                                            {{ $relation->role->name }}
-                                        </td>
-
-                                        <td>
-                                            {{ $relation->dmu->name }}
+                                            {{ $relation->function }}
                                         </td>
 
                                         <td>
@@ -85,7 +61,13 @@
                                     </tr>
 
                                     <div>
-                                        <relation :prp-relation="{{json_encode($relation)}}"></relation>
+                                        @can('edit-relations')
+                                            <update-relation :prp-relation="{{ json_encode($relation) }}"
+                                                             :negotiations="{{ json_encode($negotiations) }}">
+                                            </update-relation>
+                                        @else
+                                            <relation :prp-relation="{{json_encode($relation)}}"></relation>
+                                        @endcan
                                     </div>
                                 @endforeach
                                 </tbody>

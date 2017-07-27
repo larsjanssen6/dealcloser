@@ -4,15 +4,15 @@
 | User
 */
 
-Route::get('gebruikers', 'User\UserController@index')
+Route::get('gebruikers', 'Web\User\UserController@index')
     ->name('users');
 
-Route::patch('gebruikers/{user}', 'User\UserController@update');
+Route::patch('gebruikers/{user}', 'Web\User\UserController@update');
 
-Route::get('gebruikers/registreer', 'Auth\RegisterController@create')
+Route::get('gebruikers/registreer', 'Web\Auth\RegisterController@create')
     ->name('register.create');
 
-Route::post('gebruikers/registreer', 'Auth\RegisterController@store')
+Route::post('gebruikers/registreer', 'Web\Auth\RegisterController@store')
     ->name('register.store');
 
-Route::delete('gebruikers/{user}', 'User\UserController@destroy');
+Route::delete('gebruikers/{user}', 'Web\User\UserController@destroy');

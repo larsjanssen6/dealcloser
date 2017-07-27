@@ -31,6 +31,7 @@ window.Event = new Vue();
  */
 
 Vue.component('Relation',                       require('./components/relation/Relation.vue'));
+Vue.component('UpdateRelation',                 require('./components/relation/UpdateRelation.vue'));
 
 Vue.component('Product',                        require('./components/product/Product.vue'));
 Vue.component('UpdateProduct',                  require('./components/product/UpdateProduct.vue'));
@@ -62,6 +63,8 @@ Vue.component('PieChart',                       require('./charts/PieChart.vue')
  * Shared
  */
 
+Vue.component('CustomTextArea',                 require('./components/shared/CustomTextArea.vue'));
+Vue.component('CustomInput',                    require('./components/shared/CustomInput.vue'));
 Vue.component('CountryState',                   require('./components/shared/CountryState.vue'));
 Vue.component('DatePicker',                     require('./components/shared/DatePicker.vue'));
 Vue.component('MultiSelect',                    require('./components/shared/MultiSelect.vue'));

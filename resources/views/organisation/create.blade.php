@@ -9,7 +9,7 @@
         <div class="columns">
             <div class="column is-half is-offset-one-quarter">
                 @component('layout/panel')
-                    <p>REGISTREER ORGANISATIE</p>
+                    <p>Registreer organisatie</p>
 
                     @slot('body')
                         <form method="POST" class="form-horizontal">
@@ -37,7 +37,7 @@
                                 ])
                             @endcomponent
 
-                            <country-state :countries="{{json_encode($countries)}}"></country-state>
+                            <country-state></country-state>
 
                             @if ($errors->has('state_code'))
                                 <p class="help is-danger">{{ $errors->first('state_code') }}</p>

@@ -23,12 +23,12 @@ class OrganisationRequest extends FormRequest
      */
     public function rules()
     {
+        $name = 'required|max:50|required|unique:organisation,name';
+        $email = 'required|max:50|email|unique:organisation,email';
+
         if ($this->method() == 'PATCH') {
             $name = 'required|max:50|required|unique:organisation,name,'.$this->request->all()['id'];
             $email = 'required|max:50|email|unique:organisation,email,'.$this->request->all()['id'];
-        } else {
-            $name = 'required|max:50|required|unique:organisation,name';
-            $email = 'required|max:50|email|unique:organisation,email';
         }
 
         return [

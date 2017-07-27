@@ -43,6 +43,8 @@
                              ])
                         @endcomponent
 
+                        <country-state></country-state>
+
                         @component('layout/input', [
                                'name' => 'phone',
                                'label' => 'Telefoon',
@@ -158,7 +160,7 @@
                         @component('layout/dropdown', [
                                'name' => 'role_id',
                                'label' => 'Rol',
-                               'array' => $roles,
+                               'array' => $negotiations['roles'],
                                'value' => 'id',
                                'option' => 'name',
                                'selected' => old('role_id')
@@ -168,7 +170,7 @@
                         @component('layout/dropdown', [
                                 'name' => 'character_id',
                                 'label' => 'Karakter',
-                                'array' => $characters,
+                                'array' => $negotiations['characters'],
                                 'value' => 'id',
                                 'option' => 'name',
                                 'selected' => old('character_id')
@@ -178,7 +180,7 @@
                         @component('layout/dropdown', [
                                'name' => 'negotiation_profile_id',
                                'label' => 'Onderhandelingsprofiel',
-                               'array' => $profiles,
+                               'array' => $negotiations['profiles'],
                                'value' => 'id',
                                'option' => 'name',
                                'selected' => old('negotiation_profile_id')
@@ -188,7 +190,7 @@
                         @component('layout/dropdown', [
                                'name' => 'dmu_id',
                                'label' => 'Dmu (Decision Making Unit)',
-                               'array' => $decision_making_units,
+                               'array' => $negotiations['decision_making_units'],
                                'value' => 'id',
                                'option' => 'name',
                                'selected' => old('dmu_id')
@@ -386,8 +388,6 @@
                             </div>
                         </div>
                     @endcomponent
-
-                    <input type="hidden" name="country_code" value="nl">
                 </form>
             </div>
         </div>

@@ -4,32 +4,32 @@
 | Login / Logout
 */
 
-Route::get('/', 'Auth\LoginController@showLoginForm')
+Route::get('/', 'Web\Auth\LoginController@showLoginForm')
     ->name('login');
 
-Route::post('/', 'Auth\LoginController@login');
+Route::post('/', 'Web\Auth\LoginController@login');
 
-Route::get('logout', 'Auth\LoginController@logout')
+Route::get('logout', 'Web\Auth\LoginController@logout')
     ->name('logout');
 
 /*
 | Password reset
 */
 
-Route::post('password/reset', 'Auth\ForgotPasswordController@sendResetLinkEmail')
+Route::post('password/reset', 'Web\Auth\ForgotPasswordController@sendResetLinkEmail')
     ->name('password.email');
 
-Route::post('wachtwoord/reset/{token}', 'Auth\ResetPasswordController@reset')
+Route::post('wachtwoord/reset/{token}', 'Web\Auth\ResetPasswordController@reset')
     ->name('password.reset');
 
-Route::get('wachtwoord/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+Route::get('wachtwoord/reset/{token}', 'Web\Auth\ResetPasswordController@showResetForm');
 
 /*
 | User activation
 */
 
-Route::get('registreer/{token}', 'Auth\ActivationController@show')
+Route::get('registreer/{token}', 'Web\Auth\ActivationController@show')
     ->name('register.activate');
 
-Route::post('registreer/{token}', 'Auth\ActivationController@activate')
+Route::post('registreer/{token}', 'Web\Auth\ActivationController@activate')
     ->name('register.activate');

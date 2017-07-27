@@ -12,15 +12,15 @@
 */
 
 require 'components/WebAuthentication.php';
-
 require 'components/WebInfo.php';
 
 Route::group(['middleware' => ['auth', 'throttle:100', 'CheckIfApplicationIsActive']], function () {
-    Route::get('dashboard', 'Dashboard\DashboardController@index');
+    Route::get('dashboard', 'Web\Dashboard\DashboardController@index');
 
     require 'components/WebUser.php';
     require 'components/WebProduct.php';
     require 'components/WebSettings.php';
     require 'components/WebRelation.php';
+    require 'components/WebLocation.php';
     require 'components/WebOrganisation.php';
 });

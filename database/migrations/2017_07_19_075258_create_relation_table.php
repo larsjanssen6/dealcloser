@@ -25,6 +25,7 @@ class CreateRelationTable extends Migration
             $table->bigInteger('phone')->nullable();
             $table->integer('gender')->default(0);
             $table->string('country_code');
+            $table->string('state_code');
             $table->string('function');
             $table->timestamp('date_of_birth')->nullable();
             $table->timestamp('employee_since')->nullable();

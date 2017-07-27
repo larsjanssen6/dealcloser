@@ -37,6 +37,7 @@ class Relation extends Model
         'phone',
         'gender',
         'country_code',
+        'state_code',
         'function',
         'date_of_birth',
         'employee_since',
