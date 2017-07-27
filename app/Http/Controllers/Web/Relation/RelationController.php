@@ -69,7 +69,7 @@ class RelationController extends Controller
      */
     public function index()
     {
-        if(request()->wantsJson()) {
+        if (request()->wantsJson()) {
             return $this->relationRepo->getAll();
         }
 
@@ -143,7 +143,7 @@ class RelationController extends Controller
     }
 
     /**
-     * Get all negotiations
+     * Get all negotiations.
      *
      * @return array
      */
@@ -163,8 +163,8 @@ class RelationController extends Controller
                 ->where('type', 'profile'),
 
                     'decision_making_units' => $negotiations
-                ->where('type', 'dmu')
-            ]
+                ->where('type', 'dmu'),
+            ],
         ];
     }
 }
