@@ -70,7 +70,7 @@ class OrganisationController extends Controller
      */
     public function index()
     {
-        if(request()->wantsJson()) {
+        if (request()->wantsJson()) {
             return $this->organisationRepo->getAll();
         }
 
@@ -97,7 +97,7 @@ class OrganisationController extends Controller
     public function create()
     {
         return view('organisation.create')->with([
-            'categories' => $this->categoryRepo->findAll('type', 'organisation_category')->toArray()
+            'categories' => $this->categoryRepo->findAll('type', 'organisation_category')->toArray(),
         ]);
     }
 

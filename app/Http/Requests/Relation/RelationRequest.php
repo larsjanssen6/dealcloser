@@ -26,7 +26,7 @@ class RelationRequest extends FormRequest
         $email = 'required|max:50|email|unique:relation,email';
 
         if ($this->method() == 'PATCH') {
-            $email = 'required|max:50|email|unique:relation,email,' .$this->request->all()['id'];
+            $email = 'required|max:50|email|unique:relation,email,'.$this->request->all()['id'];
         }
 
         return [

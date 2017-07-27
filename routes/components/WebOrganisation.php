@@ -16,4 +16,3 @@ Route::post('organisaties/registreer', 'Web\Organisation\OrganisationController@
 Route::patch('organisaties/{organisation}', 'Web\Organisation\OrganisationController@update');
 
 Route::delete('organisaties/{organisation}', 'Web\Organisation\OrganisationController@destroy');
-
