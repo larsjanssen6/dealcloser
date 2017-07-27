@@ -199,8 +199,8 @@
                                       :prp-options="relations"
                                       :prp-selected="relation.relations_external"
                                       prp-placeholder="Kies relatie(s)"
-                                      @optionAdded="addRelationsExternalAtOption"
-                                      @optionRemoved="removeRelationsExternalAtOption">
+                                      @optionAdded="addRelationsExternalOption"
+                                      @optionRemoved="removeRelationsExternalOption">
                         </multi-select>
                     </div>
 
@@ -451,19 +451,19 @@
                 this.relation.organisations_worked_at = this.relation.organisations_worked_at.filter((item) => item.id !== option);
             },
 
-            addRelationsInternalAtOption(option) {
+            addRelationsInternalOption(option) {
                 this.relation.relations_internal.push(option)
             },
 
-            removeRelationsInternalAtOption(option) {
+            removeRelationsInternalOption(option) {
                 this.relation.relations_internal = this.relation.relations_internal.filter((item) => item.id !== option);
             },
 
-            addRelationsExternalAtOption(option) {
+            addRelationsExternalOption(option) {
                 this.relation.relations_external.push(option)
             },
 
-            removeRelationsExternalAtOption(option) {
+            removeRelationsExternalOption(option) {
                 this.relation.relations_external = this.relation.relations_external.filter((item) => item.id !== option);
             }
         }
