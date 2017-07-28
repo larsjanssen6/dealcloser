@@ -134,7 +134,7 @@ class Relation extends Model
      */
     public function relationsInternal()
     {
-        return $this->belongsToMany(self::class, 'relation_has_relation', 'relation_parent_id', 'relation_child_id')->where('type', 'internal');
+        return $this->belongsToMany(self::class, 'relation_has_relation', 'relation_parent_id', 'relation_child_id')->wherePivot('type', 'internal');
     }
 
     /**
@@ -144,7 +144,7 @@ class Relation extends Model
      */
     public function relationsExternal()
     {
-        return $this->belongsToMany(self::class, 'relation_has_relation', 'relation_parent_id', 'relation_child_id')->where('type', 'external');
+        return $this->belongsToMany(self::class, 'relation_has_relation', 'relation_parent_id', 'relation_child_id')->wherePivot('type', 'external');
     }
 
     /**
@@ -164,7 +164,7 @@ class Relation extends Model
      */
     public function organisationsWorkedAt()
     {
-        return $this->belongsToMany(Organisation::class, 'relation_has_organisation')->where('type', 'worked_at');
+        return $this->belongsToMany(Organisation::class, 'relation_has_organisation')->wherePivot('type', 'worked_at');
     }
 
     /**
@@ -174,7 +174,7 @@ class Relation extends Model
      */
     public function organisationsWorkingAt()
     {
-        return $this->belongsToMany(Organisation::class, 'relation_has_organisation')->where('type', 'working_at');
+        return $this->belongsToMany(Organisation::class, 'relation_has_organisation')->wherePivot('type', 'working_at');
     }
 
     /**
@@ -188,31 +188,45 @@ class Relation extends Model
     }
 
     /**
-     * Attach relations with relation.
+     * Sync relations.
      *
      * @param $relations
      * @param $type
-     *
      * @return $this
      */
-    public function attachRelations($relations, $type)
+    public function syncRelations($relations, $type)
     {
-        $this->relations()->attach($relations, ['type' => $type]);
+        $relations = collect($relations)->mapWithKeys(function($relation) use ($type) {
+            return [$relation => ['type' => $type]];
+        })->toArray();
+
+        if ($type === 'external'){
+            $this->relationsexternal()->sync($relations);
+        } elseif ($type === 'internal'){
+            $this->relationsinternal()->sync($relations);
+        }
 
         return $this;
     }
 
     /**
-     * Attach relations with organisation.
+     * Sync relations.
      *
-     * @param $relations
+     * @param $organisations
      * @param $type
-     *
      * @return $this
      */
-    public function attachOrganisations($relations, $type)
+    public function syncOrganisations($organisations, $type)
     {
-        $this->organisations()->attach($relations, ['type' => $type]);
+        $organisations = collect($organisations)->mapWithKeys(function($organisation) use ($type) {
+            return [$organisation => ['type' => $type]];
+        })->toArray();
+
+        if ($type === 'worked_at'){
+            $this->organisationsWorkedAt()->sync($organisations);
+        } elseif ($type === 'working_at'){
+            $this->organisationsWorkingAt()->sync($organisations);
+        }
 
         return $this;
     }
