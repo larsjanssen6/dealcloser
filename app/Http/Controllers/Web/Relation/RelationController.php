@@ -55,7 +55,7 @@ class RelationController extends Controller
                                 IRelationRepo $relationRepo)
     {
         $this->middleware('permission:register-relations')->only('create', 'store');
-        $this->middleware('permission:edit-relations')->only('destroy');
+        $this->middleware('permission:edit-relations')->only('destroy', 'update');
         $this->countryState = $countryState;
         $this->negotiationRepo = $negotiationRepo;
         $this->organisationRepo = $organisationRepo;
@@ -73,18 +73,9 @@ class RelationController extends Controller
             return $this->relationRepo->getAll();
         }
 
-        return view('relation.index')->with(array_merge($this->negotiations(), [
-            'relations' => $this->relationRepo->paginate(Paginator::resolveCurrentPage(), [
-                'character',
-                'dmu',
-                'role',
-                'negotiationProfile',
-                'relationsInternal',
-                'relationsExternal',
-                'organisationsWorkedAt',
-                'organisationsWorkingAt',
-            ]),
-        ]));
+        return view('relation.index')->with([
+            'relations' => $this->relationRepo->paginate(Paginator::resolveCurrentPage())
+        ]);
     }
 
     /**
@@ -106,6 +97,24 @@ class RelationController extends Controller
     }
 
     /**
+     * @param $id
+     * @return mixed
+     */
+    public function show($id)
+    {
+        return $this->relationRepo->find($id, [
+            'character',
+            'dmu',
+            'role',
+            'negotiationProfile',
+            'relationsInternal',
+            'relationsExternal',
+            'organisationsWorkedAt',
+            'organisationsWorkingAt'
+        ]);
+    }
+
+    /**
      * Store a relation.
      *
      * @param RelationRequest $request
@@ -124,8 +133,15 @@ class RelationController extends Controller
             ->with('status', 'Relatie aangemaakt!');
     }
 
-    public function update(RelationRequest $request)
+    /**
+     * @param RelationRequest $request
+     * @param Relation $relation
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(RelationRequest $request, Relation $relation)
     {
+        $this->relationRepo->update($relation->id, $request->all());
+
         return response()->json(['status' => 'Geupdatet']);
     }
 
