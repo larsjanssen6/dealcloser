@@ -25,6 +25,7 @@
     "babel-polyfill": "^6.23.0",
     "bulma": "^0.4.3",
     "chart.js": "^2.6.0",
+    "collect.js": "^3.0.47",
     "es6-promise": "^4.1.1",
     "sweetalert2": "^6.6.6",
     "turbolinks": "^5.0.3",
