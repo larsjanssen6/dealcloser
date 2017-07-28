@@ -123,11 +123,8 @@ class RelationController extends Controller
     public function store(RelationRequest $request)
     {
         $relation = $this->relationRepo->create($request->all());
-        $relation->attachRelations($request->relations_internal, 'internal');
-        $relation->attachRelations($request->relations_external, 'external');
 
-        $relation->attachOrganisations($request->organisations_working_at, 'working_at');
-        $relation->attachOrganisations($request->organisations_worked_at, 'worked_at');
+        $this->syncAll($request, $relation);
 
         return redirect('/relaties')
             ->with('status', 'Relatie aangemaakt!');
@@ -141,6 +138,8 @@ class RelationController extends Controller
     public function update(RelationRequest $request, Relation $relation)
     {
         $this->relationRepo->update($relation->id, $request->all());
+
+        $this->syncAll($request, $relation);
 
         return response()->json(['status' => 'Geupdatet']);
     }
@@ -156,6 +155,21 @@ class RelationController extends Controller
         $this->relationRepo->delete($relation->id);
 
         return response()->json(['status' => 'Verwijderd']);
+    }
+
+    /**
+     * Sync everything on relation model.
+     *
+     * @param RelationRequest $request
+     * @param Relation $relation
+     */
+    public function syncAll(RelationRequest $request, Relation $relation)
+    {
+        $relation->syncRelations($request->relations_internal, 'internal');
+        $relation->syncRelations($request->relations_external, 'external');
+
+        $relation->syncOrganisations($request->organisations_working_at, 'working_at');
+        $relation->syncOrganisations($request->organisations_worked_at, 'worked_at');
     }
 
     /**
