@@ -66,28 +66,29 @@ abstract class EloquentRepo implements IRepo
      *
      * @param $id
      *
+     * @param array $with
      * @return mixed
      */
-    public function find($id)
+    public function find($id, $with = [])
     {
-        return $this->cache->tags($this->getModel())->remember($this->getModel().'|find|'.$id, 60, function () use ($id) {
-            return $this->findBy('id', $id);
+        return $this->cache->tags($this->getModel())->remember($this->getModel().'|find|'.$id, 60, function () use ($id, $with) {
+            return $this->findBy('id', $id, $with);
         });
     }
 
     /**
      * Find first by column and value.
      *
-
      * @param $column
      * @param $value
      *
+     * @param array $with
      * @return mixed
      */
-    public function findBy($column, $value)
+    public function findBy($column, $value, $with = [])
     {
-        return $this->cache->tags($this->getModel())->remember($this->getModel().'|find_by|'.$column.'|'.$value, 60, function () use ($column, $value) {
-            return $this->_model->where($column, $value)->first();
+        return $this->cache->tags($this->getModel())->remember($this->getModel().'|find_by|'.$column.'|'.$value, 60, function () use ($column, $value, $with) {
+            return $this->_model->where($column, $value)->with($with)->first();
         });
     }
 
