@@ -70,6 +70,7 @@
 
                         <div class="field">
                             <label for="date_of_birth" class="label">Geboortedatum</label>
+
                             <date-picker prp-name="date_of_birth"
                                          :prp-date="relation.date_of_birth"
                                          :prp-time="false"
@@ -79,6 +80,7 @@
 
                         <div class="field">
                             <label for="employee_since" class="label">Werknemer sinds</label>
+
                             <date-picker prp-name="employee_since"
                                          :prp-date="relation.employee_since"
                                          :prp-time="false"
@@ -376,9 +378,6 @@
             Event.$on('show-relation-modal', (id) => {
                 if (this.relationId == id) {
                     this.getRelation(id);
-                    this.getRelations();
-                    this.getOrganisations();
-                    this.getNegotiations();
                     this.show = true;
                 }
             });
@@ -448,6 +447,11 @@
                 this.loadingForm = true;
                 RelationService.show(id).then(({data}) => {
                     this.relation = data;
+
+                    this.getRelations();
+                    this.getOrganisations();
+                    this.getNegotiations();
+
                     this.loadingForm = false;
                 });
             },
