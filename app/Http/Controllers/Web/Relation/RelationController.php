@@ -74,7 +74,7 @@ class RelationController extends Controller
         }
 
         return view('relation.index')->with([
-            'relations' => $this->relationRepo->paginate(Paginator::resolveCurrentPage())
+            'relations' => $this->relationRepo->paginate(Paginator::resolveCurrentPage()),
         ]);
     }
 
@@ -110,7 +110,7 @@ class RelationController extends Controller
             'relationsInternal',
             'relationsExternal',
             'organisationsWorkedAt',
-            'organisationsWorkingAt'
+            'organisationsWorkingAt',
         ]);
     }
 

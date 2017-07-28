@@ -19,5 +19,4 @@ Route::patch('relaties/{relation}', 'Web\Relation\RelationController@update');
 
 Route::delete('relaties/{relation}', 'Web\Relation\RelationController@destroy');
 
-
 Route::get('onderhandeling', 'Web\Relation\NegotiationController@index');
