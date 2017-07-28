@@ -196,13 +196,13 @@ class Relation extends Model
      */
     public function syncRelations($relations, $type)
     {
-        $relations = collect($relations)->mapWithKeys(function($relation) use ($type) {
+        $relations = collect($relations)->mapWithKeys(function ($relation) use ($type) {
             return [$relation => ['type' => $type]];
         })->toArray();
 
-        if ($type === 'external'){
+        if ($type === 'external') {
             $this->relationsexternal()->sync($relations);
-        } elseif ($type === 'internal'){
+        } elseif ($type === 'internal') {
             $this->relationsinternal()->sync($relations);
         }
 
@@ -218,13 +218,13 @@ class Relation extends Model
      */
     public function syncOrganisations($organisations, $type)
     {
-        $organisations = collect($organisations)->mapWithKeys(function($organisation) use ($type) {
+        $organisations = collect($organisations)->mapWithKeys(function ($organisation) use ($type) {
             return [$organisation => ['type' => $type]];
         })->toArray();
 
-        if ($type === 'worked_at'){
+        if ($type === 'worked_at') {
             $this->organisationsWorkedAt()->sync($organisations);
-        } elseif ($type === 'working_at'){
+        } elseif ($type === 'working_at') {
             $this->organisationsWorkingAt()->sync($organisations);
         }
 
