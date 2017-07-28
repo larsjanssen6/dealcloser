@@ -62,14 +62,13 @@
             }
         },
 
-
         methods: {
             select(value) {
-                this.$emit('optionAdded', value.id);
+                this.$emit('optionAdded', value);
             },
 
             remove(value) {
-                this.$emit('optionRemoved', value.id);
+                this.$emit('optionRemoved', value);
             }
         }
     }

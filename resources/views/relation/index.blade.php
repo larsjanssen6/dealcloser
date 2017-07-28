@@ -62,11 +62,9 @@
 
                                     <div>
                                         @can('edit-relations')
-                                            <update-relation :prp-relation="{{ json_encode($relation) }}"
-                                                             :negotiations="{{ json_encode($negotiations) }}">
-                                            </update-relation>
+                                            <update-relation relation-id="{{json_encode($relation->id)}}"></update-relation>
                                         @else
-                                            <relation :prp-relation="{{json_encode($relation)}}"></relation>
+                                            <relation :relation-id="{{json_encode($relation->id)}}"></relation>
                                         @endcan
                                     </div>
                                 @endforeach
