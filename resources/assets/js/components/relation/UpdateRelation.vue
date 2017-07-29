@@ -8,7 +8,7 @@
 
             <slot>
                 <div v-if="loadingForm">
-                    <p>Laden...</p>
+                    <p>Relatie aan het inladen...</p>
                 </div>
 
                 <div v-else>
