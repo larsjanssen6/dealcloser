@@ -125,7 +125,7 @@ class RelationTest extends TestCase
     }
 
     /** @test */
-    public function it_can_attach_relations()
+    public function it_can_sync_relations()
     {
         $relation = create(Relation::class, [], 5);
         $this->relation->syncRelations($relation->pluck('id'), 'external');
