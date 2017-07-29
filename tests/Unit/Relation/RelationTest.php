@@ -114,19 +114,25 @@ class RelationTest extends TestCase
     }
 
     /** @test */
-    public function it_can_attach_organisations()
+    public function it_can_sync_organisations()
     {
         $organisation = create(Organisation::class, [], 5);
-        $this->relation->attachOrganisations($organisation->pluck('id'), 'working_at');
+        $this->relation->syncOrganisations($organisation->pluck('id'), 'working_at');
         $this->assertEquals($this->relation->organisations()->count(), 5);
+
+        $this->relation->syncOrganisations([], 'working_at');
+        $this->assertEquals($this->relation->organisations()->count(), 0);
     }
 
     /** @test */
     public function it_can_attach_relations()
     {
         $relation = create(Relation::class, [], 5);
-        $this->relation->attachRelations($relation->pluck('id'), 'external');
+        $this->relation->syncRelations($relation->pluck('id'), 'external');
         $this->assertEquals($this->relation->relations()->count(), 5);
+
+        $this->relation->syncRelations([], 'external');
+        $this->assertEquals($this->relation->relations()->count(), 0);
     }
 
     /** @test */

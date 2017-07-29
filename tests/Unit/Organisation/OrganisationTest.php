@@ -42,5 +42,8 @@ class OrganisationTest extends TestCase
         $products = create(Product::class, [], 5);
         $this->organisation->syncProducts($products->pluck('id'));
         $this->assertEquals($this->organisation->products()->count(), 5);
+
+        $this->organisation->syncProducts([]);
+        $this->assertEquals($this->organisation->products()->count(), 0);
     }
 }
