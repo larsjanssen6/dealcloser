@@ -55,7 +55,7 @@ class DeleteRelationTest extends TestCase
         $relationToLink = create(Relation::class);
         $relation = create(Relation::class);
 
-        $relation->attachRelations([$relationToLink->id], 'internal');
+        $relation->syncRelations([$relationToLink->id], 'internal');
 
         $this->assertDatabaseHas('relation_has_relation', [
             'relation_parent_id' => $relation->id,
@@ -81,7 +81,7 @@ class DeleteRelationTest extends TestCase
         $organisation = create(Organisation::class);
         $relation = create(Relation::class);
 
-        $relation->attachOrganisations([$organisation->id], 'working_at');
+        $relation->syncOrganisations([$organisation->id], 'working_at');
 
         $this->assertDatabaseHas('relation_has_organisation', [
             'relation_id' => $relation->id,
