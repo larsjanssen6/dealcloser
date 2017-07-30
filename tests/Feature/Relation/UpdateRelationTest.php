@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Relation;
 
-use App\Dealcloser\Core\Organisation\Organisation;
 use Tests\TestCase;
 use App\Dealcloser\Core\Relation\Relation;
+use App\Dealcloser\Core\Organisation\Organisation;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UpdateRelationTest extends TestCase
@@ -56,7 +56,7 @@ class UpdateRelationTest extends TestCase
         $this->assertDatabaseHas('relation_has_relation', [
             'relation_parent_id' => $relation->id,
             'relation_child_id'=> $relationToAdd->id,
-            'type' => 'internal'
+            'type' => 'internal',
         ]);
     }
 
@@ -74,7 +74,7 @@ class UpdateRelationTest extends TestCase
         $this->assertDatabaseHas('relation_has_relation', [
             'relation_parent_id' => $relation->id,
             'relation_child_id' => $relationToAdd->id,
-            'type' => 'internal'
+            'type' => 'internal',
         ]);
 
         $toUpdate = collect(make(Relation::class))
@@ -86,7 +86,7 @@ class UpdateRelationTest extends TestCase
         $this->assertDatabaseMissing('relation_has_relation', [
             'relation_parent_id' => $relation->id,
             'relation_child_id'=> $relationToAdd->id,
-            'type' => 'internal'
+            'type' => 'internal',
         ]);
     }
 
@@ -108,7 +108,7 @@ class UpdateRelationTest extends TestCase
         $this->assertDatabaseHas('relation_has_organisation', [
             'relation_id' => $relation->id,
             'organisation_id'=> $organisationToAdd->id,
-            'type' => 'worked_at'
+            'type' => 'worked_at',
         ]);
     }
 
@@ -126,7 +126,7 @@ class UpdateRelationTest extends TestCase
         $this->assertDatabaseHas('relation_has_organisation', [
             'relation_id' => $relation->id,
             'organisation_id'=> $organisationToAdd->id,
-            'type' => 'worked_at'
+            'type' => 'worked_at',
         ]);
 
         $toUpdate = collect(make(Relation::class))
@@ -138,7 +138,7 @@ class UpdateRelationTest extends TestCase
         $this->assertDatabaseMissing('relation_has_organisation', [
             'relation_id' => $relation->id,
             'organisation_id'=> $organisationToAdd->id,
-            'type' => 'worked_at'
+            'type' => 'worked_at',
         ]);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Web\Category;
 
-use App\Dealcloser\Interfaces\Repositories\ICategoryRepo;
 use App\Http\Controllers\Controller;
+use App\Dealcloser\Interfaces\Repositories\ICategoryRepo;
 
 class CategoryController extends Controller
 {

@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Dealcloser\Traits\CustomModelLogic;
 use App\Dealcloser\Traits\RelationAttributes;
 use App\Dealcloser\Core\Organisation\Organisation;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Dealcloser\Custom\BelongsToManyWithSyncEvent;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Relation extends Model
