@@ -75,7 +75,7 @@ class OrganisationController extends Controller
         }
 
         return view('organisation.index')->with([
-            'organisations' => $this->organisationRepo->paginate(Paginator::resolveCurrentPage())
+            'organisations' => $this->organisationRepo->paginate(Paginator::resolveCurrentPage()),
         ]);
     }
 
@@ -89,7 +89,7 @@ class OrganisationController extends Controller
     {
         return $this->organisationRepo->find($id, [
             'category',
-            'products'
+            'products',
         ]);
     }
 
