@@ -4,6 +4,7 @@ namespace App\Dealcloser\Observers;
 
 use App\Dealcloser\Core\Organisation\Organisation;
 use Illuminate\Cache\Repository as CacheRepository;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class OrganisationObserver
 {
@@ -33,6 +34,7 @@ class OrganisationObserver
     public function created(Organisation $organisation)
     {
         $this->cache->tags(Organisation::class)->flush();
+        $this->cache->tags(Relation::class)->flush();
     }
 
     /**
@@ -44,6 +46,7 @@ class OrganisationObserver
     public function updated(Organisation $organisation)
     {
         $this->cache->tags(Organisation::class)->flush();
+        $this->cache->tags(Relation::class)->flush();
     }
 
     /**
@@ -55,5 +58,6 @@ class OrganisationObserver
     public function deleting(Organisation $organisation)
     {
         $this->cache->tags(Organisation::class)->flush();
+        $this->cache->tags(Relation::class)->flush();
     }
 }
