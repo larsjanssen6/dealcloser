@@ -71,9 +71,7 @@ abstract class EloquentRepo implements IRepo
      */
     public function find($id, $with = [])
     {
-        return $this->cache->tags($this->getModel())->remember($this->getModel().'|find|'.$id, 60, function () use ($id, $with) {
-            return $this->findBy('id', $id, $with);
-        });
+        return $this->findBy('id', $id, $with);
     }
 
     /**
