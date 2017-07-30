@@ -7,6 +7,8 @@
 Route::get('organisaties', 'Web\Organisation\OrganisationController@index')
     ->name('organisations');
 
+Route::get('organisatie/{organisation}', 'Web\Organisation\OrganisationController@show');
+
 Route::get('organisaties/registreer', 'Web\Organisation\OrganisationController@create')
     ->name('organisations.create');
 
