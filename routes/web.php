@@ -22,5 +22,6 @@ Route::group(['middleware' => ['auth', 'throttle:100', 'CheckIfApplicationIsActi
     require 'components/WebSettings.php';
     require 'components/WebRelation.php';
     require 'components/WebLocation.php';
+    require 'components/WebCategory.php';
     require 'components/WebOrganisation.php';
 });
