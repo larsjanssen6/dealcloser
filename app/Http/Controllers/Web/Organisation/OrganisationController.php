@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Web\Organisation;
 
-use Gate;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
 use DougSisk\CountryState\CountryState;
@@ -57,6 +56,7 @@ class OrganisationController extends Controller
     {
         $this->middleware('permission:register-organisations')->only('create', 'store');
         $this->middleware('permission:edit-organisations')->only('update', 'destroy');
+
         $this->organisationRepo = $organisationRepo;
         $this->categoryRepo = $categoryRepo;
         $this->productRepo = $productRepo;
@@ -66,7 +66,7 @@ class OrganisationController extends Controller
     /**
      * Show all organisations.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -74,18 +74,22 @@ class OrganisationController extends Controller
             return $this->organisationRepo->getAll();
         }
 
-        $products = null;
-        $categories = null;
-
-        if (Gate::allows('edit-organisations')) {
-            $products = $this->productRepo->getAll();
-            $categories = $this->categoryRepo->findAll('type', 'organisation_category');
-        }
-
         return view('organisation.index')->with([
-            'organisations' => $this->organisationRepo->paginate(Paginator::resolveCurrentPage(), ['category', 'products']),
-            'products'      => issetWithReturn($products),
-            'categories'    => issetWithReturn($categories),
+            'organisations' => $this->organisationRepo->paginate(Paginator::resolveCurrentPage())
+        ]);
+    }
+
+    /**
+     * Show a organisation.
+     *
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show($id)
+    {
+        return $this->organisationRepo->find($id, [
+            'category',
+            'products'
         ]);
     }
 
@@ -126,8 +130,9 @@ class OrganisationController extends Controller
      */
     public function update(OrganisationRequest $request, Organisation $organisation)
     {
-        $organisation->syncProducts($request->products);
         $this->organisationRepo->update($organisation->id, $request->all());
+
+        $organisation->syncProducts($request->products);
 
         return response()->json(['status' => 'Geupdatet']);
     }
