@@ -920,16 +920,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v3.0.6",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "0808939f81c1347a3c8a82a5925385a08074b0f1"
+                "reference": "4d4896e553f2094e657fe493506dc37c509d4e2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/0808939f81c1347a3c8a82a5925385a08074b0f1",
-                "reference": "0808939f81c1347a3c8a82a5925385a08074b0f1",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/4d4896e553f2094e657fe493506dc37c509d4e2b",
+                "reference": "4d4896e553f2094e657fe493506dc37c509d4e2b",
                 "shasum": ""
             },
             "require": {
@@ -967,7 +967,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2017-06-28 20:53:48"
+            "time": "2017-07-28 14:45:09"
         },
         {
             "name": "paragonie/random_compat",
@@ -1345,16 +1345,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "2.3.0",
+            "version": "2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "23e6b06eac097bafd5008b93d32ad414caa9413a"
+                "reference": "917e7613508286de002f730975096399d34c5597"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/23e6b06eac097bafd5008b93d32ad414caa9413a",
-                "reference": "23e6b06eac097bafd5008b93d32ad414caa9413a",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/917e7613508286de002f730975096399d34c5597",
+                "reference": "917e7613508286de002f730975096399d34c5597",
                 "shasum": ""
             },
             "require": {
@@ -1406,7 +1406,7 @@
                 "security",
                 "spatie"
             ],
-            "time": "2017-07-25 19:16:10"
+            "time": "2017-07-28 12:30:32"
         },
         {
             "name": "spatie/laravel-sluggable",
