@@ -2,87 +2,94 @@
     <div v-if="show">
         <modal-card @close="show = false">
             <div slot="title">
-                <p>{{ prpOrganisation.name }}</p>
+                <p v-if="loadingForm">.....</p>
+                <p v-else>{{ organisation.name }}</p>
             </div>
 
             <slot>
-                <div class="column">
-                    <strong>Accountmanager</strong>
-                    <p>{{ prpOrganisation.account_manager }}</p>
+                <div v-if="loadingForm">
+                    <p>Laden...</p>
                 </div>
 
-                <div class="column">
-                    <strong>Bedrijfscategorie</strong>
-                    <p>{{ prpOrganisation.category.name }}</p>
-                </div>
+                <div v-else>
+                    <div class="column">
+                        <strong>Accountmanager</strong>
+                        <p>{{ organisation.account_manager }}</p>
+                    </div>
 
-                <div class="column">
-                    <strong>Land</strong>
-                    <p>{{ prpOrganisation.country_code }}</p>
-                </div>
+                    <div class="column">
+                        <strong>Bedrijfscategorie</strong>
+                        <p>{{ organisation.category.name }}</p>
+                    </div>
 
-                <div class="column">
-                    <strong>Provincie</strong>
-                    <p>{{ prpOrganisation.state_code }}</p>
-                </div>
+                    <div class="column">
+                        <strong>Land</strong>
+                        <p>{{ organisation.country_code }}</p>
+                    </div>
 
-                <div class="column">
-                    <strong>Verkoopgebied</strong>
-                    <p>{{ prpOrganisation.sales_area }}</p>
-                </div>
+                    <div class="column">
+                        <strong>Provincie</strong>
+                        <p>{{ organisation.state_code }}</p>
+                    </div>
 
-                <div class="column">
-                    <strong>Straat</strong>
-                    <p>{{ prpOrganisation.street }}</p>
-                </div>
+                    <div class="column">
+                        <strong>Verkoopgebied</strong>
+                        <p>{{ organisation.sales_area }}</p>
+                    </div>
 
-                <div class="column">
-                    <strong>Nummer</strong>
-                    <p>{{ prpOrganisation.house_number }}</p>
-                </div>
+                    <div class="column">
+                        <strong>Straat</strong>
+                        <p>{{ organisation.street }}</p>
+                    </div>
 
-                <div class="column">
-                    <strong>Postcode</strong>
-                    <p>{{ prpOrganisation.zip }}</p>
-                </div>
+                    <div class="column">
+                        <strong>Nummer</strong>
+                        <p>{{ organisation.house_number }}</p>
+                    </div>
 
-                <div class="column">
-                    <strong>Plaats</strong>
-                    <p>{{ prpOrganisation.town }}</p>
-                </div>
+                    <div class="column">
+                        <strong>Postcode</strong>
+                        <p>{{ organisation.zip }}</p>
+                    </div>
 
-                <div class="column">
-                    <strong>Telefoon</strong>
-                    <p>{{ prpOrganisation.phone }}</p>
-                </div>
+                    <div class="column">
+                        <strong>Plaats</strong>
+                        <p>{{ organisation.town }}</p>
+                    </div>
 
-                <div class="column">
-                    <strong>Email</strong>
-                    <p><a :href="'mailto:' + prpOrganisation.email">{{ prpOrganisation.email }}</a></p>
-                </div>
+                    <div class="column">
+                        <strong>Telefoon</strong>
+                        <p>{{ organisation.phone }}</p>
+                    </div>
 
-                <div class="column" v-if="prpOrganisation.linkedin">
-                    <strong>Linkedin</strong>
-                    <p><a :href="prpOrganisation.linkedin">Profiel</a></p>
-                </div>
+                    <div class="column">
+                        <strong>Email</strong>
+                        <p><a :href="'mailto:' + organisation.email">{{ organisation.email }}</a></p>
+                    </div>
 
-                <div class="column" v-if="prpOrganisation.website">
-                    <strong>Website</strong>
-                    <p><a :href="prpOrganisation.website">{{ prpOrganisation.website }}</a></p>
-                </div>
+                    <div class="column" v-if="organisation.linkedin">
+                        <strong>Linkedin</strong>
+                        <p><a :href="organisation.linkedin">Profiel</a></p>
+                    </div>
 
-                <div class="column" v-if="prpOrganisation.products.length != 0">
-                    <strong>Producten</strong>
-                    <p>
-                         <span class="tag is-warning is-medium" v-for="product in prpOrganisation.products">
+                    <div class="column" v-if="organisation.website">
+                        <strong>Website</strong>
+                        <p><a :href="organisation.website">{{ organisation.website }}</a></p>
+                    </div>
+
+                    <div class="column" v-if="organisation.products.length != 0">
+                        <strong>Producten</strong>
+                        <p>
+                         <span class="tag is-warning is-medium" v-for="product in organisation.products">
                         {{ product.name }}
                     </span>
-                    </p>
+                        </p>
+                    </div>
                 </div>
             </slot>
 
             <div slot="footer">
-                <a :href="'mailto:' + prpOrganisation.email" class="button is-primary">Contact</a>
+                <a :href="'mailto:' + organisation.email" class="button is-primary">Contact</a>
                 <a class="button is-primary is-outlined" @click="show = false">Terug</a>
             </div>
         </modal-card>
@@ -90,21 +97,41 @@
 </template>
 
 <script>
+    import OrganisationService from "../../services/OrganisationService.js";
+
     export default {
-        props: ['prpOrganisation'],
+        props: ['organisation-id'],
 
         data() {
             return {
-                show: false,
+                organisation: {},
+                loadingForm: false,
+                show: false
             }
         },
 
         created() {
             Event.$on('show-organisation-modal', (id) => {
-                if (this.prpOrganisation.id === id) {
+                if (this.organisationId === id) {
+                    this.getOrganisation(id);
                     this.show = true;
                 }
             });
+        },
+        
+        methods: {
+            /**
+             * Get organisation.
+             */
+
+            getOrganisation(id) {
+                this.loadingForm = true;
+
+                OrganisationService.show(id).then(({data}) => {
+                    this.organisation = data;
+                    this.loadingForm = false;
+                });
+            }
         }
     }
 </script>

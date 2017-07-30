@@ -7,85 +7,40 @@
 
             <slot>
                 <form>
-                    <div class="field">
-                        <label for="name" class="label">Naam</label>
+                    <custom-input
+                            :value.sync="product.name"
+                            label="Naam"
+                            name="name"
+                            type="text">
+                    </custom-input>
 
-                        <div class="control">
-                            <input id="name"
-                                   name="name"
-                                   type="text"
-                                   v-model="product.name"
-                                   class="input"
-                                   :class="{ 'is-danger': errorsHas('name') }"
-                                   autofocus>
+                    <custom-input
+                            :value.sync="product.description"
+                            label="Omschrijving"
+                            name="description"
+                            type="text">
+                    </custom-input>
 
-                            <p class="help is-danger" v-if="errorsHas('name')">{{ error('name') }}</p>
-                        </div>
-                    </div>
+                    <custom-input
+                            :value.sync="product.price"
+                            label="Verkoopprijs"
+                            name="price"
+                            type="text">
+                    </custom-input>
 
-                    <div class="field">
-                        <label for="description" class="label">Omschrijving</label>
+                    <custom-input
+                            :value.sync="product.purchase"
+                            label="Inkoopprijs"
+                            name="purchase"
+                            type="text">
+                    </custom-input>
 
-                        <div class="control">
-                            <input id="description"
-                                   name="description"
-                                   type="text"
-                                   v-model="product.description"
-                                   class="input"
-                                   :class="{ 'is-danger': errorsHas('description') }"
-                                   autofocus>
-
-                            <p class="help is-danger" v-if="errorsHas('description')">{{ error('description') }}</p>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="price" class="label">Verkoopprijs</label>
-
-                        <div class="control">
-                            <input id="price"
-                                   name="price"
-                                   type="number"
-                                   v-model="product.price"
-                                   class="input"
-                                   :class="{ 'is-danger': errorsHas('price') }"
-                                   autofocus>
-
-                            <p class="help is-danger" v-if="errorsHas('price')">{{ error('price') }}</p>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="purchase" class="label">Inkoopprijs</label>
-
-                        <div class="control">
-                            <input id="purchase"
-                                   name="purchase"
-                                   type="number"
-                                   v-model="product.purchase"
-                                   class="input"
-                                   :class="{ 'is-danger': errorsHas('purchase') }"
-                                   autofocus>
-
-                            <p class="help is-danger" v-if="errorsHas('purchase')">{{ error('purchase') }}</p>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="amount" class="label">Totaal</label>
-
-                        <div class="control">
-                            <input id="amount"
-                                   name="amount"
-                                   type="number"
-                                   v-model="product.amount"
-                                   class="input"
-                                   :class="{ 'is-danger': errorsHas('amount') }"
-                                   autofocus>
-
-                            <p class="help is-danger" v-if="errorsHas('amount')">{{ error('amount') }}</p>
-                        </div>
-                    </div>
+                    <custom-input
+                            :value.sync="product.amount"
+                            label="Totaal"
+                            name="amount"
+                            type="text">
+                    </custom-input>
                 </form>
             </slot>
 
@@ -139,6 +94,11 @@
         },
 
         methods: {
+
+            /**
+             * Update product.
+             */
+
             update() {
                 this.loading = true;
 
@@ -156,8 +116,9 @@
                         location.reload();
                     })
                     .catch(error => {
-                        this.loading = false;
+                        Event.$emit('thereAreErrors', error.response.data);
                         this.errors = error.response.data;
+                        this.loading = false;
                     });
             }
         }

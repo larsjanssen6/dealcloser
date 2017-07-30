@@ -102,25 +102,43 @@
                         <div class="field">
                             <label for="organisations_working_at" class="label">Werkzaam bij</label>
 
-                            <multi-select prp-name="organisations_working_at"
-                                          :prp-options="organisations"
-                                          :prp-selected="relation.organisations_working_at"
-                                          prp-placeholder="Kies organisatie(s)"
-                                          @optionAdded="addOrganisationsWorkingAtOption"
-                                          @optionRemoved="removeOrganisationsWorkingAtOption">
-                            </multi-select>
+                            <div class="control">
+                                <div v-if="organisations.length != 0">
+                                    <multi-select prp-name="organisations_working_at"
+                                                  :prp-options="organisations"
+                                                  :prp-selected="relation.organisations_working_at"
+                                                  prp-placeholder="Kies organisatie(s)"
+                                                  @optionAdded="addOrganisationsWorkingAtOption"
+                                                  @optionRemoved="removeOrganisationsWorkingAtOption">
+                                    </multi-select>
+                                </div>
+
+                                <p v-else>
+                                    Er zijn nog geen organisaties. Maak deze
+                                    <a href="/organisaties/registreer">hier</a> aan.
+                                </p>
+                            </div>
                         </div>
 
                         <div class="field">
                             <label for="organisations_worked_at" class="label">Gewerkt bij</label>
 
-                            <multi-select prp-name="organisations_worked_at"
-                                          :prp-options="organisations"
-                                          :prp-selected="relation.organisations_worked_at"
-                                          prp-placeholder="Kies organisatie(s)"
-                                          @optionAdded="addOrganisationsWorkedAtOption"
-                                          @optionRemoved="removeOrganisationsWorkedAtOption">
-                            </multi-select>
+                            <div class="control">
+                                <div v-if="organisations.length != 0">
+                                    <multi-select prp-name="organisations_worked_at"
+                                                  :prp-options="organisations"
+                                                  :prp-selected="relation.organisations_worked_at"
+                                                  prp-placeholder="Kies organisatie(s)"
+                                                  @optionAdded="addOrganisationsWorkedAtOption"
+                                                  @optionRemoved="removeOrganisationsWorkedAtOption">
+                                    </multi-select>
+                                </div>
+
+                                <p v-else>
+                                    Er zijn nog geen organisaties. Maak deze
+                                    <a href="/organisaties/registreer">hier</a> aan.
+                                </p>
+                            </div>
                         </div>
 
                         <custom-input
@@ -191,25 +209,29 @@
                         <div class="field">
                             <label for="relations_internal" class="label">Wie kent deze relatie intern?</label>
 
-                            <multi-select prp-name="relations_internal"
-                                          :prp-options="relations"
-                                          :prp-selected="relation.relations_internal"
-                                          prp-placeholder="Kies relatie(s)"
-                                          @optionAdded="addRelationsInternalOption"
-                                          @optionRemoved="removeRelationsInternalOption">
-                            </multi-select>
+                            <div class="control">
+                                <multi-select prp-name="relations_internal"
+                                              :prp-options="relations"
+                                              :prp-selected="relation.relations_internal"
+                                              prp-placeholder="Kies relatie(s)"
+                                              @optionAdded="addRelationsInternalOption"
+                                              @optionRemoved="removeRelationsInternalOption">
+                                </multi-select>
+                            </div>
                         </div>
 
                         <div class="field">
                             <label for="relations_external" class="label">Wie kent deze relatie extern?</label>
 
-                            <multi-select prp-name="relations_external"
-                                          :prp-options="relations"
-                                          :prp-selected="relation.relations_external"
-                                          prp-placeholder="Kies relatie(s)"
-                                          @optionAdded="addRelationsExternalOption"
-                                          @optionRemoved="removeRelationsExternalOption">
-                            </multi-select>
+                            <div class="control">
+                                <multi-select prp-name="relations_external"
+                                              :prp-options="relations"
+                                              :prp-selected="relation.relations_external"
+                                              prp-placeholder="Kies relatie(s)"
+                                              @optionAdded="addRelationsExternalOption"
+                                              @optionRemoved="removeRelationsExternalOption">
+                                </multi-select>
+                            </div>
                         </div>
 
                         <custom-text-area
@@ -409,11 +431,11 @@
                  * pluck only the id's from all items.
                  */
 
-                relation.organisations_worked_at = collect(this.relation.organisations_worked_at).pluck('id').toArray();
-                relation.organisations_working_at = collect(this.relation.organisations_working_at).pluck('id').toArray();
+                relation.organisations_worked_at = collect(relation.organisations_worked_at).pluck('id').toArray();
+                relation.organisations_working_at = collect(relation.organisations_working_at).pluck('id').toArray();
 
-                relation.relations_internal = collect(this.relation.relations_internal).pluck('id').toArray();
-                relation.relations_external = collect(this.relation.relations_external).pluck('id').toArray();
+                relation.relations_internal = collect(relation.relations_internal).pluck('id').toArray();
+                relation.relations_external = collect(relation.relations_external).pluck('id').toArray();
 
                 /**
                  * Update the relation.
@@ -440,11 +462,12 @@
             },
 
             /**
-             * Get relations.
+             * Get relation.
              */
 
             getRelation(id) {
                 this.loadingForm = true;
+
                 RelationService.show(id).then(({data}) => {
                     this.relation = data;
 

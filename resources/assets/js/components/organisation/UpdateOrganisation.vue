@@ -2,248 +2,266 @@
     <div v-if="show">
         <modal-card @close="show = false">
             <div slot="title">
-                <p>Bewerk {{ organisation.name }}</p>
+                <div slot="title">
+                    <p v-if="loadingForm">.....</p>
+                    <p v-else>Bewerk {{ organisation.name }}</p>
+                </div>
             </div>
 
             <slot>
                 <form>
-                    <div class="field">
-                        <label for="name" class="label">Organisatie</label>
+                    <div v-if="loadingForm">
+                        <p>Organisatie aan het inladen...</p>
+                    </div>
 
-                        <div class="control">
-                            <input id="name"
-                                   name="name"
-                                   type="text"
-                                   v-model="organisation.name"
-                                   class="input"
-                                   :class="{ 'is-danger': errorsHas('name') }"
-                                   autofocus>
+                    <div v-else>
+                        <custom-input
+                                :value.sync="organisation.name"
+                                label="Organisatie"
+                                name="organisation">
+                        </custom-input>
 
-                            <p class="help is-danger" v-if="errorsHas('name')">{{ error('name') }}</p>
+                        <custom-input
+                                :value.sync="organisation.account_manager"
+                                label="Account manager"
+                                name="account_manager">
+                        </custom-input>
+
+                        <div class="field">
+                            <label for="category_id" class="label">Bedrijfscategorie</label>
+
+                            <select v-model="organisation.category_id" id="category_id" name="category_id" class="input" required>
+                                <option disabled value="">Selecteer een categorie</option>
+
+                                <option v-for="category in categories" :value="category.id">
+                                    {{ category.name }}
+                                </option>
+                            </select>
                         </div>
-                    </div>
 
-                    <div class="field">
-                        <label for="account_manager" class="label">Account manager</label>
+                        <country-state :prpState="organisation.state_code"
+                                       :prpCountry="organisation.country_code"
+                                       @stateChanged="updateState"
+                                       @countryChanged="updateCountry">
+                        </country-state>
 
-                        <div class="control">
-                            <input id="account_manager"
-                                   name="account_manager"
-                                   type="text"
-                                   v-model="organisation.account_manager"
-                                   class="input"
-                                   :class="{ 'is-danger': errorsHas('account_manager') }"
-                                   autofocus>
+                        <custom-input
+                                :value.sync="organisation.street"
+                                label="Straat"
+                                name="street">
+                        </custom-input>
 
-                            <p class="help is-danger" v-if="errorsHas('account_manager')">{{ error('account_manager') }}</p>
-                        </div>
-                    </div>
+                        <custom-input
+                                :value.sync="organisation.town"
+                                label="Woonplaats"
+                                name="town">
+                        </custom-input>
 
-                    <div class="field">
-                        <label for="category_id" class="label">Bedrijfscategorie</label>
+                        <custom-input
+                                :value.sync="organisation.sales_area"
+                                label="Verkoopgebied"
+                                name="sales_area">
+                        </custom-input>
 
-                        <select id="category_id" name="category_id"
-                                class="input" :class="{ 'is-danger': errorsHas('category_id') }" v-model="organisation.category_id">
-                            <option disabled value="">Selecteer een categorie</option>
+                        <custom-input
+                                :value.sync="organisation.email"
+                                label="Email"
+                                name="email">
+                        </custom-input>
 
-                            <option v-for="category in prpCategories" :value="category.id">
-                                {{ category.name }}
-                            </option>
-                        </select>
-                    </div>
+                        <custom-input
+                                :value.sync="organisation.phone"
+                                label="Telefoon"
+                                name="phone">
+                        </custom-input>
 
-                    <country-state :prpState="organisation.state_code"
-                                   :prpCountry="organisation.country_code"
-                                   @stateChanged="updateState"
-                                   @countryChanged="updateCountry">
-                    </country-state>
+                        <custom-input
+                                :value.sync="organisation.website"
+                                label="Website"
+                                name="website">
+                        </custom-input>
 
-                    <div class="field">
-                        <label for="street" class="label">Straat</label>
+                        <custom-input
+                                :value.sync="organisation.linkedin"
+                                label="Linkedin"
+                                name="linkedin">
+                        </custom-input>
 
-                        <div class="control">
-                            <input id="street"
-                                   name="street"
-                                   type="text"
-                                   v-model="organisation.street"
-                                   class="input"
-                                   :class="{ 'is-danger': errorsHas('street') }"
-                                   autofocus>
+                        <div class="field">
+                            <label for="organisation" class="label">Producten van organisatie</label>
 
-                            <p class="help is-danger" v-if="errorsHas('street')">{{ error('street') }}</p>
-                        </div>
-                    </div>
+                            <div class="control">
+                                <div v-if="products.length != 0">
+                                    <multi-select
+                                            :prpSelected="organisation.products"
+                                            :prpOptions="products"
+                                            :prpCustomLabel="customLabel"
+                                            prpPlaceholder="Kies product(en)"
+                                            @optionAdded="addProductOption"
+                                            @optionRemoved="removeProductOption">
+                                    </multi-select>
+                                </div>
 
-                    <div class="field">
-                        <label for="town" class="label">Woonplaats</label>
-
-                        <div class="control">
-                            <input id="town"
-                                   name="town"
-                                   type="text"
-                                   v-model="organisation.town"
-                                   class="input"
-                                   :class="{ 'is-danger': errorsHas('town') }"
-                                   autofocus>
-
-                            <p class="help is-danger" v-if="errorsHas('town')">{{ error('town') }}</p>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="sales_area" class="label">Verkoopgebied</label>
-
-                        <div class="control">
-                            <input id="sales_area"
-                                   name="sales_area"
-                                   type="text"
-                                   v-model="organisation.sales_area"
-                                   class="input"
-                                   :class="{ 'is-danger': errorsHas('sales_area') }"
-                                   autofocus>
-
-                            <p class="help is-danger" v-if="errorsHas('sales_area')">{{ error('sales_area') }}</p>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="email" class="label">Email</label>
-
-                        <div class="control">
-                            <input id="email"
-                                   name="email"
-                                   type="email"
-                                   v-model="organisation.email"
-                                   class="input"
-                                   :class="{ 'is-danger': errorsHas('email') }"
-                                   autofocus>
-
-                            <p class="help is-danger" v-if="errorsHas('email')">{{ error('email') }}</p>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="phone" class="label">Telefoon</label>
-
-                        <div class="control">
-                            <input id="phone"
-                                   name="phone"
-                                   type="number"
-                                   v-model="organisation.phone"
-                                   class="input"
-                                   :class="{ 'is-danger': errorsHas('phone') }"
-                                   autofocus>
-
-                            <p class="help is-danger" v-if="errorsHas('phone')">{{ error('phone') }}</p>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="website" class="label">Website</label>
-
-                        <div class="control">
-                            <input id="website"
-                                   name="website"
-                                   type="text"
-                                   v-model="organisation.website"
-                                   class="input"
-                                   :class="{ 'is-danger': errorsHas('website') }"
-                                   autofocus>
-
-                            <p class="help is-danger" v-if="errorsHas('website')">{{ error('website') }}</p>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="linkedin" class="label">Linkedin</label>
-
-                        <div class="control">
-                            <input id="linkedin"
-                                   name="linkedin"
-                                   type="text"
-                                   v-model="organisation.linkedin"
-                                   class="input"
-                                   :class="{ 'is-danger': errorsHas('linkedin') }"
-                                   autofocus>
-
-                            <p class="help is-danger" v-if="errorsHas('linkedin')">{{ error('linkedin') }}</p>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="organisation" class="label">Producten van organisatie</label>
-
-                        <div class="control">
-                            <div v-if="options.length != 0">
-                                <multi-select
-                                        :prpSelected="organisation.products"
-                                        :prpOptions="options"
-                                        :prpCustomLabel="customLabel"
-                                        prpPlaceholder="Kies product(en)"
-                                        @optionAdded="addOption"
-                                        @optionRemoved="removeOption">
-                                </multi-select>
+                                <p v-else>
+                                    Er zijn nog geen producten. Maak deze
+                                    <a href="/producten/registreer">hier</a> aan.
+                                </p>
                             </div>
-
-                            <p v-else>
-                                Er zijn nog geen producten. Maak deze
-                                <a href="/producten/registreer">hier</a> aan.
-                            </p>
                         </div>
                     </div>
                 </form>
             </slot>
 
             <div slot="footer">
-                <button id="submit"
-                        class="button is-primary"
-                        :class="{ 'is-loading': loading }"
-                        @click="update">
-                    Update
-                </button>
+                <div v-if="loadingForm">
+                    <a class="button is-primary is-outlined"
+                       @click="show = false">
+                        Annuleer
+                    </a>
+                </div>
 
-                <destroy :service="OrganisationService" :id="organisation.id"></destroy>
+                <div v-else>
+                    <button id="submit"
+                            class="button is-primary"
+                            :class="{ 'is-loading': loading }"
+                            @click="update">
+                        Update
+                    </button>
 
-                <a class="button is-primary is-outlined"
-                   @click="show = false">
-                    Annuleer
-                </a>
+                    <destroy :service="OrganisationService" :id="organisation.id"></destroy>
+
+                    <a class="button is-primary is-outlined"
+                       @click="show = false">
+                        Annuleer
+                    </a>
+                </div>
             </div>
         </modal-card>
     </div>
 </template>
 
 <script>
+    import collect from 'collect.js';
     import Validation from '../../mixins/validation.js';
+    import ProductService from "../../services/ProductService.js";
+    import CategoryService from "../../services/CategoryService.js";
     import OrganisationService from "../../services/OrganisationService.js";
 
     export default {
-        props: ['prp-organisation', 'prp-categories', 'prp-products'],
+        props: ['organisation-id'],
 
         mixins: [Validation],
 
         data() {
+
+            /**
+             * Init all data.
+             */
+
             return {
+                loadingForm: false,
                 loading: false,
                 show: false,
                 organisation: {},
-                OrganisationService: OrganisationService,
-                options: []
+                categories: [],
+                products: [],
+                OrganisationService: OrganisationService
             }
         },
 
         created() {
-            this.organisation = this.prpOrganisation;
-            this.options = this.prpProducts;
+
+            /**
+             * Listen for show relation modal event.
+             */
 
             Event.$on('show-organisation-modal', (id) => {
-                if (this.organisation.id === id) {
+                if (this.organisationId == id) {
+                    this.getOrganisation(id);
                     this.show = true;
                 }
             });
         },
 
         methods: {
+
+            /**
+             * Update the relation.
+             */
+
+            update() {
+                this.loading = true;
+
+                let organisation = this.organisation;
+
+                /**
+                 * pluck only the id's from all items.
+                 */
+
+                organisation.products = collect(organisation.products).pluck('id').toArray();
+
+                /**
+                 * Update the organisation.
+                 */
+
+                OrganisationService.update(organisation)
+                    .then(({data}) => {
+                        this.loading = false;
+
+                        swal(({
+                            title: data.status,
+                            type: 'success',
+                            showConfirmButton: false,
+                            timer: 1000
+                        }));
+
+//                        location.reload();
+                    })
+                    .catch(error => {
+                        Event.$emit('thereAreErrors', error.response.data);
+                        this.errors = error.response.data;
+                        this.loading = false;
+                    });
+            },
+
+            /**
+             * Get organisation.
+             */
+
+            getOrganisation(id) {
+                this.loadingForm = true;
+
+                OrganisationService.show(id).then(({data}) => {
+                    this.organisation = data;
+
+                    this.getProducts();
+                    this.getCategories();
+
+                    this.loadingForm = false;
+                });
+            },
+
+            /**
+             * Get all products.
+             */
+
+            getProducts() {
+                ProductService.index().then(({data}) => this.products = data);
+            },
+
+            /**
+             * Get all categories.
+             */
+
+            getCategories() {
+                CategoryService.index().then(({data}) => this.categories = data);
+            },
+
+
+            /**
+             * Listen for events.
+             */
+
             updateState(state) {
                 this.organisation.state_code = state;
             },
@@ -256,34 +274,12 @@
                 return `${option.name} - € ${option.price}`
             },
 
-            addOption(option) {
+            addProductOption(option) {
                 this.organisation.products.push(option)
             },
 
-            removeOption(option) {
-                this.organisation.products = this.organisation.products.filter((item) => item.id !== option);
-            },
-
-            update() {
-                this.loading = true;
-
-                OrganisationService.update(this.organisation)
-                    .then(({data}) => {
-                        this.loading = false;
-
-                        swal(({
-                            title: data.status,
-                            type: 'success',
-                            showConfirmButton: false,
-                            timer: 1000
-                        }));
-
-                        location.reload();
-                    })
-                    .catch(error => {
-                        this.loading = false;
-                        this.errors = error.response.data;
-                    });
+            removeProductOption(option) {
+                this.organisation.products = this.organisation.products.filter((item) => item.id !== option.id);
             }
         }
     }
