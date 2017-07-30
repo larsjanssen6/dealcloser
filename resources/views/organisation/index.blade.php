@@ -78,12 +78,9 @@
 
                                         <div>
                                             @can('edit-organisations')
-                                                <update-organisation :prp-organisation="{{json_encode($organisation)}}"
-                                                                     :prp-categories="{{json_encode($categories)}}"
-                                                                     :prp-products="{{json_encode($products)}}">
-                                                </update-organisation>
+                                                <update-organisation :organisation-id="{{json_encode($organisation->id)}}"></update-organisation>
                                             @else
-                                                <organisation :prp-organisation="{{json_encode($organisation)}}"></organisation>
+                                                <organisation :organisation-id="{{json_encode($organisation->id)}}"></organisation>
                                             @endcan
                                         </div>
                                     @endforeach
