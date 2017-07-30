@@ -8,12 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 use App\Dealcloser\Traits\CustomModelLogic;
 use App\Dealcloser\Traits\RelationAttributes;
 use App\Dealcloser\Core\Organisation\Organisation;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Dealcloser\Custom\BelongsToManyWithSyncEvent;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Relation extends Model
 {
     use HasSlug,
         RelationAttributes,
-        CustomModelLogic;
+        CustomModelLogic,
+        BelongsToManyWithSyncEvent;
 
     /**
      * Table name.
@@ -92,7 +96,7 @@ class Relation extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function character()
+    public function character() : belongsTo
     {
         return $this->belongsTo(Negotiation::class);
     }
@@ -102,7 +106,7 @@ class Relation extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function dmu()
+    public function dmu() : belongsTo
     {
         return $this->belongsTo(Negotiation::class);
     }
@@ -112,7 +116,7 @@ class Relation extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function role()
+    public function role() : belongsTo
     {
         return $this->belongsTo(Negotiation::class);
     }
@@ -122,7 +126,7 @@ class Relation extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function negotiationProfile()
+    public function negotiationProfile() : belongsTo
     {
         return $this->belongsTo(Negotiation::class);
     }
@@ -132,7 +136,7 @@ class Relation extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function relationsInternal()
+    public function relationsInternal() : belongsToMany
     {
         return $this->belongsToMany(self::class, 'relation_has_relation', 'relation_parent_id', 'relation_child_id')->wherePivot('type', 'internal');
     }
@@ -142,7 +146,7 @@ class Relation extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function relationsExternal()
+    public function relationsExternal() : belongsToMany
     {
         return $this->belongsToMany(self::class, 'relation_has_relation', 'relation_parent_id', 'relation_child_id')->wherePivot('type', 'external');
     }
@@ -152,7 +156,7 @@ class Relation extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function relations()
+    public function relations() : belongsToMany
     {
         return $this->belongsToMany(self::class, 'relation_has_relation', 'relation_parent_id', 'relation_child_id');
     }
@@ -162,7 +166,7 @@ class Relation extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function organisationsWorkedAt()
+    public function organisationsWorkedAt() : belongsToMany
     {
         return $this->belongsToMany(Organisation::class, 'relation_has_organisation')->wherePivot('type', 'worked_at');
     }
@@ -172,7 +176,7 @@ class Relation extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function organisationsWorkingAt()
+    public function organisationsWorkingAt() : belongsToMany
     {
         return $this->belongsToMany(Organisation::class, 'relation_has_organisation')->wherePivot('type', 'working_at');
     }
@@ -182,7 +186,7 @@ class Relation extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function organisations()
+    public function organisations() : belongsToMany
     {
         return $this->belongsToMany(Organisation::class, 'relation_has_organisation');
     }

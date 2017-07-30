@@ -97,6 +97,8 @@ class RelationController extends Controller
     }
 
     /**
+     * Show a relation.
+     *
      * @param $id
      * @return mixed
      */

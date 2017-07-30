@@ -12,7 +12,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Organisation extends Model
 {
-    use HasSlug, Categorizable, BelongsToManyWithSyncEvent;
+    use HasSlug,
+        Categorizable,
+        BelongsToManyWithSyncEvent;
 
     /**
      * Table name.
@@ -56,7 +58,7 @@ class Organisation extends Model
     /**
      * A organisation belongs to many products.
      *
-     * @return BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function products() : belongsToMany
     {
