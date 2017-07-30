@@ -37,6 +37,10 @@ class ProductController extends Controller
      */
     public function index()
     {
+        if (request()->wantsJson()) {
+            return $this->productRepo->getAll();
+        }
+
         return view('product.index')->with([
             'products' => $this->productRepo->paginate(Paginator::resolveCurrentPage()),
         ]);
