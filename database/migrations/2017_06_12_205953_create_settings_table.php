@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
+use App\Dealcloser\Core\Settings\Settings;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateSettingsTable extends Migration
@@ -57,11 +58,11 @@ class CreateSettingsTable extends Migration
             $table->timestamps();
         });
 
-        DB::table('settings')->insert(
-            [
-                'id' => 1,
-            ]
-        );
+        /**
+         * Create a settings row.
+         */
+
+        Settings::create([]);
     }
 
     /**

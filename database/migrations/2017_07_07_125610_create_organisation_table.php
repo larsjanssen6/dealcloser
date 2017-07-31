@@ -42,7 +42,7 @@ class CreateOrganisationTable extends Migration
         });
 
         /*
-        * Generate the permission categories.
+        * Create the permission categories.
         */
 
         $settings = Category::create([

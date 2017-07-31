@@ -35,10 +35,14 @@ class CreateUserTable extends Migration
                 ->onDelete('cascade');
         });
 
+        /**
+         * Create user(s).
+         */
+
         User::create([
             'name'              => 'lars',
             'last_name'         => 'janssen',
-            'email'             => 'lars@netwize.nl',
+            'email'             => 'lars@riveau.nl',
             'password'          => bcrypt('secret'),
             'function'          => 'Ontwikkelaar',
             'department_id'     => 1,

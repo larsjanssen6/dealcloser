@@ -20,6 +20,10 @@ class CreateDepartmentTable extends Migration
             $table->timestamps();
         });
 
+        /**
+         * Create department(s).
+         */
+
         Department::create([
             'name' => 'overige',
         ]);
