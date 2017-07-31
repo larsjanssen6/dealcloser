@@ -1,4 +1,8 @@
 export default {
+    index() {
+        return axios.get('/roles');
+    },
+
     update(role) {
         return axios.patch('/instellingen/bedrijf/role/' + role.id, role);
     },

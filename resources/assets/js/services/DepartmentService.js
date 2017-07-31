@@ -1,4 +1,8 @@
 export default {
+    index() {
+        return axios.get('/afdelingen');
+    },
+
     update(department) {
         return axios.patch('/instellingen/bedrijf/afdeling/' + department.id, department);
     },
