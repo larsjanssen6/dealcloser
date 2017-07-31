@@ -215,7 +215,7 @@
                             timer: 1000
                         }));
 
-//                        location.reload();
+                        location.reload();
                     })
                     .catch(error => {
                         Event.$emit('thereAreErrors', error.response.data);
