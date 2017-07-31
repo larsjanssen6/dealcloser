@@ -7,6 +7,8 @@
 Route::get('gebruikers', 'Web\User\UserController@index')
     ->name('users');
 
+Route::get('gebruikers/{user}', 'Web\User\UserController@show');
+
 Route::patch('gebruikers/{user}', 'Web\User\UserController@update');
 
 Route::get('gebruikers/registreer', 'Web\Auth\RegisterController@create')
