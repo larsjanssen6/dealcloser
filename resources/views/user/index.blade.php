@@ -34,7 +34,7 @@
                                     </th>
 
                                     <th>
-                                        <abbr>Role</abbr>
+                                        <abbr>Functie</abbr>
                                     </th>
 
                                     <th></th>
@@ -64,7 +64,7 @@
 
                                         <td>
                                             <span class="tag is-warning">
-                                                {{ $user->roles->first()->name }}
+                                                {{ $user->function}}
                                             </span>
                                         </td>
 
@@ -75,12 +75,9 @@
 
                                     <div>
                                         @can('edit-users')
-                                            <update-user :prp-user="{{json_encode($user)}}"
-                                                         :prp-departments="{{json_encode($departments)}}"
-                                                         :prp-roles="{{json_encode($roles)}}">
-                                            </update-user>
+                                            <update-user :user-id="{{json_encode($user->id)}}"></update-user>
                                         @else
-                                            <user :prp-user="{{json_encode($user)}}"></user>
+                                            <user :user-id="{{json_encode($user->id)}}"></user>
                                         @endcan
                                     </div>
                                 @endforeach
