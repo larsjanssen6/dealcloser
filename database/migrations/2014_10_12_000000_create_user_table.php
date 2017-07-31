@@ -35,7 +35,7 @@ class CreateUserTable extends Migration
                 ->onDelete('cascade');
         });
 
-        /**
+        /*
          * Create user(s).
          */
 

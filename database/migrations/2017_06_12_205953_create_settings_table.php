@@ -58,7 +58,7 @@ class CreateSettingsTable extends Migration
             $table->timestamps();
         });
 
-        /**
+        /*
          * Create a settings row.
          */
 
