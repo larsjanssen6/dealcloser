@@ -56,6 +56,7 @@ class RelationController extends Controller
     {
         $this->middleware('permission:register-relations')->only('create', 'store');
         $this->middleware('permission:edit-relations')->only('destroy', 'update');
+
         $this->countryState = $countryState;
         $this->negotiationRepo = $negotiationRepo;
         $this->organisationRepo = $organisationRepo;

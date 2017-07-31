@@ -27,6 +27,7 @@ class ProductController extends Controller
     {
         $this->middleware('permission:register-products')->only('create', 'store');
         $this->middleware('permission:edit-products')->only('update', 'destroy');
+
         $this->productRepo = $productRepo;
     }
 

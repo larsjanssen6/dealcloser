@@ -25,6 +25,7 @@ class SettingsDepartmentController extends Controller
     public function __construct(IDepartmentRepo $departmentRepo)
     {
         $this->middleware('permission:edit-company-settings');
+
         $this->departmentRepo = $departmentRepo;
     }
 

@@ -26,6 +26,7 @@ class SettingsRoleController extends Controller
     public function __construct(IRoleRepo $roleRepo)
     {
         $this->middleware('permission:edit-role-settings');
+
         $this->roleRepo = $roleRepo;
     }
 

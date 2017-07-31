@@ -33,6 +33,7 @@ class SettingsPermissionController extends Controller
     public function __construct(IRoleRepo $roleRepo, ICategoryRepo $categoryRepo)
     {
         $this->middleware('permission:edit-permission-settings');
+
         $this->roleRepo = $roleRepo;
         $this->categoryRepo = $categoryRepo;
     }
