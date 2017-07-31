@@ -20,7 +20,7 @@ class CreateDepartmentTable extends Migration
             $table->timestamps();
         });
 
-        /**
+        /*
          * Create department(s).
          */
 
