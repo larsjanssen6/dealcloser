@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Web\User;
 
-use Gate;
 use App\Dealcloser\Core\User\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
@@ -23,14 +22,14 @@ class UserController extends Controller
     /**
      * IDepartment implementation.
      *
-     * @var IUserRepo
+     * @var IDepartmentRepo
      */
     private $departmentRepo;
 
     /**
      * IRoleRepo implementation.
      *
-     * @var IUserRepo
+     * @var IRoleRepo
      */
     private $roleRepo;
 
@@ -45,6 +44,7 @@ class UserController extends Controller
     public function __construct(IUserRepo $userRepo, IDepartmentRepo $departmentRepo, IRoleRepo $roleRepo)
     {
         $this->middleware('permission:edit-users')->only('update', 'destroy');
+
         $this->userRepo = $userRepo;
         $this->departmentRepo = $departmentRepo;
         $this->roleRepo = $roleRepo;
@@ -57,18 +57,22 @@ class UserController extends Controller
      */
     public function index()
     {
-        $departments = null;
-        $roles = null;
-
-        if (Gate::allows('edit-users')) {
-            $departments = $this->departmentRepo->getAll();
-            $roles = $this->roleRepo->getAll();
-        }
-
         return view('user.index')->with([
-            'users'       => $this->userRepo->paginate(Paginator::resolveCurrentPage(), ['department', 'roles']),
-            'departments' => issetWithReturn($departments),
-            'roles'       => issetWithReturn($roles),
+            'users'       => $this->userRepo->paginate(Paginator::resolveCurrentPage())
+        ]);
+    }
+
+    /**
+     * Show a user.
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function show($id)
+    {
+        return $this->userRepo->find($id, [
+            'roles',
+            'department',
         ]);
     }
 
