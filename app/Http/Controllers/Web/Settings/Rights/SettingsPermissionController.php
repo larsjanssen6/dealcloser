@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Web\Settings\Rights;
 
 use App\Http\Controllers\Controller;
-use Spatie\Permission\Models\Permission;
 use App\Dealcloser\Interfaces\Repositories\IRoleRepo;
 use App\Http\Requests\Settings\Rights\PermissionRequest;
 use App\Dealcloser\Interfaces\Repositories\ICategoryRepo;
