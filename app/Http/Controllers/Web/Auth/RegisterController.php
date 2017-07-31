@@ -43,6 +43,7 @@ class RegisterController extends Controller
     public function __construct(IUserRepo $userRepo, IRoleRepo $roleRepo, IDepartmentRepo $departmentRepo)
     {
         $this->middleware('permission:register-users');
+
         $this->userRepo = $userRepo;
         $this->roleRepo = $roleRepo;
         $this->departmentRepo = $departmentRepo;

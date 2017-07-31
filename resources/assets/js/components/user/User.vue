@@ -40,9 +40,9 @@
                     <div class="column">
                         <strong>Afdeling</strong>
                         <p>
-                        <span class="tag is-success">
-                            {{ user.department.name }}
-                        </span>
+                            <span class="tag is-success">
+                                {{ user.department.name }}
+                            </span>
                         </p>
                     </div>
 
@@ -50,9 +50,9 @@
                         <strong>Role</strong>
 
                         <p>
-                        <span class="tag is-success" v-for="role in user.roles">
-                            {{ role.name }}
-                        </span>
+                            <span class="tag is-success" v-for="role in user.roles">
+                                {{ role.name }}
+                            </span>
                         </p>
                     </div>
                 </div>
