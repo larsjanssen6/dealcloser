@@ -17,7 +17,7 @@ class CreateRelationNegotiationTable extends Migration
         Schema::create('relation_negotiation', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('type');
             $table->timestamps();
         });
