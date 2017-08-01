@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Dealcloser\Interfaces\Repositories\IUserRepo;
 use App\Dealcloser\Interfaces\Repositories\IProductRepo;
+use App\Dealcloser\Interfaces\Repositories\IRelationRepo;
 use App\Dealcloser\Interfaces\Repositories\IOrganisationRepo;
 
 class DashboardController extends Controller
@@ -32,18 +33,29 @@ class DashboardController extends Controller
     private $productRepo;
 
     /**
+     * IRelationRepo implementation.
+     *
+     * @var IRelationRepo
+     */
+    private $relationRepo;
+
+    /**
      * Create a new controller instance.
+     *
      * @param IOrganisationRepo $organisationRepo
      * @param IUserRepo $userRepo
      * @param IProductRepo $productRepo
+     * @param IRelationRepo $relationRepo
      */
     public function __construct(IOrganisationRepo $organisationRepo,
                                 IUserRepo $userRepo,
-                                IProductRepo $productRepo)
+                                IProductRepo $productRepo,
+                                IRelationRepo $relationRepo)
     {
         $this->organisationRepo = $organisationRepo;
         $this->userRepo = $userRepo;
         $this->productRepo = $productRepo;
+        $this->relationRepo = $relationRepo;
     }
 
     public function index()
@@ -51,6 +63,7 @@ class DashboardController extends Controller
         $products = $this->productRepo->getAll();
         $organisations = $this->organisationRepo->getAll();
         $users = $this->userRepo->getAll();
+        $relations = $this->relationRepo->getAll();
 
         return view('dashboard/dashboard')->with([
             /*
@@ -80,6 +93,12 @@ class DashboardController extends Controller
             'products_gross_margin' => $products->sum('grossMargin'),
             'products_purchase'     => $products->sum('purchase'),
             'products_price'        => $products->sum('price'),
+
+            /*
+             * Get relation information
+             */
+
+            'relations_latest' => $relations->last(),
         ]);
     }
 }
