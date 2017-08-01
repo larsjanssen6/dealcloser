@@ -1116,16 +1116,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.10",
+            "version": "v0.8.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "7ab97e5a32202585309f3ee35a0c08d2a8e588b1"
+                "reference": "b193cd020e8c6b66cea6457826ae005e94e6d2c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/7ab97e5a32202585309f3ee35a0c08d2a8e588b1",
-                "reference": "7ab97e5a32202585309f3ee35a0c08d2a8e588b1",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/b193cd020e8c6b66cea6457826ae005e94e6d2c0",
+                "reference": "b193cd020e8c6b66cea6457826ae005e94e6d2c0",
                 "shasum": ""
             },
             "require": {
@@ -1185,7 +1185,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-07-22 15:14:19"
+            "time": "2017-07-29 19:30:02"
         },
         {
             "name": "ramsey/uuid",
@@ -1460,16 +1460,16 @@
         },
         {
             "name": "spatie/laravel-tinker-tools",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-tinker-tools.git",
-                "reference": "4674f9a3d874c8ad488e25ffb7cd936bb7348e43"
+                "reference": "130b5a029fcf6608c462d9fd2e7429e45436a5e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-tinker-tools/zipball/4674f9a3d874c8ad488e25ffb7cd936bb7348e43",
-                "reference": "4674f9a3d874c8ad488e25ffb7cd936bb7348e43",
+                "url": "https://api.github.com/repos/spatie/laravel-tinker-tools/zipball/130b5a029fcf6608c462d9fd2e7429e45436a5e5",
+                "reference": "130b5a029fcf6608c462d9fd2e7429e45436a5e5",
                 "shasum": ""
             },
             "require": {
@@ -1497,7 +1497,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Flysystem Adapter for the Dropbox v2 API",
+            "description": "Use short class names in an Artisan tinker session",
             "homepage": "https://github.com/spatie/laravel-tinker-tools",
             "keywords": [
                 "Flysystem",
@@ -1507,7 +1507,7 @@
                 "spatie",
                 "v2"
             ],
-            "time": "2017-05-22 11:30:34"
+            "time": "2017-07-29 03:41:36"
         },
         {
             "name": "swiftmailer/swiftmailer",
