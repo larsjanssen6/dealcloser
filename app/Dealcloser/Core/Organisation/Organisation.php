@@ -11,8 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Organisation extends Model
 {
-    use HasSlug,
-        Categorizable;
+    use HasSlug, Categorizable;
 
     /**
      * Table name.
@@ -73,6 +72,8 @@ class Organisation extends Model
     public function syncProducts($products)
     {
         $this->products()->sync($products);
+
+        $this->fireModelEvent('updated', false);
 
         return $this;
     }

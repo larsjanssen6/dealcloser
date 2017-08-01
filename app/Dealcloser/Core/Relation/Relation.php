@@ -208,6 +208,8 @@ class Relation extends Model
             $this->relationsinternal()->sync($relations);
         }
 
+        $this->fireModelEvent('updated', false);
+
         return $this;
     }
 
@@ -229,6 +231,8 @@ class Relation extends Model
         } elseif ($type === 'working_at') {
             $this->organisationsWorkingAt()->sync($organisations);
         }
+
+        $this->fireModelEvent('updated', false);
 
         return $this;
     }
