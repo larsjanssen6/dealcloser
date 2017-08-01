@@ -4,7 +4,7 @@ namespace App\Dealcloser\Observers;
 
 use App\Dealcloser\Core\Organisation\Organisation;
 use Illuminate\Cache\Repository as CacheRepository;
-use Illuminate\Database\Eloquent\Relations\Relation;
+use App\Dealcloser\Core\Relation\Relation;
 
 class OrganisationObserver
 {
