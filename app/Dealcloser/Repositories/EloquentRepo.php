@@ -79,8 +79,8 @@ abstract class EloquentRepo implements IRepo
      *
      * @param $column
      * @param $value
-     *
      * @param array $with
+     *
      * @return mixed
      */
     public function findBy($column, $value, $with = [])
@@ -237,6 +237,7 @@ abstract class EloquentRepo implements IRepo
     {
         return $this->cache->tags($this->getModel())->remember($this->getModel().'|paginate|'.$page, 60, function () use ($page, $with) {
             return $this->_model
+                ->latest()
                 ->with($with)
                 ->paginate(10);
         });
