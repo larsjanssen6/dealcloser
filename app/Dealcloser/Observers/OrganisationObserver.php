@@ -2,9 +2,9 @@
 
 namespace App\Dealcloser\Observers;
 
+use App\Dealcloser\Core\Relation\Relation;
 use App\Dealcloser\Core\Organisation\Organisation;
 use Illuminate\Cache\Repository as CacheRepository;
-use App\Dealcloser\Core\Relation\Relation;
 
 class OrganisationObserver
 {
