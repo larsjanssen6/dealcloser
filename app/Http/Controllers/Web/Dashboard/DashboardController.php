@@ -98,7 +98,11 @@ class DashboardController extends Controller
              * Get relation information
              */
 
-            'relations_latest' => $relations->last(),
+            'relations_total'               => $relations->count(),
+            'relations_latest'              => $relations->last(),
+            'relations_total_last_month'    => $relations->where('created_at', '>=', Carbon::now()->startOfMonth()->subMonth())
+                                                    ->where('created_at', '<=', Carbon::now()->startOfMonth())->count(),
+            'relations_total_current_month' => $relations->where('created_at', '>=', Carbon::now()->startOfMonth())->count(),
         ]);
     }
 }
