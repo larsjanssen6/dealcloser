@@ -7,14 +7,12 @@ use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use App\Dealcloser\Core\Product\Product;
 use App\Dealcloser\Traits\Categorizable;
-use App\Dealcloser\Custom\BelongsToManyWithSyncEvent;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Organisation extends Model
 {
     use HasSlug,
-        Categorizable,
-        BelongsToManyWithSyncEvent;
+        Categorizable;
 
     /**
      * Table name.
