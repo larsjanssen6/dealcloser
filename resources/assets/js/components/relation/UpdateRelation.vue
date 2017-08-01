@@ -235,15 +235,15 @@
                         </div>
 
                         <custom-text-area
-                                :value.sync="relation.track_record"
+                                :value.sync="relation.experience_with_us"
                                 label="Ervaringen relatie met onze organisatie"
-                                name="track_record">
+                                name="experience_with_us">
                         </custom-text-area>
 
                         <custom-text-area
-                                :value.sync="relation.experience_with_us"
+                                :value.sync="relation.track_record"
                                 label="Track record onderhandelen"
-                                name="experience_with_us">
+                                name="track_record">
                         </custom-text-area>
 
                         <custom-input
