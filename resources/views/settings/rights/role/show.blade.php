@@ -18,7 +18,7 @@
                             Rollen
                         </h2>
 
-                        <roles :prp-roles="{{ json_encode($roles) }}" v-cloak></roles>
+                        <roles v-cloak></roles>
 
                         <div class="column is-5">
                             <form method="POST"
@@ -37,7 +37,7 @@
 
                                 <div class="field is-grouped is-centered">
                                     <div class="control">
-                                        <button id="submit" type="submit" class="button is-primary">
+                                        <button id="submit" class="button is-primary">
                                             Maak rol
                                         </button>
                                     </div>

@@ -20,10 +20,8 @@
     import DepartmentService from '../../services/DepartmentService';
 
     export default {
-        props: ['prp-departments'],
-
         created() {
-            this.departments = this.prpDepartments;
+            this.getDepartments();
         },
 
         data() {
@@ -33,6 +31,19 @@
         },
 
         methods: {
+
+            /**
+             * Get all departments.
+             */
+
+            getDepartments() {
+                DepartmentService.index().then(({data}) => this.departments = data);
+            },
+
+            /**
+             * Destroy a department.
+             */
+
             destroy(department) {
                 swal({
                     title: 'Weet u het zeker?',
@@ -74,6 +85,10 @@
                     }
                 })
             },
+
+            /**
+             * Edit a department.
+             */
 
             edit(department) {
                 swal({

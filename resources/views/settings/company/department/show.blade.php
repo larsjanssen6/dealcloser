@@ -18,7 +18,7 @@
                             Afdelingen
                         </h2>
 
-                        <departments :prp-departments="{{ json_encode($departments) }}" v-cloak></departments>
+                        <departments v-cloak></departments>
 
                         <div class="column is-6">
                             <form method="POST"
@@ -37,7 +37,7 @@
                                 @endcomponent
 
                                 <div class="control">
-                                    <button id="submit" type="submit" class="button is-primary is-outlined">
+                                    <button id="submit" class="button is-primary is-outlined">
                                         Maak afdeling
                                     </button>
                                 </div>

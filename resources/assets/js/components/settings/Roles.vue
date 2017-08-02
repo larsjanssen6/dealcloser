@@ -20,10 +20,8 @@
     import RoleService from '../../services/RoleService';
 
     export default {
-        props: ['prp-roles'],
-
         created() {
-            this.roles = this.prpRoles;
+            this.getRoles();
         },
 
         data() {
@@ -33,6 +31,19 @@
         },
 
         methods: {
+
+            /**
+             * Get all roles.
+             */
+
+            getRoles() {
+                RoleService.index().then(({data}) => this.roles = data);
+            },
+
+            /**
+             * Destroy role.
+             */
+
             destroy(role) {
                 swal({
                     title: 'Weet u het zeker?',
@@ -74,6 +85,10 @@
                     }
                 })
             },
+
+            /**
+             * Update a role.
+             */
 
             edit(role) {
                 swal({
