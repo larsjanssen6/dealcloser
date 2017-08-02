@@ -149,6 +149,6 @@ return [
         'username'              => 'gebruikersnaam',
         'year'                  => 'jaar',
         'track_record'          => 'track record',
-        'experience_with_us'    => 'ervaringen'
+        'experience_with_us'    => 'ervaringen',
     ],
 ];

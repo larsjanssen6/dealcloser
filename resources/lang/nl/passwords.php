@@ -19,4 +19,3 @@ return [
     'token'    => 'Dit wachtwoord reset token is niet geldig.',
     'user'     => 'Geen gebruiker bekend met dat e-mailadres.',
 ];
-
