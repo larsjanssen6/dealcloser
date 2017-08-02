@@ -18,7 +18,7 @@
                             Permissies
                         </h2>
 
-                        <table class="table">
+                        <table class="table is-fullwidth">
                             <thead>
                                 <tr>
                                     <th>Permissie</th>
