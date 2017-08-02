@@ -12,7 +12,7 @@
                     <p>Registreer gebruiker</p>
 
                     @slot('body')
-                        <form method="POST" class="form-horizontal" action="{{ route('register.store') }}">
+                        <form method="POST" class="form-horizontal">
                             {{ csrf_field() }}
 
                             @component('layout/input', [
