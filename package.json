@@ -22,8 +22,7 @@
     "vue": "^2.3.4"
   },
   "dependencies": {
-    "babel-polyfill": "^6.23.0",
-    "bulma": "^0.4.3",
+    "bulma": "^0.5.0",
     "chart.js": "^2.6.0",
     "collect.js": "^3.0.47",
     "es6-promise": "^4.1.1",
