@@ -37,10 +37,7 @@ class SettingsRoleController extends Controller
      */
     public function index()
     {
-        return view('settings.rights.role.show')->with([
-                'roles' => $this->roleRepo->getAll(),
-            ]
-        );
+        return view('settings.rights.role.show');
     }
 
     /**
