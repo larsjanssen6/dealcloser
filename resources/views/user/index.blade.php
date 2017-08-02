@@ -18,7 +18,7 @@
             <div class="column">
                 <modal-wrapper name="user" inline-template v-cloak>
                     <div>
-                        <table class="table">
+                        <table class="table is-fullwidth">
                             <thead class="thead-is-blue">
                                 <tr>
                                     <th>
